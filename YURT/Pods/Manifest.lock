@@ -1,0 +1,33 @@
+PODS:
+  - Alamofire (4.7.0)
+  - EasyDi (1.4.0)
+  - KeychainSwift (10.0.0)
+  - RxAlamofire (4.1.0):
+    - RxAlamofire/Core (= 4.1.0)
+  - RxAlamofire/Core (4.1.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - EasyDi
+  - KeychainSwift (~> 10.0)
+  - RxAlamofire
+  - RxSwift (~> 4.0)
+  - SDWebImage (~> 4.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  EasyDi: 84cfe04e906c0f463b1b1d76ed4be3db446f9702
+  KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
+  RxAlamofire: 96a2bff4694a1609bb59c57b53d99ea7a0ddc64a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+
+PODFILE CHECKSUM: eecee7ad4b7051d20a2cb8f2bb0efc98f341b828
+
+COCOAPODS: 1.4.0

@@ -1,0 +1,34 @@
+//
+//  SttTableViewSource.swift
+//  YURT
+//
+//  Created by Standret on 03.05.18.
+//  Copyright © 2018 com.yurt.YURT. All rights reserved.
+//
+
+import UIKit
+
+class SttTableViewSource<T>: NSObject, UITableViewDataSource {
+    var _tableView: UITableView
+    var _cellIdentifier: String
+    var _collection: [T]! {
+        didSet {
+            _tableView.reloadData()
+        }
+    }
+    
+    init(tableView: UITableView, cellIdentifier: String) {
+        _tableView = tableView
+        _cellIdentifier = cellIdentifier
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return _collection == nil ? 0 : _collection.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: _cellIdentifier)! as! SttTableViewCell<T>
+        cell.dataContext = _collection[indexPath.row]
+        return cell
+    }
+}
