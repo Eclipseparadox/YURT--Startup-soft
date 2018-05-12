@@ -9,5 +9,8 @@ target 'YURT' do
   pod 'SDWebImage', '~> 4.0'
   pod "EasyDi"
   pod 'KeychainSwift', '~> 10.0'
+  pod 'AppCenter'
+  pod "RxRealm" 
+  pod 'RealmSwift'
 end
 
