@@ -1,6 +1,0 @@
-framework module Pods_YURT {
-  umbrella header "Pods-YURT-umbrella.h"
-
-  export *
-  module * { export * }
-}
