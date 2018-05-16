@@ -18,11 +18,12 @@ protocol IApiService {
 class ApiService: IApiService {
     
     var _httpService: IHttpService!
+    var _unitOfWork: IUnitOfWork!
     
     init() {
-      //  ServiceInjectorAssembly.instance().inject(into: self)
+        ServiceInjectorAssembly.instance().inject(into: self)
         _httpService.url = Constants.apiUrl
-        _httpService.token = KeychainSwift().get(Constants.tokenKey)
+        _httpService.token = KeychainSwift().get(Constants.tokenKey) ?? ""
     }
     
     func inserToken(token: String) {

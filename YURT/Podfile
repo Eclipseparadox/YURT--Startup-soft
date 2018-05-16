@@ -12,5 +12,6 @@ target 'YURT' do
   pod 'AppCenter'
   pod "RxRealm" 
   pod 'RealmSwift'
+  pod 'SINQ'
 end
 

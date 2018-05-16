@@ -1,30 +1,35 @@
 //
-//  ApiSpecial.swift
+//  ErrorModels.swift
 //  YURT
 //
-//  Created by Standret on 03.05.18.
+//  Created by Standret on 16.05.18.
 //  Copyright © 2018 com.yurt.YURT. All rights reserved.
 //
 
 import Foundation
 
-class ApiResultModel<TResult> {
-    let isSuccess: Bool
-    let result: TResult?
-    let error: ApiError?
+enum RealmError: Error {
+    case objectIsSignleton
+    case notFoundObjects
+    case queryIsNull
+    case doenotExactlyQuery
     
-    convenience init(result: TResult) {
-        self.init(isSuccess: true, result: result, error: nil)
-    }
-    
-    convenience init(error: ApiError) {
-        self.init(isSuccess: false, result: nil, error: error)
-    }
-    
-    private init(isSuccess: Bool, result: TResult?, error: ApiError?) {
-        self.isSuccess = false
-        self.result = result
-        self.error = error
+    func getMessage() -> String {
+        var result: String!
+        switch self {
+        case .objectIsSignleton:
+            result = "object is singleton"
+        case .notFoundObjects:
+            result = "not found objects"
+        case .queryIsNull:
+            result = "quert is null"
+        case .doenotExactlyQuery:
+            result = "query found more than one object or does not found anything"
+        default:
+            result = "unkown error"
+        }
+        
+        return result
     }
 }
 

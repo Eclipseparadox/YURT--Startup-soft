@@ -20,10 +20,14 @@ PODS:
   - RxAlamofire/Core (4.2.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
+  - RxRealm (0.7.5):
+    - RealmSwift (~> 3.0)
+    - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - SINQ (0.7.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -32,8 +36,10 @@ DEPENDENCIES:
   - KeychainSwift (~> 10.0)
   - RealmSwift
   - RxAlamofire
+  - RxRealm
   - RxSwift (~> 4.0)
   - SDWebImage (~> 4.0)
+  - SINQ
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -43,9 +49,11 @@ SPEC CHECKSUMS:
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
   RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
   RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
+  RxRealm: a6c6c0a07cb61f34209969ca6657734edfdfff30
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SINQ: 64cab7b7c73486da8f4442c25ccdd6ada7e67b95
 
-PODFILE CHECKSUM: f09b7db1ed19baaa05b553b891dfa7c539b80bef
+PODFILE CHECKSUM: d6699b1fd85ddbe446dc1f68bf55fed4533b1979
 
 COCOAPODS: 1.4.0
