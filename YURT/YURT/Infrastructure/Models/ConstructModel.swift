@@ -8,6 +8,3 @@
 
 import Foundation
 
-struct ServiceResult: Decodable {
-    let error: String
-}

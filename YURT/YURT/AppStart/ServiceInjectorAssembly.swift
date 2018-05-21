@@ -23,4 +23,11 @@ class ServiceInjectorAssembly: Assembly {
             return $0
         }
     }
+    
+    func inject<T>(into service: SttPresenter<T>) {
+        let _:SttPresenter<T> = define(init: service) {
+            $0._notificationError = self.serviceAssembly.notificationError
+            return $0
+        }
+    }
 }

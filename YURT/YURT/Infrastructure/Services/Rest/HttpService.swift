@@ -18,6 +18,7 @@ protocol IHttpService {
     
     func get(controller: ApiConroller, data: [String:String], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
     func post(controller: ApiConroller, data: [String:String], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
+    func post(controller: ApiConroller, dataAny: [String:Any], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
 }
 
 extension IHttpService {
@@ -26,6 +27,9 @@ extension IHttpService {
     }
     func post(controller: ApiConroller, data: [String:String] = [:], insertToken: Bool = false) -> Observable<(HTTPURLResponse, Data)> {
         return self.post(controller: controller, data: data, insertToken: insertToken)
+    }
+    func post(controller: ApiConroller, dataAny: [String:Any], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>{
+        return self.post(controller: controller, dataAny: dataAny, insertToken: insertToken)
     }
 }
 
@@ -47,7 +51,7 @@ class HttpService: IHttpService {
             
             if !self.connectivity.isConnected {
                 sleep(Constants.timeWaitNextRequest)
-                observer.onError(ApiError.noInternetConnectionError)
+                observer.onError(BaseError.connectionError(ConnectionError.noInternetConnection))
                 return Disposables.create()
             }
             
@@ -59,12 +63,9 @@ class HttpService: IHttpService {
                 .subscribe(onNext: { (res, data) in
                     observer.onNext((res, data))
                     observer.onCompleted()
-                }, onError: observer.onError(_:), onCompleted: nil, onDisposed: nil)
+                }, onError: observer.onError(_:))
             }
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .timeout(Constants.timeout, scheduler: MainScheduler.instance)
-            .retry(Constants.maxCountRepeatRequest)
+            .configurateParamet()
     }
     
     
@@ -77,7 +78,7 @@ class HttpService: IHttpService {
             
             if !self.connectivity.isConnected {
                 sleep(Constants.timeWaitNextRequest)
-                observer.onError(ApiError.noInternetConnectionError)
+                observer.onError(BaseError.connectionError(ConnectionError.noInternetConnection))
                 return Disposables.create()
             }
             
@@ -91,10 +92,42 @@ class HttpService: IHttpService {
                     observer.onCompleted()
                 }, onError: observer.onError(_:), onCompleted: nil, onDisposed: nil)
             }
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .configurateParamet()
+    }
+    
+    func post(controller: ApiConroller, dataAny: [String:Any], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)> {
+        let url = "\(self.url!)\(controller.get())"
+        var _insertToken = insertToken
+        
+        return Observable<(HTTPURLResponse, Data)>.create { (observer) -> Disposable in
+            Log.trace(message: url, key: Constants.httpKeyLog)
+            
+            if !self.connectivity.isConnected {
+                sleep(Constants.timeWaitNextRequest)
+                observer.onError(BaseError.connectionError(ConnectionError.noInternetConnection))
+                return Disposables.create()
+            }
+            
+            if self.token == "" {
+                _insertToken = false
+            }
+
+            return requestData(.post, url, parameters: dataAny, encoding: JSONEncoding.default,
+                               headers: _insertToken ? ["Authorization" : "\(self.tokenType) \(self.token)"] : nil)
+                .subscribe(onNext: { (res, data) in
+                    observer.onNext((res, data))
+                    observer.onCompleted()
+                }, onError: observer.onError(_:), onCompleted: nil, onDisposed: nil)
+            }
+            .configurateParamet()
+    }
+}
+
+extension Observable {
+    func configurateParamet() -> Observable<Element> {
+        return self.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .timeout(Constants.timeout, scheduler: MainScheduler.instance)
             .retry(Constants.maxCountRepeatRequest)
     }
 }
-

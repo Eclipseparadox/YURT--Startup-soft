@@ -9,13 +9,13 @@
 import Foundation
 
 enum ApiConroller {
-    case token
+    case account(String)
     case users(String)
     
     func get() -> String {
         switch self {
-        case .token:
-            return "/api/token"
+        case .account(let method):
+            return "\(Constants.versionApi)account/\(method)"
         case .users(let method):
             return "\(Constants.versionApi)users/\(method)"
         }
@@ -24,33 +24,51 @@ enum ApiConroller {
 
 class Constants {
     // url
-    static var apiUrl = "https://qa-startupsoft-imx.azurewebsites.net/"
-    static var blobUrl = "https://prodssanalyticsstorage.blob.core.windows.net"
-    static var versionApi = "/api/"
+    static let apiUrl = "https://qa-startupsoft-imx.azurewebsites.net/"
+    static let blobUrl = "https://prodssanalyticsstorage.blob.core.windows.net"
+    static let versionApi = "/api/"
     
     // keychain id
-    static var tokenKey = "securityAccessToken"
-    static var idKey = "securityUserId"
+    static let tokenKey = "securityAccessToken"
+    static let idKey = "securityUserId"
     
     // api config
-    static var maxImageCacheSize = 1024 * 1024 * 200
-    static var maxCacheAge = 60 * 60 * 24 * 7 * 4
-    static var timeout = TimeInterval(15) + TimeInterval(timeWaitNextRequest)
-    static var timeWaitNextRequest = UInt32(2)
-    static var maxCountRepeatRequest = 3
+    static let maxImageCacheSize = 1024 * 1024 * 200
+    static let maxCacheAge = 60 * 60 * 24 * 7 * 4
+    static let timeout = TimeInterval(15) + TimeInterval(timeWaitNextRequest)
+    static let timeWaitNextRequest = UInt32(2)
+    static let maxCountRepeatRequest = 3
     
     // error string
-    static var incorrectLogin = "Email or Password is incorrect."
+    static let incorrectLogin = "Email or Password is incorrect."
     
     // image key
-    static var avatarPlaceholder = "avatarPlaceholder"
+    static let avatarPlaceholder = "avatarPlaceholder"
     
     // realm
-    static var keySingle = "--single--"
+    static let keySingle = "--single--"
     
     // log - key
-    static var httpKeyLog = "HTTP"
-    static var apiDataKeyLog = "APIDP"
-    static var repositoryLog = "RealmRep"
-    static var repositoryExtensionsLog = "RealmEXTRep"
+    static let httpKeyLog = "HTTP"
+    static let apiDataKeyLog = "APIDP"
+    static let repositoryLog = "RealmRep"
+    static let repositoryExtensionsLog = "RealmEXTRep"
+    static let noImplementException = "No implement exception"
+    
+    // validation pattern and option
+    
+    static let emailPattern = "^([A-Za-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[A-Za-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)$"
+    static let passwordPattern = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,40}$"
+    static let firstNamePattern = "[A-Za-z0-9 _.,'()-]{1,120}"
+    static let lastNamePattern = "[A-Za-z0-9 _.,'()-]{1,60}"
+    static let phoneNumber = "(\\+?[0-9 ()-]){1,25}"
+    
+    static let minPassword = 6
+    static let maxPassword = 40
+    static let minFirstName = 1
+    static let maxFirstName = 60
+    static let minLastName = 1
+    static let maxLastName = 60
+    static let minLocation = 1
+    static let maxLocation = 150
 }

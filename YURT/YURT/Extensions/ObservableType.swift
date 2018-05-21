@@ -23,7 +23,7 @@ extension Observable {
     }
 }
 
-extension ObservableType where E == (HTTPURLResponse, Data) {
+extension ObservableType where E == (HTTPURLResponse, Data) {   
     func getResult<TResult: Decodable>(ofType _: TResult.Type) -> Observable<TResult> {
         return Observable<TResult>.create({ (observer) -> Disposable in
             self.subscribe(onNext: { (urlResponse, data) in
@@ -37,21 +37,21 @@ extension ObservableType where E == (HTTPURLResponse, Data) {
                     }
                     catch {
                         print(error)
-                        observer.onError(ApiError.jsonConvertError)
+                        observer.onError(BaseError.jsonConvert("\(error)"))
                     }
                 case 400:
-                    observer.onError(ApiError.badRequest((try? JSONDecoder().decode(ServiceResult.self, from: data))?.error ?? "error parse data"))
+                    observer.onError(BaseError.apiError(ApiError.badRequest((try? JSONDecoder().decode(ServiceResult.self, from: data))?.error ?? ServerError(code: 400, description: String(data: data, encoding: String.Encoding.utf8) ?? ""))))
                 case 500:
-                    observer.onError(ApiError.internalServerError(String(data: data, encoding: String.Encoding.utf8) ?? "error parse content"))
+                    observer.onError(BaseError.apiError(ApiError.internalServerError(String(data: data, encoding: String.Encoding.utf8) ?? "nil")))
                 default:
-                    observer.onError(ApiError.unkownApiError(urlResponse.statusCode))
+                    observer.onError(BaseError.apiError(ApiError.otherApiError(urlResponse.statusCode)))
                 }
             }, onError: { (error) in
-                if let er = error as? ApiError {
+                if let er = error as? BaseError {
                     observer.onError(er)
                 }
                 else {
-                    observer.onError(ApiError.unkownApiError(-1))
+                    observer.onError(BaseError.unkown("\(error)"))
                 }
             }, onCompleted: nil, onDisposed: nil)
         })

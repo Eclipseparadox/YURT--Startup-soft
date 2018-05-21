@@ -13,6 +13,8 @@ import KeychainSwift
 
 protocol IApiService {
     func inserToken(token: String)
+    
+   // func emailExists(email: String) -> Observable<Bool>
 }
 
 class ApiService: IApiService {
@@ -30,5 +32,7 @@ class ApiService: IApiService {
         _httpService.token = token
     }
     
-    
+//    func emailExists(email: String) -> Observable<Bool> {
+//      //  return _httpService.
+//    }
 }
