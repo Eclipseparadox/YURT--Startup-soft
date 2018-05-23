@@ -62,6 +62,12 @@
 		84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */; };
 		84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40AD220AD7F570050CA65 /* StartPageViewController.swift */; };
 		84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBEF20B316EF0053C93A /* ExistModel.swift */; };
+		84C7FBF220B42DD50053C93A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBF120B42DD50053C93A /* AccountService.swift */; };
+		84C7FBF420B444490053C93A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBF320B444490053C93A /* UIImage.swift */; };
+		84C7FBF620B444760053C93A /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBF520B444760053C93A /* Camera.swift */; };
+		84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */; };
+		84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBFA20B45E2C0053C93A /* AccountModel.swift */; };
+		84C7FBFD20B54F9A0053C93A /* SttComandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBFC20B54F9A0053C93A /* SttComandExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +130,12 @@
 		84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPagePresenter.swift; sourceTree = "<group>"; };
 		84C40AD220AD7F570050CA65 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		84C7FBEF20B316EF0053C93A /* ExistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistModel.swift; sourceTree = "<group>"; };
+		84C7FBF120B42DD50053C93A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		84C7FBF320B444490053C93A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		84C7FBF520B444760053C93A /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUploadImageApiModel.swift; sourceTree = "<group>"; };
+		84C7FBFA20B45E2C0053C93A /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		84C7FBFC20B54F9A0053C93A /* SttComandExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttComandExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,10 +295,10 @@
 		84484F68209B39C5006BBD11 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84C7FBF720B459160053C93A /* ApiModel */,
 				842E1EB620AC5676003D2CDA /* RealmModels */,
 				84484F69209B39D7006BBD11 /* SpecialModels */,
 				84484F6E209B400C006BBD11 /* ConstructModel.swift */,
-				84C7FBEF20B316EF0053C93A /* ExistModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,6 +341,7 @@
 				84484F65209B3702006BBD11 /* Rest */,
 				842E1EAE20AC549A003D2CDA /* Log.swift */,
 				840427F220B2E87800C94765 /* NotificationError.swift */,
+				84C7FBF120B42DD50053C93A /* AccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -421,6 +434,7 @@
 				846F995A209B0ADE00C61AE2 /* Decorators */,
 				846F9951209B0A3700C61AE2 /* KeyboardNotification.swift */,
 				840427E320B2E73D00C94765 /* UIConstants.swift */,
+				84C7FBF520B444760053C93A /* Camera.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -441,6 +455,8 @@
 				848C85DE20A042B100026A5E /* ObservableType.swift */,
 				848C85E020A0480700026A5E /* AppDelegateExtensions.swift */,
 				840427F020B2E85200C94765 /* DialogAlert.swift */,
+				84C7FBF320B444490053C93A /* UIImage.swift */,
+				84C7FBFC20B54F9A0053C93A /* SttComandExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,6 +489,16 @@
 				8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		84C7FBF720B459160053C93A /* ApiModel */ = {
+			isa = PBXGroup;
+			children = (
+				84C7FBEF20B316EF0053C93A /* ExistModel.swift */,
+				84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */,
+				84C7FBFA20B45E2C0053C93A /* AccountModel.swift */,
+			);
+			path = ApiModel;
 			sourceTree = "<group>";
 		};
 		B54C9FC814F10AC2C070B0B2 /* Frameworks */ = {
@@ -622,7 +648,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */,
+				84C7FBFD20B54F9A0053C93A /* SttComandExtensions.swift in Sources */,
 				846F995E209B0B3100C61AE2 /* UIView.swift in Sources */,
+				84C7FBF420B444490053C93A /* UIImage.swift in Sources */,
 				84484F67209B371D006BBD11 /* HttpService.swift in Sources */,
 				840427F120B2E85200C94765 /* DialogAlert.swift in Sources */,
 				842E1EAF20AC549A003D2CDA /* Log.swift in Sources */,
@@ -633,6 +662,7 @@
 				842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */,
 				842E1EC420AD6EBD003D2CDA /* SttTemplate.swift in Sources */,
 				842E1EC120AD6EB2003D2CDA /* InputBox.swift in Sources */,
+				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,
 				842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */,
 				846F994C209B093600C61AE2 /* SttViewController.swift in Sources */,
@@ -647,6 +677,7 @@
 				842E1EB820AC56AC003D2CDA /* BaseRealm.swift in Sources */,
 				842E1EBA20AC5785003D2CDA /* ErrorModels.swift in Sources */,
 				846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */,
+				84C7FBF620B444760053C93A /* Camera.swift in Sources */,
 				84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */,
 				84484F54209B05D4006BBD11 /* AppDelegate.swift in Sources */,
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
@@ -658,6 +689,7 @@
 				840427EB20B2E7A900C94765 /* BaseConverter.swift in Sources */,
 				840427FD20B2EA1800C94765 /* SttTableViewController.swift in Sources */,
 				84484F6B209B39F6006BBD11 /* SpecialResult.swift in Sources */,
+				84C7FBF220B42DD50053C93A /* AccountService.swift in Sources */,
 				848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */,
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
@@ -809,14 +841,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D9L33B2S23;
+				DEVELOPMENT_TEAM = 6T2CR8Y629;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yurt.YURT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.YURT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -829,14 +861,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D9L33B2S23;
+				DEVELOPMENT_TEAM = 6T2CR8Y629;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yurt.YURT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.YURT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

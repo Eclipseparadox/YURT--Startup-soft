@@ -65,6 +65,7 @@ enum ApiError {
     case badRequest(ServerError)
     case internalServerError(String)
     case otherApiError(Int)
+    case responseIsNi
     
     func getMessage() -> (String, String) {
         var result: (String, String)!
@@ -75,6 +76,8 @@ enum ApiError {
             result = ("Internal Server Error", message)
         case .otherApiError(let code):
             result = ("Other", "with code: \(code)")
+        case .responseIsNi:
+            result = ("Response is nil", "Go to developer")
         }
         return result
     }

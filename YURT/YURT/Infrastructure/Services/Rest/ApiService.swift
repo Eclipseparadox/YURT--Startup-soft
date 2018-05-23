@@ -14,7 +14,9 @@ import KeychainSwift
 protocol IApiService {
     func inserToken(token: String)
     
-   // func emailExists(email: String) -> Observable<Bool>
+    func emailExists(email: String) -> Observable<Bool>
+    func uploadImage(image: UIImage) -> Observable<ResultUploadImageApiModel>
+    func signUp(model: BorrowerSignUp) -> Observable<Bool>
 }
 
 class ApiService: IApiService {
@@ -32,7 +34,20 @@ class ApiService: IApiService {
         _httpService.token = token
     }
     
-//    func emailExists(email: String) -> Observable<Bool> {
-//      //  return _httpService.
-//    }
+    func emailExists(email: String) -> Observable<Bool> {
+        return _httpService.get(controller: .account("emailexist"), data: ["email": email])
+            .getResult(ofType: ExistModelString.self)
+            .map { $0.isExist }
+    }
+    
+    func uploadImage(image: UIImage) -> Observable<ResultUploadImageApiModel> {
+        return _httpService.upload(controller: .upload("image"), data: UIImageJPEGRepresentation(image, 0.5)!, parameter: ["saveToTemporary" : "true"])
+            .getResult(ofType: ResultUploadImageApiModel.self)
+    }
+    
+    func signUp(model: BorrowerSignUp) -> Observable<Bool> {
+        let data = model.getDictionary()
+        return _httpService.post(controller: .mobileAccount("signup"), dataAny: data)
+            .getResult()
+    }
 }

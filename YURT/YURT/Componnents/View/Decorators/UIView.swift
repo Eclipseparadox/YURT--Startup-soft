@@ -40,7 +40,9 @@ extension UIView {
         indicator.color = color
         
         indicator.center = CGPoint(x: self.bounds.size.width / 2, y: self.bounds.size.height / 2)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(indicator)
+        
         
         return indicator
     }

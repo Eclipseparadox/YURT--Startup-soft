@@ -22,4 +22,7 @@ class ServiceAssembly: Assembly {
     var notificationError: INotificationError {
         return define(scope: .lazySingleton, init: NotificationError())
     }
+    var accountService: IAccountService {
+        return define(scope: .lazySingleton, init: AccountService())
+    }
 }

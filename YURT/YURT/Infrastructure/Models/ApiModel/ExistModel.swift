@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExistModel<T> {
+struct ExistModelString: Decodable {
     let isExist: Bool
-    let item: T
+    let item: String
 }

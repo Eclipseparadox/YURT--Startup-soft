@@ -19,6 +19,7 @@ protocol IHttpService {
     func get(controller: ApiConroller, data: [String:String], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
     func post(controller: ApiConroller, data: [String:String], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
     func post(controller: ApiConroller, dataAny: [String:Any], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
+    func upload(controller: ApiConroller, data: Data, parameter: [String:String]) -> Observable<(HTTPURLResponse, Data)>
 }
 
 extension IHttpService {
@@ -28,7 +29,7 @@ extension IHttpService {
     func post(controller: ApiConroller, data: [String:String] = [:], insertToken: Bool = false) -> Observable<(HTTPURLResponse, Data)> {
         return self.post(controller: controller, data: data, insertToken: insertToken)
     }
-    func post(controller: ApiConroller, dataAny: [String:Any], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>{
+    func post(controller: ApiConroller, dataAny: [String:Any], insertToken: Bool = false) -> Observable<(HTTPURLResponse, Data)>{
         return self.post(controller: controller, dataAny: dataAny, insertToken: insertToken)
     }
 }
@@ -120,6 +121,42 @@ class HttpService: IHttpService {
                 }, onError: observer.onError(_:), onCompleted: nil, onDisposed: nil)
             }
             .configurateParamet()
+    }
+    
+    func upload(controller: ApiConroller, data: Data, parameter: [String:String]) -> Observable<(HTTPURLResponse, Data)> {
+        let url = "\(self.url!)\(controller.get())"
+
+        return Observable<(HTTPURLResponse, Data)>.create( { observer in
+            Log.trace(message: url, key: Constants.httpKeyLog)
+            
+            if !self.connectivity.isConnected {
+                sleep(Constants.timeWaitNextRequest)
+                observer.onError(BaseError.connectionError(ConnectionError.noInternetConnection))
+                return Disposables.create()
+            }
+
+            Alamofire.upload(multipartFormData: { multipartFormData in
+                    multipartFormData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
+                }, to: url, method: .put, headers: parameter,
+                    encodingCompletion: { encodingResult in
+                        switch encodingResult {
+                        case .success(let upload, _, _):
+                            upload.responseData(completionHandler: { (fullData) in
+                                if upload.response != nil && fullData.data != nil {
+                                    observer.onNext((upload.response!, fullData.data!))
+                                    observer.onCompleted()
+                                }
+                                else {
+                                    observer.onError(BaseError.apiError(ApiError.responseIsNi))
+                                }
+                            })
+                        case .failure(let encodingError):
+                            observer.onError(BaseError.unkown("\(encodingError)"))
+                        }
+            })
+            return Disposables.create();
+        })
+        .configurateParamet()
     }
 }
 

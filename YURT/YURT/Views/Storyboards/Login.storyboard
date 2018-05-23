@@ -304,7 +304,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="tintErrorColor">
                                                         <color key="value" name="error"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldIdentifier" value="Full Name"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="fieldIdentifier" value="First Name"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="fieldColor">
                                                         <color key="value" name="disableField"/>
                                                     </userDefinedRuntimeAttribute>
@@ -447,15 +447,30 @@
                                                             <constraint firstAttribute="height" constant="34" id="raZ-wk-kSk"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="losAngeles" translatesAutoresizingMaskIntoConstraints="NO" id="2V5-tH-BQt">
+                                                        <rect key="frame" x="-0.66666666666665719" y="0.0" width="100" height="100"/>
+                                                    </imageView>
+                                                    <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TrP-mE-JSA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" name="takePhotoBackround"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="pIL-uf-2dI" firstAttribute="top" secondItem="wgo-QM-MBY" secondAttribute="bottom" constant="1" id="1ch-1S-CAF"/>
                                                     <constraint firstAttribute="height" constant="100" id="4iq-Km-Cnv"/>
+                                                    <constraint firstItem="TrP-mE-JSA" firstAttribute="top" secondItem="SXn-ge-CtC" secondAttribute="top" id="5oA-cp-Ezi"/>
                                                     <constraint firstItem="wgo-QM-MBY" firstAttribute="centerY" secondItem="SXn-ge-CtC" secondAttribute="centerY" constant="-1" id="6Jf-Xh-OAW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2V5-tH-BQt" secondAttribute="trailing" id="Ehb-TR-MlB"/>
                                                     <constraint firstItem="wgo-QM-MBY" firstAttribute="centerX" secondItem="SXn-ge-CtC" secondAttribute="centerX" id="bvn-86-qnC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TrP-mE-JSA" secondAttribute="trailing" id="byk-2v-fFg"/>
+                                                    <constraint firstItem="TrP-mE-JSA" firstAttribute="leading" secondItem="SXn-ge-CtC" secondAttribute="leading" id="c7F-AL-9lW"/>
                                                     <constraint firstItem="pIL-uf-2dI" firstAttribute="centerX" secondItem="SXn-ge-CtC" secondAttribute="centerX" id="dCc-Ti-Pa4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="2V5-tH-BQt" secondAttribute="bottom" id="eQx-h1-d7w"/>
+                                                    <constraint firstItem="2V5-tH-BQt" firstAttribute="top" secondItem="SXn-ge-CtC" secondAttribute="top" id="k6t-5b-ZBu"/>
+                                                    <constraint firstItem="2V5-tH-BQt" firstAttribute="leading" secondItem="SXn-ge-CtC" secondAttribute="leading" id="lPf-cU-d3h"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TrP-mE-JSA" secondAttribute="bottom" id="tx3-xd-Myk"/>
                                                     <constraint firstAttribute="width" constant="100" id="uDD-SS-zhN"/>
                                                 </constraints>
                                             </view>
@@ -549,12 +564,14 @@
                     <connections>
                         <outlet property="btnSignUp" destination="3GV-ge-wWd" id="dAV-Ws-Lxi"/>
                         <outlet property="cnstrHeight" destination="Gcm-J2-kL8" id="ezv-CR-ymv"/>
+                        <outlet property="imgUser" destination="2V5-tH-BQt" id="Ldg-KN-0cX"/>
                         <outlet property="inpEmail" destination="8uv-Ht-Eia" id="MlE-5j-F01"/>
                         <outlet property="inpFirstName" destination="5rc-MF-YNq" id="vlK-DV-VSU"/>
                         <outlet property="inpLastName" destination="nSb-Wo-b9h" id="d8Q-M4-NMZ"/>
                         <outlet property="inpLocation" destination="HXS-fH-GYX" id="mH1-yu-Sbo"/>
                         <outlet property="inpPassword" destination="2TI-Ya-BRd" id="R68-F8-ojA"/>
                         <outlet property="inpPhone" destination="SUF-l2-GlR" id="VOJ-uw-GDE"/>
+                        <outlet property="maskOnPhoto" destination="TrP-mE-JSA" id="9eI-Ft-psY"/>
                         <outlet property="vTakePhoto" destination="SXn-ge-CtC" id="WRJ-mW-W0g"/>
                     </connections>
                 </viewController>

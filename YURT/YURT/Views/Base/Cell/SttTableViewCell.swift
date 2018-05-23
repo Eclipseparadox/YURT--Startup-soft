@@ -18,8 +18,11 @@ class SttTableViewCell<T: ViewInjector>: UITableViewCell, Viewable {
         dataContext.injectView(delegate: self)
     }
     
-    func sendError(error: String) {
-        fatalError(Constants.noImplementException)
+    func sendError(error: BaseError) {
+       // fatalError(Constants.noImplementException)
+    }
+    func sendMessage(title: String, message: String?) {
+        
     }
     func close() {
         fatalError(Constants.noImplementException)

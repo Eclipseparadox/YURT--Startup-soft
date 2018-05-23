@@ -10,12 +10,18 @@ import Foundation
 
 enum ApiConroller {
     case account(String)
+    case mobileAccount(String)
+    case upload(String)
     case users(String)
     
     func get() -> String {
         switch self {
         case .account(let method):
             return "\(Constants.versionApi)account/\(method)"
+        case .mobileAccount(let method):
+            return "\(Constants.versionApi)mobile/account/\(method)"
+        case .upload(let method):
+            return "\(Constants.versionApi)upload/\(method)"
         case .users(let method):
             return "\(Constants.versionApi)users/\(method)"
         }
@@ -26,7 +32,7 @@ class Constants {
     // url
     static let apiUrl = "https://qa-startupsoft-imx.azurewebsites.net/"
     static let blobUrl = "https://prodssanalyticsstorage.blob.core.windows.net"
-    static let versionApi = "/api/"
+    static let versionApi = "/api/v1/"
     
     // keychain id
     static let tokenKey = "securityAccessToken"
