@@ -9,6 +9,7 @@
 import Foundation
 
 enum BaseError: Error {
+    
     case realmError(RealmError)
     case apiError(ApiError)
     case connectionError(ConnectionError)
@@ -71,7 +72,7 @@ enum ApiError {
         var result: (String, String)!
         switch self {
         case .badRequest(let error):
-            result = ("Bad request", "\(error.code): \(error.description)")
+            result = ("Bad request", "\(error.description)")
         case .internalServerError(let message):
             result = ("Internal Server Error", message)
         case .otherApiError(let code):

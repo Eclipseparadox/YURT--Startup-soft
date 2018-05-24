@@ -28,6 +28,13 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: StartPagePresenter) {
+        let _:StartPagePresenter = define(init: service) {
+            $0._accountService = self.serviceAssembly.accountService
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     func inject(into service: ApiService) {

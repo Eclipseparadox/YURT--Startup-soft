@@ -68,6 +68,7 @@
 		84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */; };
 		84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBFA20B45E2C0053C93A /* AccountModel.swift */; };
 		84C7FBFD20B54F9A0053C93A /* SttComandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBFC20B54F9A0053C93A /* SttComandExtensions.swift */; };
+		84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBFE20B55E570053C93A /* AuthApiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUploadImageApiModel.swift; sourceTree = "<group>"; };
 		84C7FBFA20B45E2C0053C93A /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		84C7FBFC20B54F9A0053C93A /* SttComandExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttComandExtensions.swift; sourceTree = "<group>"; };
+		84C7FBFE20B55E570053C93A /* AuthApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +499,7 @@
 				84C7FBEF20B316EF0053C93A /* ExistModel.swift */,
 				84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */,
 				84C7FBFA20B45E2C0053C93A /* AccountModel.swift */,
+				84C7FBFE20B55E570053C93A /* AuthApiModel.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */,
 				842E1EC720AD6FBC003D2CDA /* SttTextView.swift in Sources */,
 				84484F6D209B3FA0006BBD11 /* ApiService.swift in Sources */,
+				84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */,
 				842E1EB820AC56AC003D2CDA /* BaseRealm.swift in Sources */,
 				842E1EBA20AC5785003D2CDA /* ErrorModels.swift in Sources */,
 				846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */,

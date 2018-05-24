@@ -13,7 +13,7 @@ extension UIViewController {
     func createAlerDialog(title: String, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
-            self.resignFirstResponder()
+          //  self.resignFirstResponder()
         }))
         
         if let popover = alertController.popoverPresentationController {

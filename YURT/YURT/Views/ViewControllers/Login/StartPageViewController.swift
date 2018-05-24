@@ -12,20 +12,42 @@ import UIKit
 import AVFoundation
 
 class StartPageViewController: SttViewController<StartPagePresenter>, StartPageDelegate {
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
+    @IBOutlet weak var inpEmail: InputBox!
+    @IBOutlet weak var inpPassword: InputBox!
+    @IBOutlet weak var btnSignIn: UIButton!
+    
+    let handlerEmail = SttHandlerTextField()
+    let handlerPassword = SttHandlerTextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cnstrHeight.constant = heightScreen
         hideNavigationBar = true
+        
+        handlerEmail.addTarget(type: .didEndEditing, handler: { self.presenter.email = $0.text })
+        handlerPassword.addTarget(type: .didEndEditing, handler: { self.presenter.password = $0.text })
+        
+        inpEmail.textField.keyboardType = .emailAddress
+        inpPassword.textField.isSecureTextEntry = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.signIn.useIndicator(button: btnSignIn)
     }
     
     let speaker = AVSpeechSynthesizer()
     let dialogue = AVSpeechUtterance(string: "Hello world")
     
     @IBAction func signInClick(_ sender: Any) {
+        presenter.email = inpEmail.textField.text
+        presenter.password = inpPassword.textField.text
+        
+        presenter.signIn.execute()
 //        let content = UNMutableNotificationContent()
 //
 //        //adding title, subtitle, body and badge
@@ -46,16 +68,17 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
 //            print(error)
 //        }
         
-        dialogue.rate = AVSpeechUtteranceDefaultSpeechRate;
-        dialogue.voice = AVSpeechSynthesisVoice(language: "en-gb")
-        
-        guard speaker.isSpeaking else
-        {
-            speaker.speak(dialogue)
-            return
-        }
-        
-        
+//        dialogue.rate = AVSpeechUtteranceDefaultSpeechRate;
+//        dialogue.voice = AVSpeechSynthesisVoice(language: "en-gb")
+//
+//        guard speaker.isSpeaking else
+//        {
+//            speaker.speak(dialogue)
+//            return
+//        }
     }
     
+    func addError() {
+        inpPassword.errorText = presenter.passwordError
+    }
 }

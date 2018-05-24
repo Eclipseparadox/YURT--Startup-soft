@@ -14,12 +14,14 @@ class SttComand {
     private var handlerStart: (() -> Void)?
     private var handlerEnd: (() -> Void)?
     private var executeHandler: (() -> Void)
+    private var canExecuteHandler: (() -> Bool)?
     
     var singleCallEndCallback = true
     private var isCall = false
     
-    init (handler: @escaping () -> Void) {
+    init (handler: @escaping () -> Void, handlerCanExecute: (() -> Bool)? = nil) {
         executeHandler = handler
+        canExecuteHandler = handlerCanExecute
         isCall = false
     }
     
@@ -29,10 +31,21 @@ class SttComand {
     }
     
     func execute() {
-        if let handler = handlerStart {
-            handler()
+        if canExecute() {
+            if let handler = handlerStart {
+                handler()
+            }
+            executeHandler()
         }
-        executeHandler()
+        else {
+            Log.trace(message: "Command could not be execute", key: "SttComand")
+        }
+    }
+    func canExecute() -> Bool {
+        if let handler = canExecuteHandler {
+            return handler()
+        }
+        return true
     }
 }
 

@@ -1,3 +1,4 @@
+
 //
 //  SignUpViewController.swift
 //  YURT
@@ -29,17 +30,36 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     @IBAction func clickLogIn(_ sender: Any) {
         self.close()
     }
+    
+    var isAdd = false
     @IBAction func SignUpClick(_ sender: Any) {
+        
         presenter.firstName = inpFirstName.textField.text
         presenter.lastName = inpLastName.textField.text
         presenter.email = inpEmail.textField.text
-        presenter.location = inpLastName.textField.text
+        presenter.location = inpLocation.textField.text
         presenter.phone = inpPhone.textField.text
         presenter.password = inpPassword.textField.text
         
-        if presenter.firstNameError.0 == .ok && presenter.lastNameError.0 == .ok && presenter.emailError.0 == .ok && presenter.locationError.0 == .ok && presenter.phoneError.0 == .ok && presenter.passwordError.0 == .ok {
-            presenter.signUp.execute()
+        if !isAdd {
+            isAdd = true
+            
+            inpFirstName.deleteErrorAfterStartEditing = false
+            inpLastName.deleteErrorAfterStartEditing = false
+            inpLocation.deleteErrorAfterStartEditing = false
+            inpPhone.deleteErrorAfterStartEditing = false
+            inpEmail.deleteErrorAfterStartEditing = false
+            inpPassword.deleteErrorAfterStartEditing = false
+            
+            handlerFirstName.addTarget(type: .editing, handler: { self.presenter.firstName = $0.text }, textField: inpFirstName.textField)
+            handlerLastName.addTarget(type: .editing, handler: { self.presenter.lastName = $0.text }, textField: inpLastName.textField)
+            handlerLocation.addTarget(type: .editing, handler: { self.presenter.location = $0.text }, textField: inpLocation.textField)
+            handlerPhone.addTarget(type: .editing, handler: { self.presenter.phone = $0.text }, textField: inpPhone.textField)
+            handlerEmail.addTarget(type: .editing, handler: { self.presenter.email = $0.text }, textField: inpEmail.textField)
+            handlerPassword.addTarget(type: .editing, handler: { self.presenter.password = $0.text }, textField: inpPassword.textField)
         }
+        
+        presenter.signUp.execute()
     }
     
     let handlerFirstName = SttHandlerTextField()
@@ -70,12 +90,18 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         vTakePhoto.createCircle()
         
-        handlerFirstName.addTargetReturnKey(type: .didEndEditing, handler: { self.presenter.firstName = $0.text })
-        handlerLastName.addTargetReturnKey(type: .didEndEditing, handler: { self.presenter.lastName = $0.text })
-        handlerLocation.addTargetReturnKey(type: .didEndEditing, handler: { self.presenter.location = $0.text })
-        handlerPhone.addTargetReturnKey(type: .didEndEditing, handler: { self.presenter.phone = $0.text })
-        handlerEmail.addTargetReturnKey(type: .didEndEditing, handler: { self.presenter.email = $0.text })
-        handlerPassword.addTargetReturnKey(type: .didEndEditing, handler: { self.presenter.password = $0.text })
+        handlerFirstName.addTarget(type: .didEndEditing, handler: { self.presenter.firstName = $0.text })
+        handlerFirstName.addTarget(type: .shouldReturn, handler: { _ in self.inpLastName.textField.becomeFirstResponder() })
+        handlerLastName.addTarget(type: .didEndEditing, handler: { self.presenter.lastName = $0.text })
+        handlerLastName.addTarget(type: .shouldReturn, handler: { _ in self.inpLocation.textField.becomeFirstResponder() })
+        handlerLocation.addTarget(type: .didEndEditing, handler: { self.presenter.location = $0.text })
+        handlerLocation.addTarget(type: .shouldReturn, handler: { _ in self.inpPhone.textField.becomeFirstResponder() })
+        handlerPhone.addTarget(type: .didEndEditing, handler: { self.presenter.phone = $0.text })
+        handlerPhone.addTarget(type: .shouldReturn, handler: { _ in self.inpEmail.textField.becomeFirstResponder() })
+        handlerEmail.addTarget(type: .didEndEditing, handler: { self.presenter.email = $0.text })
+        handlerEmail.addTarget(type: .shouldReturn, handler: { _ in self.inpPassword.textField.becomeFirstResponder() })
+        handlerPassword.addTarget(type: .didEndEditing, handler: { self.presenter.password = $0.text })
+        handlerPassword.addTarget(type: .shouldReturn, handler: { self.SignUpClick($0) })
         
         inpFirstName.textField.delegate = handlerFirstName
         inpLastName.textField.delegate = handlerLastName
@@ -97,7 +123,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         indicatorSignUp.color = UIColor.white
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.signUp.useIndicator(button: btnSignUp)
     }

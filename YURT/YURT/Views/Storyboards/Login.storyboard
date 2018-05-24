@@ -245,7 +245,10 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="4j7-AP-ucE"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnSignIn" destination="Kju-Pg-0MC" id="WdW-dm-mg6"/>
                         <outlet property="cnstrHeight" destination="a0X-LY-l2s" id="sZV-F2-03M"/>
+                        <outlet property="inpEmail" destination="Ta3-AV-COc" id="4Cs-Wu-PRZ"/>
+                        <outlet property="inpPassword" destination="mba-u7-iJ0" id="iII-M5-ZLO"/>
                         <outlet property="scrollView" destination="P6O-sX-f5V" id="DEc-FX-g6b"/>
                     </connections>
                 </viewController>

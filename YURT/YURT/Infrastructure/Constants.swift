@@ -9,6 +9,7 @@
 import Foundation
 
 enum ApiConroller {
+    case token
     case account(String)
     case mobileAccount(String)
     case upload(String)
@@ -16,6 +17,8 @@ enum ApiConroller {
     
     func get() -> String {
         switch self {
+        case .token:
+            return "api/token"
         case .account(let method):
             return "\(Constants.versionApi)account/\(method)"
         case .mobileAccount(let method):
@@ -32,7 +35,7 @@ class Constants {
     // url
     static let apiUrl = "https://qa-startupsoft-imx.azurewebsites.net/"
     static let blobUrl = "https://prodssanalyticsstorage.blob.core.windows.net"
-    static let versionApi = "/api/v1/"
+    static let versionApi = "api/v1/"
     
     // keychain id
     static let tokenKey = "securityAccessToken"
@@ -65,9 +68,9 @@ class Constants {
     
     static let emailPattern = "^([A-Za-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[A-Za-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)$"
     static let passwordPattern = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,40}$"
-    static let firstNamePattern = "[A-Za-z0-9 _.,'()-]{1,120}"
-    static let lastNamePattern = "[A-Za-z0-9 _.,'()-]{1,60}"
-    static let phoneNumber = "(\\+?[0-9 ()-]){1,25}"
+    static let firstNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
+    static let lastNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
+    static let phoneNumber = "^(\\+?[0-9 ()-]){9,25}$"
     
     static let minPassword = 6
     static let maxPassword = 40
@@ -77,4 +80,6 @@ class Constants {
     static let maxLastName = 60
     static let minLocation = 1
     static let maxLocation = 150
+    static let minPhone = 9
+    static let maxPhone = 25
 }

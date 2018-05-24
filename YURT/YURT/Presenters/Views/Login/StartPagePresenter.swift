@@ -9,9 +9,36 @@
 import Foundation
 
 protocol StartPageDelegate: Viewable {
-    
+    func addError()
 }
 
 class StartPagePresenter: SttPresenter<StartPageDelegate> {
     
+    var signIn: SttComand!
+    
+    var _accountService: IAccountService!
+    
+    var email: String? = ""
+    var password: String? = ""
+    
+    var passwordError: String?
+    
+    override func presenterCreating() {
+        ServiceInjectorAssembly.instance().inject(into: self)
+        
+        signIn = SttComand(handler: onSignIn)
+    }
+    
+    func onSignIn() {
+        _ = signIn.useWork(observable: _accountService.signIn(email: email!, password: password!))
+            .subscribe(onNext: { (res) in
+                if res.0 {
+                    self.delegate.sendMessage(title: "Success", message: "login success")
+                }
+                else {
+                    self.passwordError = res.1
+                    self.delegate.addError()
+                }
+            })
+    }
 }

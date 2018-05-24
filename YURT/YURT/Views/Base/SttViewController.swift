@@ -46,6 +46,13 @@ class SttViewController<T: ViewInjector>: UIViewController, Viewable, KeyboardNo
         presenter = T()//.init(delegate: self)
         presenter.injectView(delegate: self)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClick(_:))))
+        
+        _ = GlobalObserver.observableStatusApplication.subscribe(onNext: { (status) in
+            if status == ApplicationStatus.EnterBackgound {
+                self.view.endEditing(true)
+                self.navigationController?.navigationBar.endEditing(true)
+            }
+        })
     }
     
     @objc

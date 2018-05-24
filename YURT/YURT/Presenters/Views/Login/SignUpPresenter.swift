@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class Validate {
-    class func validate(object: String?, isReuired: Bool, field: String, pattern: String? = nil, min: Int = 0, max: Int = Int.max) -> (ValidationResult, String) {
+    class func validate(object: String?, field: String, isReuired: Bool = true, pattern: String? = nil, min: Int = 0, max: Int = Int.max, customIncorrectError: String? = nil) -> (ValidationResult, String) {
         do {
             if (object ?? "").trimmingCharacters(in: .whitespaces).isEmpty {
                 if isReuired {
-                    return (.empty, "\(field) is required")
+                    return (.empty, "\(field) is required.")
                 }
                 else {
                     return (.ok, "")
@@ -29,7 +29,10 @@ class Validate {
             }
             if let _pattern = pattern {
                 let regex = try NSRegularExpression(pattern: _pattern)
-                if regex.matches(in: object!, range: NSRange(location: 0, length: nsObject.length)).count == 0 {
+                if regex.matches(in: object!, range: NSRange(location: 0, length: nsObject.length)).count != 1 {
+                    if let customError = customIncorrectError {
+                        return (.inCorrect, customError)
+                    }
                     return (.inCorrect, "\(field) is incorrect.")
                 }
             }
@@ -60,17 +63,17 @@ enum ValidateField {
     func validate() -> (ValidationResult, String) {
         switch self {
         case .email(let email):
-            return Validate.validate(object: email, isReuired: true,  field: "Email", pattern: Constants.emailPattern)
+            return Validate.validate(object: email, field: "Email", pattern: Constants.emailPattern)
         case .firstName(let fullName):
-            return Validate.validate(object: fullName, isReuired: true,  field: "First Name", pattern: Constants.firstNamePattern, min: Constants.minFirstName, max: Constants.maxFirstName)
+            return Validate.validate(object: fullName, field: "First Name", pattern: Constants.firstNamePattern, min: Constants.minFirstName, max: Constants.maxFirstName)
         case .lastName(let lastName):
-            return Validate.validate(object: lastName, isReuired: true, field: "Last Name", pattern: Constants.lastNamePattern, min: Constants.minLastName, max: Constants.maxLastName)
+            return Validate.validate(object: lastName, field: "Last Name", pattern: Constants.lastNamePattern, min: Constants.minLastName, max: Constants.maxLastName)
         case .location(let location):
-            return Validate.validate(object: location, isReuired: false,  field: "Location", min: Constants.minLocation, max: Constants.maxLocation)
+            return Validate.validate(object: location, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
         case .password(let password):
-            return Validate.validate(object: password, isReuired: true,  field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword)
+            return Validate.validate(object: password, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: "A digit, a lowercase, an uppercase are required")
         case .phone(let phone):
-            return Validate.validate(object: phone, isReuired: false, field: "Phone", pattern: Constants.phoneNumber)
+            return Validate.validate(object: phone, field: "Phone", isReuired: false, pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
         }
     }
 }
@@ -89,7 +92,9 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
-        signUp = SttComand(handler: onSignUp)
+        signUp = SttComand(handler: onSignUp, handlerCanExecute: { () -> Bool in
+            return self.firstNameError.0 == .ok && self.lastNameError.0 == .ok && self.emailError.0 == .ok && self.locationError.0 == .ok && self.phoneError.0 == .ok && self.passwordError.0 == .ok
+        })
     }
     
     var firstName: String? {
@@ -119,16 +124,24 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     var email: String? {
         didSet {
             emailError = ValidateField.email(email).validate()
-            delegate.reloadError(field: .email(email))
+            //delegate.reloadError(field: .email(email))
             
             if emailError.0 == .ok {
                 _ = _accountService.existsEmail(email: email!)
                     .subscribe(onNext: { (result) in
                         if result {
-                            self.emailError = (.taken, "Email is taken")
-                            self.delegate.reloadError(field: .email(self.email!))
+                            self.emailError = (.taken, "This e-mail address is already registered.")
                         }
+                        else {
+                            self.emailError = (.ok, "")
+                        }
+                        self.delegate.reloadError(field: .email(self.email!))
+                    }, onError: { err in
+                        self.delegate.reloadError(field: .email(self.email!))
                     })
+            }
+            else {
+                self.delegate.reloadError(field: .email(self.email!))
             }
         }
     }

@@ -17,6 +17,7 @@ protocol IApiService {
     func emailExists(email: String) -> Observable<Bool>
     func uploadImage(image: UIImage) -> Observable<ResultUploadImageApiModel>
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
+    func signIn(email: String, password: String) -> Observable<AuthApiModel>
 }
 
 class ApiService: IApiService {
@@ -46,8 +47,16 @@ class ApiService: IApiService {
     }
     
     func signUp(model: BorrowerSignUp) -> Observable<Bool> {
-        let data = model.getDictionary()
-        return _httpService.post(controller: .mobileAccount("signup"), dataAny: data)
+        return _httpService.post(controller: .mobileAccount("signup"), dataAny: model.getDictionary())
             .getResult()
+    }
+    func signIn(email: String, password: String) -> Observable<AuthApiModel> {
+        let data = [
+            "grant_type": "password",
+            "userName": email,
+            "password": password
+        ]
+        return _httpService.post(controller: .token, data: data)
+            .getResult(ofType: AuthApiModel.self)
     }
 }

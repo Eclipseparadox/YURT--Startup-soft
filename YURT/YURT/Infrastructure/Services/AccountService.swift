@@ -13,6 +13,7 @@ protocol IAccountService {
     func existsEmail(email: String) -> Observable<Bool>
     func uploadUserAvatar(image: UIImage) -> Observable<ResultUploadImageApiModel>
     func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool>
+    func signIn(email: String, password: String) -> Observable<(Bool, String)>
 }
 
 class AccountService: IAccountService {
@@ -34,5 +35,15 @@ class AccountService: IAccountService {
     
     func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool> {
         return _notificatonError.useError(observable: _apiService.signUp(model: BorrowerSignUp(firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phone, location: location, image: image)))
+    }
+    func signIn(email: String, password: String)  -> Observable<(Bool, String)> {
+        return Observable<(Bool, String)>.create({ (observer) -> Disposable in
+            self._notificatonError.useError(observable: self._apiService.signIn(email: email, password: password), ignoreBadRequest: true)
+                .subscribe(onNext: { (authModel) in
+                    observer.onNext((true, ""))
+                }, onError: { (error) in
+                    observer.onNext((false, "Email or password is incorrect"))
+                })
+        })
     }
 }

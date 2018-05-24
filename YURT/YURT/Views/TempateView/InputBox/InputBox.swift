@@ -18,11 +18,16 @@ class InputBox: SttTemplate {
     @IBOutlet var underline: UIView!
     @IBOutlet weak var error: UILabel!
     
+    var deleteErrorAfterStartEditing = true
+    
     var errorText: String? {
         didSet {
             error.text = errorText
             if !(errorText ?? "").trimmingCharacters(in: .whitespaces).isEmpty {
                 underline.backgroundColor = tintErrorColor
+            }
+            else {
+                underline.backgroundColor = isEditing ? tintActiveColor : tintDisableColor
             }
         }
     }
@@ -70,10 +75,14 @@ class InputBox: SttTemplate {
         
     }
     
+    var isEditing = false
     @objc
     func tfStartEditing(_ tf: UITextField) {
-        errorText = ""
-        underline.backgroundColor = tintActiveColor
+        isEditing = true
+        if deleteErrorAfterStartEditing {
+            errorText = ""
+        }
+       // underline.backgroundColor = tintActiveColor
         fieldName.textColor = tintActiveColor
         
 //        UIView.animate(withDuration: 0.3, animations: {
@@ -84,6 +93,7 @@ class InputBox: SttTemplate {
     
     @objc
     func tfEndEditing(_ tf: UITextField) {
+        isEditing = false
         underline.backgroundColor = tintDisableColor
         fieldName.textColor = tintDisableColor
         
