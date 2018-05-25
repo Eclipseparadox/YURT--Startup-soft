@@ -73,7 +73,7 @@ enum ValidateField {
         case .password(let password):
             return Validate.validate(object: password, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: "A digit, a lowercase, an uppercase are required")
         case .phone(let phone):
-            return Validate.validate(object: phone, field: "Phone", isReuired: false, pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
+            return Validate.validate(object: phone, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
         }
     }
 }
@@ -130,7 +130,7 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
                 _ = _accountService.existsEmail(email: email!)
                     .subscribe(onNext: { (result) in
                         if result {
-                            self.emailError = (.taken, "This e-mail address is already registered.")
+                            self.emailError = (.taken, "This email address is already registered.")
                         }
                         else {
                             self.emailError = (.ok, "")

@@ -16,6 +16,8 @@
 		840427F320B2E87800C94765 /* NotificationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840427F220B2E87800C94765 /* NotificationError.swift */; };
 		840427FB20B2E9ED00C94765 /* SttHandlerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840427FA20B2E9ED00C94765 /* SttHandlerTextField.swift */; };
 		840427FD20B2EA1800C94765 /* SttTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840427FC20B2EA1800C94765 /* SttTableViewController.swift */; };
+		8407C09E20B8097E00045EFB /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C09D20B8097E00045EFB /* TakePhotoViewController.swift */; };
+		8407C0A120B8099A00045EFB /* TakePhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C0A020B8099A00045EFB /* TakePhotoPresenter.swift */; };
 		8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */; };
 		8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */; };
 		842E1EAD20AC5412003D2CDA /* SttPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EAC20AC5412003D2CDA /* SttPresenters.swift */; };
@@ -83,6 +85,8 @@
 		840427F220B2E87800C94765 /* NotificationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationError.swift; sourceTree = "<group>"; };
 		840427FA20B2E9ED00C94765 /* SttHandlerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttHandlerTextField.swift; sourceTree = "<group>"; };
 		840427FC20B2EA1800C94765 /* SttTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttTableViewController.swift; sourceTree = "<group>"; };
+		8407C09D20B8097E00045EFB /* TakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
+		8407C0A020B8099A00045EFB /* TakePhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoPresenter.swift; sourceTree = "<group>"; };
 		8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		842E1EAC20AC5412003D2CDA /* SttPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttPresenters.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 		840427F720B2E95F00C94765 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8407C09F20B8098400045EFB /* TakingPhoto */,
 				84C40ACD20AD7ECD0050CA65 /* Login */,
 			);
 			path = Views;
@@ -206,6 +211,22 @@
 				846F994F209B09B800C61AE2 /* SttTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8407C09C20B8096600045EFB /* TakingPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				8407C09D20B8097E00045EFB /* TakePhotoViewController.swift */,
+			);
+			path = TakingPhoto;
+			sourceTree = "<group>";
+		};
+		8407C09F20B8098400045EFB /* TakingPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				8407C0A020B8099A00045EFB /* TakePhotoPresenter.swift */,
+			);
+			path = TakingPhoto;
 			sourceTree = "<group>";
 		};
 		8422055D20A5AA05007B03DE /* DAL */ = {
@@ -355,7 +376,6 @@
 				842E1EBD20AD6E81003D2CDA /* TemplateView */,
 				846F9949209B08D300C61AE2 /* ViewControllers */,
 				846F9948209B08C100C61AE2 /* Storyboards */,
-				84484F57209B05D4006BBD11 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -393,6 +413,7 @@
 		846F9948209B08C100C61AE2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				84484F57209B05D4006BBD11 /* Main.storyboard */,
 				842E1EC820AD7138003D2CDA /* Login.storyboard */,
 			);
 			path = Storyboards;
@@ -401,6 +422,7 @@
 		846F9949209B08D300C61AE2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8407C09C20B8096600045EFB /* TakingPhoto */,
 				84C40AD020AD7F370050CA65 /* Login */,
 			);
 			path = ViewControllers;
@@ -675,6 +697,7 @@
 				840427EF20B2E81100C94765 /* Defaultable.swift in Sources */,
 				8468DCB320B2B6E100701C93 /* ApiModel.swift in Sources */,
 				8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */,
+				8407C0A120B8099A00045EFB /* TakePhotoPresenter.swift in Sources */,
 				842E1EC720AD6FBC003D2CDA /* SttTextView.swift in Sources */,
 				84484F6D209B3FA0006BBD11 /* ApiService.swift in Sources */,
 				84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */,
@@ -695,6 +718,7 @@
 				84484F6B209B39F6006BBD11 /* SpecialResult.swift in Sources */,
 				84C7FBF220B42DD50053C93A /* AccountService.swift in Sources */,
 				848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */,
+				8407C09E20B8097E00045EFB /* TakePhotoViewController.swift in Sources */,
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,
