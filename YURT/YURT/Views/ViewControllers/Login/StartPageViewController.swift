@@ -28,8 +28,8 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         cnstrHeight.constant = heightScreen
         hideNavigationBar = true
         
-        handlerEmail.addTarget(type: .didEndEditing, handler: { self.presenter.email = $0.text })
-        handlerPassword.addTarget(type: .didEndEditing, handler: { self.presenter.password = $0.text })
+        handlerEmail.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.email = $1.text }, textField: inpEmail.textField)
+        handlerPassword.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
         
         inpEmail.textField.keyboardType = .emailAddress
         inpPassword.textField.isSecureTextEntry = true

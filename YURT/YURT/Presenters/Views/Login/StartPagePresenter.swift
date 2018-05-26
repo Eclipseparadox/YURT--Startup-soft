@@ -26,7 +26,7 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
         
-        signIn = SttComand(handler: onSignIn)
+        signIn = SttComand(delegate: self, handler: { $0.onSignIn() })
     }
     
     func onSignIn() {

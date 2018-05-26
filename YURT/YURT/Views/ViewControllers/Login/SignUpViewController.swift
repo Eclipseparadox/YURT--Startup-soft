@@ -13,7 +13,7 @@ import RxAlamofire
 import Alamofire
 import RxSwift
 
-class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
+class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {   
     
     @IBOutlet weak var vTakePhoto: UIView!
     @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
@@ -51,12 +51,12 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
             inpEmail.deleteErrorAfterStartEditing = false
             inpPassword.deleteErrorAfterStartEditing = false
             
-            handlerFirstName.addTarget(type: .editing, handler: { self.presenter.firstName = $0.text }, textField: inpFirstName.textField)
-            handlerLastName.addTarget(type: .editing, handler: { self.presenter.lastName = $0.text }, textField: inpLastName.textField)
-            handlerLocation.addTarget(type: .editing, handler: { self.presenter.location = $0.text }, textField: inpLocation.textField)
-            handlerPhone.addTarget(type: .editing, handler: { self.presenter.phone = $0.text }, textField: inpPhone.textField)
-            handlerEmail.addTarget(type: .editing, handler: { self.presenter.email = $0.text }, textField: inpEmail.textField)
-            handlerPassword.addTarget(type: .editing, handler: { self.presenter.password = $0.text }, textField: inpPassword.textField)
+            handlerFirstName.addTarget(type: .editing, delegate: self, handler: { $0.presenter.firstName = $1.text }, textField: inpFirstName.textField)
+            handlerLastName.addTarget(type: .editing, delegate: self, handler: { $0.presenter.lastName = $1.text }, textField: inpLastName.textField)
+            handlerLocation.addTarget(type: .editing, delegate: self, handler: { $0.presenter.location = $1.text }, textField: inpLocation.textField)
+            handlerPhone.addTarget(type: .editing, delegate: self, handler: { $0.presenter.phone = $1.text }, textField: inpPhone.textField)
+            handlerEmail.addTarget(type: .editing, delegate: self, handler: { $0.presenter.email = $1.text }, textField: inpEmail.textField)
+            handlerPassword.addTarget(type: .editing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
         }
         
         presenter.signUp.execute()
@@ -72,11 +72,15 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     var indicatorImage: UIActivityIndicatorView!
     var indicatorSignUp: UIActivityIndicatorView!
     
+    deinit {
+        print ("deinit sign up")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cameraPicker = Camera(parent: self, handler: { (image) in
-            
+
             self.imgUser.isHidden = false
             self.imgUser.image = image
             self.maskOnPhoto.isHidden = false
@@ -90,19 +94,19 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         vTakePhoto.createCircle()
         
-        handlerFirstName.addTarget(type: .didEndEditing, handler: { self.presenter.firstName = $0.text })
-        handlerFirstName.addTarget(type: .shouldReturn, handler: { _ in self.inpLastName.textField.becomeFirstResponder() })
-        handlerLastName.addTarget(type: .didEndEditing, handler: { self.presenter.lastName = $0.text })
-        handlerLastName.addTarget(type: .shouldReturn, handler: { _ in self.inpLocation.textField.becomeFirstResponder() })
-        handlerLocation.addTarget(type: .didEndEditing, handler: { self.presenter.location = $0.text })
-        handlerLocation.addTarget(type: .shouldReturn, handler: { _ in self.inpPhone.textField.becomeFirstResponder() })
-        handlerPhone.addTarget(type: .didEndEditing, handler: { self.presenter.phone = $0.text })
-        handlerPhone.addTarget(type: .shouldReturn, handler: { _ in self.inpEmail.textField.becomeFirstResponder() })
-        handlerEmail.addTarget(type: .didEndEditing, handler: { self.presenter.email = $0.text })
-        handlerEmail.addTarget(type: .shouldReturn, handler: { _ in self.inpPassword.textField.becomeFirstResponder() })
-        handlerPassword.addTarget(type: .didEndEditing, handler: { self.presenter.password = $0.text })
-        handlerPassword.addTarget(type: .shouldReturn, handler: { self.SignUpClick($0) })
-        
+        handlerFirstName.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.firstName = $1.text }, textField: inpFirstName.textField)
+        handlerFirstName.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpLastName.textField.becomeFirstResponder() }, textField: inpFirstName.textField)
+        handlerLastName.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.lastName = $1.text }, textField: inpLastName.textField)
+        handlerLastName.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpLocation.textField.becomeFirstResponder() }, textField: inpLastName.textField)
+        handlerLocation.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.location = $1.text }, textField: inpLocation.textField)
+        handlerLocation.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpPhone.textField.becomeFirstResponder() }, textField: inpLocation.textField)
+        handlerPhone.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.phone = $1.text }, textField: inpPassword.textField)
+        handlerPhone.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpEmail.textField.becomeFirstResponder() }, textField: inpPassword.textField)
+        handlerEmail.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.email = $1.text }, textField: inpEmail.textField)
+        handlerEmail.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpPassword.textField.becomeFirstResponder() }, textField: inpEmail.textField)
+        handlerPassword.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
+        handlerPassword.addTarget(type: .shouldReturn, delegate: self, handler: { $0.SignUpClick($1) }, textField: inpPassword.textField)
+
         inpFirstName.textField.delegate = handlerFirstName
         inpLastName.textField.delegate = handlerLastName
         inpLocation.textField.delegate = handlerLocation

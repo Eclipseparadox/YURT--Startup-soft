@@ -92,10 +92,13 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
-        signUp = SttComand(handler: onSignUp, handlerCanExecute: { () -> Bool in
-            return self.firstNameError.0 == .ok && self.lastNameError.0 == .ok && self.emailError.0 == .ok && self.locationError.0 == .ok && self.phoneError.0 == .ok && self.passwordError.0 == .ok
-        })
+        signUp = SttComand(delegate: self, handler: { $0.onSignUp() }, handlerCanExecute: { $0.onCanExecuteSignUp() })
     }
+    
+    deinit {
+        print ("Stt presenter deinit")
+    }
+
     
     var firstName: String? {
         didSet {
@@ -164,6 +167,9 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
             .subscribe(onNext: { (res) in
                 self.delegate.sendMessage(title: "Success", message: "Some description about successfully signUp. In production I delete this message")
             })
+    }
+    func onCanExecuteSignUp() -> Bool {
+        return firstNameError.0 == .ok && lastNameError.0 == .ok && emailError.0 == .ok && locationError.0 == .ok && phoneError.0 == .ok && passwordError.0 == .ok
     }
     
     func uploadImage(image: UIImage) {

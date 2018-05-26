@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol INotificationError {
+protocol INotificationError: class {
     var errorObservable: Observable<BaseError> { get }
     
     func useError<T>(observable: Observable<T>, ignoreBadRequest: Bool) -> Observable<T>

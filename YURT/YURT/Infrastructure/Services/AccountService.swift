@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol IAccountService {
+protocol IAccountService: class {
     func existsEmail(email: String) -> Observable<Bool>
     func uploadUserAvatar(image: UIImage) -> Observable<ResultUploadImageApiModel>
     func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool>
