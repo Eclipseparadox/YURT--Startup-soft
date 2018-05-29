@@ -18,6 +18,7 @@
 		840427FD20B2EA1800C94765 /* SttTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840427FC20B2EA1800C94765 /* SttTableViewController.swift */; };
 		8407C09E20B8097E00045EFB /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C09D20B8097E00045EFB /* TakePhotoViewController.swift */; };
 		8407C0A120B8099A00045EFB /* TakePhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C0A020B8099A00045EFB /* TakePhotoPresenter.swift */; };
+		842239E220BD6FB20028FDAA /* PreviewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842239E120BD6FB20028FDAA /* PreviewPhotoViewController.swift */; };
 		8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */; };
 		8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */; };
 		842E1EAD20AC5412003D2CDA /* SttPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EAC20AC5412003D2CDA /* SttPresenters.swift */; };
@@ -87,6 +88,7 @@
 		840427FC20B2EA1800C94765 /* SttTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttTableViewController.swift; sourceTree = "<group>"; };
 		8407C09D20B8097E00045EFB /* TakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 		8407C0A020B8099A00045EFB /* TakePhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoPresenter.swift; sourceTree = "<group>"; };
+		842239E120BD6FB20028FDAA /* PreviewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoViewController.swift; sourceTree = "<group>"; };
 		8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		842E1EAC20AC5412003D2CDA /* SttPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttPresenters.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				8407C09D20B8097E00045EFB /* TakePhotoViewController.swift */,
+				842239E120BD6FB20028FDAA /* PreviewPhotoViewController.swift */,
 			);
 			path = TakingPhoto;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				840427F120B2E85200C94765 /* DialogAlert.swift in Sources */,
 				842E1EAF20AC549A003D2CDA /* Log.swift in Sources */,
 				846F995C209B0B0C00C61AE2 /* UIViewControllerDecorators.swift in Sources */,
+				842239E220BD6FB20028FDAA /* PreviewPhotoViewController.swift in Sources */,
 				84484F56209B05D4006BBD11 /* ViewController.swift in Sources */,
 				842E1EAD20AC5412003D2CDA /* SttPresenters.swift in Sources */,
 				846F9950209B09B800C61AE2 /* SttTableViewCell.swift in Sources */,
