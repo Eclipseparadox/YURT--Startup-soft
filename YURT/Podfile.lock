@@ -1,12 +1,12 @@
 PODS:
   - Alamofire (4.7.2)
-  - AppCenter (1.6.0):
-    - AppCenter/Analytics (= 1.6.0)
-    - AppCenter/Crashes (= 1.6.0)
-  - AppCenter/Analytics (1.6.0):
+  - AppCenter (1.6.1):
+    - AppCenter/Analytics (= 1.6.1)
+    - AppCenter/Crashes (= 1.6.1)
+  - AppCenter/Analytics (1.6.1):
     - AppCenter/Core
-  - AppCenter/Core (1.6.0)
-  - AppCenter/Crashes (1.6.0):
+  - AppCenter/Core (1.6.1)
+  - AppCenter/Crashes (1.6.1):
     - AppCenter/Core
   - EasyDi (1.4.0)
   - KeychainSwift (10.0.0)
@@ -41,9 +41,23 @@ DEPENDENCIES:
   - SDWebImage (~> 4.0)
   - SINQ
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AppCenter
+    - EasyDi
+    - KeychainSwift
+    - Realm
+    - RealmSwift
+    - RxAlamofire
+    - RxRealm
+    - RxSwift
+    - SDWebImage
+    - SINQ
+
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  AppCenter: 05e11ff99d3224131363abb61830172f5f28e53e
+  AppCenter: f9eb653a45cece34549232f295aec05260dfc24f
   EasyDi: 84cfe04e906c0f463b1b1d76ed4be3db446f9702
   KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
@@ -54,6 +68,6 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SINQ: 64cab7b7c73486da8f4442c25ccdd6ada7e67b95
 
-PODFILE CHECKSUM: d6699b1fd85ddbe446dc1f68bf55fed4533b1979
+PODFILE CHECKSUM: 07e148fa83ecd8c383e1f76d467ff840bfa5dc9a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2

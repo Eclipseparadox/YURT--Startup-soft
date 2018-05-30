@@ -19,4 +19,10 @@ class ServiceAssembly: Assembly {
     var unitOfWork: IUnitOfWork {
         return define(scope: .lazySingleton, init: UnitOfWork())
     }
+    var notificationError: INotificationError {
+        return define(scope: .lazySingleton, init: NotificationError())
+    }
+    var accountService: IAccountService {
+        return define(scope: .lazySingleton, init: AccountService())
+    }
 }

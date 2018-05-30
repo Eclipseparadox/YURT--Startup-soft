@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RxRealm
+import RxSwift
 
 protocol IUnitOfWork {
    
@@ -15,5 +17,6 @@ protocol IUnitOfWork {
 
 
 class UnitOfWork: IUnitOfWork {
-    
+    func ss() {
+    }
 }

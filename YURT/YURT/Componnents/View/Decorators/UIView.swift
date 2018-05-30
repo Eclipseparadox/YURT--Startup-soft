@@ -6,6 +6,7 @@
 //  Copyright © 2018 com.yurt.YURT. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 extension UIView {
@@ -17,6 +18,12 @@ extension UIView {
             layer.cornerRadius = bounds.height / 2
         }
         self.clipsToBounds = clipToBounds
+    }
+    
+    func setBorder(color: UIColor, size: Float) {
+        self.clipsToBounds = true
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = CGFloat(size)
     }
     
     func setShadow(color: UIColor, size: CGSize, opacity: Float, radius: Float) {
@@ -33,8 +40,11 @@ extension UIView {
         indicator.color = color
         
         indicator.center = CGPoint(x: self.bounds.size.width / 2, y: self.bounds.size.height / 2)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(indicator)
+        
         
         return indicator
     }
 }
+

@@ -1,28 +1,26 @@
 //
-//  SttViewController.swift
+//  SttTableViewController.swift
 //  YURT
 //
-//  Created by Standret on 03.05.18.
+//  Created by Standret on 21.05.18.
 //  Copyright © 2018 com.yurt.YURT. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-enum TypeNavigation {
-    case push
-    case modality
-}
-
-protocol Viewable {
-    func navigate(storyboardName: String, type: TypeNavigation, animated: Bool)
-    func navigate(storyboardName: String, id: String, type: TypeNavigation, animated: Bool)
-}
-
-protocol Defaultable {
-    init(delegate: Viewable)
-}
-
-class SttViewController<T: Defaultable>: UIViewController, Viewable, KeyboardNotificationDelegate {
+class SttTableViewController<T: ViewInjector>: UITableViewController, Viewable, KeyboardNotificationDelegate {
+    
+    func close() {
+        fatalError(Constants.noImplementException)
+    }
+    func sendError(error: BaseError)
+    {
+        fatalError(Constants.noImplementException)
+    }
+    func sendMessage(title: String, message: String?) {
+        
+    }
     
     func navigate(storyboardName: String, type: TypeNavigation = .modality, animated: Bool = true) {
         let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)
@@ -59,7 +57,8 @@ class SttViewController<T: Defaultable>: UIViewController, Viewable, KeyboardNot
         keyboardNotification.callIfKeyboardIsShow = true
         keyboardNotification.delegate = self
         
-        presenter = T.init(delegate: self)
+        presenter = T()
+        presenter.injectView(delegate: self)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClick(_:))))
     }
     
@@ -99,6 +98,5 @@ class SttViewController<T: Defaultable>: UIViewController, Viewable, KeyboardNot
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
-        
     }
 }

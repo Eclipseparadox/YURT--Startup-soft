@@ -14,12 +14,41 @@ class ServiceInjectorAssembly: Assembly {
     
     // Inject service into presenter
     
+    func inject<T>(into service: SttPresenter<T>) {
+        let _:SttPresenter<T> = define(init: service) {
+            $0._notificationError = self.serviceAssembly.notificationError
+            return $0
+        }
+    }
+    
+    func inject(into service: SignUpPresenter) {
+        let _:SignUpPresenter = define(init: service) {
+            $0._accountService = self.serviceAssembly.accountService
+            return $0
+        }
+    }
+    
+    func inject(into service: StartPagePresenter) {
+        let _:StartPagePresenter = define(init: service) {
+            $0._accountService = self.serviceAssembly.accountService
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     func inject(into service: ApiService) {
         let _:ApiService = define(init: service) {
             $0._httpService = self.serviceAssembly.httpService
             $0._unitOfWork = self.serviceAssembly.unitOfWork
+            return $0
+        }
+    }
+    
+    func inject(into service: AccountService) {
+        let _:AccountService = define(init: service) {
+            $0._apiService = self.serviceAssembly.apiService
+            $0._notificatonError = self.serviceAssembly.notificationError
             return $0
         }
     }
