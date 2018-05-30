@@ -15,7 +15,7 @@ protocol IApiService {
     func inserToken(token: String)
     
     func emailExists(email: String) -> Observable<Bool>
-    func uploadImage(image: UIImage) -> Observable<ResultUploadImageApiModel>
+    func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
 }
@@ -41,8 +41,11 @@ class ApiService: IApiService {
             .map { $0.isExist }
     }
     
-    func uploadImage(image: UIImage) -> Observable<ResultUploadImageApiModel> {
-        return _httpService.upload(controller: .upload("image"), data: UIImageJPEGRepresentation(image, 0.5)!, parameter: ["saveToTemporary" : "true"])
+    func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel> {
+        print(image)
+        let dd = UIImagePNGRepresentation(image)!
+        print(dd)
+        return _httpService.upload(controller: .upload("image"), data: dd, parameter: ["saveToTemporary" : "true"], progresHandler: progresHandler)
             .getResult(ofType: ResultUploadImageApiModel.self)
     }
     

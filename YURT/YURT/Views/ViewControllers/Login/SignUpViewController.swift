@@ -13,8 +13,13 @@ import RxAlamofire
 import Alamofire
 import RxSwift
 
-class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {   
+class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
+    func changeProgress(label: String) {
+        lblPercent.text = label
+    }
     
+    
+    @IBOutlet weak var lblPercent: UILabel!
     @IBOutlet weak var vTakePhoto: UIView!
     @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
     @IBOutlet weak var inpFirstName: InputBox!
@@ -154,6 +159,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     }
     
     func donwloadImageComplete(isSuccess: Bool) {
+        lblPercent.text = "0%"
         indicatorImage.stopAnimating()
         self.btnSignUp.isEnabled = true
         if isSuccess {

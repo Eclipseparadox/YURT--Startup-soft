@@ -11,7 +11,7 @@ import RxSwift
 
 protocol IAccountService: class {
     func existsEmail(email: String) -> Observable<Bool>
-    func uploadUserAvatar(image: UIImage) -> Observable<ResultUploadImageApiModel>
+    func uploadUserAvatar(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
     func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<(Bool, String)>
 }
@@ -29,8 +29,8 @@ class AccountService: IAccountService {
         return _notificatonError.useError(observable: _apiService.emailExists(email: email))
     }
     
-    func uploadUserAvatar(image: UIImage) -> Observable<ResultUploadImageApiModel> {
-        return _notificatonError.useError(observable: _apiService.uploadImage(image: image))
+    func uploadUserAvatar(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel> {
+        return _notificatonError.useError(observable: _apiService.uploadImage(image: image, progresHandler: progresHandler))
     }
     
     func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool> {

@@ -455,7 +455,22 @@
                                                     </imageView>
                                                     <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TrP-mE-JSA">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDf-7c-L5z">
+                                                                <rect key="frame" x="41.666666666666686" y="70" width="15.666666666666664" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="15" id="48D-la-6zd"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="BDf-7c-L5z" firstAttribute="centerX" secondItem="TrP-mE-JSA" secondAttribute="centerX" id="2JC-SL-wtH"/>
+                                                            <constraint firstItem="BDf-7c-L5z" firstAttribute="centerY" secondItem="TrP-mE-JSA" secondAttribute="centerY" constant="27.5" id="AAt-Ng-ibj"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" name="takePhotoBackround"/>
@@ -574,6 +589,7 @@
                         <outlet property="inpLocation" destination="HXS-fH-GYX" id="mH1-yu-Sbo"/>
                         <outlet property="inpPassword" destination="2TI-Ya-BRd" id="R68-F8-ojA"/>
                         <outlet property="inpPhone" destination="SUF-l2-GlR" id="VOJ-uw-GDE"/>
+                        <outlet property="lblPercent" destination="BDf-7c-L5z" id="WAj-re-MuP"/>
                         <outlet property="maskOnPhoto" destination="TrP-mE-JSA" id="9eI-Ft-psY"/>
                         <outlet property="vTakePhoto" destination="SXn-ge-CtC" id="WRJ-mW-W0g"/>
                     </connections>

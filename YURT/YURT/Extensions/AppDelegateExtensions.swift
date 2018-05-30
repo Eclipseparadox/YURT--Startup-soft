@@ -18,9 +18,9 @@ extension AppDelegate {
     func configureStartOption()  {
         KeychainSwift().synchronizable = false
         var storyboardName = "Login"
-      //  if KeychainSwift().get(Constants.tokenKey) != nil {
+        //if KeychainSwift().get(Constants.tokenKey) != nil {
            storyboardName = "Main"
-    //   }
+        //}
         
         let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)
         let viewContrl = stroyboard.instantiateViewController(withIdentifier: "start")

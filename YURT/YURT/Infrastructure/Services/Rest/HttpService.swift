@@ -19,7 +19,7 @@ protocol IHttpService {
     func get(controller: ApiConroller, data: [String:String], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
     func post(controller: ApiConroller, data: [String:String], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
     func post(controller: ApiConroller, dataAny: [String:Any], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)>
-    func upload(controller: ApiConroller, data: Data, parameter: [String:String]) -> Observable<(HTTPURLResponse, Data)>
+    func upload(controller: ApiConroller, data: Data, parameter: [String:String], progresHandler: ((Float) -> Void)?) -> Observable<(HTTPURLResponse, Data)>
 }
 
 extension IHttpService {
@@ -123,7 +123,7 @@ class HttpService: IHttpService {
             .configurateParamet()
     }
     
-    func upload(controller: ApiConroller, data: Data, parameter: [String:String]) -> Observable<(HTTPURLResponse, Data)> {
+    func upload(controller: ApiConroller, data: Data, parameter: [String:String], progresHandler: ((Float) -> Void)?) -> Observable<(HTTPURLResponse, Data)> {
         let url = "\(self.url!)\(controller.get())"
 
         return Observable<(HTTPURLResponse, Data)>.create( { observer in
@@ -141,8 +141,15 @@ class HttpService: IHttpService {
                     encodingCompletion: { encodingResult in
                         switch encodingResult {
                         case .success(let upload, _, _):
+                            upload.uploadProgress(closure: { (progress) in
+                                if let handler = progresHandler {
+                                    handler(Float(progress.fractionCompleted))
+                                }
+                            })
+                            
                             upload.responseData(completionHandler: { (fullData) in
                                 if upload.response != nil && fullData.data != nil {
+                                    print("receive response")
                                     observer.onNext((upload.response!, fullData.data!))
                                     observer.onCompleted()
                                 }
@@ -156,7 +163,10 @@ class HttpService: IHttpService {
             })
             return Disposables.create();
         })
-        .configurateParamet()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .timeout(180, scheduler: MainScheduler.instance)
+            .retry(Constants.maxCountRepeatRequest)
     }
 }
 

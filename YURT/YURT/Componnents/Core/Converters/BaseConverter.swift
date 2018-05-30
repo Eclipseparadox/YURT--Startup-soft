@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol IConverter {
+protocol ConverterType {
     associatedtype TIn
     associatedtype TOut
     
     func convert(value: TIn, parametr: Any?) -> TOut
 }
 
-extension IConverter {
+extension ConverterType {
     func convert(value: TIn) -> TOut {
         return self.convert(value: value, parametr: nil)
     }

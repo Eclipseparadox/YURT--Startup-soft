@@ -1,15 +1,15 @@
 //
-//  SttTableViewCell.swift
+//  SttCollectionViewCell.swift
 //  YURT
 //
-//  Created by Standret on 03.05.18.
+//  Created by Standret on 30.05.18.
 //  Copyright © 2018 com.yurt.YURT. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class SttTableViewCell<T: ViewInjector>: UITableViewCell, Viewable {
+class SttCollectionViewCell<T: ViewInjector>: UICollectionViewCell, Viewable {
     
     var dataContext: T!
     

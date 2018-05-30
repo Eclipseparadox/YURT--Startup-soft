@@ -81,6 +81,7 @@ enum ValidateField {
 protocol SignUpDelegate: Viewable {
     func reloadError(field: ValidateField)
     func donwloadImageComplete(isSuccess: Bool)
+    func changeProgress(label: String)
 }
 
 class SignUpPresenter: SttPresenter<SignUpDelegate> {
@@ -173,7 +174,7 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     }
     
     func uploadImage(image: UIImage) {
-        _ = _accountService.uploadUserAvatar(image: image).subscribe(onNext: { (result) in
+        _ = _accountService.uploadUserAvatar(image: image, progresHandler: { self.delegate.changeProgress(label: PercentConverter().convert(value: $0)) }).subscribe(onNext: { (result) in
                 self.photoData = result
                 self.delegate.donwloadImageComplete(isSuccess: true)
             }, onError: { error in
