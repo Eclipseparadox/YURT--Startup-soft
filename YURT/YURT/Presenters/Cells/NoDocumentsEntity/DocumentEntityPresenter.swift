@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import RxSwift
 
 enum DocumentType {
@@ -27,7 +28,7 @@ protocol DocumentEntityDelegate: Viewable {
 }
 
 protocol DocumentContainerDelegate: class {
-    func takePhoto(type: DocumentType, callback: @escaping (Data) -> Void)
+    func takePhoto(type: DocumentType, callback: @escaping (UIImage) -> Void)
 }
 
 class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
@@ -53,10 +54,11 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
     
     func clickOnItem () {
         if type == DocumentItemType.noDocument {
-            itemDelegate.takePhoto(type: documentType) { [weak self] (data) in
+            itemDelegate.takePhoto(type: documentType) { [weak self] (image) in
                 self?.type = .document
-                self?.image = Image(data: data)
+                self?.image = Image(image: image)
                 self?.takesDate = Date()
+                self?.observer.onNext((true, self!.documentType))
             }
         }
     }

@@ -42,10 +42,7 @@ class ApiService: IApiService {
     }
     
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel> {
-        print(image)
-        let dd = UIImagePNGRepresentation(image)!
-        print(dd)
-        return _httpService.upload(controller: .upload("image"), data: dd, parameter: ["saveToTemporary" : "true"], progresHandler: progresHandler)
+        return _httpService.upload(controller: .upload("image"), data: image.jpegRepresentation()!, parameter: ["saveToTemporary" : "true"], progresHandler: progresHandler)
             .getResult(ofType: ResultUploadImageApiModel.self)
     }
     

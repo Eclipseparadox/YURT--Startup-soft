@@ -15,8 +15,14 @@ class DocumentEntityHeaderView: SttTCollectionReusableView<DocumentsEntityHeader
     @IBOutlet weak var imgError: UIImageView!
         
     override func prepareBind() {
+        super.prepareBind()
         lblTitle.text = dataContext.title
-        lblCounter.text = "\(dataContext.uploadedsCount)/\(dataContext.totalCountDocument!)"
+        lblCounter.text = CountProgressConverter().convert(value: (dataContext.uploadedsCount, dataContext.totalCountDocument))
+        imgError.isHidden = !(dataContext?.isError ?? false)
+    }
+    
+    func reloadProgress() {
+        lblCounter.text = CountProgressConverter().convert(value: (dataContext.uploadedsCount, dataContext.totalCountDocument))
         imgError.isHidden = !(dataContext?.isError ?? false)
     }
 }

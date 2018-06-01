@@ -11,7 +11,7 @@ import UIKit
 class PreviewPhotoViewController: UIViewController {
     
     var image: UIImage!
-    var delegate: SttTakePhotoDelegate!
+    weak var delegate: SttTakePhotoDelegate!
 
     @IBOutlet weak var imgPhoto: UIImageView!
     
@@ -28,10 +28,5 @@ class PreviewPhotoViewController: UIViewController {
         super.viewDidLoad()
 
         imgPhoto.image = image
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

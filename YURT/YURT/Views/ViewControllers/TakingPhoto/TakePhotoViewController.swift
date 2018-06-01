@@ -17,25 +17,19 @@ protocol SttTakePhotoDelegate: class {
 class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoDelegate, AVCapturePhotoCaptureDelegate, SttTakePhotoDelegate {
     
     let captureSession = AVCaptureSession()
-    
     var previewLayer: CALayer!
     
     var captureDevice: AVCaptureDevice!
     var photoOutput: AVCapturePhotoOutput?
-    var takedPhoto: UIImage!
+    static var takedPhoto: UIImage!
     
+    @IBOutlet weak var CameraTitle: UILabel!
     @IBOutlet weak var btnTakePhoto: UIButton!
     @IBAction func takePhotoClick(_ sender: Any) {
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
     }
     
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let imageData = photo.fileDataRepresentation() {
-            takedPhoto = UIImage(data: imageData)?.fixOrientation()
-            performSegue(withIdentifier: "previewPhoto", sender: nil)
-        }
-    }
     @IBAction func cancelClick(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -43,6 +37,13 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     override func viewDidLoad() {
         super.viewDidLoad()
         btnTakePhoto.createCircle()
+        
+        style = .lightContent
+        CameraTitle.text = presenter.topMessage
+    }
+    
+    deinit {
+        print ("take photo deinit")
     }
     
     private var fistStart = true
@@ -55,17 +56,24 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if segue.identifier == "previewPhoto" {
             let previewC = segue.destination as! PreviewPhotoViewController
-            previewC.image = takedPhoto
+            previewC.image = TakePhotoViewController.takedPhoto
             previewC.delegate = self
         }
     }
     
     func close(isUsePhoto: Bool) {
         if isUsePhoto {
-            close(parametr: UIImagePNGRepresentation(takedPhoto)!)
-            dismiss(animated: true, completion: nil)
+            close(parametr: TakePhotoViewController.takedPhoto)
+        }
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            TakePhotoViewController.takedPhoto = UIImage(data: imageData)?.fixOrientation()
+            performSegue(withIdentifier: "previewPhoto", sender: nil)
         }
     }
     
@@ -92,11 +100,9 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         }
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.videoGravity = .resizeAspectFill
         self.previewLayer = previewLayer
         self.view.layer.insertSublayer(previewLayer, at: 0)
         self.previewLayer.frame = self.view.layer.frame
-        print(self.view.layer.frame)
         captureSession.startRunning()
         
         let dataOutput = AVCaptureVideoDataOutput()

@@ -24,6 +24,9 @@ class DocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, Docume
         if let imgData = presenter.image?.data {
           imgDocument.image = UIImage(data: imgData)
         }
+        if let image = presenter.image?.image {
+            imgDocument.image = image
+        }
         lblDocType.text = presenter.documentsName
         
         lblDocDate.text = DateConverter().convert(value: presenter.takesDate)

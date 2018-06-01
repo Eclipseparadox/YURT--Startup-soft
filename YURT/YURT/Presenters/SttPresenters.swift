@@ -30,7 +30,5 @@ class SttPresenter<TDelegate> : ViewInjector, SttPresenterType {
     
     func presenterCreating() { }
     
-    func prepare(parametr: Any?) {
-        print (parametr)
-    }
+    func prepare(parametr: Any?) { }
 }

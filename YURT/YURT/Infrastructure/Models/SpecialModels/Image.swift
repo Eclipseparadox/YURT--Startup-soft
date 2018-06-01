@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 class Image {
+    var image: UIImage?
     var data: Data?
     var url: String?
     
@@ -18,5 +20,9 @@ class Image {
     
     init (url: String) {
         self.url = url
+    }
+    
+    init(image: UIImage) {
+        self.image = image
     }
 }

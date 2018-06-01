@@ -94,4 +94,10 @@ extension UIImage {
         
         return img;
     }
+    
+    func jpegRepresentation() -> Data? {
+        return autoreleasepool(invoking: { [weak self] () -> Data? in
+            return UIImageJPEGRepresentation(self!, 0.5)
+        })
+    }
 }

@@ -128,8 +128,7 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
     }
     func close(parametr: Any) {
         callback?(parametr)
-        dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        close()
     }
     
     private var navigateData: (String, Any, (Any) -> Void)?

@@ -62,6 +62,7 @@
 		8462234120BFED760059A83A /* DocumentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234020BFED760059A83A /* DocumentFactories.swift */; };
 		8462234320C02DE20059A83A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234220C02DE20059A83A /* Image.swift */; };
 		8462234520C02E690059A83A /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234420C02E690059A83A /* DateConverter.swift */; };
+		8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234620C133D00059A83A /* CountProgressConverter.swift */; };
 		8468DCB320B2B6E100701C93 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468DCB220B2B6E100701C93 /* ApiModel.swift */; };
 		846F994C209B093600C61AE2 /* SttViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F994B209B093600C61AE2 /* SttViewController.swift */; };
 		846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F994D209B097B00C61AE2 /* SttTableViewSource.swift */; };
@@ -151,6 +152,7 @@
 		8462234020BFED760059A83A /* DocumentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFactories.swift; sourceTree = "<group>"; };
 		8462234220C02DE20059A83A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8462234420C02E690059A83A /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		8462234620C133D00059A83A /* CountProgressConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountProgressConverter.swift; sourceTree = "<group>"; };
 		8468DCB220B2B6E100701C93 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		846F994B209B093600C61AE2 /* SttViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttViewController.swift; sourceTree = "<group>"; };
 		846F994D209B097B00C61AE2 /* SttTableViewSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttTableViewSource.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				840427EA20B2E7A900C94765 /* BaseConverter.swift */,
 				842239EA20BED6890028FDAA /* PercentConverter.swift */,
 				8462234420C02E690059A83A /* DateConverter.swift */,
+				8462234620C133D00059A83A /* CountProgressConverter.swift */,
 			);
 			path = Converters;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				8462233C20BFE1F00059A83A /* DocumentEntityCell.swift in Sources */,
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
+				8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */,
 				8462234120BFED760059A83A /* DocumentFactories.swift in Sources */,
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,
 				8457844420A5B307001F3509 /* Repository.swift in Sources */,

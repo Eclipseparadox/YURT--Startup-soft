@@ -26,7 +26,6 @@ class SttTCollectionReusableView<T: ViewInjector>: UICollectionReusableView, Vie
         fatalError(Constants.noImplementException)
     }
     
-    private var firstStart = true
     func prepareBind() {
         dataContext.injectView(delegate: self)
     }

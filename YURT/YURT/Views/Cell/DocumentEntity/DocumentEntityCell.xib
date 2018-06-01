@@ -33,10 +33,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dph-DX-l5V">
                         <rect key="frame" x="0.0" y="130" width="150" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type document" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tm-4l-bxC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type document" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tm-4l-bxC">
                                 <rect key="frame" x="5" y="10" width="140" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="DYz-U7-aiY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="DYz-U7-aiY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,7 +58,8 @@
                             <constraint firstItem="8tm-4l-bxC" firstAttribute="top" secondItem="Dph-DX-l5V" secondAttribute="top" constant="10" id="Jom-CA-Q2K"/>
                             <constraint firstAttribute="trailing" secondItem="8tm-4l-bxC" secondAttribute="trailing" constant="5" id="RgM-S0-WHl"/>
                             <constraint firstItem="8tm-4l-bxC" firstAttribute="centerX" secondItem="Dph-DX-l5V" secondAttribute="centerX" id="cPQ-bb-fuW"/>
-                            <constraint firstAttribute="height" constant="50" id="fNM-cq-cKn"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="fNM-cq-cKn"/>
+                            <constraint firstAttribute="bottom" secondItem="b69-mP-6Yh" secondAttribute="bottom" constant="11" id="g5h-NY-g7Q"/>
                             <constraint firstItem="8tm-4l-bxC" firstAttribute="leading" secondItem="Dph-DX-l5V" secondAttribute="leading" constant="5" id="l46-3M-giS"/>
                             <constraint firstItem="b69-mP-6Yh" firstAttribute="top" secondItem="8tm-4l-bxC" secondAttribute="bottom" constant="1" id="zGv-XU-QIy"/>
                             <constraint firstItem="b69-mP-6Yh" firstAttribute="leading" secondItem="Dph-DX-l5V" secondAttribute="leading" constant="5" id="zwO-6R-Zwe"/>
