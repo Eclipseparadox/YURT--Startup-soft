@@ -10,5 +10,9 @@ import Foundation
 import UIKit
 
 class UIConstants {
-    
+    struct CellName {
+        static let documentEntity = "DocumentEntityCell"
+        static let noDicumentEntity = "NoDocumentEntityCell"
+        static let headerDocumentEntity = "DocumentsHeaderSection"
+    }
 }

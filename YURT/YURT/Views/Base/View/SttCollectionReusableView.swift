@@ -18,6 +18,13 @@ class SttTCollectionReusableView<T: ViewInjector>: UICollectionReusableView, Vie
     func close() {
         fatalError(Constants.noImplementException)
     }
+    func close(parametr: Any) {
+        fatalError(Constants.noImplementException)
+    }
+    
+    func navigate<TParametr, TResult>(to: String, withParametr: TParametr, callback: @escaping (TResult) -> Void) {
+        fatalError(Constants.noImplementException)
+    }
     
     private var firstStart = true
     func prepareBind() {

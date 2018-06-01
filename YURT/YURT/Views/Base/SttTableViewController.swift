@@ -14,12 +14,18 @@ class SttTableViewController<T: ViewInjector>: UITableViewController, Viewable, 
     func close() {
         fatalError(Constants.noImplementException)
     }
+    func close(parametr: Any) {
+        fatalError(Constants.noImplementException)
+    }
     func sendError(error: BaseError)
     {
         fatalError(Constants.noImplementException)
     }
     func sendMessage(title: String, message: String?) {
         
+    }
+    func navigate<TParametr, TResult>(to: String, withParametr: TParametr, callback: @escaping (TResult) -> Void) {
+        fatalError(Constants.noImplementException)
     }
     
     func navigate(storyboardName: String, type: TypeNavigation = .modality, animated: Bool = true) {

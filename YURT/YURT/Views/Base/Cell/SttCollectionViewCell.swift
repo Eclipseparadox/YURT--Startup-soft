@@ -9,18 +9,30 @@
 import Foundation
 import UIKit
 
-class SttCollectionViewCell<T: ViewInjector>: UICollectionViewCell, Viewable {
+class SttbCollectionViewCell: UICollectionViewCell, Viewable {
     
-    var dataContext: T!
+    var dataContext: Any!
     
     func sendError(error: BaseError) { }
     func sendMessage(title: String, message: String?) { }
+    func prepareBind() {}
     func close() {
         fatalError(Constants.noImplementException)
     }
+    func close(parametr: Any) {
+        fatalError(Constants.noImplementException)
+    }
+    func navigate<TParametr, TResult>(to: String, withParametr: TParametr, callback: @escaping (TResult) -> Void) {
+        fatalError(Constants.noImplementException)
+    }
+}
+
+class SttCollectionViewCell<T: ViewInjector>: SttbCollectionViewCell {
+    
+    lazy var presenter: T = dataContext as! T
     
     private var firstStart = true
-    func prepareBind() {
-        dataContext.injectView(delegate: self)
+    override func prepareBind() {
+        presenter.injectView(delegate: self)
     }
 }

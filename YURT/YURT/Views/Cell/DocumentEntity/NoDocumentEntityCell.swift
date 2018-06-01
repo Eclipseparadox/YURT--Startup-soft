@@ -10,9 +10,17 @@ import UIKit
 
 class NoDocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, DocumentEntityDelegate {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func prepareBind() {
+        layer.cornerRadius = 4
+        clipsToBounds = true
+        
+        layer.borderColor = UIColor(named: "border")!.cgColor
+        layer.borderWidth = 1
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick(_:))))
     }
 
+    @objc func onClick(_ sender: Any) {
+        presenter.clickOnItem()
+    }
 }

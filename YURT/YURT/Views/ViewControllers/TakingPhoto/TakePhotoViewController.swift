@@ -32,7 +32,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
-            takedPhoto = UIImage(data: imageData)
+            takedPhoto = UIImage(data: imageData)?.fixOrientation()
             performSegue(withIdentifier: "previewPhoto", sender: nil)
         }
     }
@@ -64,6 +64,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     
     func close(isUsePhoto: Bool) {
         if isUsePhoto {
+            close(parametr: UIImagePNGRepresentation(takedPhoto)!)
             dismiss(animated: true, completion: nil)
         }
     }

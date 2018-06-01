@@ -9,21 +9,23 @@
 import UIKit
 
 class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsDelegate {
+    
 
     @IBOutlet weak var progressBackground: UIView!
     @IBOutlet weak var cnstrProgresLeftAnchor: NSLayoutConstraint!
     @IBOutlet weak var lblPercentWhite: UILabel!
     @IBOutlet weak var lblPercentBlack: UILabel!
     @IBOutlet weak var collectionDocuments: UICollectionView!
+    @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
     
-    var collectionSource: SttCollectionViewWithSectionSource<DocumentEntityPresenter, DocumentsEntityHeaderPresenter>!
+    var collectionSource: DocumentEntitySource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         progressBackground.createCircle(dominateWidth: false, clipToBounds: true)
         
-        collectionSource = SttCollectionViewWithSectionSource(collectionView: collectionDocuments, cellIdentifier: "NoDocumentEntityCell", sectionIdentifier: "DocumentsHeaderSection", collection: presenter.documents)
+        collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
         
         collectionDocuments.dataSource = collectionSource
         
@@ -31,10 +33,18 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         let layout = collectionDocuments.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        collectionDocuments.sizeToFit()
+        cnstrHeight.constant = collectionDocuments.contentSize.height
+    }
+    
+    // MARK: implementation delegate
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func reloadItem(section: Int, row: Int) {
+        collectionDocuments.reloadItems(at: [IndexPath(row: row, section: section)])
     }
     
 

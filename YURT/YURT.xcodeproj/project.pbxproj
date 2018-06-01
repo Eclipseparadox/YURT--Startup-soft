@@ -56,6 +56,12 @@
 		84484F6F209B400C006BBD11 /* ConstructModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484F6E209B400C006BBD11 /* ConstructModel.swift */; };
 		844F800420AD74940030DCC3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844F800320AD74940030DCC3 /* Colors.xcassets */; };
 		8457844420A5B307001F3509 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457844320A5B307001F3509 /* Repository.swift */; };
+		8462233C20BFE1F00059A83A /* DocumentEntityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462233A20BFE1F00059A83A /* DocumentEntityCell.swift */; };
+		8462233D20BFE1F00059A83A /* DocumentEntityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8462233B20BFE1F00059A83A /* DocumentEntityCell.xib */; };
+		8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462233E20BFE3D50059A83A /* DocumentEntitySource.swift */; };
+		8462234120BFED760059A83A /* DocumentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234020BFED760059A83A /* DocumentFactories.swift */; };
+		8462234320C02DE20059A83A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234220C02DE20059A83A /* Image.swift */; };
+		8462234520C02E690059A83A /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234420C02E690059A83A /* DateConverter.swift */; };
 		8468DCB320B2B6E100701C93 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468DCB220B2B6E100701C93 /* ApiModel.swift */; };
 		846F994C209B093600C61AE2 /* SttViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F994B209B093600C61AE2 /* SttViewController.swift */; };
 		846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F994D209B097B00C61AE2 /* SttTableViewSource.swift */; };
@@ -139,6 +145,12 @@
 		84484F6E209B400C006BBD11 /* ConstructModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructModel.swift; sourceTree = "<group>"; };
 		844F800320AD74940030DCC3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		8457844320A5B307001F3509 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		8462233A20BFE1F00059A83A /* DocumentEntityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEntityCell.swift; sourceTree = "<group>"; };
+		8462233B20BFE1F00059A83A /* DocumentEntityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentEntityCell.xib; sourceTree = "<group>"; };
+		8462233E20BFE3D50059A83A /* DocumentEntitySource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEntitySource.swift; sourceTree = "<group>"; };
+		8462234020BFED760059A83A /* DocumentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFactories.swift; sourceTree = "<group>"; };
+		8462234220C02DE20059A83A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		8462234420C02E690059A83A /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		8468DCB220B2B6E100701C93 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		846F994B209B093600C61AE2 /* SttViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttViewController.swift; sourceTree = "<group>"; };
 		846F994D209B097B00C61AE2 /* SttTableViewSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttTableViewSource.swift; sourceTree = "<group>"; };
@@ -194,6 +206,7 @@
 			children = (
 				840427EA20B2E7A900C94765 /* BaseConverter.swift */,
 				842239EA20BED6890028FDAA /* PercentConverter.swift */,
+				8462234420C02E690059A83A /* DateConverter.swift */,
 			);
 			path = Converters;
 			sourceTree = "<group>";
@@ -307,6 +320,9 @@
 				842239F720BEE5C90028FDAA /* NoDocumentEntityCell.swift */,
 				842239F820BEE5C90028FDAA /* NoDocumentEntityCell.xib */,
 				842239FD20BEEA440028FDAA /* DocumentEntityHeaderView.swift */,
+				8462233A20BFE1F00059A83A /* DocumentEntityCell.swift */,
+				8462233B20BFE1F00059A83A /* DocumentEntityCell.xib */,
+				8462233E20BFE3D50059A83A /* DocumentEntitySource.swift */,
 			);
 			path = DocumentEntity;
 			sourceTree = "<group>";
@@ -413,6 +429,7 @@
 				84484F6A209B39F6006BBD11 /* SpecialResult.swift */,
 				842E1EB920AC5785003D2CDA /* ErrorModels.swift */,
 				8468DCB220B2B6E100701C93 /* ApiModel.swift */,
+				8462234220C02DE20059A83A /* Image.swift */,
 			);
 			path = SpecialModels;
 			sourceTree = "<group>";
@@ -435,6 +452,7 @@
 				8422055D20A5AA05007B03DE /* DAL */,
 				846F9958209B0AB900C61AE2 /* Constants.swift */,
 				84484F68209B39C5006BBD11 /* Models */,
+				8462234020BFED760059A83A /* DocumentFactories.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -685,6 +703,7 @@
 				84484F5B209B05D6006BBD11 /* Assets.xcassets in Resources */,
 				842239FA20BEE5C90028FDAA /* NoDocumentEntityCell.xib in Resources */,
 				842E1EC220AD6EB2003D2CDA /* InputBox.xib in Resources */,
+				8462233D20BFE1F00059A83A /* DocumentEntityCell.xib in Resources */,
 				842E1EC920AD7138003D2CDA /* Login.storyboard in Resources */,
 				84484F59209B05D4006BBD11 /* Main.storyboard in Resources */,
 				8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */,
@@ -769,6 +788,7 @@
 				846F995C209B0B0C00C61AE2 /* UIViewControllerDecorators.swift in Sources */,
 				842239E220BD6FB20028FDAA /* PreviewPhotoViewController.swift in Sources */,
 				84484F56209B05D4006BBD11 /* ViewController.swift in Sources */,
+				8462234520C02E690059A83A /* DateConverter.swift in Sources */,
 				842E1EAD20AC5412003D2CDA /* SttPresenters.swift in Sources */,
 				846F9950209B09B800C61AE2 /* SttTableViewCell.swift in Sources */,
 				842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */,
@@ -789,9 +809,11 @@
 				8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */,
 				8407C0A120B8099A00045EFB /* TakePhotoPresenter.swift in Sources */,
 				842E1EC720AD6FBC003D2CDA /* SttTextView.swift in Sources */,
+				8462234320C02DE20059A83A /* Image.swift in Sources */,
 				84484F6D209B3FA0006BBD11 /* ApiService.swift in Sources */,
 				84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */,
 				84223A0120BEEC0A0028FDAA /* SttCollectionReusableView.swift in Sources */,
+				8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */,
 				842E1EB820AC56AC003D2CDA /* BaseRealm.swift in Sources */,
 				842E1EBA20AC5785003D2CDA /* ErrorModels.swift in Sources */,
 				846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */,
@@ -813,8 +835,10 @@
 				84C7FBF220B42DD50053C93A /* AccountService.swift in Sources */,
 				848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */,
 				8407C09E20B8097E00045EFB /* TakePhotoViewController.swift in Sources */,
+				8462233C20BFE1F00059A83A /* DocumentEntityCell.swift in Sources */,
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
+				8462234120BFED760059A83A /* DocumentFactories.swift in Sources */,
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,
 				8457844420A5B307001F3509 /* Repository.swift in Sources */,
 				842239E520BE93CF0028FDAA /* DocumentsViewController.swift in Sources */,
