@@ -8,28 +8,13 @@
 
 import Foundation
 
-struct ResultUploadImageApiModel: Decodable, Encodable {
+struct ResultUploadImageApiModel: Decodable, DictionaryCodable {
     let origin: ImageDataApiModel
     let preview: ImageDataApiModel
-    
-    func getDictionary() -> [String: Any] {
-        return [
-            "origin": origin.getDictionary(),
-            "preview": preview.getDictionary()
-        ]
-    }
 }
 
-struct ImageDataApiModel: Decodable, Encodable {
+struct ImageDataApiModel: Decodable, DictionaryCodable {
     let path: String
     let weight: Int
     let height: Int
-    
-    func getDictionary() -> [String: Any] {
-        return [
-            "path": path,
-            "weight": weight,
-            "height": height
-        ]
-    }
 }

@@ -25,6 +25,10 @@ class AccountService: IAccountService {
     var _notificatonError: INotificationError!
     var _unitOfWork: IUnitOfWork!
     
+    init () {
+        ServiceInjectorAssembly.instance().inject(into: self)
+    }
+    
     var sesionIsExpired: Observable<Bool> { return _unitOfWork.auth.exists(filter: nil)
         .flatMap({ (res) -> Observable<Bool> in
             if res {
@@ -34,10 +38,6 @@ class AccountService: IAccountService {
                 return Observable.from([false])
             }
         })
-    }
-    
-    init () {
-        ServiceInjectorAssembly.instance().inject(into: self)
     }
     
     func existsEmail(email: String) -> Observable<Bool> {

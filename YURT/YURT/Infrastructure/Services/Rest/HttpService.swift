@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import RxAlamofire
 import RxSwift
+import KeychainSwift
 
 protocol IHttpService {
     var url: String! { get set }
@@ -41,7 +42,10 @@ class HttpService: IHttpService {
     var tokenType: String = ""
     var connectivity = Conectivity()
     
-    init() { tokenType = "bearer" }
+    init() {
+        token = KeychainSwift().get(Constants.tokenKey) ?? ""
+        tokenType = "bearer"
+    }
     
     func  get(controller: ApiConroller, data: [String:String], insertToken: Bool) -> Observable<(HTTPURLResponse, Data)> {
         let url = "\(self.url!)\(controller.get())"

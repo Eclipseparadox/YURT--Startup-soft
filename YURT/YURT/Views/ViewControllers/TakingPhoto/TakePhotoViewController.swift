@@ -21,13 +21,14 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     
     var captureDevice: AVCaptureDevice!
     var photoOutput: AVCapturePhotoOutput?
-    static var takedPhoto: UIImage!
+    var image: UIImage!
     
     @IBOutlet weak var CameraTitle: UILabel!
     @IBOutlet weak var btnTakePhoto: UIButton!
     @IBAction func takePhotoClick(_ sender: Any) {
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
+        print ("capture")
     }
     
     @IBAction func cancelClick(_ sender: Any) {
@@ -59,21 +60,22 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "previewPhoto" {
             let previewC = segue.destination as! PreviewPhotoViewController
-            previewC.image = TakePhotoViewController.takedPhoto
+            previewC.image = image
             previewC.delegate = self
         }
     }
     
     func close(isUsePhoto: Bool) {
         if isUsePhoto {
-            close(parametr: TakePhotoViewController.takedPhoto)
+            close(parametr: image)
         }
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
-            TakePhotoViewController.takedPhoto = UIImage(data: imageData)?.fixOrientation()
+            image = UIImage(data: imageData)
             performSegue(withIdentifier: "previewPhoto", sender: nil)
+            print ("output")
         }
     }
     

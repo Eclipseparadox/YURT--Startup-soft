@@ -10,11 +10,11 @@ PODS:
     - AppCenter/Core
   - EasyDi (1.4.0)
   - KeychainSwift (10.0.0)
-  - Realm (3.5.0):
-    - Realm/Headers (= 3.5.0)
-  - Realm/Headers (3.5.0)
-  - RealmSwift (3.5.0):
-    - Realm (= 3.5.0)
+  - Realm (3.6.0):
+    - Realm/Headers (= 3.6.0)
+  - Realm/Headers (3.6.0)
+  - RealmSwift (3.6.0):
+    - Realm (= 3.6.0)
   - RxAlamofire (4.2.0):
     - RxAlamofire/Core (= 4.2.0)
   - RxAlamofire/Core (4.2.0):
@@ -24,9 +24,9 @@ PODS:
     - RealmSwift (~> 3.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
+  - SDWebImage (4.4.0):
+    - SDWebImage/Core (= 4.4.0)
+  - SDWebImage/Core (4.4.0)
   - SINQ (0.7.0)
 
 DEPENDENCIES:
@@ -60,14 +60,14 @@ SPEC CHECKSUMS:
   AppCenter: f9eb653a45cece34549232f295aec05260dfc24f
   EasyDi: 84cfe04e906c0f463b1b1d76ed4be3db446f9702
   KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
-  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
-  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
+  Realm: 08b464b462d4f31bbd4ba5f5a1c8722ef0a700b7
+  RealmSwift: 973e1499c44ab571f894c2c908e2db450be280c3
   RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
   RxRealm: a6c6c0a07cb61f34209969ca6657734edfdfff30
   RxSwift: e49536837d9901277638493ea537394d4b55f570
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SDWebImage: b534502786e43dde36dfcaee89356fe6df30e203
   SINQ: 64cab7b7c73486da8f4442c25ccdd6ada7e67b95
 
 PODFILE CHECKSUM: 07e148fa83ecd8c383e1f76d467ff840bfa5dc9a
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.2

@@ -18,10 +18,12 @@ protocol IApiService {
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
+    
+    func addDocument(model: AddDocumentApiModel) -> Observable<Bool>
 }
 
 class ApiService: IApiService {
-    
+  
     var _httpService: IHttpService!
     var _unitOfWork: IUnitOfWork!
     
@@ -58,5 +60,10 @@ class ApiService: IApiService {
         ]
         return _httpService.post(controller: .token, data: data)
             .getResult(ofType: AuthApiModel.self)
+    }
+    
+    func addDocument(model: AddDocumentApiModel) -> Observable<Bool> {
+        return _httpService.post(controller: .mobileDocument("add"), dataAny: model.getDictionary(), insertToken: true)
+            .getResult()
     }
 }

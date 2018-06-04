@@ -53,7 +53,7 @@ extension Date {
     
     func differenceInMinutes() -> Int {
         
-        let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
+        let dayHourMinuteSecond: Set<Calendar.Component> = [.minute]
         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: Date(), to: self);
         
         print(difference.minute)

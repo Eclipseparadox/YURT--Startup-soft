@@ -25,4 +25,7 @@ class ServiceAssembly: Assembly {
     var accountService: IAccountService {
         return define(scope: .lazySingleton, init: AccountService())
     }
+    var documentService: DocumentServiceType {
+        return define(scope: .lazySingleton, init: DocumentService())
+    }
 }

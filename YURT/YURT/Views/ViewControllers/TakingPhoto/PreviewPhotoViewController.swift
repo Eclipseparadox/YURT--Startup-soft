@@ -27,6 +27,38 @@ class PreviewPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print ("open view")
         imgPhoto.image = image
+    }
+    
+    func rotateImage(image: UIImage) -> UIImage {
+        
+        if (image.imageOrientation == UIImageOrientation.up ) {
+            return image
+        }
+        
+        UIGraphicsBeginImageContext(image.size)
+        
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+        let copy = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return copy!
+    }
+    
+    func fixOrientation(img: UIImage) -> UIImage {
+        if (img.imageOrientation == .up) {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage
     }
 }

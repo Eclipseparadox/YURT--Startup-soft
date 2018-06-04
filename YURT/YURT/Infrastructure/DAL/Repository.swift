@@ -115,9 +115,9 @@ R: BaseRealm {
         return Completable.create { (observer) -> Disposable in
             do {
                 let realm = try Realm()
-                if (realm.objects(R.self).count > 0) {
-                    observer(CompletableEvent.error(BaseError.realmError(RealmError.objectIsSignleton("method: saveOne type: \(type(of: R.self))"))))
-                }
+//                if (self.isSingletoon && realm.objects(R.self).count > 0) {
+//                    observer(CompletableEvent.error(BaseError.realmError(RealmError.objectIsSignleton("method: saveOne type: \(type(of: R.self))"))))
+//                }
                 realm.beginWrite()
                 realm.add(model.serialize(), update: true)
                 try realm.commitWrite()

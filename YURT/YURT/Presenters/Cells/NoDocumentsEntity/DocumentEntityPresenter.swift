@@ -29,6 +29,7 @@ protocol DocumentEntityDelegate: Viewable {
 
 protocol DocumentContainerDelegate: class {
     func takePhoto(type: DocumentType, callback: @escaping (UIImage) -> Void)
+    func showPhoto(type: (DocumentType, Image), callback: @escaping (Bool) -> Void)
 }
 
 class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
@@ -42,14 +43,18 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
     var observer: PublishSubject<(Bool, DocumentType)>!
     weak var itemDelegate: DocumentContainerDelegate!
     
+    var documentService: DocumentServiceType!
     
     convenience init(type: DocumentType, delegate: DocumentContainerDelegate, observer: PublishSubject<(Bool, DocumentType)>) {
+        
         self.init()
         self.documentsName = DocumentFactories.getTitle(type: type)
         self.type = .noDocument
         self.itemDelegate = delegate
         self.documentType = type
         self.observer = observer
+        
+        ServiceInjectorAssembly.instance().inject(into: self)
     }
     
     func clickOnItem () {
@@ -59,6 +64,18 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
                 self?.image = Image(image: image)
                 self?.takesDate = Date()
                 self?.observer.onNext((true, self!.documentType))
+                
+                self?.documentService.uploadDocument(type: self!.documentType!, image: (self!.image?.image!)!, progresHandler: { (progress) in
+                    print(progress)
+                }).subscribe()
+            }
+        }
+        else {
+            itemDelegate.showPhoto(type: (documentType, image!)) { [weak self] (status) in
+                if (status) {
+                    self?.type = .noDocument
+                    self?.observer.onNext((false, self!.documentType))
+                }
             }
         }
     }

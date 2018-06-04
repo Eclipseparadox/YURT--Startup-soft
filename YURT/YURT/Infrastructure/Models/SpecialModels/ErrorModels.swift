@@ -24,7 +24,7 @@ enum BaseError: Error {
             result = ("Realm: \(tempRes.0)", tempRes.1)
         case .apiError(let concreate):
             let tempRes = concreate.getMessage()
-            result = ("Api: \(tempRes.0)", tempRes.1)
+            result = ("\(tempRes.0)", tempRes.1)
         case .connectionError(let concreate):
             let tempRes = concreate.getMessage()
             result = ("\(tempRes.0)", tempRes.1)
@@ -78,7 +78,7 @@ enum ApiError {
         case .otherApiError(let code):
             result = ("Other", "with code: \(code)")
         case .responseIsNi:
-            result = ("Response is nil", "Go to developer")
+            result = ("Request timeout", "Please try again")
         }
         return result
     }

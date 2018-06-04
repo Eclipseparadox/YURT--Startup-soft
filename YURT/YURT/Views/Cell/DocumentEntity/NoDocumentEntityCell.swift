@@ -10,12 +10,16 @@ import UIKit
 
 class NoDocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, DocumentEntityDelegate {
 
+    @IBOutlet weak var lblType: UILabel!
+    
     override func prepareBind() {
         layer.cornerRadius = 4
         clipsToBounds = true
         
         layer.borderColor = UIColor(named: "border")!.cgColor
         layer.borderWidth = 1
+        
+        lblType.text = DocumentFactories.getTitle(type: presenter.documentType)
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick(_:))))
     }

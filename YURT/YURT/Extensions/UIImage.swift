@@ -32,7 +32,7 @@ extension UIImage {
             
         case .left, .leftMirrored:
             transform = transform.translatedBy(x: width, y: 0)
-            transform = transform.rotated(by: 0.5*CGFloat.pi)
+            transform = transform.rotated(by: 0.5 * CGFloat.pi)
             
         case .right, .rightMirrored:
             transform = transform.translatedBy(x: 0, y: height)
@@ -97,7 +97,15 @@ extension UIImage {
     
     func jpegRepresentation() -> Data? {
         return autoreleasepool(invoking: { [weak self] () -> Data? in
-            return UIImageJPEGRepresentation(self!, 0.5)
+            return UIImageJPEGRepresentation(self!, 0.8)
         })
+    }
+}
+
+extension Data {
+    func fixAdnConvertToImage() -> UIImage {
+        return autoreleasepool { () -> UIImage in
+            return UIImage(data: UIImagePNGRepresentation(UIImage(data: self)!)!)!.fixOrientation()!
+        }
     }
 }

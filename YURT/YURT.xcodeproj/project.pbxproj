@@ -58,6 +58,11 @@
 		84484F6B209B39F6006BBD11 /* SpecialResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484F6A209B39F6006BBD11 /* SpecialResult.swift */; };
 		84484F6D209B3FA0006BBD11 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484F6C209B3FA0006BBD11 /* ApiService.swift */; };
 		84484F6F209B400C006BBD11 /* ConstructModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484F6E209B400C006BBD11 /* ConstructModel.swift */; };
+		844EC24320C54A37006CF9EF /* ShowPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EC24220C54A37006CF9EF /* ShowPhotoViewController.swift */; };
+		844EC24620C54A79006CF9EF /* ShowPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EC24520C54A79006CF9EF /* ShowPhotoPresenter.swift */; };
+		844EC24820C58897006CF9EF /* DocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EC24720C58897006CF9EF /* DocumentService.swift */; };
+		844EC24A20C58A16006CF9EF /* AddDocumentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */; };
+		844EC24C20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */; };
 		844F800420AD74940030DCC3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844F800320AD74940030DCC3 /* Colors.xcassets */; };
 		8457844420A5B307001F3509 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457844320A5B307001F3509 /* Repository.swift */; };
 		8462233C20BFE1F00059A83A /* DocumentEntityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462233A20BFE1F00059A83A /* DocumentEntityCell.swift */; };
@@ -152,6 +157,11 @@
 		84484F6A209B39F6006BBD11 /* SpecialResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialResult.swift; sourceTree = "<group>"; };
 		84484F6C209B3FA0006BBD11 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		84484F6E209B400C006BBD11 /* ConstructModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructModel.swift; sourceTree = "<group>"; };
+		844EC24220C54A37006CF9EF /* ShowPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPhotoViewController.swift; sourceTree = "<group>"; };
+		844EC24520C54A79006CF9EF /* ShowPhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPhotoPresenter.swift; sourceTree = "<group>"; };
+		844EC24720C58897006CF9EF /* DocumentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentService.swift; sourceTree = "<group>"; };
+		844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocumentApiModel.swift; sourceTree = "<group>"; };
+		844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowerDocumentApiModel.swift; sourceTree = "<group>"; };
 		844F800320AD74940030DCC3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		8457844320A5B307001F3509 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		8462233A20BFE1F00059A83A /* DocumentEntityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEntityCell.swift; sourceTree = "<group>"; };
@@ -282,6 +292,7 @@
 			children = (
 				8407C09D20B8097E00045EFB /* TakePhotoViewController.swift */,
 				842239E120BD6FB20028FDAA /* PreviewPhotoViewController.swift */,
+				844EC24220C54A37006CF9EF /* ShowPhotoViewController.swift */,
 			);
 			path = TakingPhoto;
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				8407C0A020B8099A00045EFB /* TakePhotoPresenter.swift */,
+				844EC24520C54A79006CF9EF /* ShowPhotoPresenter.swift */,
 			);
 			path = TakingPhoto;
 			sourceTree = "<group>";
@@ -469,6 +481,7 @@
 				842E1EAE20AC549A003D2CDA /* Log.swift */,
 				840427F220B2E87800C94765 /* NotificationError.swift */,
 				84C7FBF120B42DD50053C93A /* AccountService.swift */,
+				844EC24720C58897006CF9EF /* DocumentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -632,6 +645,8 @@
 				84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */,
 				84C7FBFA20B45E2C0053C93A /* AccountModel.swift */,
 				84C7FBFE20B55E570053C93A /* AuthApiModel.swift */,
+				844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */,
+				844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -792,6 +807,7 @@
 				84C7FBF420B444490053C93A /* UIImage.swift in Sources */,
 				84484F67209B371D006BBD11 /* HttpService.swift in Sources */,
 				840427F120B2E85200C94765 /* DialogAlert.swift in Sources */,
+				844EC24320C54A37006CF9EF /* ShowPhotoViewController.swift in Sources */,
 				842E1EAF20AC549A003D2CDA /* Log.swift in Sources */,
 				846F995C209B0B0C00C61AE2 /* UIViewControllerDecorators.swift in Sources */,
 				842239E220BD6FB20028FDAA /* PreviewPhotoViewController.swift in Sources */,
@@ -806,6 +822,7 @@
 				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,
 				842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */,
+				844EC24620C54A79006CF9EF /* ShowPhotoPresenter.swift in Sources */,
 				846F994C209B093600C61AE2 /* SttViewController.swift in Sources */,
 				848C85DF20A042B100026A5E /* ObservableType.swift in Sources */,
 				846F9952209B0A3700C61AE2 /* KeyboardNotification.swift in Sources */,
@@ -822,7 +839,9 @@
 				84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */,
 				84223A0120BEEC0A0028FDAA /* SttCollectionReusableView.swift in Sources */,
 				8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */,
+				844EC24A20C58A16006CF9EF /* AddDocumentApiModel.swift in Sources */,
 				842E1EB820AC56AC003D2CDA /* BaseRealm.swift in Sources */,
+				844EC24C20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift in Sources */,
 				842E1EBA20AC5785003D2CDA /* ErrorModels.swift in Sources */,
 				846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */,
 				84C7FBF620B444760053C93A /* Camera.swift in Sources */,
@@ -851,6 +870,7 @@
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
 				8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */,
 				8462234120BFED760059A83A /* DocumentFactories.swift in Sources */,
+				844EC24820C58897006CF9EF /* DocumentService.swift in Sources */,
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,
 				8457844420A5B307001F3509 /* Repository.swift in Sources */,
 				842239E520BE93CF0028FDAA /* DocumentsViewController.swift in Sources */,
@@ -1002,14 +1022,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D9L33B2S23;
+				DEVELOPMENT_TEAM = 6T2CR8Y629;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.standret.YURT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.YURT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1022,14 +1042,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D9L33B2S23;
+				DEVELOPMENT_TEAM = 6T2CR8Y629;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.standret.YURT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.YURT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -65,6 +65,11 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
                 _self.delegate.reloadItem(section: section!, row: row!)
             }
         }
-        delegate.navigate(to: "takePhoto", withParametr: type, callback: { callback($0 as! UIImage) })
+    }
+    
+    func showPhoto(type: (DocumentType, Image), callback: @escaping (Bool) -> Void) {
+        delegate.navigate(to: "showPhoto", withParametr: type) { (result) in
+            callback(result as! Bool)
+        }
     }
 }

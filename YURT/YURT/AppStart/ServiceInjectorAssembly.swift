@@ -35,6 +35,13 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: DocumentEntityPresenter) {
+        let _:DocumentEntityPresenter = define(init: service) {
+            $0.documentService = self.serviceAssembly.documentService
+            return $0
+        }
+    }
+    
     func inject(into service: StartPagePresenter) {
         let _:StartPagePresenter = define(init: service) {
             $0._accountService = self.serviceAssembly.accountService
@@ -54,6 +61,15 @@ class ServiceInjectorAssembly: Assembly {
     
     func inject(into service: AccountService) {
         let _:AccountService = define(init: service) {
+            $0._apiService = self.serviceAssembly.apiService
+            $0._notificatonError = self.serviceAssembly.notificationError
+            $0._unitOfWork = self.serviceAssembly.unitOfWork
+            return $0
+        }
+    }
+    
+    func inject(into service: DocumentService) {
+        let _:DocumentService = define(init: service) {
             $0._apiService = self.serviceAssembly.apiService
             $0._notificatonError = self.serviceAssembly.notificationError
             $0._unitOfWork = self.serviceAssembly.unitOfWork

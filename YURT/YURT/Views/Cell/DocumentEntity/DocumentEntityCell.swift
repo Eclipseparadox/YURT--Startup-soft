@@ -1,4 +1,4 @@
-//
+ //
 //  DocumentEntityCell.swift
 //  YURT
 //
@@ -30,5 +30,13 @@ class DocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, Docume
         lblDocType.text = presenter.documentsName
         
         lblDocDate.text = DateConverter().convert(value: presenter.takesDate)
+        
+        isUserInteractionEnabled = true
+        imgDocument.isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick(_:))))
+    }
+    
+    @objc func onClick(_ sender: Any) {
+        presenter.clickOnItem()
     }
 }
