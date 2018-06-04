@@ -19,6 +19,7 @@ protocol Viewable: class {
     func close()
     func close(parametr: Any)
     func navigate(to: String, withParametr: Any, callback: @escaping (Any) -> Void)
+    func navigate(storyboardName: String, type: TypeNavigation, animated: Bool)
 }
 
 protocol ViewInjector {
@@ -119,7 +120,7 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
         self.createAlerDialog(title: serror.0, message: serror.1)
     }
     func sendMessage(title: String, message: String?) {
-        self.createAlerDialog(title: title, message: message)
+        self.createAlerDialog(title: title, message: message!)
     }
     
     func close() {
@@ -130,6 +131,18 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
         callback?(parametr)
         close()
     }
+    
+    func navigate(storyboardName: String, type: TypeNavigation = .modality, animated: Bool = true) {
+        let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let viewContrl = stroyboard.instantiateViewController(withIdentifier: "start")
+        switch type {
+        case .modality:
+            present(viewContrl, animated: animated, completion: nil)
+        case .push:
+            navigationController?.pushViewController(viewContrl, animated: animated)
+        }
+    }
+
     
     private var navigateData: (String, Any, (Any) -> Void)?
     func navigate(to: String, withParametr: Any, callback: @escaping (Any) -> Void) {

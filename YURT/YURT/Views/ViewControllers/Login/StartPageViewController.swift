@@ -25,6 +25,7 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        style = .lightContent
         cnstrHeight.constant = heightScreen
         hideNavigationBar = true
         

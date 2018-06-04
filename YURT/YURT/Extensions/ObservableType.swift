@@ -9,11 +9,34 @@
 import Foundation
 import RxSwift
 
+import Foundation
+import RxSwift
+
+extension PrimitiveSequence {
+    func toEmptyObservable<T>(ofType _: T.Type) -> Observable<T> {
+        return self.asObservable().flatMap({ _ in Observable<T>.empty() })
+    }
+    func toObservable() -> Observable<Bool> {
+        return Observable<Bool>.create({ (observer) -> Disposable in
+            self.asObservable().subscribe(onCompleted: {
+                observer.onNext(true)
+                observer.onCompleted()
+            })
+        })
+    }
+    func inBackground() -> PrimitiveSequence<Trait, Element> {
+        return self.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+    }
+    func observeInUI() -> PrimitiveSequence<Trait, Element> {
+        return self.observeOn(MainScheduler.instance)
+    }
+}
+
 extension Observable {
-    func saveInDB(saveCallback: @escaping (_ saveCallback: Element) -> Observable<Bool>) -> Observable<Element>
+    func saveInDB(saveCallback: @escaping (_ saveCallback: Element) -> Completable) -> Observable<Element>
     {
         return self.map({ (element) -> Element in
-            _ = saveCallback(element).subscribe(onNext: { (element) in
+            _ = saveCallback(element).subscribe(onCompleted: {
                 Log.trace(message: "\(type(of: Element.self)) has been saved succefully in realm", key: Constants.repositoryExtensionsLog)
             }, onError: { (error) in
                 Log.error(message: "\(type(of: Element.self)) could not save in db", key: Constants.repositoryExtensionsLog)
@@ -21,9 +44,16 @@ extension Observable {
             return element
         })
     }
+    
+    func inBackground() -> Observable<Element> {
+        return self.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+    }
+    func observeInUI() -> Observable<Element> {
+        return self.observeOn(MainScheduler.instance)
+    }
 }
 
-extension ObservableType where E == (HTTPURLResponse, Data) {   
+extension ObservableType where E == (HTTPURLResponse, Data) {
     func getResult<TResult: Decodable>(ofType _: TResult.Type) -> Observable<TResult> {
         return Observable<TResult>.create({ (observer) -> Disposable in
             self.subscribe(onNext: { (urlResponse, data) in
@@ -34,7 +64,6 @@ extension ObservableType where E == (HTTPURLResponse, Data) {
                         decoder.dateDecodingStrategy = .customISO8601
                         let jsonObject = try decoder.decode(TResult.self, from: data)
                         observer.onNext(jsonObject)
-                        observer.onCompleted()
                     }
                     catch {
                         print(error)
@@ -54,7 +83,7 @@ extension ObservableType where E == (HTTPURLResponse, Data) {
                 else {
                     observer.onError(BaseError.unkown("\(error)"))
                 }
-            }, onCompleted: nil, onDisposed: nil)
+            }, onCompleted: observer.onCompleted)
         })
     }
     
@@ -63,8 +92,8 @@ extension ObservableType where E == (HTTPURLResponse, Data) {
             self.subscribe(onNext: { (urlResponse, data) in
                 switch urlResponse.statusCode {
                 case 200 ... 299:
-                        observer.onNext(true)
-                        observer.onCompleted()
+                    observer.onNext(true)
+                    observer.onCompleted()
                 case 400:
                     observer.onError(BaseError.apiError(ApiError.badRequest((try? JSONDecoder().decode(ServiceResult.self, from: data))?.error ?? ServerError(code: 400, description: String(data: data, encoding: String.Encoding.utf8) ?? ""))))
                 case 500:

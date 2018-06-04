@@ -166,7 +166,9 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     func onSignUp() {
          _ = signUp.useWork(observable: _accountService.signUp(firstName: firstName!, lastName: lastName!, location: location, phone: phone, email: email!, password: password!, image: photoData))
             .subscribe(onNext: { (res) in
-                self.delegate.sendMessage(title: "Success", message: "Some description about successfully signUp. In production I delete this message")
+                if res {
+                    self.delegate.navigate(storyboardName: "Main", type: .modality, animated: true)
+                }
             })
     }
     func onCanExecuteSignUp() -> Bool {

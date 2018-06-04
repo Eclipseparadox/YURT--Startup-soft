@@ -12,6 +12,13 @@ class ServiceInjectorAssembly: Assembly {
     
     lazy var serviceAssembly: ServiceAssembly = self.context.assembly()
     
+    func inject(into service: AppDelegate) {
+        let _:AppDelegate = define(init: service) {
+            $0._accountService = self.serviceAssembly.accountService
+            return $0
+        }
+    }
+    
     // Inject service into presenter
     
     func inject<T>(into service: SttPresenter<T>) {
@@ -49,6 +56,7 @@ class ServiceInjectorAssembly: Assembly {
         let _:AccountService = define(init: service) {
             $0._apiService = self.serviceAssembly.apiService
             $0._notificatonError = self.serviceAssembly.notificationError
+            $0._unitOfWork = self.serviceAssembly.unitOfWork
             return $0
         }
     }

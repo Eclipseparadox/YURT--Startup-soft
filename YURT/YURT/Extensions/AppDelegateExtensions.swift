@@ -12,15 +12,27 @@ import SDWebImage
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
-
+import RealmSwift
+import Realm
 
 extension AppDelegate {
     func configureStartOption()  {
         KeychainSwift().synchronizable = false
         var storyboardName = "Login"
-        //if KeychainSwift().get(Constants.tokenKey) != nil {
-           storyboardName = "Main"
-        //}
+        if KeychainSwift().get(Constants.tokenKey) != nil {
+            do {
+                let realm = try Realm()
+                if let auth = realm.objects(RealmAuth.self).last {
+                    let minutes = auth.dateCreated.differenceInMinutes()
+                    if minutes < 60 && minutes > -60 {
+                        storyboardName = "Main"
+                    }
+                }
+            }
+            catch {
+                print (error)
+            }
+        }
         
         let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)
         let viewContrl = stroyboard.instantiateViewController(withIdentifier: "start")

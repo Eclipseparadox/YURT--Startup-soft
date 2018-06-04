@@ -27,9 +27,12 @@ class GlobalObserver {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var _accountService: IAccountService!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        ServiceInjectorAssembly.instance().inject(into: self)
         self.useAppCenter()
+        self.clearKeychainIfWillUnistall()
         self.configureStartOption()
         self.configureCacheOptions()
         return true

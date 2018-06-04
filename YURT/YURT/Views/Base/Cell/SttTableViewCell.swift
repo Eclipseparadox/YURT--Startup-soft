@@ -11,7 +11,6 @@ import UIKit
 
 class SttTableViewCell<T: ViewInjector>: UITableViewCell, Viewable {
     
-    
     var dataContext: T!
     
     func sendError(error: BaseError) { }
@@ -23,6 +22,9 @@ class SttTableViewCell<T: ViewInjector>: UITableViewCell, Viewable {
         fatalError(Constants.noImplementException)
     }
     func navigate<TParametr, TResult>(to: String, withParametr: TParametr, callback: @escaping (TResult) -> Void) {
+        fatalError(Constants.noImplementException)
+    }
+    func navigate(storyboardName: String, type: TypeNavigation, animated: Bool) {
         fatalError(Constants.noImplementException)
     }
     

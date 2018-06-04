@@ -84,6 +84,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        style = .lightContent
         cameraPicker = Camera(parent: self, handler: { (image) in
 
             self.imgUser.isHidden = false

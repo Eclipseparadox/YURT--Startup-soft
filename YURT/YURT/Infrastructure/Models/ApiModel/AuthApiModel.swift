@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct AuthApiModel: Decodable {
+struct AuthApiModel: Decodable, RealmCodable {
+   
+    typealias TTarget = RealmAuth
+    
     let access_token: String
     let token_type: String
     let id: String
@@ -18,4 +21,16 @@ struct AuthApiModel: Decodable {
     let email: String
     let imagePreview: String?
     let imageOrigin: String?
+    
+    func serialize() -> RealmAuth {
+        return RealmAuth(value: ["id": id,
+                                 "access_token": access_token,
+                                 "token_type": token_type,
+                                 "firstName": firstName,
+                                 "lastName": lastName,
+                                 "roles": roles,
+                                 "email": email,
+                                 "imagePreview": imagePreview,
+                                 "imageOrigin": imageOrigin])
+    }
 }

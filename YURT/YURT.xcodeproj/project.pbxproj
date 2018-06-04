@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		226B5245553274D2D79FCA3F /* Pods_YURT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1086D99CFBD13CE2194C4BF3 /* Pods_YURT.framework */; };
+		7DD62D4420C517B000F33794 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD62D4320C517B000F33794 /* ArrayExt.swift */; };
+		7DD62D4620C517F800F33794 /* CodableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD62D4520C517F800F33794 /* CodableExt.swift */; };
+		7DD62D4920C5184C00F33794 /* RepositoryTypeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD62D4820C5184C00F33794 /* RepositoryTypeExt.swift */; };
+		7DD62D4B20C51C0100F33794 /* RealmAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD62D4A20C51C0100F33794 /* RealmAuth.swift */; };
 		840427E420B2E73D00C94765 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840427E320B2E73D00C94765 /* UIConstants.swift */; };
 		840427EB20B2E7A900C94765 /* BaseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840427EA20B2E7A900C94765 /* BaseConverter.swift */; };
 		840427ED20B2E7C500C94765 /* SttCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840427EC20B2E7C500C94765 /* SttCommand.swift */; };
@@ -96,6 +100,10 @@
 		038E26E30F23B569F13D500E /* Pods-YURT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YURT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YURT/Pods-YURT.debug.xcconfig"; sourceTree = "<group>"; };
 		1086D99CFBD13CE2194C4BF3 /* Pods_YURT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YURT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4B0D72075918C1D3769FAA /* Pods-YURT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YURT.release.xcconfig"; path = "Pods/Target Support Files/Pods-YURT/Pods-YURT.release.xcconfig"; sourceTree = "<group>"; };
+		7DD62D4320C517B000F33794 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
+		7DD62D4520C517F800F33794 /* CodableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExt.swift; sourceTree = "<group>"; };
+		7DD62D4820C5184C00F33794 /* RepositoryTypeExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTypeExt.swift; sourceTree = "<group>"; };
+		7DD62D4A20C51C0100F33794 /* RealmAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAuth.swift; sourceTree = "<group>"; };
 		840427E320B2E73D00C94765 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		840427EA20B2E7A900C94765 /* BaseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConverter.swift; sourceTree = "<group>"; };
 		840427EC20B2E7C500C94765 /* SttCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttCommand.swift; sourceTree = "<group>"; };
@@ -127,9 +135,9 @@
 		842E1EB420AC55CD003D2CDA /* ServiceInjectorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInjectorAssembly.swift; sourceTree = "<group>"; };
 		842E1EB720AC56AC003D2CDA /* BaseRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRealm.swift; sourceTree = "<group>"; };
 		842E1EB920AC5785003D2CDA /* ErrorModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModels.swift; sourceTree = "<group>"; };
-		842E1EBF20AD6EB1003D2CDA /* InputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputBox.swift; path = YURT/Views/TempateView/InputBox/InputBox.swift; sourceTree = SOURCE_ROOT; };
-		842E1EC020AD6EB1003D2CDA /* InputBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputBox.xib; path = YURT/Views/TempateView/InputBox/InputBox.xib; sourceTree = SOURCE_ROOT; };
-		842E1EC320AD6EBD003D2CDA /* SttTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SttTemplate.swift; path = YURT/Views/TempateView/SttTemplate.swift; sourceTree = SOURCE_ROOT; };
+		842E1EBF20AD6EB1003D2CDA /* InputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputBox.swift; path = "YURT/Views/New Group/InputBox.swift"; sourceTree = SOURCE_ROOT; };
+		842E1EC020AD6EB1003D2CDA /* InputBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputBox.xib; path = "YURT/Views/New Group/InputBox.xib"; sourceTree = SOURCE_ROOT; };
+		842E1EC320AD6EBD003D2CDA /* SttTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SttTemplate.swift; path = "YURT/Views/New Group/SttTemplate.swift"; sourceTree = SOURCE_ROOT; };
 		842E1EC620AD6FBC003D2CDA /* SttTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttTextView.swift; sourceTree = "<group>"; };
 		842E1EC820AD7138003D2CDA /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		842E1ECA20AD716F003D2CDA /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
@@ -201,6 +209,17 @@
 				6D4B0D72075918C1D3769FAA /* Pods-YURT.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DD62D4C20C5229900F33794 /* TemplateView */ = {
+			isa = PBXGroup;
+			children = (
+				842E1EBF20AD6EB1003D2CDA /* InputBox.swift */,
+				842E1EC020AD6EB1003D2CDA /* InputBox.xib */,
+				842E1EC320AD6EBD003D2CDA /* SttTemplate.swift */,
+			);
+			name = TemplateView;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		840427E720B2E77000C94765 /* Converters */ = {
@@ -342,26 +361,9 @@
 			isa = PBXGroup;
 			children = (
 				842E1EB720AC56AC003D2CDA /* BaseRealm.swift */,
+				7DD62D4A20C51C0100F33794 /* RealmAuth.swift */,
 			);
 			path = RealmModels;
-			sourceTree = "<group>";
-		};
-		842E1EBD20AD6E81003D2CDA /* TemplateView */ = {
-			isa = PBXGroup;
-			children = (
-				842E1EC320AD6EBD003D2CDA /* SttTemplate.swift */,
-				842E1EBE20AD6E8E003D2CDA /* InputBox */,
-			);
-			path = TemplateView;
-			sourceTree = "<group>";
-		};
-		842E1EBE20AD6E8E003D2CDA /* InputBox */ = {
-			isa = PBXGroup;
-			children = (
-				842E1EBF20AD6EB1003D2CDA /* InputBox.swift */,
-				842E1EC020AD6EB1003D2CDA /* InputBox.xib */,
-			);
-			path = InputBox;
 			sourceTree = "<group>";
 		};
 		842E1EC520AD6FA9003D2CDA /* UIElement */ = {
@@ -474,9 +476,9 @@
 		846F9944209B086A00C61AE2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7DD62D4C20C5229900F33794 /* TemplateView */,
 				842239F520BEE57D0028FDAA /* Cell */,
 				846F994A209B08F200C61AE2 /* Base */,
-				842E1EBD20AD6E81003D2CDA /* TemplateView */,
 				846F9949209B08D300C61AE2 /* ViewControllers */,
 				846F9948209B08C100C61AE2 /* Storyboards */,
 			);
@@ -586,6 +588,9 @@
 				840427F020B2E85200C94765 /* DialogAlert.swift */,
 				84C7FBF320B444490053C93A /* UIImage.swift */,
 				84C7FBFC20B54F9A0053C93A /* SttComandExtensions.swift */,
+				7DD62D4320C517B000F33794 /* ArrayExt.swift */,
+				7DD62D4520C517F800F33794 /* CodableExt.swift */,
+				7DD62D4820C5184C00F33794 /* RepositoryTypeExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -821,8 +826,11 @@
 				842E1EBA20AC5785003D2CDA /* ErrorModels.swift in Sources */,
 				846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */,
 				84C7FBF620B444760053C93A /* Camera.swift in Sources */,
+				7DD62D4420C517B000F33794 /* ArrayExt.swift in Sources */,
 				842239FC20BEE5E20028FDAA /* SttCollectionViewCell.swift in Sources */,
 				842239E920BEA1C50028FDAA /* DocumentEntityPresenter.swift in Sources */,
+				7DD62D4620C517F800F33794 /* CodableExt.swift in Sources */,
+				7DD62D4920C5184C00F33794 /* RepositoryTypeExt.swift in Sources */,
 				84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */,
 				84484F54209B05D4006BBD11 /* AppDelegate.swift in Sources */,
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
@@ -846,6 +854,7 @@
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,
 				8457844420A5B307001F3509 /* Repository.swift in Sources */,
 				842239E520BE93CF0028FDAA /* DocumentsViewController.swift in Sources */,
+				7DD62D4B20C51C0100F33794 /* RealmAuth.swift in Sources */,
 				842239F920BEE5C90028FDAA /* NoDocumentEntityCell.swift in Sources */,
 				840427ED20B2E7C500C94765 /* SttCommand.swift in Sources */,
 			);
@@ -993,14 +1002,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6T2CR8Y629;
+				DEVELOPMENT_TEAM = D9L33B2S23;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ss.YURT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.standret.YURT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1013,14 +1022,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6T2CR8Y629;
+				DEVELOPMENT_TEAM = D9L33B2S23;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ss.YURT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.standret.YURT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

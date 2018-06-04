@@ -21,7 +21,9 @@ class SttTCollectionReusableView<T: ViewInjector>: UICollectionReusableView, Vie
     func close(parametr: Any) {
         fatalError(Constants.noImplementException)
     }
-    
+    func navigate(storyboardName: String, type: TypeNavigation, animated: Bool) {
+        fatalError(Constants.noImplementException)
+    }
     func navigate<TParametr, TResult>(to: String, withParametr: TParametr, callback: @escaping (TResult) -> Void) {
         fatalError(Constants.noImplementException)
     }

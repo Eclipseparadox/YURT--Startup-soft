@@ -11,12 +11,15 @@ import RxRealm
 import RxSwift
 
 protocol IUnitOfWork {
-   
+    var auth: Repository<AuthApiModel, RealmAuth> { get }
 }
 
 
 
 class UnitOfWork: IUnitOfWork {
-    func ss() {
-    }
+    
+    private lazy var _auth = Repository<AuthApiModel, RealmAuth>  (singleton: true)
+
+    
+    var auth: Repository<AuthApiModel, RealmAuth> { return _auth }
 }
