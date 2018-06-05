@@ -19,7 +19,7 @@ class NoDocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, Docu
         layer.borderColor = UIColor(named: "border")!.cgColor
         layer.borderWidth = 1
         
-        lblType.text = DocumentFactories.getTitle(type: presenter.documentType)
+        lblType.text = presenter.documentType.rawValue
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick(_:))))
     }

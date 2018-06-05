@@ -57,13 +57,12 @@ class AccountService: IAccountService {
     }
     func signIn(email: String, password: String)  -> Observable<(Bool, String)> {
         return Observable<(Bool, String)>.create({ (observer) -> Disposable in
-            self._notificatonError.useError(observable: self._apiService.signIn(email: email, password: password), ignoreBadRequest: true)
-                .flatMap({ model -> Completable in
+            self._notificatonError.useError(observable:
+                self._apiService.signIn(email: email, password: password), ignoreBadRequest: true)
+                .flatMap({ model -> Observable<Bool> in
                     KeychainSwift().set(model.access_token, forKey: Constants.tokenKey)
-                    return self._unitOfWork.auth.saveOne(model: model)
+                    return self._unitOfWork.auth.saveOne(model: model).toObservable()
                 })
-                .asCompletable()
-                .toObservable()
                 .subscribe(onNext: { (authModel) in
                     observer.onNext((true, ""))
                 }, onError: { (error) in

@@ -19,7 +19,8 @@ protocol IApiService {
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
     
-    func addDocument(model: AddDocumentApiModel) -> Observable<Bool>
+    func getDocument() -> Observable<[BorrowerDocumentApiModel]>
+    func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel>
 }
 
 class ApiService: IApiService {
@@ -62,8 +63,13 @@ class ApiService: IApiService {
             .getResult(ofType: AuthApiModel.self)
     }
     
-    func addDocument(model: AddDocumentApiModel) -> Observable<Bool> {
+    func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel> {
         return _httpService.post(controller: .mobileDocument("add"), dataAny: model.getDictionary(), insertToken: true)
-            .getResult()
+            .getResult(ofType: BorrowerDocumentApiModel.self)
+    }
+    
+    func getDocument() -> Observable<[BorrowerDocumentApiModel]> {
+        return _httpService.get(controller: .mobileDocument(""), insertToken: true)
+            .getResult(ofType: [BorrowerDocumentApiModel].self)
     }
 }

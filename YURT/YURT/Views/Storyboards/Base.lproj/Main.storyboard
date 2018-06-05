@@ -38,18 +38,48 @@
         <!--Profile-->
         <scene sceneID="oC1-dM-uNo">
             <objects>
-                <viewController id="dH6-hc-T07" sceneMemberID="viewController">
+                <viewController id="dH6-hc-T07" customClass="ProfileViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Inl-MX-0Lb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8r-qF-Qq3">
+                                <rect key="frame" x="88" y="273" width="198" height="121"/>
+                                <color key="backgroundColor" name="error"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="LhR-yG-nRf"/>
+                                    <constraint firstAttribute="width" constant="198" id="fkN-Fr-jHd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-b9-YmS">
+                                <rect key="frame" x="172" y="588" width="30" height="30"/>
+                                <state key="normal" title="exit"/>
+                                <connections>
+                                    <action selector="exit:" destination="dH6-hc-T07" eventType="touchUpInside" id="Sxz-DU-rYH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WW5-b9-YmS" firstAttribute="leading" secondItem="7T5-dX-7mO" secondAttribute="leading" constant="172" id="Ddj-Lg-XXJ"/>
+                            <constraint firstItem="7T5-dX-7mO" firstAttribute="trailing" secondItem="WW5-b9-YmS" secondAttribute="trailing" constant="173" id="FXh-xb-GYi"/>
+                            <constraint firstItem="WW5-b9-YmS" firstAttribute="centerX" secondItem="Inl-MX-0Lb" secondAttribute="centerX" id="FfW-EF-RXZ"/>
+                            <constraint firstItem="z8r-qF-Qq3" firstAttribute="centerX" secondItem="Inl-MX-0Lb" secondAttribute="centerX" id="Kgv-UX-mfU"/>
+                            <constraint firstItem="WW5-b9-YmS" firstAttribute="bottom" secondItem="7T5-dX-7mO" secondAttribute="bottom" id="dsD-ZC-V89"/>
+                            <constraint firstItem="z8r-qF-Qq3" firstAttribute="centerY" secondItem="Inl-MX-0Lb" secondAttribute="centerY" id="kZF-fV-7ai"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7T5-dX-7mO"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="nIq-ET-WwX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmi-XN-bjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-82" y="-8"/>
+            <point key="canvasLocation" x="-82.400000000000006" y="-8.5457271364317844"/>
         </scene>
         <!--Show Photo View Controller-->
         <scene sceneID="CEC-VZ-rii">

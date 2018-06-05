@@ -27,7 +27,8 @@ class DocumentService: DocumentServiceType {
     func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<Bool> {
         let _type = type.isFinancies() ? DocumentTypeApiModel.financial : DocumentTypeApiModel.personal
         return _notificatonError.useError(observable: _apiService.uploadImage(image: image, progresHandler: progresHandler)
-            .flatMap( { self._apiService.addDocument(model: AddDocumentApiModel(id: nil, type: _type, image: $0)) } ))
+            .flatMap( { self._apiService.addDocument(model: AddDocumentApiModel(id: nil, type: _type, docType: type, image: $0)) } )).map({ m in print(m)
+                return true })
         
     }
     

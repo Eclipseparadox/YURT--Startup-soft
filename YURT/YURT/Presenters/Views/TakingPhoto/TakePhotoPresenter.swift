@@ -19,6 +19,6 @@ class TakePhotoPresenter: SttPresenter<TakePhotoDelegate> {
     override func prepare(parametr: Any?) {
         let param = parametr as! DocumentType
         
-        topMessage = "Align your \(DocumentFactories.getTitle(type: param)) in the area below and press the capture button"
+        topMessage = "Align your \(param.rawValue) in the area below and press the capture button"
     }
 }

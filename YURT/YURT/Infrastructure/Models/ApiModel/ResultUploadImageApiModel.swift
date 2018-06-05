@@ -8,13 +8,34 @@
 
 import Foundation
 
-struct ResultUploadImageApiModel: Decodable, DictionaryCodable {
+struct ResultUploadImageApiModel: Decodable, RealmCodable, DictionaryCodable {
+    
+    typealias TTarget = RealmUploadImage
+    
     let origin: ImageDataApiModel
     let preview: ImageDataApiModel
+    
+    func serialize() -> RealmUploadImage {
+        return RealmUploadImage(value: [
+            "origin": origin,
+            "preview": preview
+            ])
+    }
 }
 
-struct ImageDataApiModel: Decodable, DictionaryCodable {
+struct ImageDataApiModel: Decodable, RealmCodable, DictionaryCodable {
+    
+    typealias TTarget = RealmImageData
+    
     let path: String
     let weight: Int
     let height: Int
+    
+    func serialize() -> RealmImageData {
+        return RealmImageData(value: [
+            "path": path,
+            "weight": weight,
+            "height": height
+            ])
+    }
 }

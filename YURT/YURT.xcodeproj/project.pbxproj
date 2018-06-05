@@ -68,7 +68,6 @@
 		8462233C20BFE1F00059A83A /* DocumentEntityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462233A20BFE1F00059A83A /* DocumentEntityCell.swift */; };
 		8462233D20BFE1F00059A83A /* DocumentEntityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8462233B20BFE1F00059A83A /* DocumentEntityCell.xib */; };
 		8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462233E20BFE3D50059A83A /* DocumentEntitySource.swift */; };
-		8462234120BFED760059A83A /* DocumentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234020BFED760059A83A /* DocumentFactories.swift */; };
 		8462234320C02DE20059A83A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234220C02DE20059A83A /* Image.swift */; };
 		8462234520C02E690059A83A /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234420C02E690059A83A /* DateConverter.swift */; };
 		8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234620C133D00059A83A /* CountProgressConverter.swift */; };
@@ -84,11 +83,14 @@
 		848C85DF20A042B100026A5E /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C85DE20A042B100026A5E /* ObservableType.swift */; };
 		848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C85E020A0480700026A5E /* AppDelegateExtensions.swift */; };
 		848EC028209B4F9C00A39156 /* DateDecodeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EC027209B4F9C00A39156 /* DateDecodeStrategy.swift */; };
+		8493542720C6C03800C7EFF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493542620C6C03800C7EFF3 /* ProfileViewController.swift */; };
+		8493542C20C6C6AC00C7EFF3 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493542B20C6C6AC00C7EFF3 /* ProfilePresenter.swift */; };
 		8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872220ADB0DE004F4B06 /* Roboto-Bold.ttf */; };
 		8497872820ADB0E0004F4B06 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872320ADB0DE004F4B06 /* Roboto-Medium.ttf */; };
 		8497872920ADB0E0004F4B06 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872420ADB0DE004F4B06 /* Roboto-Regular.ttf */; };
 		8497872A20ADB0E0004F4B06 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872520ADB0DF004F4B06 /* Roboto-Light.ttf */; };
 		8497872B20ADB0E0004F4B06 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872620ADB0DF004F4B06 /* Roboto-Black.ttf */; };
+		849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */; };
 		84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */; };
 		84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40AD220AD7F570050CA65 /* StartPageViewController.swift */; };
 		84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBEF20B316EF0053C93A /* ExistModel.swift */; };
@@ -167,7 +169,6 @@
 		8462233A20BFE1F00059A83A /* DocumentEntityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEntityCell.swift; sourceTree = "<group>"; };
 		8462233B20BFE1F00059A83A /* DocumentEntityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentEntityCell.xib; sourceTree = "<group>"; };
 		8462233E20BFE3D50059A83A /* DocumentEntitySource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEntitySource.swift; sourceTree = "<group>"; };
-		8462234020BFED760059A83A /* DocumentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFactories.swift; sourceTree = "<group>"; };
 		8462234220C02DE20059A83A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8462234420C02E690059A83A /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		8462234620C133D00059A83A /* CountProgressConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountProgressConverter.swift; sourceTree = "<group>"; };
@@ -183,11 +184,14 @@
 		848C85DE20A042B100026A5E /* ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
 		848C85E020A0480700026A5E /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		848EC027209B4F9C00A39156 /* DateDecodeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodeStrategy.swift; sourceTree = "<group>"; };
+		8493542620C6C03800C7EFF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8493542B20C6C6AC00C7EFF3 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		8497872220ADB0DE004F4B06 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		8497872320ADB0DE004F4B06 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8497872420ADB0DE004F4B06 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8497872520ADB0DF004F4B06 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		8497872620ADB0DF004F4B06 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBorrowerDocument.swift; sourceTree = "<group>"; };
 		84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPagePresenter.swift; sourceTree = "<group>"; };
 		84C40AD220AD7F570050CA65 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		84C7FBEF20B316EF0053C93A /* ExistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistModel.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 		840427F720B2E95F00C94765 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8493542A20C6C69A00C7EFF3 /* Profile */,
 				842239EC20BEDA8A0028FDAA /* Documents */,
 				8407C09F20B8098400045EFB /* TakingPhoto */,
 				84C40ACD20AD7ECD0050CA65 /* Login */,
@@ -374,6 +379,7 @@
 			children = (
 				842E1EB720AC56AC003D2CDA /* BaseRealm.swift */,
 				7DD62D4A20C51C0100F33794 /* RealmAuth.swift */,
+				849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */,
 			);
 			path = RealmModels;
 			sourceTree = "<group>";
@@ -469,7 +475,6 @@
 				8422055D20A5AA05007B03DE /* DAL */,
 				846F9958209B0AB900C61AE2 /* Constants.swift */,
 				84484F68209B39C5006BBD11 /* Models */,
-				8462234020BFED760059A83A /* DocumentFactories.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 		846F9949209B08D300C61AE2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8493542520C6C02700C7EFF3 /* Profile */,
 				842239E320BE93B60028FDAA /* Documents */,
 				8407C09C20B8096600045EFB /* TakingPhoto */,
 				84C40AD020AD7F370050CA65 /* Login */,
@@ -606,6 +612,22 @@
 				7DD62D4820C5184C00F33794 /* RepositoryTypeExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8493542520C6C02700C7EFF3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8493542620C6C03800C7EFF3 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		8493542A20C6C69A00C7EFF3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8493542B20C6C6AC00C7EFF3 /* ProfilePresenter.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		8497871720ADB098004F4B06 /* Roboto */ = {
@@ -822,6 +844,7 @@
 				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,
 				842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */,
+				8493542C20C6C6AC00C7EFF3 /* ProfilePresenter.swift in Sources */,
 				844EC24620C54A79006CF9EF /* ShowPhotoPresenter.swift in Sources */,
 				846F994C209B093600C61AE2 /* SttViewController.swift in Sources */,
 				848C85DF20A042B100026A5E /* ObservableType.swift in Sources */,
@@ -836,8 +859,10 @@
 				842E1EC720AD6FBC003D2CDA /* SttTextView.swift in Sources */,
 				8462234320C02DE20059A83A /* Image.swift in Sources */,
 				84484F6D209B3FA0006BBD11 /* ApiService.swift in Sources */,
+				8493542720C6C03800C7EFF3 /* ProfileViewController.swift in Sources */,
 				84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */,
 				84223A0120BEEC0A0028FDAA /* SttCollectionReusableView.swift in Sources */,
+				849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */,
 				8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */,
 				844EC24A20C58A16006CF9EF /* AddDocumentApiModel.swift in Sources */,
 				842E1EB820AC56AC003D2CDA /* BaseRealm.swift in Sources */,
@@ -869,7 +894,6 @@
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
 				8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */,
-				8462234120BFED760059A83A /* DocumentFactories.swift in Sources */,
 				844EC24820C58897006CF9EF /* DocumentService.swift in Sources */,
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,
 				8457844420A5B307001F3509 /* Repository.swift in Sources */,

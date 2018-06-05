@@ -18,10 +18,11 @@ extension PrimitiveSequence {
     }
     func toObservable() -> Observable<Bool> {
         return Observable<Bool>.create({ (observer) -> Disposable in
-            self.asObservable().subscribe(onCompleted: {
-                observer.onNext(true)
-                observer.onCompleted()
-            })
+            self.asObservable()
+                .subscribe(onError: { observer.onError($0) }, onCompleted: {
+                    observer.onNext(true)
+                    observer.onCompleted()
+                })
         })
     }
     func inBackground() -> PrimitiveSequence<Trait, Element> {

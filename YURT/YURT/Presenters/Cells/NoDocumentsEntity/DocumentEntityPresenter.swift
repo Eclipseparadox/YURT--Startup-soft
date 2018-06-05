@@ -10,9 +10,17 @@ import Foundation
 import UIKit
 import RxSwift
 
-enum DocumentType {
-    case selfie, signature, dlicense, passport, SIN
-    case cheque, tax, CPS, bank, uBill
+enum DocumentType: String, Decodable, DictionaryCodable {
+    case selfie = "Selfie"
+    case signature = "Your signature"
+    case dlicense = "Driver's license"
+    case passport = "Passport"
+    case SIN = "Social Insurance Card (SIN)"
+    case cheque = "Void cheque"
+    case tax = "Tax assesments (2 years)"
+    case CPS = "Current pay stub"
+    case bank = "Bank assesments"
+    case uBill = "Utility bill"
     
     func isFinancies() -> Bool {
         return self == .cheque || self == .tax || self == .CPS || self == .bank || self == .uBill
@@ -48,7 +56,7 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
     convenience init(type: DocumentType, delegate: DocumentContainerDelegate, observer: PublishSubject<(Bool, DocumentType)>) {
         
         self.init()
-        self.documentsName = DocumentFactories.getTitle(type: type)
+        self.documentsName = type.rawValue
         self.type = .noDocument
         self.itemDelegate = delegate
         self.documentType = type

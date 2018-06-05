@@ -34,7 +34,7 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
     
     func reloadData(type: DocumentType, image: Image) {
         imgView.image = image.image?.fixOrientation()
-        lblTitle.text = DocumentFactories.getTitle(type: type)
+        lblTitle.text = type.rawValue
     }
 
     /*
