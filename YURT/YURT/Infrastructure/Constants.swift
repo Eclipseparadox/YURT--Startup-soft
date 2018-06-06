@@ -73,7 +73,7 @@ class Constants {
     static let passwordPattern = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,40}$"
     static let firstNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
     static let lastNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
-    static let phoneNumber = "^(\\+?[0-9 ()-]){9,25}$"
+    static let phoneNumber = "^(\\+?[0-9 ()-]){10,25}$"
     
     static let minPassword = 6
     static let maxPassword = 40
@@ -83,6 +83,6 @@ class Constants {
     static let maxLastName = 60
     static let minLocation = 1
     static let maxLocation = 150
-    static let minPhone = 9
+    static let minPhone = 10
     static let maxPhone = 25
 }

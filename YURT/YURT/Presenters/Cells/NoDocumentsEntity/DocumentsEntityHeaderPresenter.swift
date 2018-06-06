@@ -16,7 +16,11 @@ protocol DocumentsEntityHeaderDelegate {
 class DocumentsEntityHeaderPresenter: SttPresenter<DocumentsEntityHeaderDelegate> {
     
     var title: String!
-    var uploadedsCount: Int = 0
+    var uploadedsCount: Int = 0 {
+        didSet {
+            self.delegate?.reloadProgress()
+        }
+    }
     var isError: Bool?
     var totalCountDocument: Int!
     
@@ -32,7 +36,6 @@ class DocumentsEntityHeaderPresenter: SttPresenter<DocumentsEntityHeaderDelegate
                 else if _self.uploadedsCount > 0 {
                     _self.uploadedsCount -= 1
                 }
-                _self.delegate.reloadProgress()
             }
         })
     }

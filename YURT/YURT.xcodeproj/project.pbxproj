@@ -90,6 +90,8 @@
 		8497872920ADB0E0004F4B06 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872420ADB0DE004F4B06 /* Roboto-Regular.ttf */; };
 		8497872A20ADB0E0004F4B06 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872520ADB0DF004F4B06 /* Roboto-Light.ttf */; };
 		8497872B20ADB0E0004F4B06 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872620ADB0DF004F4B06 /* Roboto-Black.ttf */; };
+		849D3F1020C80223004BB086 /* DeleteDocumentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */; };
+		849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3F1120C81F01004BB086 /* UIImageView.swift */; };
 		849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */; };
 		84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */; };
 		84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40AD220AD7F570050CA65 /* StartPageViewController.swift */; };
@@ -191,6 +193,8 @@
 		8497872420ADB0DE004F4B06 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8497872520ADB0DF004F4B06 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		8497872620ADB0DF004F4B06 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDocumentApiModel.swift; sourceTree = "<group>"; };
+		849D3F1120C81F01004BB086 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBorrowerDocument.swift; sourceTree = "<group>"; };
 		84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPagePresenter.swift; sourceTree = "<group>"; };
 		84C40AD220AD7F570050CA65 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
@@ -610,6 +614,7 @@
 				7DD62D4320C517B000F33794 /* ArrayExt.swift */,
 				7DD62D4520C517F800F33794 /* CodableExt.swift */,
 				7DD62D4820C5184C00F33794 /* RepositoryTypeExt.swift */,
+				849D3F1120C81F01004BB086 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -642,6 +647,15 @@
 			path = Roboto;
 			sourceTree = "<group>";
 		};
+		849D3F0E20C80187004BB086 /* SendModel */ = {
+			isa = PBXGroup;
+			children = (
+				844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */,
+				849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */,
+			);
+			path = SendModel;
+			sourceTree = "<group>";
+		};
 		84C40ACD20AD7ECD0050CA65 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -663,11 +677,11 @@
 		84C7FBF720B459160053C93A /* ApiModel */ = {
 			isa = PBXGroup;
 			children = (
+				849D3F0E20C80187004BB086 /* SendModel */,
 				84C7FBEF20B316EF0053C93A /* ExistModel.swift */,
 				84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */,
 				84C7FBFA20B45E2C0053C93A /* AccountModel.swift */,
 				84C7FBFE20B55E570053C93A /* AuthApiModel.swift */,
-				844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */,
 				844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */,
 			);
 			path = ApiModel;
@@ -877,6 +891,7 @@
 				7DD62D4920C5184C00F33794 /* RepositoryTypeExt.swift in Sources */,
 				84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */,
 				84484F54209B05D4006BBD11 /* AppDelegate.swift in Sources */,
+				849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */,
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
 				848EC028209B4F9C00A39156 /* DateDecodeStrategy.swift in Sources */,
 				842E1EB120AC5584003D2CDA /* UnitOfWork.swift in Sources */,
@@ -890,6 +905,7 @@
 				84C7FBF220B42DD50053C93A /* AccountService.swift in Sources */,
 				848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */,
 				8407C09E20B8097E00045EFB /* TakePhotoViewController.swift in Sources */,
+				849D3F1020C80223004BB086 /* DeleteDocumentApiModel.swift in Sources */,
 				8462233C20BFE1F00059A83A /* DocumentEntityCell.swift in Sources */,
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,

@@ -17,8 +17,8 @@ struct ResultUploadImageApiModel: Decodable, RealmCodable, DictionaryCodable {
     
     func serialize() -> RealmUploadImage {
         return RealmUploadImage(value: [
-            "origin": origin,
-            "preview": preview
+            "origin": origin.serialize(),
+            "preview": preview.serialize()
             ])
     }
 }

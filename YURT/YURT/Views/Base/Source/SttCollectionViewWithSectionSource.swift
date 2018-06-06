@@ -15,9 +15,9 @@ class SttCollectionViewWithSectionSource<TCell: ViewInjector, TSection: ViewInje
     var _cellIdentifier = [String]()
     var _sectionIdentifier: String
     
-    var _collection: ([[TCell]], [TSection])! {
+    var _collection: ([[TCell]], [TSection])? {
         didSet {
-            //_collectionView.reloadData()
+            _collectionView.reloadData()
         }
     }
     
@@ -46,24 +46,24 @@ class SttCollectionViewWithSectionSource<TCell: ViewInjector, TSection: ViewInje
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _collection.0[section].count
+        return _collection?.0[section].count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: _cellIdentifier.first!, for: indexPath) as! SttbCollectionViewCell
-        cell.dataContext = _collection.0[indexPath.section][indexPath.row]
+        cell.dataContext = _collection?.0[indexPath.section][indexPath.row]
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let count = _collection.0.count
+        let count = _collection?.0.count ?? 0
         print(count)
         return count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: _sectionIdentifier, for: indexPath) as! SttTCollectionReusableView<TSection>
-        view.dataContext = _collection.1[indexPath.section]
+        view.dataContext = _collection?.1[indexPath.section]
         view.prepareBind()
         return view
     }

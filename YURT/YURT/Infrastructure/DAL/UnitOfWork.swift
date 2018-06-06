@@ -12,14 +12,16 @@ import RxSwift
 
 protocol IUnitOfWork {
     var auth: Repository<AuthApiModel, RealmAuth> { get }
+    var borrowerDocument: Repository<BorrowerDocumentApiModel, RealmBorrowerDocument> { get }
 }
 
 
 
 class UnitOfWork: IUnitOfWork {
     
-    private lazy var _auth = Repository<AuthApiModel, RealmAuth>  (singleton: true)
+    private lazy var _auth = Repository<AuthApiModel, RealmAuth>(singleton: true)
+    private lazy var _borrowerDocument = Repository<BorrowerDocumentApiModel, RealmBorrowerDocument>(singleton: false)
 
-    
     var auth: Repository<AuthApiModel, RealmAuth> { return _auth }
+    var borrowerDocument: Repository<BorrowerDocumentApiModel, RealmBorrowerDocument> { return _borrowerDocument }
 }

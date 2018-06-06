@@ -27,4 +27,7 @@ class NoDocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, Docu
     @objc func onClick(_ sender: Any) {
         presenter.clickOnItem()
     }
+    
+    func donwloadImageComplete(isSuccess: Bool) { }
+    func changeProgress(label: String) { }
 }

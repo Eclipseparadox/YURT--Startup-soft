@@ -8,11 +8,22 @@
 
 import UIKit
 
-class DocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, DocumentEntityDelegate {
+ class DocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, DocumentEntityDelegate {
 
+    @IBOutlet weak var viewLoading: UIView!
+    @IBOutlet weak var lblPercent: UILabel!
     @IBOutlet weak var imgDocument: UIImageView!
     @IBOutlet weak var lblDocType: UILabel!
     @IBOutlet weak var lblDocDate: UILabel!
+    
+    func donwloadImageComplete(isSuccess: Bool) {
+        viewLoading.isHidden = true
+    }
+    func changeProgress(label: String) {
+        viewLoading.isHidden = false
+        lblPercent.text = label
+    }
+    
     
     override func prepareBind() {
         layer.cornerRadius = 4
@@ -21,15 +32,10 @@ class DocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, Docume
         layer.borderColor = UIColor(named: "border")!.cgColor
         layer.borderWidth = 1
         
-        if let imgData = presenter.image?.data {
-          imgDocument.image = UIImage(data: imgData)
-        }
-        if let image = presenter.image?.image {
-            imgDocument.image = image
-        }
+        imgDocument.loadImage(image: presenter.image!)
         lblDocType.text = presenter.documentsName
         
-        lblDocDate.text = DateConverter().convert(value: presenter.takesDate)
+        lblDocDate.text = presenter.takesDate == nil ? "-" : DateConverter().convert(value: presenter.takesDate!)
         
         isUserInteractionEnabled = true
         imgDocument.isUserInteractionEnabled = true

@@ -18,6 +18,6 @@ class ShowPhotoPresenter: SttPresenter<ShowPhotoDelegate> {
     override func prepare(parametr: Any?) {
         let param = parametr as! (DocumentType, Image)
         
-        delegate.reloadData(type: param.0, image: param.1)
+        delegate!.reloadData(type: param.0, image: param.1)
     }
 }

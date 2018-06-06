@@ -56,18 +56,20 @@ class AccountService: IAccountService {
                                                         .map( { $0.0 } )
     }
     func signIn(email: String, password: String)  -> Observable<(Bool, String)> {
-        return Observable<(Bool, String)>.create({ (observer) -> Disposable in
-            self._notificatonError.useError(observable:
-                self._apiService.signIn(email: email, password: password), ignoreBadRequest: true)
+        return self._notificatonError.useError(observable:
+            Observable<(Bool, String)>.create({ (observer) -> Disposable in
+                self._apiService.signIn(email: email, password: password)
                 .flatMap({ model -> Observable<Bool> in
                     KeychainSwift().set(model.access_token, forKey: Constants.tokenKey)
+                    self._apiService.inserToken(token: model.access_token)
                     return self._unitOfWork.auth.saveOne(model: model).toObservable()
                 })
                 .subscribe(onNext: { (authModel) in
                     observer.onNext((true, ""))
                 }, onError: { (error) in
                     observer.onNext((false, "Email or password is incorrect"))
+                    observer.onError(error)
                 })
-        })
+        }), ignoreBadRequest: true)
     }
 }

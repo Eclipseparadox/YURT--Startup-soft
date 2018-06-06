@@ -21,6 +21,8 @@ protocol IApiService {
     
     func getDocument() -> Observable<[BorrowerDocumentApiModel]>
     func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel>
+    func sendDocuments() -> Observable<Bool>
+    func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool>
 }
 
 class ApiService: IApiService {
@@ -67,9 +69,21 @@ class ApiService: IApiService {
         return _httpService.post(controller: .mobileDocument("add"), dataAny: model.getDictionary(), insertToken: true)
             .getResult(ofType: BorrowerDocumentApiModel.self)
     }
-    
     func getDocument() -> Observable<[BorrowerDocumentApiModel]> {
-        return _httpService.get(controller: .mobileDocument(""), insertToken: true)
-            .getResult(ofType: [BorrowerDocumentApiModel].self)
+        let localDoc = _unitOfWork.borrowerDocument.getMany().map({ $0.map({ $0.deserialize() }) })
+        let apiData = _httpService.get(controller: .mobileDocument(""), insertToken: true)
+                        .getResult(ofType: [BorrowerDocumentApiModel].self)
+                        .saveInDB(saveCallback: _unitOfWork.borrowerDocument.saveMany(models:))
+        
+        
+        return Observable.merge([localDoc, apiData])
+    }
+    func sendDocuments() -> Observable<Bool> {
+        return _httpService.post(controller: .mobileDocument("send"), insertToken: true)
+            .getResult()
+    }
+    func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool> {
+        return _httpService.post(controller: .mobileDocument("delete"), dataAny: model.getDictionary(), insertToken: true)
+            .getResult()
     }
 }

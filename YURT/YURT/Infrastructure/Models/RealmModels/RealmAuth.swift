@@ -12,8 +12,6 @@ class RealmAuth: BaseRealm, RealmDecodable {
     
     typealias TTarget = AuthApiModel
     
-    @objc dynamic var access_token: String = "" // delete this field
-    @objc dynamic var token_type: String = ""
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
     @objc dynamic var roles: String = ""
@@ -22,8 +20,8 @@ class RealmAuth: BaseRealm, RealmDecodable {
     @objc dynamic var imageOrigin: String? = nil
     
     func deserialize() -> AuthApiModel {
-        return AuthApiModel(access_token: access_token,
-                            token_type: token_type,
+        return AuthApiModel(access_token: "",
+                            token_type: "",
                             id: id,
                             firstName: firstName,
                             lastName: lastName,

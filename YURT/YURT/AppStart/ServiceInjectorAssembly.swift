@@ -37,7 +37,14 @@ class ServiceInjectorAssembly: Assembly {
     
     func inject(into service: DocumentEntityPresenter) {
         let _:DocumentEntityPresenter = define(init: service) {
-            $0.documentService = self.serviceAssembly.documentService
+            $0._documentService = self.serviceAssembly.documentService
+            return $0
+        }
+    }
+    
+    func inject(into service: DocumentsPresenter) {
+        let _:DocumentsPresenter = define(init: service) {
+            $0._documentService = self.serviceAssembly.documentService
             return $0
         }
     }

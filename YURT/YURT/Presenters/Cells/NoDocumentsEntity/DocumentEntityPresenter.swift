@@ -21,6 +21,7 @@ enum DocumentType: String, Decodable, DictionaryCodable {
     case CPS = "Current pay stub"
     case bank = "Bank assesments"
     case uBill = "Utility bill"
+    case none = ""
     
     func isFinancies() -> Bool {
         return self == .cheque || self == .tax || self == .CPS || self == .bank || self == .uBill
@@ -32,7 +33,8 @@ enum DocumentItemType {
 }
 
 protocol DocumentEntityDelegate: Viewable {
-    
+    func donwloadImageComplete(isSuccess: Bool)
+    func changeProgress(label: String)
 }
 
 protocol DocumentContainerDelegate: class {
@@ -42,16 +44,17 @@ protocol DocumentContainerDelegate: class {
 
 class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
     
+    var id: String!
     var documentType: DocumentType!
     var documentsName: String!
-    var takesDate: Date!
+    var takesDate: Date?
     var isLoaded: Bool!
     var type: DocumentItemType!
     var image: Image?
     var observer: PublishSubject<(Bool, DocumentType)>!
     weak var itemDelegate: DocumentContainerDelegate!
     
-    var documentService: DocumentServiceType!
+    var _documentService: DocumentServiceType!
     
     convenience init(type: DocumentType, delegate: DocumentContainerDelegate, observer: PublishSubject<(Bool, DocumentType)>) {
         
@@ -65,17 +68,28 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
         ServiceInjectorAssembly.instance().inject(into: self)
     }
     
+    func insertData(data: BorrowerDocumentApiModel) {
+        type = .document
+        documentsName = data.name.rawValue
+        documentType = data.name
+        id = data.id
+        self.image = Image(url: data.image.preview.path)
+
+       // observer.onNext((true, documentType))
+    }
+    
+    var disposeable: Disposable?
     func clickOnItem () {
         if type == DocumentItemType.noDocument {
+            disposeable?.dispose()
             itemDelegate.takePhoto(type: documentType) { [weak self] (image) in
                 self?.type = .document
                 self?.image = Image(image: image)
                 self?.takesDate = Date()
                 self?.observer.onNext((true, self!.documentType))
                 
-                self?.documentService.uploadDocument(type: self!.documentType!, image: (self!.image?.image!)!, progresHandler: { (progress) in
-                    print(progress)
-                }).subscribe()
+                self?.delegate?.changeProgress(label: PercentConverter().convert(value: 0.0))
+                self?.disposeable = self?._documentService.uploadDocument(type: self!.documentType!, image: (self!.image?.image!)!, progresHandler: { self?.delegate?.changeProgress(label: PercentConverter().convert(value: $0)) }).subscribe(onNext:{ self?.delegate?.donwloadImageComplete(isSuccess: $0) })
             }
         }
         else {

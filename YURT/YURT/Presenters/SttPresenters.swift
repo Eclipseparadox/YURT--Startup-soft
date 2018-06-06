@@ -12,8 +12,8 @@ protocol SttPresenterType: class { }
 
 class SttPresenter<TDelegate> : ViewInjector, SttPresenterType {
     
-    private weak var _delegate: Viewable!
-    var delegate: TDelegate { return _delegate as! TDelegate }
+    private weak var _delegate: Viewable?
+    var delegate: TDelegate? { return _delegate as? TDelegate }
     
     weak var _notificationError: INotificationError!
     
@@ -23,7 +23,7 @@ class SttPresenter<TDelegate> : ViewInjector, SttPresenterType {
         self._delegate = delegate
         
         _ = _notificationError.errorObservable.subscribe(onNext: { (err) in
-            self._delegate.sendError(error: err)
+            self._delegate!.sendError(error: err)
         })
         presenterCreating()
     }

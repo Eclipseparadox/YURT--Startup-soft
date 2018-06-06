@@ -167,6 +167,9 @@ class HttpService: IHttpService {
             })
             return Disposables.create();
         })
+            .do(onDispose: {
+                print("on DisposeD")
+            })
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .timeout(180, scheduler: MainScheduler.instance)

@@ -90,8 +90,7 @@ extension UIImage {
             return nil
         }
         
-        let img = UIImage(cgImage: newCGImg)
-        
+        let img = UIImage(cgImage: newCGImg)        
         return img;
     }
     

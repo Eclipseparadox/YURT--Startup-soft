@@ -13,38 +13,35 @@ import RxSwift
 protocol DocumentsDelegate: Viewable {
     func reloadItem(section: Int, row: Int)
     func progressCahnged()
+    func reloadData()
 }
 
 class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDelegate {
     
     var documents: ([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])!
     var totalDocument = 9
-    var currentUploaded = 0
+    var currentUploaded = 0 {
+        didSet {
+            self.delegate!.progressCahnged()
+        }
+    }
     
+    var _documentService: DocumentServiceType!
+
     override func presenterCreating() {
-        
+        ServiceInjectorAssembly.instance().inject(into: self)
+
         let publisher = PublishSubject<(Bool, DocumentType)>()
         
-        documents =  ([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])([], [])
-        documents.0.append([
-            DocumentEntityPresenter(type: .selfie, delegate: self, observer: publisher),
-            DocumentEntityPresenter(type: .signature, delegate: self, observer: publisher),
-            DocumentEntityPresenter(type: .dlicense, delegate: self, observer: publisher),
-            DocumentEntityPresenter(type: .passport, delegate: self, observer: publisher),
-            DocumentEntityPresenter(type: .SIN, delegate: self, observer: publisher)
-            ])
-        documents.0.append([
-            DocumentEntityPresenter(type: .cheque, delegate: self, observer: publisher),
-            DocumentEntityPresenter(type: .tax, delegate: self, observer: publisher),
-            DocumentEntityPresenter(type: .CPS, delegate: self, observer: publisher),
-            DocumentEntityPresenter(type: .bank, delegate: self, observer: publisher)
-            //DocumentEntityPresenter(type: .uBill, delegate: self),
-            ])
-        documents.1.append(DocumentsEntityHeaderPresenter(title: "Personal documents:", total: documents.0[0].count, observable: publisher.asObservable(), isFinanices: false))
-        documents.1.append(DocumentsEntityHeaderPresenter(title: "Financial documents:", total: documents.0[1].count, observable: publisher.asObservable(), isFinanices: true))
+        _ = _documentService.getDocuments(delegate: self, publisher: publisher)
+            .subscribe(onNext: { [weak self] (documents) in
+                self?.documents = documents
+                self?.currentUploaded = documents.1[0].uploadedsCount + documents.1[1].uploadedsCount
+                self?.delegate!.reloadData()
+            })
         
-        delegate.progressCahnged()
-        _ = publisher.subscribe(onNext: { [weak self] (arg) in
+        _ = publisher
+            .subscribe(onNext: { [weak self] (arg) in
             if let _self = self {
                 if arg.0 && _self.currentUploaded < _self.totalDocument {
                     _self.currentUploaded += 1
@@ -57,18 +54,18 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
     }
     
     func takePhoto(type: DocumentType, callback: @escaping (UIImage) -> Void) {
-        delegate.navigate(to: "takePhoto", withParametr: type) { [weak self] (data) in
+        delegate!.navigate(to: "takePhoto", withParametr: type) { [weak self] (data) in
             callback(data as! UIImage)
             if let _self = self {
                 let section = _self.documents.0.index(where: { $0.contains(where: { $0.documentType == type })})
                 let row = _self.documents.0[section!].index(where: { $0.documentType == type })
-                _self.delegate.reloadItem(section: section!, row: row!)
+                _self.delegate!.reloadItem(section: section!, row: row!)
             }
         }
     }
     
     func showPhoto(type: (DocumentType, Image), callback: @escaping (Bool) -> Void) {
-        delegate.navigate(to: "showPhoto", withParametr: type) { (result) in
+        delegate!.navigate(to: "showPhoto", withParametr: type) { (result) in
             callback(result as! Bool)
         }
     }

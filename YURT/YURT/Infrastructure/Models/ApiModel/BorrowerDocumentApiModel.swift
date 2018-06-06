@@ -24,6 +24,7 @@ struct BorrowerDocumentApiModel: Decodable, RealmCodable {
     
     func serialize() -> RealmBorrowerDocument {
         return RealmBorrowerDocument(value: [
+            "id": id,
             "image": image.serialize(),
             "_documentStatus": documentStatus.rawValue,
             "_type": type.rawValue,

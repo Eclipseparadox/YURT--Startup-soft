@@ -28,7 +28,7 @@ class PreviewPhotoViewController: UIViewController {
         super.viewDidLoad()
 
         print ("open view")
-        imgPhoto.image = image
+        imgPhoto.image = image.fixOrientation()
     }
     
     func rotateImage(image: UIImage) -> UIImage {

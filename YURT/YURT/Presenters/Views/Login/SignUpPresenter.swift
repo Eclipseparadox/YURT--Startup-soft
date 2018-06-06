@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class Validate {
     class func validate(object: String?, field: String, isReuired: Bool = true, pattern: String? = nil, min: Int = 0, max: Int = Int.max, customIncorrectError: String? = nil) -> (ValidationResult, String) {
@@ -104,25 +105,25 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     var firstName: String? {
         didSet {
             firstNameError = ValidateField.firstName(firstName).validate()
-            delegate.reloadError(field: .firstName(firstName))
+            delegate!.reloadError(field: .firstName(firstName))
         }
     }
     var lastName: String? {
         didSet {
             lastNameError = ValidateField.lastName(lastName).validate()
-            delegate.reloadError(field: .lastName(lastName))
+            delegate!.reloadError(field: .lastName(lastName))
         }
     }
     var location: String? {
         didSet {
             locationError = ValidateField.location(location).validate()
-            delegate.reloadError(field: .location(location))
+            delegate!.reloadError(field: .location(location))
         }
     }
     var phone: String? {
         didSet {
             phoneError = ValidateField.phone(phone).validate()
-            delegate.reloadError(field: .phone(phone))
+            delegate!.reloadError(field: .phone(phone))
         }
     }
     var email: String? {
@@ -139,20 +140,20 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
                         else {
                             self.emailError = (.ok, "")
                         }
-                        self.delegate.reloadError(field: .email(self.email!))
+                        self.delegate!.reloadError(field: .email(self.email!))
                     }, onError: { err in
-                        self.delegate.reloadError(field: .email(self.email!))
+                        self.delegate!.reloadError(field: .email(self.email!))
                     })
             }
             else {
-                self.delegate.reloadError(field: .email(self.email!))
+                self.delegate!.reloadError(field: .email(self.email!))
             }
         }
     }
     var password: String? {
         didSet {
             passwordError = ValidateField.password(password).validate()
-            delegate.reloadError(field: .password(password))
+            delegate!.reloadError(field: .password(password))
         }
     }
     
@@ -167,7 +168,7 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
          _ = signUp.useWork(observable: _accountService.signUp(firstName: firstName!, lastName: lastName!, location: location, phone: phone, email: email!, password: password!, image: photoData))
             .subscribe(onNext: { (res) in
                 if res {
-                    self.delegate.navigate(storyboardName: "Main", type: .modality, animated: true)
+                    self.delegate!.navigate(storyboardName: "Main", type: .modality, animated: true)
                 }
             })
     }
@@ -175,12 +176,15 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
         return firstNameError.0 == .ok && lastNameError.0 == .ok && emailError.0 == .ok && locationError.0 == .ok && phoneError.0 == .ok && passwordError.0 == .ok
     }
     
+    var previusDispose: Disposable?
     func uploadImage(image: UIImage) {
-        _ = _accountService.uploadUserAvatar(image: image, progresHandler: { self.delegate.changeProgress(label: PercentConverter().convert(value: $0)) }).subscribe(onNext: { (result) in
+        previusDispose?.dispose()
+        delegate!.changeProgress(label: PercentConverter().convert(value: 0))
+        previusDispose = _accountService.uploadUserAvatar(image: image, progresHandler: { self.delegate!.changeProgress(label: PercentConverter().convert(value: $0)) }).subscribe(onNext: { (result) in
                 self.photoData = result
-                self.delegate.donwloadImageComplete(isSuccess: true)
+                self.delegate!.donwloadImageComplete(isSuccess: true)
             }, onError: { error in
-                self.delegate.donwloadImageComplete(isSuccess: false)
+                self.delegate!.donwloadImageComplete(isSuccess: false)
             })
     }
 }

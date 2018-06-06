@@ -55,6 +55,23 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         cnstrLeftAnch.constant = (progressBar.bounds.width - progressBar.bounds.width / CGFloat(presenter.totalDocument) * CGFloat(presenter.currentUploaded))
     }
     
+    func reloadData() {
+        if let collectionS = collectionSource {
+            collectionS._collection = presenter.documents
+            let indexes = [IndexPath(row: 0, section: 0),
+                           IndexPath(row: 1, section: 0),
+                           IndexPath(row: 2, section: 0),
+                           IndexPath(row: 3, section: 0),
+                           IndexPath(row: 4, section: 0),
+                           IndexPath(row: 0, section: 1),
+                           IndexPath(row: 1, section: 1),
+                           IndexPath(row: 2, section: 1),
+                           IndexPath(row: 3, section: 1)
+                        ]
+            collectionDocuments.reloadItems(at: indexes)
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

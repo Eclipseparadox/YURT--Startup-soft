@@ -19,7 +19,7 @@ extension PrimitiveSequence {
     func toObservable() -> Observable<Bool> {
         return Observable<Bool>.create({ (observer) -> Disposable in
             self.asObservable()
-                .subscribe(onError: { observer.onError($0) }, onCompleted: {
+                .subscribe(onError: { observer.onNext(false); observer.onError($0) }, onCompleted: {
                     observer.onNext(true)
                     observer.onCompleted()
                 })

@@ -33,11 +33,11 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
         _ = signIn.useWork(observable: _accountService.signIn(email: email!, password: password!))
             .subscribe(onNext: { (res) in
                 if res.0 {
-                    self.delegate.navigate(storyboardName: "Main", type: .modality, animated: true)
+                    self.delegate!.navigate(storyboardName: "Main", type: .modality, animated: true)
                 }
                 else {
                     self.passwordError = res.1
-                    self.delegate.addError()
+                    self.delegate!.addError()
                 }
             })
     }

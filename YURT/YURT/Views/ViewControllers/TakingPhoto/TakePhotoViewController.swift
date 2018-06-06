@@ -73,7 +73,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
-            image = UIImage(data: imageData)
+            image = UIImage(data: imageData)?.fixOrientation()
             performSegue(withIdentifier: "previewPhoto", sender: nil)
             print ("output")
         }

@@ -16,9 +16,9 @@ class DocumentEntitySource: SttCollectionViewWithSectionSource<DocumentEntityPre
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let presenter = _collection.0[indexPath.section][indexPath.row]
+        let presenter = _collection?.0[indexPath.section][indexPath.row]
         var nibName: String!
-        switch presenter.type! {
+        switch presenter?.type ?? .document {
         case .noDocument:
             nibName = UIConstants.CellName.noDicumentEntity
         case .document:
@@ -26,7 +26,7 @@ class DocumentEntitySource: SttCollectionViewWithSectionSource<DocumentEntityPre
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: nibName, for: indexPath) as! SttbCollectionViewCell
-        cell.dataContext = _collection.0[indexPath.section][indexPath.row]
+        cell.dataContext = _collection?.0[indexPath.section][indexPath.row]
         cell.prepareBind()
         return cell
     }

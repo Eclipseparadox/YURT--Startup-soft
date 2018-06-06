@@ -24,8 +24,6 @@ struct AuthApiModel: Decodable, RealmCodable {
     
     func serialize() -> RealmAuth {
         return RealmAuth(value: ["id": id,
-                                 "access_token": access_token,
-                                 "token_type": token_type,
                                  "firstName": firstName,
                                  "lastName": lastName,
                                  "roles": roles,
