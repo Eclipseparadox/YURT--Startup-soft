@@ -56,6 +56,13 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: ShowPhotoPresenter) {
+        let _:ShowPhotoPresenter = define(init: service) {
+            $0._documentService = self.serviceAssembly.documentService
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     func inject(into service: ApiService) {

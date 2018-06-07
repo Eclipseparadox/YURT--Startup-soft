@@ -15,6 +15,7 @@ import UIKit
     @IBOutlet weak var imgDocument: UIImageView!
     @IBOutlet weak var lblDocType: UILabel!
     @IBOutlet weak var lblDocDate: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     func donwloadImageComplete(isSuccess: Bool) {
         viewLoading.isHidden = true
@@ -26,6 +27,8 @@ import UIKit
     
     
     override func prepareBind() {
+        indicator.startAnimating()
+        super.prepareBind()
         layer.cornerRadius = 4
         clipsToBounds = true
         

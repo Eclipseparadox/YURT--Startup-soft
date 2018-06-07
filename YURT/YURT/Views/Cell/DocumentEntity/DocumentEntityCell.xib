@@ -68,14 +68,14 @@
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NlG-pA-1FI">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="130"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="w5h-Fd-qed">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="w5h-Fd-qed">
                                 <rect key="frame" x="65" y="55" width="20" height="20"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk5-Zw-4At">
-                                <rect key="frame" x="60.5" y="83" width="29" height="15"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk5-Zw-4At">
+                                <rect key="frame" x="57.5" y="83" width="35" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="MoY-d5-YGO"/>
-                                    <constraint firstAttribute="width" constant="29" id="bk2-PM-OOq"/>
+                                    <constraint firstAttribute="width" constant="35" id="bk2-PM-OOq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,6 +110,7 @@
             <size key="customSize" width="150" height="183"/>
             <connections>
                 <outlet property="imgDocument" destination="W5O-Fa-qck" id="PDV-yF-zw0"/>
+                <outlet property="indicator" destination="w5h-Fd-qed" id="Qwz-eV-uhG"/>
                 <outlet property="lblDocDate" destination="b69-mP-6Yh" id="vrp-NL-5nO"/>
                 <outlet property="lblDocType" destination="8tm-4l-bxC" id="a7L-iH-cY6"/>
                 <outlet property="lblPercent" destination="dk5-Zw-4At" id="MOf-CX-9wA"/>
@@ -120,9 +121,6 @@
     </objects>
     <resources>
         <image name="losAngeles" width="421" height="322"/>
-        <namedColor name="maskColor">
-            <color red="0.15294117647058825" green="0.15294117647058825" blue="0.15294117647058825" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="maskColor">
             <color red="0.15294117647058825" green="0.15294117647058825" blue="0.15294117647058825" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

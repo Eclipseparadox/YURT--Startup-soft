@@ -18,6 +18,10 @@ extension UIImageView {
             self.sd_setImage(with: URL(string: _url), placeholderImage: UIImage(named: "placeholder"), completed: { (image: UIImage?, error: Error?, cacheType: SDImageCacheType, imageURL: URL?) in
                 
                 self.image = image
+                if error != nil {
+                    print(error)
+                    self.image = UIImage(named: "placeholder")
+                }
             })
         }
         else if let _data = image.data {

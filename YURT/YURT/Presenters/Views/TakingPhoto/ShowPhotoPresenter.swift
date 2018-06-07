@@ -15,9 +15,26 @@ protocol ShowPhotoDelegate: Viewable {
 
 class ShowPhotoPresenter: SttPresenter<ShowPhotoDelegate> {
     
+    var id: String!
+    
+    var _documentService: DocumentServiceType!
+    var deleteCommand: SttComand!
+    
     override func prepare(parametr: Any?) {
-        let param = parametr as! (DocumentType, Image)
+        ServiceInjectorAssembly.instance().inject(into: self)
+
+        let param = parametr as! (DocumentType, Image, String)
         
+        id = param.2
         delegate!.reloadData(type: param.0, image: param.1)
+        
+        deleteCommand = SttComand(delegate: self, handler: { $0.onDelete() })
+    }
+    
+    func onDelete() {
+        _ = deleteCommand.useWork(observable: _documentService.deleteDocument(id: id))
+            .subscribe(onNext: { [weak self] res in
+                self?.delegate?.close(parametr: res)
+            })
     }
 }

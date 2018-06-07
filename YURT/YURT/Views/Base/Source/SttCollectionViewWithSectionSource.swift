@@ -17,7 +17,7 @@ class SttCollectionViewWithSectionSource<TCell: ViewInjector, TSection: ViewInje
     
     var _collection: ([[TCell]], [TSection])? {
         didSet {
-            _collectionView.reloadData()
+            //_collectionView.reloadData()
         }
     }
     

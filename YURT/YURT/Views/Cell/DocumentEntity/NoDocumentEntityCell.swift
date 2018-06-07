@@ -13,6 +13,7 @@ class NoDocumentEntityCell: SttCollectionViewCell<DocumentEntityPresenter>, Docu
     @IBOutlet weak var lblType: UILabel!
     
     override func prepareBind() {
+        super.prepareBind()
         layer.cornerRadius = 4
         clipsToBounds = true
         

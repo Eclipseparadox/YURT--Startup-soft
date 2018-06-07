@@ -20,7 +20,7 @@ class PreviewPhotoViewController: UIViewController {
         delegate.close(isUsePhoto: false)
     }
     @IBAction func usePhotoClick(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
         delegate.close(isUsePhoto: true)
     }
     

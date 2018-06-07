@@ -11,8 +11,10 @@ import UIKit
 import RxSwift
 
 protocol DocumentServiceType {
-    func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<Bool>
+    func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<(Bool, String?)>
     func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])>
+    func deleteDocument(id: String) -> Observable<Bool>
+    func sendDocument() -> Observable<Bool>
 }
 
 class DocumentService: DocumentServiceType {
@@ -25,11 +27,15 @@ class DocumentService: DocumentServiceType {
         ServiceInjectorAssembly.instance().inject(into: self)
     }
     
-    func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<Bool> {
+    func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<(Bool, String?)> {
         let _type = type.isFinancies() ? DocumentTypeApiModel.financial : DocumentTypeApiModel.personal
+        var id: String?
         return _notificatonError.useError(observable: _apiService.uploadImage(image: image, progresHandler: progresHandler)
             .flatMap( { self._apiService.addDocument(model: AddDocumentApiModel(id: nil, type: _type, docType: type, image: $0)) } ))
-            .flatMap({ self._unitOfWork.borrowerDocument.saveOne(model: $0).toObservable() })
+            .flatMap({ model -> Observable<Bool> in
+                id = model.id
+                return self._unitOfWork.borrowerDocument.saveOne(model: model).toObservable()
+            }).map({ ($0, id) })
     }
     
     func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])> {
@@ -66,7 +72,9 @@ class DocumentService: DocumentServiceType {
                         }
                         if let index = documents.0[nIndex].index(where: { $0.documentType == item.name }) {
                             documents.0[nIndex][index].insertData(data: item)
-                            documents.1[nIndex].uploadedsCount += 1
+                            if documents.1[nIndex].uploadedsCount < documents.1[nIndex].totalCountDocument {
+                                documents.1[nIndex].uploadedsCount += 1
+                            }
                         }
                         else {
                             fatalError("da fuck")
@@ -76,5 +84,17 @@ class DocumentService: DocumentServiceType {
                     observer.onNext(documents)
                 }, onError: observer.onError(_:), onCompleted: observer.onCompleted)
         })
+    }
+    
+    func deleteDocument(id: String) -> Observable<Bool> {
+        return _notificatonError.useError(observable:
+            _unitOfWork.borrowerDocument.getOne(filter: "id = '\(id)'")
+            .flatMap({ self._apiService.deleteDocument(model: DeleteDocumentApiModel(documentId: id, image: $0.image!.deserialize())) })
+            .flatMap({ _ in self._unitOfWork.borrowerDocument.delete(filter: "id = '\(id)'").toObservable() })
+        )
+    }
+    
+    func sendDocument() -> Observable<Bool> {
+        return _notificatonError.useError(observable: _apiService.sendDocuments())
     }
 }

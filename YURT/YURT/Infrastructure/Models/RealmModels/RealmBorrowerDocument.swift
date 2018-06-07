@@ -40,6 +40,7 @@ class RealmBorrowerDocument: BaseRealm, RealmDecodable {
     typealias TTarget = BorrowerDocumentApiModel
     
     @objc dynamic var image: RealmUploadImage? = RealmUploadImage()
+    @objc dynamic var lastUpdate: Date = Date()
     
     @objc private dynamic var _documentStatus = DocumentStatus.Approved.rawValue
     @objc private dynamic var _type = DocumentTypeApiModel.financial.rawValue
@@ -59,6 +60,6 @@ class RealmBorrowerDocument: BaseRealm, RealmDecodable {
     }
     
     func deserialize() -> BorrowerDocumentApiModel {
-        return BorrowerDocumentApiModel(id: id, type: type, documentStatus: documentStatus, name: name, image: image!.deserialize())
+        return BorrowerDocumentApiModel(id: id, type: type, documentStatus: documentStatus, name: name, image: image!.deserialize(), lastUpdate: lastUpdate)
     }
 }

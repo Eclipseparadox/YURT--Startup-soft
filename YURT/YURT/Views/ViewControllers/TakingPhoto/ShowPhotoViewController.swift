@@ -15,13 +15,17 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var cnstrBottomImage: NSLayoutConstraint!
     @IBAction func close(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        close(parametr: false)
+    }
+    @IBAction func btnDelete(_ sender: Any) {
+        presenter.deleteCommand.execute()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         btnDelete.createCircle()
+        presenter.deleteCommand.useIndicator(button: btnDelete)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,7 +37,7 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
     }
     
     func reloadData(type: DocumentType, image: Image) {
-        imgView.image = image.image?.fixOrientation()
+        imgView.loadImage(image: image)
         lblTitle.text = type.rawValue
     }
 

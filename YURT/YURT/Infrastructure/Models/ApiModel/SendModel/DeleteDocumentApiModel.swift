@@ -10,9 +10,9 @@ import Foundation
 
 class DeleteDocumentApiModel: DictionaryCodable {
     var documentId: String!
-    var image: ImageDataApiModel!
+    var image: ResultUploadImageApiModel!
     
-    init (documentId: String, image: ImageDataApiModel) {
+    init (documentId: String, image: ResultUploadImageApiModel) {
         self.documentId = documentId
         self.image = image
     }

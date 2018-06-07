@@ -27,9 +27,13 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
     }
     
     var _documentService: DocumentServiceType!
+    var send: SttComand!
+    var canSend: Bool { return currentUploaded == totalDocument }
 
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
+        
+        send = SttComand(delegate: self, handler: { $0.onSend() }, handlerCanExecute: { $0.currentUploaded == $0.totalDocument })
 
         let publisher = PublishSubject<(Bool, DocumentType)>()
         
@@ -64,9 +68,23 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
         }
     }
     
-    func showPhoto(type: (DocumentType, Image), callback: @escaping (Bool) -> Void) {
+    func showPhoto(type: (DocumentType, Image, String), callback: @escaping (Bool) -> Void) {
         delegate!.navigate(to: "showPhoto", withParametr: type) { (result) in
             callback(result as! Bool)
+            if result as! Bool {
+                let section = self.documents.0.index(where: { $0.contains(where: { $0.documentType == type.0 })})
+                let row = self.documents.0[section!].index(where: { $0.documentType == type.0 })
+                self.delegate!.reloadItem(section: section!, row: row!)
+            }
         }
+    }
+    
+    func onSend() {
+        send.useWork(observable: _documentService.sendDocument())
+            .subscribe(onNext: { [weak self] (res) in
+                if res {
+                    self?.delegate?.sendMessage(title: "Success", message: "Your documents have been sent successfully")
+                }
+            })
     }
 }

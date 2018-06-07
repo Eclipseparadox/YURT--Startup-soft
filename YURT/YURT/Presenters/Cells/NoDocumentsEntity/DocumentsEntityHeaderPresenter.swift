@@ -21,7 +21,7 @@ class DocumentsEntityHeaderPresenter: SttPresenter<DocumentsEntityHeaderDelegate
             self.delegate?.reloadProgress()
         }
     }
-    var isError: Bool?
+    var isError: Bool { return uploadedsCount < totalCountDocument }
     var totalCountDocument: Int!
     
     convenience init (title: String, total: Int, observable: Observable<(Bool, DocumentType)>, isFinanices: Bool) {

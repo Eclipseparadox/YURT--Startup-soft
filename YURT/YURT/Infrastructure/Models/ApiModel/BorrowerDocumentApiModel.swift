@@ -21,6 +21,7 @@ struct BorrowerDocumentApiModel: Decodable, RealmCodable {
     let documentStatus: DocumentStatus
     let name: DocumentType
     let image: ResultUploadImageApiModel
+    let lastUpdate: Date
     
     func serialize() -> RealmBorrowerDocument {
         return RealmBorrowerDocument(value: [
@@ -28,7 +29,8 @@ struct BorrowerDocumentApiModel: Decodable, RealmCodable {
             "image": image.serialize(),
             "_documentStatus": documentStatus.rawValue,
             "_type": type.rawValue,
-            "_name": name.rawValue
+            "_name": name.rawValue,
+            "lastUpdate": lastUpdate
             ])
     }
 }

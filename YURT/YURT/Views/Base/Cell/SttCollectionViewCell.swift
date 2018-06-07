@@ -32,7 +32,7 @@ class SttbCollectionViewCell: UICollectionViewCell, Viewable {
 
 class SttCollectionViewCell<T: ViewInjector>: SttbCollectionViewCell {
     
-    lazy var presenter: T = dataContext as! T
+    var presenter: T { return dataContext as! T }
     
     private var firstStart = true
     override func prepareBind() {

@@ -8,11 +8,16 @@
 
 import UIKit
 import KeychainSwift
+import RealmSwift
 
 class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegate {
     
     @IBAction func exit(_ sender: Any) {
         KeychainSwift().delete(Constants.tokenKey)
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
         navigate(storyboardName: "Login", type: .modality, animated: true)
         
     }

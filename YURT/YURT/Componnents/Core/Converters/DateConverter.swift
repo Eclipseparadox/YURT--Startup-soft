@@ -15,7 +15,9 @@ class DateConverter: ConverterType {
     
     func convert(value: Date, parametr: Any?) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.locale = Locale.current
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "MM-dd-yyyy"
         
         return formatter.string(from: value)
     }

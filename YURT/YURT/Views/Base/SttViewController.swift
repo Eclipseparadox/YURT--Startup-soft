@@ -8,6 +8,22 @@
 
 import UIKit
 
+extension UIViewController {
+    var isModal: Bool {
+        if let index = navigationController?.viewControllers.index(of: self), index > 0 {
+            return false
+        } else if presentingViewController != nil {
+            return true
+        } else if navigationController?.presentingViewController?.presentedViewController == navigationController  {
+            return true
+        } else if tabBarController?.presentingViewController is UITabBarController {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 enum TypeNavigation {
     case push
     case modality
@@ -87,6 +103,7 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
     var heightScreen: CGFloat { return UIScreen.main.bounds.height }
     var widthScreen: CGFloat { return UIScreen.main.bounds.width }
     var hideNavigationBar = false
+    var hideTabBar = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +130,12 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = style
         navigationController?.setNavigationBarHidden(hideNavigationBar, animated: true)
+        navigationController?.navigationController?.navigationBar.isHidden = hideNavigationBar
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationController?.navigationBar.isHidden = false
     }
     
     func sendError(error: BaseError) {
@@ -123,14 +146,25 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
         self.createAlerDialog(title: title, message: message!)
     }
     
+    func close(animate: Bool = true) {
+        if self.isModal {
+            dismiss(animated: animate, completion: nil)
+        }
+        else {
+            navigationController?.popViewController(animated: animate)
+        }
+    }
+    func close(parametr: Any, animate: Bool = true) {
+        callback?(parametr)
+        close(animate: animate)
+    }
     func close() {
-        dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        close(animate: true)
     }
     func close(parametr: Any) {
-        callback?(parametr)
-        close()
+        close(parametr: parametr, animate: true)
     }
+    
     
     func navigate(storyboardName: String, type: TypeNavigation = .modality, animated: Bool = true) {
         let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)

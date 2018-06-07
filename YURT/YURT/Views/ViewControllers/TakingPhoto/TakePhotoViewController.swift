@@ -32,13 +32,15 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     }
     
     @IBAction func cancelClick(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        close()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        btnTakePhoto.createCircle()
         
+        btnTakePhoto.createCircle()
+        hideNavigationBar = true
+        hideTabBar = true
         style = .lightContent
         CameraTitle.text = presenter.topMessage
     }
