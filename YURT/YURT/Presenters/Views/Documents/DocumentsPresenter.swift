@@ -80,11 +80,17 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
     }
     
     func onSend() {
-        send.useWork(observable: _documentService.sendDocument())
+        _ = send.useWork(observable: _documentService.sendDocument())
             .subscribe(onNext: { [weak self] (res) in
                 if res {
                     self?.delegate?.sendMessage(title: "Success", message: "Your documents have been sent successfully")
                 }
             })
+    }
+    
+    func reloadItem(type: DocumentType) {
+        let section = self.documents.0.index(where: { $0.contains(where: { $0.documentType == type })})
+        let row = self.documents.0[section!].index(where: { $0.documentType == type })
+        self.delegate!.reloadItem(section: section!, row: row!)
     }
 }

@@ -35,7 +35,7 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         inpEmail.textField.keyboardType = .emailAddress
         inpPassword.textField.isSecureTextEntry = true
         
-        inpEmail.textField.text = "sovec_pizdec@uu.uu"
+        inpEmail.textField.text = "sovec_pizdec@uu.uuu"
         inpPassword.textField.text = "Qwerty1"
         
         presenter.email = inpEmail.textField.text

@@ -43,6 +43,12 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         hideTabBar = true
         style = .lightContent
         CameraTitle.text = presenter.topMessage
+        
+        _ = GlobalObserver.observableStatusApplication.subscribe(onNext: { [weak self] (status) in
+            if status == .EnterBackgound {
+                self?.close()
+            }
+        })
     }
     
     deinit {
@@ -84,7 +90,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     func prepareCamer() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
         
-        let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices
+        let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: presenter.isFront ? .front : .back).devices
         if devices.count > 0 {
             captureDevice = devices.first
             beginSession()

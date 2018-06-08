@@ -16,15 +16,18 @@ enum DocumentType: String, Decodable, DictionaryCodable {
     case dlicense = "Drever's License"
     case passport = "Passport"
     case SIN = "Social Insurance Card (SIN)"
-    case cheque = "Void cheque"
-    case tax = "Tax assesments (2 years)"
-    case CPS = "Current pay stub"
-    case bank = "Bank assesments"
-    case uBill = "Utility bill"
+    case cheque = "Void Cheque"
+    case tax = "Tax Assesments (2 years)"
+    case CPS = "Current Pay Stub"
+    case bank = "Bank Assesments"
+    case uBill = "Utility Bill"
     case none = ""
     
     func isFinancies() -> Bool {
         return self == .cheque || self == .tax || self == .CPS || self == .bank || self == .uBill
+    }
+    func needUseFrontCamera() -> Bool {
+        return self == .selfie
     }
 }
 
@@ -40,6 +43,7 @@ protocol DocumentEntityDelegate: Viewable {
 protocol DocumentContainerDelegate: class {
     func takePhoto(type: DocumentType, callback: @escaping (UIImage) -> Void)
     func showPhoto(type: (DocumentType, Image, String), callback: @escaping (Bool) -> Void)
+    func reloadItem(type: DocumentType)
 }
 
 class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
@@ -89,7 +93,6 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
                     self?.type = .document
                     self?.image = Image(image: image)
                     self?.takesDate = Date()
-                    self?.observer.onNext((true, self!.documentType))
                     
                     self?.delegate?.changeProgress(label: PercentConverter().convert(value: 0.0))
                     self?.disposeable = self?._documentService.uploadDocument(type: self!.documentType!, image: (self!.image?.image!)!, progresHandler: { val in
@@ -99,6 +102,11 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
                         self?.id = $0.1
                         self?.delegate?.donwloadImageComplete(isSuccess: $0.0)
                         self?.donwloadInProgress = false
+                        self?.observer.onNext((true, self!.documentType))
+                    }, onError: { error in
+                        self?.donwloadInProgress = false
+                        self?.type = .noDocument
+                        self?.itemDelegate.reloadItem(type: self!.documentType)
                     })
                 }
             }

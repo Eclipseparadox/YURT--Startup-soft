@@ -29,6 +29,12 @@ class PreviewPhotoViewController: UIViewController {
 
         print ("open view")
         imgPhoto.image = image.fixOrientation()
+        
+        _ = GlobalObserver.observableStatusApplication.subscribe(onNext: { [weak self] (status) in
+            if status == .EnterBackgound {
+                self?.dismiss(animated: false, completion: nil)
+            }
+        })
     }
     
     func rotateImage(image: UIImage) -> UIImage {

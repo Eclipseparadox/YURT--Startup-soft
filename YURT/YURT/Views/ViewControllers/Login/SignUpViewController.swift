@@ -85,14 +85,14 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         super.viewDidLoad()
         
         style = .lightContent
-        cameraPicker = Camera(parent: self, handler: { (image) in
+        cameraPicker = Camera(parent: self, handler: { [weak self] (image) in
 
-            self.imgUser.isHidden = false
-            self.imgUser.image = image
-            self.maskOnPhoto.isHidden = false
-            self.indicatorImage.startAnimating()
-            self.btnSignUp.isEnabled = false
-            self.presenter.uploadImage(image: image)
+            self?.imgUser.isHidden = false
+            self?.imgUser.image = image
+            self?.maskOnPhoto.isHidden = false
+            self?.indicatorImage.startAnimating()
+            self?.btnSignUp.isEnabled = false
+            self?.presenter.uploadImage(image: image)
         })
         
         cnstrHeight.constant = heightScreen
@@ -121,6 +121,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         inpPassword.textField.delegate = handlerPassword
         
         inpEmail.textField.keyboardType = .emailAddress
+        inpPhone.textField.keyboardType = .numberPad
         inpPassword.textField.isSecureTextEntry = true
         
         vTakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnPhoto(_:))))
@@ -163,11 +164,9 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         lblPercent.text = "0%"
         indicatorImage.stopAnimating()
         self.btnSignUp.isEnabled = true
-        if isSuccess {
-            maskOnPhoto.isHidden = true
-        }
-        else {
-            self.createAlerDialog(title: "Error", message: "Could not upload photo")
+        maskOnPhoto.isHidden = true
+        if !isSuccess {
+            self.imgUser.isHidden = true
         }
     }
 }
