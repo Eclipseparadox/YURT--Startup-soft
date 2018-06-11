@@ -23,12 +23,19 @@ class InputBox: SttTemplate {
     var errorText: String? {
         didSet {
             error.text = errorText
-            if !(errorText ?? "").trimmingCharacters(in: .whitespaces).isEmpty {
+            error.textColor = tintErrorColor
+            if !(errorText ?? "").isEmpty {
                 underline.backgroundColor = tintErrorColor
             }
             else {
                 underline.backgroundColor = isEditing ? tintActiveColor : tintDisableColor
             }
+        }
+    }
+    var hintText: String? {
+        didSet {
+            error.text = hintText
+            error.textColor = UIColor(named: "hintColor")
         }
     }
     
@@ -80,7 +87,9 @@ class InputBox: SttTemplate {
     func tfStartEditing(_ tf: UITextField) {
         isEditing = true
         if deleteErrorAfterStartEditing {
-            errorText = ""
+            if !(errorText ?? "").isEmpty {
+                errorText = ""
+            }
         }
        // underline.backgroundColor = tintActiveColor
         fieldName.textColor = tintActiveColor

@@ -21,6 +21,8 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     
     var captureDevice: AVCaptureDevice!
     var photoOutput: AVCapturePhotoOutput?
+    var dataOutput: AVCaptureVideoDataOutput!
+    var captureDeviceInput: AVCaptureDeviceInput!
     var image: UIImage!
     
     @IBOutlet weak var CameraTitle: UILabel!
@@ -34,6 +36,12 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     @IBAction func cancelClick(_ sender: Any) {
         close()
     }
+    @IBAction func changeOrientation(_ sender: Any) {
+        endSession()
+        presenter.isFront = !presenter.isFront
+        prepareCamera()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +50,10 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         hideNavigationBar = true
         hideTabBar = true
         style = .lightContent
-        CameraTitle.text = presenter.topMessage
+        let range = (presenter.topMessage! as NSString).range(of: presenter.higlightMessage)
+        let attribute = NSMutableAttributedString(string: presenter.topMessage)
+        attribute.addAttributes([NSAttributedStringKey.foregroundColor: UIColor(named: "main")!], range: range)
+        CameraTitle.attributedText = attribute
         
         _ = GlobalObserver.observableStatusApplication.subscribe(onNext: { [weak self] (status) in
             if status == .EnterBackgound {
@@ -60,7 +71,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         super.viewDidAppear(animated)
         if fistStart {
             fistStart = false
-            prepareCamer()
+            prepareCamera()
         }
     }
     
@@ -87,7 +98,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         }
     }
     
-    func prepareCamer() {
+    func prepareCamera() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
         
         let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: presenter.isFront ? .front : .back).devices
@@ -97,9 +108,24 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         }
     }
     
+    func endSession() {
+        do {
+            captureSession.removeInput(captureDeviceInput)
+            captureSession.removeOutput(photoOutput!)
+        }
+        catch {
+            Log.error(message: "\(error)", key: "Remove capture error")
+        }
+        
+        captureSession.stopRunning()
+        captureSession.removeOutput(dataOutput)
+        
+        captureSession.commitConfiguration()
+    }
+    
     func beginSession() {
         do {
-            let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
+            captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
             captureSession.addInput(captureDeviceInput)
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
@@ -115,7 +141,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         self.previewLayer.frame = self.view.layer.frame
         captureSession.startRunning()
         
-        let dataOutput = AVCaptureVideoDataOutput()
+        dataOutput = AVCaptureVideoDataOutput()
         dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString): NSNumber(value: kCVPixelFormatType_32BGRA)] as [String:Any]
         dataOutput.alwaysDiscardsLateVideoFrames = true
         

@@ -55,37 +55,10 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         presenter.password = inpPassword.textField.text
         
         presenter.signIn.execute()
-//        let content = UNMutableNotificationContent()
-//
-//        //adding title, subtitle, body and badge
-//        content.title = "Hey this is Simplified iOS"
-//        content.subtitle = "iOS Development is fun"
-//        content.body = "We are learning about iOS Local Notification"
-//        content.badge = 1
-//
-//        //getting the notification trigger
-//        //it will be called after 5 seconds
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//
-//        //getting the notification request
-//        let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
-//
-//        //adding the notification to notification center
-//        UNUserNotificationCenter.current().add(request) { (error) in
-//            print(error)
-//        }
-        
-//        dialogue.rate = AVSpeechUtteranceDefaultSpeechRate;
-//        dialogue.voice = AVSpeechSynthesisVoice(language: "en-gb")
-//
-//        guard speaker.isSpeaking else
-//        {
-//            speaker.speak(dialogue)
-//            return
-//        }
     }
     
     func addError() {
         inpPassword.errorText = presenter.passwordError
+        inpEmail.errorText = "  "
     }
 }

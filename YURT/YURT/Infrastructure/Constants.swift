@@ -75,6 +75,8 @@ class Constants {
     static let lastNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
     static let phoneNumber = "^(\\+?[0-9 ()-]){10,25}$"
     
+    static let passwordRequiered = "A digit, a lowercase, an uppercase are required"
+    
     static let minPassword = 6
     static let maxPassword = 40
     static let minFirstName = 1

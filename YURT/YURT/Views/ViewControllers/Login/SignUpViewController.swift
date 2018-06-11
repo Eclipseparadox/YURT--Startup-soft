@@ -132,6 +132,8 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         
         indicatorSignUp = btnSignUp.setIndicator()
         indicatorSignUp.color = UIColor.white
+        
+        inpPassword.hintText = Constants.passwordRequiered
     }
     
     override func viewDidAppear(_ animated: Bool) {

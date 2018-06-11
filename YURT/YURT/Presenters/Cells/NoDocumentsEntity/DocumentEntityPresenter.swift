@@ -57,7 +57,7 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
     var image: Image?
     var observer: PublishSubject<(Bool, DocumentType)>!
     weak var itemDelegate: DocumentContainerDelegate!
-    private var donwloadInProgress = false
+    var donwloadInProgress = false
     
     var _documentService: DocumentServiceType!
     
@@ -72,7 +72,7 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
         
         ServiceInjectorAssembly.instance().inject(into: self)
     }
-    
+
     func insertData(data: BorrowerDocumentApiModel) {
         type = .document
         documentsName = data.name.rawValue
@@ -94,6 +94,7 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
                     self?.image = Image(image: image)
                     self?.takesDate = Date()
                     
+                    self?.donwloadInProgress = true
                     self?.delegate?.changeProgress(label: PercentConverter().convert(value: 0.0))
                     self?.disposeable = self?._documentService.uploadDocument(type: self!.documentType!, image: (self!.image?.image!)!, progresHandler: { val in
                         self?.delegate?.changeProgress(label: PercentConverter().convert(value: val))

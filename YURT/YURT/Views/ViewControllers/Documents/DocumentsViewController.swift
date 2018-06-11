@@ -62,37 +62,13 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         lblPercentWhite.text = strNewValue
         cnstrLeftAnch.constant = (progressBar.bounds.width - progressBar.bounds.width / CGFloat(presenter.totalDocument) * CGFloat(presenter.currentUploaded))
         btnSend.isEnabled = presenter.canSend
+        btnSend.alpha = presenter.canSend ? 1.0 : 0.5
         lblAllDocuments.isHidden = presenter.canSend
     }
     
     func reloadData() {
-        if let collectionS = collectionSource {
+        if collectionSource != nil {
             collectionDocuments.reloadData()
-//            collectionS._collection = presenter.documents
-//            let indexes = [IndexPath(row: 0, section: 0),
-//                           IndexPath(row: 1, section: 0),
-//                           IndexPath(row: 2, section: 0),
-//                           IndexPath(row: 3, section: 0),
-//                           IndexPath(row: 4, section: 0),
-//                           IndexPath(row: 0, section: 1),
-//                           IndexPath(row: 1, section: 1),
-//                           IndexPath(row: 2, section: 1),
-//                           IndexPath(row: 3, section: 1)
-//                        ]
-//            collectionDocuments.reloadItems(at: indexes)
-//            collectionDocuments.reloadSections([0, 1])
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

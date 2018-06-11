@@ -72,7 +72,7 @@ enum ValidateField {
         case .location(let location):
             return Validate.validate(object: location, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
         case .password(let password):
-            return Validate.validate(object: password, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: "A digit, a lowercase, an uppercase are required")
+            return Validate.validate(object: password, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
         case .phone(let phone):
             return Validate.validate(object: phone, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
         }

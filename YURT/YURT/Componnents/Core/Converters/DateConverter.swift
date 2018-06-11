@@ -17,7 +17,7 @@ class DateConverter: ConverterType {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "MM-dd-yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         
         return formatter.string(from: value)
     }

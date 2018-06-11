@@ -43,6 +43,10 @@ import UIKit
         isUserInteractionEnabled = true
         imgDocument.isUserInteractionEnabled = true
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick(_:))))
+        
+        if presenter.donwloadInProgress {
+            changeProgress(label: "0%")
+        }
     }
     
     @objc func onClick(_ sender: Any) {
