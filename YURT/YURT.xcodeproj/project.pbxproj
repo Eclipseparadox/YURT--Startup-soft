@@ -49,6 +49,17 @@
 		842E1EC720AD6FBC003D2CDA /* SttTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EC620AD6FBC003D2CDA /* SttTextView.swift */; };
 		842E1EC920AD7138003D2CDA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E1EC820AD7138003D2CDA /* Login.storyboard */; };
 		842E1ECB20AD716F003D2CDA /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842E1ECA20AD716F003D2CDA /* Icons.xcassets */; };
+		8437DFFA20CFD4B10043445D /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DFF920CFD4B10043445D /* OffersViewController.swift */; };
+		8437E00320CFDC5F0043445D /* NewLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00120CFDC5F0043445D /* NewLendersViewController.swift */; };
+		8437E00420CFDC5F0043445D /* NewLendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8437E00220CFDC5F0043445D /* NewLendersViewController.xib */; };
+		8437E00820CFDD250043445D /* ReviserLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00620CFDD250043445D /* ReviserLendersViewController.swift */; };
+		8437E00920CFDD250043445D /* ReviserLendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8437E00720CFDD250043445D /* ReviserLendersViewController.xib */; };
+		8437E00B20CFE9B00043445D /* SttViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00A20CFE9B00043445D /* SttViewPage.swift */; };
+		8437E00D20CFEF760043445D /* UISegmentControlExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00C20CFEF760043445D /* UISegmentControlExt.swift */; };
+		8437E01220D0057D0043445D /* ApprovedLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E01020D0057D0043445D /* ApprovedLendersViewController.swift */; };
+		8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8437E01120D0057D0043445D /* ApprovedLendersViewController.xib */; };
+		8437E01620D0059F0043445D /* RejectedLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E01420D0059F0043445D /* RejectedLendersViewController.swift */; };
+		8437E01720D0059F0043445D /* RejectedLendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8437E01520D0059F0043445D /* RejectedLendersViewController.xib */; };
 		84484F54209B05D4006BBD11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484F53209B05D4006BBD11 /* AppDelegate.swift */; };
 		84484F56209B05D4006BBD11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84484F55209B05D4006BBD11 /* ViewController.swift */; };
 		84484F59209B05D4006BBD11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84484F57209B05D4006BBD11 /* Main.storyboard */; };
@@ -71,6 +82,9 @@
 		8462234320C02DE20059A83A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234220C02DE20059A83A /* Image.swift */; };
 		8462234520C02E690059A83A /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234420C02E690059A83A /* DateConverter.swift */; };
 		8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462234620C133D00059A83A /* CountProgressConverter.swift */; };
+		8466A6A420CFBDA200A888A0 /* LenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A6A220CFBDA200A888A0 /* LenderCell.swift */; };
+		8466A6A520CFBDA200A888A0 /* LenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8466A6A320CFBDA200A888A0 /* LenderCell.xib */; };
+		8466A6A820CFC97700A888A0 /* LenderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A6A720CFC97700A888A0 /* LenderPresenter.swift */; };
 		8468DCB320B2B6E100701C93 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468DCB220B2B6E100701C93 /* ApiModel.swift */; };
 		846F994C209B093600C61AE2 /* SttViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F994B209B093600C61AE2 /* SttViewController.swift */; };
 		846F994E209B097B00C61AE2 /* SttTableViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F994D209B097B00C61AE2 /* SttTableViewSource.swift */; };
@@ -150,6 +164,17 @@
 		842E1EC620AD6FBC003D2CDA /* SttTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttTextView.swift; sourceTree = "<group>"; };
 		842E1EC820AD7138003D2CDA /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		842E1ECA20AD716F003D2CDA /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		8437DFF920CFD4B10043445D /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
+		8437E00120CFDC5F0043445D /* NewLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLendersViewController.swift; sourceTree = "<group>"; };
+		8437E00220CFDC5F0043445D /* NewLendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewLendersViewController.xib; sourceTree = "<group>"; };
+		8437E00620CFDD250043445D /* ReviserLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviserLendersViewController.swift; sourceTree = "<group>"; };
+		8437E00720CFDD250043445D /* ReviserLendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviserLendersViewController.xib; sourceTree = "<group>"; };
+		8437E00A20CFE9B00043445D /* SttViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttViewPage.swift; sourceTree = "<group>"; };
+		8437E00C20CFEF760043445D /* UISegmentControlExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentControlExt.swift; sourceTree = "<group>"; };
+		8437E01020D0057D0043445D /* ApprovedLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedLendersViewController.swift; sourceTree = "<group>"; };
+		8437E01120D0057D0043445D /* ApprovedLendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovedLendersViewController.xib; sourceTree = "<group>"; };
+		8437E01420D0059F0043445D /* RejectedLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedLendersViewController.swift; sourceTree = "<group>"; };
+		8437E01520D0059F0043445D /* RejectedLendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RejectedLendersViewController.xib; sourceTree = "<group>"; };
 		84484F50209B05D4006BBD11 /* YURT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YURT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84484F53209B05D4006BBD11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84484F55209B05D4006BBD11 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +199,9 @@
 		8462234220C02DE20059A83A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8462234420C02E690059A83A /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		8462234620C133D00059A83A /* CountProgressConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountProgressConverter.swift; sourceTree = "<group>"; };
+		8466A6A220CFBDA200A888A0 /* LenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenderCell.swift; sourceTree = "<group>"; };
+		8466A6A320CFBDA200A888A0 /* LenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LenderCell.xib; sourceTree = "<group>"; };
+		8466A6A720CFC97700A888A0 /* LenderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LenderPresenter.swift; sourceTree = "<group>"; };
 		8468DCB220B2B6E100701C93 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		846F994B209B093600C61AE2 /* SttViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttViewController.swift; sourceTree = "<group>"; };
 		846F994D209B097B00C61AE2 /* SttTableViewSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttTableViewSource.swift; sourceTree = "<group>"; };
@@ -255,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				842239F020BEE4900028FDAA /* NoDocumentsEntity */,
+				8466A6A720CFC97700A888A0 /* LenderPresenter.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -352,6 +381,7 @@
 		842239F520BEE57D0028FDAA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				8466A6A120CFBCE000A888A0 /* Lender */,
 				842239F620BEE5880028FDAA /* DocumentEntity */,
 			);
 			path = Cell;
@@ -394,6 +424,54 @@
 				842E1EC620AD6FBC003D2CDA /* SttTextView.swift */,
 			);
 			path = UIElement;
+			sourceTree = "<group>";
+		};
+		8437DFF820CFD49B0043445D /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				8437E00F20D005640043445D /* RejectedLenders */,
+				8437E00E20D005560043445D /* ApprovedLenders */,
+				8437E00520CFDC990043445D /* RevisedLenders */,
+				8437E00020CFDC290043445D /* NewLenders */,
+				8437DFF920CFD4B10043445D /* OffersViewController.swift */,
+			);
+			path = Offers;
+			sourceTree = "<group>";
+		};
+		8437E00020CFDC290043445D /* NewLenders */ = {
+			isa = PBXGroup;
+			children = (
+				8437E00120CFDC5F0043445D /* NewLendersViewController.swift */,
+				8437E00220CFDC5F0043445D /* NewLendersViewController.xib */,
+			);
+			path = NewLenders;
+			sourceTree = "<group>";
+		};
+		8437E00520CFDC990043445D /* RevisedLenders */ = {
+			isa = PBXGroup;
+			children = (
+				8437E00620CFDD250043445D /* ReviserLendersViewController.swift */,
+				8437E00720CFDD250043445D /* ReviserLendersViewController.xib */,
+			);
+			path = RevisedLenders;
+			sourceTree = "<group>";
+		};
+		8437E00E20D005560043445D /* ApprovedLenders */ = {
+			isa = PBXGroup;
+			children = (
+				8437E01020D0057D0043445D /* ApprovedLendersViewController.swift */,
+				8437E01120D0057D0043445D /* ApprovedLendersViewController.xib */,
+			);
+			path = ApprovedLenders;
+			sourceTree = "<group>";
+		};
+		8437E00F20D005640043445D /* RejectedLenders */ = {
+			isa = PBXGroup;
+			children = (
+				8437E01420D0059F0043445D /* RejectedLendersViewController.swift */,
+				8437E01520D0059F0043445D /* RejectedLendersViewController.xib */,
+			);
+			path = RejectedLenders;
 			sourceTree = "<group>";
 		};
 		84484F47209B05D4006BBD11 = {
@@ -459,6 +537,15 @@
 				8462234220C02DE20059A83A /* Image.swift */,
 			);
 			path = SpecialModels;
+			sourceTree = "<group>";
+		};
+		8466A6A120CFBCE000A888A0 /* Lender */ = {
+			isa = PBXGroup;
+			children = (
+				8466A6A220CFBDA200A888A0 /* LenderCell.swift */,
+				8466A6A320CFBDA200A888A0 /* LenderCell.xib */,
+			);
+			path = Lender;
 			sourceTree = "<group>";
 		};
 		846F9941209B083500C61AE2 /* AppStart */ = {
@@ -549,6 +636,7 @@
 		846F9949209B08D300C61AE2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8437DFF820CFD49B0043445D /* Offers */,
 				8493542520C6C02700C7EFF3 /* Profile */,
 				842239E320BE93B60028FDAA /* Documents */,
 				8407C09C20B8096600045EFB /* TakingPhoto */,
@@ -589,6 +677,7 @@
 				846F9951209B0A3700C61AE2 /* KeyboardNotification.swift */,
 				840427E320B2E73D00C94765 /* UIConstants.swift */,
 				84C7FBF520B444760053C93A /* Camera.swift */,
+				8437E00A20CFE9B00043445D /* SttViewPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -615,6 +704,7 @@
 				7DD62D4520C517F800F33794 /* CodableExt.swift */,
 				7DD62D4820C5184C00F33794 /* RepositoryTypeExt.swift */,
 				849D3F1120C81F01004BB086 /* UIImageView.swift */,
+				8437E00C20CFEF760043445D /* UISegmentControlExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -758,15 +848,20 @@
 				842E1ECB20AD716F003D2CDA /* Icons.xcassets in Resources */,
 				84484F5E209B05D6006BBD11 /* LaunchScreen.storyboard in Resources */,
 				8497872920ADB0E0004F4B06 /* Roboto-Regular.ttf in Resources */,
+				8437E00420CFDC5F0043445D /* NewLendersViewController.xib in Resources */,
 				8497872A20ADB0E0004F4B06 /* Roboto-Light.ttf in Resources */,
 				84484F5B209B05D6006BBD11 /* Assets.xcassets in Resources */,
 				842239FA20BEE5C90028FDAA /* NoDocumentEntityCell.xib in Resources */,
 				842E1EC220AD6EB2003D2CDA /* InputBox.xib in Resources */,
+				8437E01720D0059F0043445D /* RejectedLendersViewController.xib in Resources */,
 				8462233D20BFE1F00059A83A /* DocumentEntityCell.xib in Resources */,
+				8437E00920CFDD250043445D /* ReviserLendersViewController.xib in Resources */,
 				842E1EC920AD7138003D2CDA /* Login.storyboard in Resources */,
 				84484F59209B05D4006BBD11 /* Main.storyboard in Resources */,
+				8466A6A520CFBDA200A888A0 /* LenderCell.xib in Resources */,
 				8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */,
 				844F800420AD74940030DCC3 /* Colors.xcassets in Resources */,
+				8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */,
 				8497872820ADB0E0004F4B06 /* Roboto-Medium.ttf in Resources */,
 				8497872B20ADB0E0004F4B06 /* Roboto-Black.ttf in Resources */,
 			);
@@ -853,11 +948,14 @@
 				846F9950209B09B800C61AE2 /* SttTableViewCell.swift in Sources */,
 				842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */,
 				842E1EC420AD6EBD003D2CDA /* SttTemplate.swift in Sources */,
+				8437E00320CFDC5F0043445D /* NewLendersViewController.swift in Sources */,
+				8437E01620D0059F0043445D /* RejectedLendersViewController.swift in Sources */,
 				842E1EC120AD6EB2003D2CDA /* InputBox.swift in Sources */,
 				842239FE20BEEA440028FDAA /* DocumentEntityHeaderView.swift in Sources */,
 				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,
 				842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */,
+				8437E00820CFDD250043445D /* ReviserLendersViewController.swift in Sources */,
 				8493542C20C6C6AC00C7EFF3 /* ProfilePresenter.swift in Sources */,
 				844EC24620C54A79006CF9EF /* ShowPhotoPresenter.swift in Sources */,
 				846F994C209B093600C61AE2 /* SttViewController.swift in Sources */,
@@ -874,6 +972,7 @@
 				8462234320C02DE20059A83A /* Image.swift in Sources */,
 				84484F6D209B3FA0006BBD11 /* ApiService.swift in Sources */,
 				8493542720C6C03800C7EFF3 /* ProfileViewController.swift in Sources */,
+				8466A6A820CFC97700A888A0 /* LenderPresenter.swift in Sources */,
 				84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */,
 				84223A0120BEEC0A0028FDAA /* SttCollectionReusableView.swift in Sources */,
 				849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */,
@@ -892,17 +991,22 @@
 				84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */,
 				84484F54209B05D4006BBD11 /* AppDelegate.swift in Sources */,
 				849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */,
+				8437E01220D0057D0043445D /* ApprovedLendersViewController.swift in Sources */,
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
 				848EC028209B4F9C00A39156 /* DateDecodeStrategy.swift in Sources */,
 				842E1EB120AC5584003D2CDA /* UnitOfWork.swift in Sources */,
 				840427F320B2E87800C94765 /* NotificationError.swift in Sources */,
+				8437E00D20CFEF760043445D /* UISegmentControlExt.swift in Sources */,
+				8437DFFA20CFD4B10043445D /* OffersViewController.swift in Sources */,
 				846F9957209B0A7900C61AE2 /* Connectivity.swift in Sources */,
 				842239EB20BED6890028FDAA /* PercentConverter.swift in Sources */,
 				840427FB20B2E9ED00C94765 /* SttHandlerTextField.swift in Sources */,
 				840427EB20B2E7A900C94765 /* BaseConverter.swift in Sources */,
+				8437E00B20CFE9B00043445D /* SttViewPage.swift in Sources */,
 				840427FD20B2EA1800C94765 /* SttTableViewController.swift in Sources */,
 				84484F6B209B39F6006BBD11 /* SpecialResult.swift in Sources */,
 				84C7FBF220B42DD50053C93A /* AccountService.swift in Sources */,
+				8466A6A420CFBDA200A888A0 /* LenderCell.swift in Sources */,
 				848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */,
 				8407C09E20B8097E00045EFB /* TakePhotoViewController.swift in Sources */,
 				849D3F1020C80223004BB086 /* DeleteDocumentApiModel.swift in Sources */,

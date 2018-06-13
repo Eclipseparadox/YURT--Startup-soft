@@ -584,7 +584,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2dc-Tn-nzk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Offers" image="offers" selectedImage="offers" id="qIp-hQ-dkP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K8b-y3-svD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="K8b-y3-svD">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -597,17 +597,32 @@
             </objects>
             <point key="canvasLocation" x="-159" y="-1625"/>
         </scene>
-        <!--View Controller-->
+        <!--Lenders offers-->
         <scene sceneID="AY5-ra-Mcv">
             <objects>
-                <viewController id="6IG-XC-CVo" sceneMemberID="viewController">
+                <viewController id="6IG-XC-CVo" customClass="OffersViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jkS-9h-Alf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxM-li-PlP" customClass="SttViewPager" customModule="YURT" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qWk-Ii-uj3" firstAttribute="trailing" secondItem="JxM-li-PlP" secondAttribute="trailing" id="FBi-cN-oR9"/>
+                            <constraint firstItem="JxM-li-PlP" firstAttribute="top" secondItem="qWk-Ii-uj3" secondAttribute="top" id="MW6-7y-I1F"/>
+                            <constraint firstItem="JxM-li-PlP" firstAttribute="leading" secondItem="qWk-Ii-uj3" secondAttribute="leading" id="YOp-ln-gzB"/>
+                            <constraint firstItem="qWk-Ii-uj3" firstAttribute="bottom" secondItem="JxM-li-PlP" secondAttribute="bottom" id="kJc-A8-1N4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qWk-Ii-uj3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xZ0-V7-YPI"/>
+                    <navigationItem key="navigationItem" title="Lenders offers" id="xZ0-V7-YPI"/>
+                    <connections>
+                        <outlet property="viewPager" destination="JxM-li-PlP" id="a9e-eV-MpJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Sk-dU-NPe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
