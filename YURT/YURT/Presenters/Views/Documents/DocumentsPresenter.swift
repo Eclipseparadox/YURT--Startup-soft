@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import SINQ
 
 protocol DocumentsDelegate: Viewable {
     func reloadItem(section: Int, row: Int)
@@ -26,13 +27,13 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
         }
     }
     
+    var allDocumentIsSynced: Bool { return !sinq(documents.0).any({ sinq($0).any({ $0.status != DocumentStatus.None }) }) }
     var _documentService: DocumentServiceType!
     var send: SttComand!
-    var canSend: Bool { return currentUploaded == totalDocument }
+    var canSend: Bool { return currentUploaded == totalDocument && !allDocumentIsSynced }
 
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
-        
         send = SttComand(delegate: self, handler: { $0.onSend() }, handlerCanExecute: { $0.currentUploaded == $0.totalDocument })
 
         let publisher = PublishSubject<(Bool, DocumentType)>()
@@ -42,6 +43,7 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
                 self?.documents = documents
                 self?.currentUploaded = documents.1[0].uploadedsCount + documents.1[1].uploadedsCount
                 self?.delegate!.reloadData()
+                self?.delegate?.progressCahnged()
             })
         
         _ = publisher
@@ -83,6 +85,14 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
         _ = send.useWork(observable: _documentService.sendDocument())
             .subscribe(onNext: { [weak self] (res) in
                 if res {
+                    if self != nil {
+                        for hi in self!.documents!.0 {
+                            for item in hi {
+                                item.status = .None
+                            }
+                        }
+                    }
+                    self?.delegate?.progressCahnged()
                     self?.delegate?.sendMessage(title: "Success", message: "Your documents have been sent successfully")
                 }
             })

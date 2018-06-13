@@ -33,9 +33,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
         
         collectionDocuments.dataSource = collectionSource
-        
-        presenter.send.useIndicator(button: btnSend)
-        
+                
         let width = widthScreen / 2 - 22
         let layout = collectionDocuments.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
@@ -44,6 +42,10 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        presenter.send.useIndicator(button: btnSend)
+
+        btnSend.isEnabled = presenter.canSend
+        btnSend.alpha = presenter.canSend ? 1.0 : 0.5
         btnSend.layer.cornerRadius = 5
         collectionDocuments.sizeToFit()
         cnstrHeight.constant = collectionDocuments.contentSize.height
@@ -64,6 +66,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         btnSend.isEnabled = presenter.canSend
         btnSend.alpha = presenter.canSend ? 1.0 : 0.5
         lblAllDocuments.isHidden = presenter.canSend
+        UIView.animate(withDuration: 0.25, animations: { [weak self] in self?.view.layoutIfNeeded() })
     }
     
     func reloadData() {

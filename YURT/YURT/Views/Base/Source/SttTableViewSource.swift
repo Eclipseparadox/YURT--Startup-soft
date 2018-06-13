@@ -20,9 +20,9 @@ class SttTableViewSource<T: ViewInjector>: NSObject, UITableViewDataSource {
         }
     }
     
-    init(tableView: UITableView, cellName: String, cellIdentifier: String, collection: [T]) {
+    init(tableView: UITableView, cellIdentifier: String, collection: [T]) {
         
-        tableView.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
         _tableView = tableView
         _cellIdentifier = cellIdentifier

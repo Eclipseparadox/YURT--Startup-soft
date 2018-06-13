@@ -7,17 +7,27 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 
-class NewLendersViewController: UIViewController, IndicatorInfoProvider {
+class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLendersDelegate, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblNoData: UILabel!
+    
+    var source: SttTableViewSource<LenderPresenter>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        lblNoData.isHidden = presenter.lenders.count != 0
+        source = SttTableViewSource(tableView: tableView, cellIdentifier: UIConstants.CellName.lenderCell, collection: presenter.lenders)
+        tableView.dataSource = source
+        tableView.delegate = self
+        tableView.reloadData()
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
     }
     
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "New")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
     }
 }

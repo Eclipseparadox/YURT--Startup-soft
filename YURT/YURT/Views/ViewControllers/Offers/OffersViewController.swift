@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import XLPagerTabStrip
 
 class OffersViewController: UIViewController {
     

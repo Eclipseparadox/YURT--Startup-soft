@@ -183,8 +183,8 @@
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMW-IH-7CF">
                                                         <rect key="frame" x="30" y="50" width="315" height="15"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSP-IL-RBB">
-                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="15"/>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OSP-IL-RBB">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="15"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11/15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGJ-ZP-wfD">
                                                                         <rect key="frame" x="143" y="1" width="29.5" height="13"/>
@@ -198,11 +198,11 @@
                                                                     <constraint firstAttribute="height" constant="15" id="xTM-MB-Pze"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfQ-rw-iej">
-                                                                <rect key="frame" x="305" y="0.0" width="10" height="15"/>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfQ-rw-iej">
+                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="15"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11/15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJE-So-het">
-                                                                        <rect key="frame" x="-162" y="1" width="29.5" height="13"/>
+                                                                        <rect key="frame" x="143" y="1" width="29.5" height="13"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="11"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -220,7 +220,7 @@
                                                             <constraint firstItem="NJE-So-het" firstAttribute="centerX" secondItem="CMW-IH-7CF" secondAttribute="centerX" id="T0p-im-fjN"/>
                                                             <constraint firstAttribute="bottom" secondItem="cfQ-rw-iej" secondAttribute="bottom" id="ZsA-46-oxy"/>
                                                             <constraint firstItem="nGJ-ZP-wfD" firstAttribute="centerY" secondItem="CMW-IH-7CF" secondAttribute="centerY" id="aav-6n-EBp"/>
-                                                            <constraint firstAttribute="trailing" secondItem="OSP-IL-RBB" secondAttribute="trailing" constant="10" id="g3d-6d-FWe"/>
+                                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OSP-IL-RBB" secondAttribute="trailing" constant="600" id="g3d-6d-FWe"/>
                                                             <constraint firstAttribute="height" constant="15" id="nFh-JY-Ql4"/>
                                                             <constraint firstAttribute="trailing" secondItem="cfQ-rw-iej" secondAttribute="trailing" id="vno-Hg-sAw"/>
                                                             <constraint firstItem="OSP-IL-RBB" firstAttribute="leading" secondItem="CMW-IH-7CF" secondAttribute="leading" id="x2w-jE-tKL"/>
@@ -381,11 +381,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nOu-d4-ZOS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My documents" id="8Wr-b0-Pid">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="cP2-wK-mWO">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="My documents" id="8Wr-b0-Pid"/>
                     <connections>
                         <outlet property="btnSend" destination="Asc-nr-UGC" id="gG6-qz-zJB"/>
                         <outlet property="cnstrHeight" destination="tYa-hA-Mr4" id="Mcu-7o-UwG"/>

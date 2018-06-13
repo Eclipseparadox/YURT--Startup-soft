@@ -9,7 +9,7 @@
 import Foundation
 
 enum DocumentStatus: Int, Decodable {
-    case Pending, Approved, Rejected
+    case Pending, Approved, Rejected, None
 }
 
 struct BorrowerDocumentApiModel: Decodable, RealmCodable {

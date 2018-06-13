@@ -52,8 +52,6 @@
 		8437DFFA20CFD4B10043445D /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DFF920CFD4B10043445D /* OffersViewController.swift */; };
 		8437E00320CFDC5F0043445D /* NewLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00120CFDC5F0043445D /* NewLendersViewController.swift */; };
 		8437E00420CFDC5F0043445D /* NewLendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8437E00220CFDC5F0043445D /* NewLendersViewController.xib */; };
-		8437E00820CFDD250043445D /* ReviserLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00620CFDD250043445D /* ReviserLendersViewController.swift */; };
-		8437E00920CFDD250043445D /* ReviserLendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8437E00720CFDD250043445D /* ReviserLendersViewController.xib */; };
 		8437E00B20CFE9B00043445D /* SttViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00A20CFE9B00043445D /* SttViewPage.swift */; };
 		8437E00D20CFEF760043445D /* UISegmentControlExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E00C20CFEF760043445D /* UISegmentControlExt.swift */; };
 		8437E01220D0057D0043445D /* ApprovedLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437E01020D0057D0043445D /* ApprovedLendersViewController.swift */; };
@@ -97,6 +95,12 @@
 		848C85DF20A042B100026A5E /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C85DE20A042B100026A5E /* ObservableType.swift */; };
 		848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C85E020A0480700026A5E /* AppDelegateExtensions.swift */; };
 		848EC028209B4F9C00A39156 /* DateDecodeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EC027209B4F9C00A39156 /* DateDecodeStrategy.swift */; };
+		848F4C2720D13288007ECC45 /* RejectedLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */; };
+		848F4C2920D13293007ECC45 /* NewLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */; };
+		848F4C2B20D132A3007ECC45 /* ApprovedLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2A20D132A3007ECC45 /* ApprovedLendersPresenter.swift */; };
+		848F4C2D20D132B6007ECC45 /* RevisedLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2C20D132B6007ECC45 /* RevisedLendersPresenter.swift */; };
+		848F4C3020D13DF5007ECC45 /* ReviserLendersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2E20D13DF5007ECC45 /* ReviserLendersViewController.swift */; };
+		848F4C3120D13DF5007ECC45 /* ReviserLendersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848F4C2F20D13DF5007ECC45 /* ReviserLendersViewController.xib */; };
 		8493542720C6C03800C7EFF3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493542620C6C03800C7EFF3 /* ProfileViewController.swift */; };
 		8493542C20C6C6AC00C7EFF3 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493542B20C6C6AC00C7EFF3 /* ProfilePresenter.swift */; };
 		8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8497872220ADB0DE004F4B06 /* Roboto-Bold.ttf */; };
@@ -167,8 +171,6 @@
 		8437DFF920CFD4B10043445D /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		8437E00120CFDC5F0043445D /* NewLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLendersViewController.swift; sourceTree = "<group>"; };
 		8437E00220CFDC5F0043445D /* NewLendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewLendersViewController.xib; sourceTree = "<group>"; };
-		8437E00620CFDD250043445D /* ReviserLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviserLendersViewController.swift; sourceTree = "<group>"; };
-		8437E00720CFDD250043445D /* ReviserLendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviserLendersViewController.xib; sourceTree = "<group>"; };
 		8437E00A20CFE9B00043445D /* SttViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttViewPage.swift; sourceTree = "<group>"; };
 		8437E00C20CFEF760043445D /* UISegmentControlExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentControlExt.swift; sourceTree = "<group>"; };
 		8437E01020D0057D0043445D /* ApprovedLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedLendersViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,12 @@
 		848C85DE20A042B100026A5E /* ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
 		848C85E020A0480700026A5E /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		848EC027209B4F9C00A39156 /* DateDecodeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodeStrategy.swift; sourceTree = "<group>"; };
+		848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedLendersPresenter.swift; sourceTree = "<group>"; };
+		848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLendersPresenter.swift; sourceTree = "<group>"; };
+		848F4C2A20D132A3007ECC45 /* ApprovedLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedLendersPresenter.swift; sourceTree = "<group>"; };
+		848F4C2C20D132B6007ECC45 /* RevisedLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisedLendersPresenter.swift; sourceTree = "<group>"; };
+		848F4C2E20D13DF5007ECC45 /* ReviserLendersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviserLendersViewController.swift; sourceTree = "<group>"; };
+		848F4C2F20D13DF5007ECC45 /* ReviserLendersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviserLendersViewController.xib; sourceTree = "<group>"; };
 		8493542620C6C03800C7EFF3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8493542B20C6C6AC00C7EFF3 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		8497872220ADB0DE004F4B06 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -291,6 +299,7 @@
 		840427F720B2E95F00C94765 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				848F4C2520D13270007ECC45 /* Offers */,
 				8493542A20C6C69A00C7EFF3 /* Profile */,
 				842239EC20BEDA8A0028FDAA /* Documents */,
 				8407C09F20B8098400045EFB /* TakingPhoto */,
@@ -450,8 +459,8 @@
 		8437E00520CFDC990043445D /* RevisedLenders */ = {
 			isa = PBXGroup;
 			children = (
-				8437E00620CFDD250043445D /* ReviserLendersViewController.swift */,
-				8437E00720CFDD250043445D /* ReviserLendersViewController.xib */,
+				848F4C2E20D13DF5007ECC45 /* ReviserLendersViewController.swift */,
+				848F4C2F20D13DF5007ECC45 /* ReviserLendersViewController.xib */,
 			);
 			path = RevisedLenders;
 			sourceTree = "<group>";
@@ -565,6 +574,7 @@
 				846F9943209B086100C61AE2 /* Services */,
 				8422055D20A5AA05007B03DE /* DAL */,
 				846F9958209B0AB900C61AE2 /* Constants.swift */,
+				840427E320B2E73D00C94765 /* UIConstants.swift */,
 				84484F68209B39C5006BBD11 /* Models */,
 			);
 			path = Infrastructure;
@@ -675,7 +685,6 @@
 				842E1EC520AD6FA9003D2CDA /* UIElement */,
 				846F995A209B0ADE00C61AE2 /* Decorators */,
 				846F9951209B0A3700C61AE2 /* KeyboardNotification.swift */,
-				840427E320B2E73D00C94765 /* UIConstants.swift */,
 				84C7FBF520B444760053C93A /* Camera.swift */,
 				8437E00A20CFE9B00043445D /* SttViewPage.swift */,
 			);
@@ -707,6 +716,17 @@
 				8437E00C20CFEF760043445D /* UISegmentControlExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		848F4C2520D13270007ECC45 /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */,
+				848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */,
+				848F4C2A20D132A3007ECC45 /* ApprovedLendersPresenter.swift */,
+				848F4C2C20D132B6007ECC45 /* RevisedLendersPresenter.swift */,
+			);
+			path = Offers;
 			sourceTree = "<group>";
 		};
 		8493542520C6C02700C7EFF3 /* Profile */ = {
@@ -855,10 +875,10 @@
 				842E1EC220AD6EB2003D2CDA /* InputBox.xib in Resources */,
 				8437E01720D0059F0043445D /* RejectedLendersViewController.xib in Resources */,
 				8462233D20BFE1F00059A83A /* DocumentEntityCell.xib in Resources */,
-				8437E00920CFDD250043445D /* ReviserLendersViewController.xib in Resources */,
 				842E1EC920AD7138003D2CDA /* Login.storyboard in Resources */,
 				84484F59209B05D4006BBD11 /* Main.storyboard in Resources */,
 				8466A6A520CFBDA200A888A0 /* LenderCell.xib in Resources */,
+				848F4C3120D13DF5007ECC45 /* ReviserLendersViewController.xib in Resources */,
 				8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */,
 				844F800420AD74940030DCC3 /* Colors.xcassets in Resources */,
 				8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */,
@@ -938,6 +958,7 @@
 				84C7FBF420B444490053C93A /* UIImage.swift in Sources */,
 				84484F67209B371D006BBD11 /* HttpService.swift in Sources */,
 				840427F120B2E85200C94765 /* DialogAlert.swift in Sources */,
+				848F4C2D20D132B6007ECC45 /* RevisedLendersPresenter.swift in Sources */,
 				844EC24320C54A37006CF9EF /* ShowPhotoViewController.swift in Sources */,
 				842E1EAF20AC549A003D2CDA /* Log.swift in Sources */,
 				846F995C209B0B0C00C61AE2 /* UIViewControllerDecorators.swift in Sources */,
@@ -945,6 +966,7 @@
 				84484F56209B05D4006BBD11 /* ViewController.swift in Sources */,
 				8462234520C02E690059A83A /* DateConverter.swift in Sources */,
 				842E1EAD20AC5412003D2CDA /* SttPresenters.swift in Sources */,
+				848F4C3020D13DF5007ECC45 /* ReviserLendersViewController.swift in Sources */,
 				846F9950209B09B800C61AE2 /* SttTableViewCell.swift in Sources */,
 				842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */,
 				842E1EC420AD6EBD003D2CDA /* SttTemplate.swift in Sources */,
@@ -955,7 +977,6 @@
 				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,
 				842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */,
-				8437E00820CFDD250043445D /* ReviserLendersViewController.swift in Sources */,
 				8493542C20C6C6AC00C7EFF3 /* ProfilePresenter.swift in Sources */,
 				844EC24620C54A79006CF9EF /* ShowPhotoPresenter.swift in Sources */,
 				846F994C209B093600C61AE2 /* SttViewController.swift in Sources */,
@@ -1016,11 +1037,14 @@
 				8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */,
 				844EC24820C58897006CF9EF /* DocumentService.swift in Sources */,
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,
+				848F4C2B20D132A3007ECC45 /* ApprovedLendersPresenter.swift in Sources */,
 				8457844420A5B307001F3509 /* Repository.swift in Sources */,
 				842239E520BE93CF0028FDAA /* DocumentsViewController.swift in Sources */,
 				7DD62D4B20C51C0100F33794 /* RealmAuth.swift in Sources */,
 				842239F920BEE5C90028FDAA /* NoDocumentEntityCell.swift in Sources */,
+				848F4C2720D13288007ECC45 /* RejectedLendersPresenter.swift in Sources */,
 				840427ED20B2E7C500C94765 /* SttCommand.swift in Sources */,
+				848F4C2920D13293007ECC45 /* NewLendersPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

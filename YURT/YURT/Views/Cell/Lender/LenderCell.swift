@@ -22,6 +22,7 @@ class LenderCell: SttTableViewCell<LenderPresenter>, LenderDelegate {
     }
     
     override func awakeFromNib() {
+        mainBorder.layer.cornerRadius = 5
         mainBorder.layer.borderWidth = 1
         mainBorder.layer.borderColor = UIColor(red:0.9, green:0.9, blue:0.9, alpha:1).cgColor
         mainBorder.layer.shadowOffset = CGSize(width: 0, height: 2)

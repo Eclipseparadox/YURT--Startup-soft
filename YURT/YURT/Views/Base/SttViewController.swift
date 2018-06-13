@@ -127,10 +127,10 @@ class SttbViewController: UIViewController, KeyboardNotificationDelegate {
         }
     }
     func keyboardWillHide(height: CGFloat) {
-        view.endEditing(true)
         if moveViewUp {
             scrollTheView(move: false)
         }
+        view.endEditing(true)
     }
     
     func scrollTheView(move: Bool) {
@@ -189,6 +189,7 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        keyboardNotification.addObserver()
         UIApplication.shared.statusBarStyle = style
         navigationController?.setNavigationBarHidden(hideNavigationBar, animated: true)
         navigationController?.navigationController?.navigationBar.isHidden = hideNavigationBar
@@ -196,6 +197,7 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        keyboardNotification.removeObserver()
         navigationController?.navigationController?.navigationBar.isHidden = false
     }
     

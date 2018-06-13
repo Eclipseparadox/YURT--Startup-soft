@@ -17,9 +17,9 @@ enum DocumentType: String, Decodable, DictionaryCodable {
     case passport = "Passport"
     case SIN = "Social Insurance Card (SIN)"
     case cheque = "Void Cheque"
-    case tax = "Tax Assesments (2 years)"
+    case tax = "Tax Assessments (2 years)"
     case CPS = "Current Pay Stub"
-    case bank = "Bank Assesments"
+    case bank = "Bank Assessments"
     case uBill = "Utility Bill"
     case none = ""
     
@@ -58,6 +58,7 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
     var observer: PublishSubject<(Bool, DocumentType)>!
     weak var itemDelegate: DocumentContainerDelegate!
     var donwloadInProgress = false
+    var status = DocumentStatus.None
     
     var _documentService: DocumentServiceType!
     
@@ -80,7 +81,7 @@ class DocumentEntityPresenter: SttPresenter<DocumentEntityDelegate> {
         id = data.id
         self.image = Image(url: data.image.preview.path)
         self.takesDate = data.lastUpdate
-        
+        self.status = data.documentStatus
        // observer.onNext((true, documentType))
     }
     
