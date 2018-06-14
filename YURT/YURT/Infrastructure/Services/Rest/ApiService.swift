@@ -19,7 +19,7 @@ protocol IApiService {
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
     
-    func getDocument() -> Observable<[BorrowerDocumentApiModel]>
+    func getDocument() -> Observable<BorrowerDocumentModelApiModel>
     func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel>
     func sendDocuments() -> Observable<Bool>
     func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool>
@@ -28,7 +28,7 @@ protocol IApiService {
 class ApiService: IApiService {
   
     var _httpService: IHttpService!
-    var _unitOfWork: IUnitOfWork!
+    var _unitOfWork: StorageProviderType!
     
     init() {
         ServiceInjectorAssembly.instance().inject(into: self)
@@ -69,11 +69,12 @@ class ApiService: IApiService {
         return _httpService.post(controller: .mobileDocument("add"), dataAny: model.getDictionary(), insertToken: true)
             .getResult(ofType: BorrowerDocumentApiModel.self)
     }
-    func getDocument() -> Observable<[BorrowerDocumentApiModel]> {
-        let localDoc = _unitOfWork.borrowerDocument.getMany().map({ $0.map({ $0.deserialize() }) })
+    func getDocument() -> Observable<BorrowerDocumentModelApiModel> {
+        let localDoc = _unitOfWork.borrowerDocument.getOne(filter: nil)
+                        .map({ $0.deserialize() })
         let apiData = _httpService.get(controller: .mobileDocument(""), insertToken: true)
-                        .getResult(ofType: [BorrowerDocumentApiModel].self)
-                        .saveInDB(saveCallback: _unitOfWork.borrowerDocument.saveMany(models:))
+                        .getResult(ofType: BorrowerDocumentModelApiModel.self)
+                        .saveInDB(saveCallback: _unitOfWork.borrowerDocument.saveOne(model:))
         
         
         return Observable.merge([localDoc, apiData])

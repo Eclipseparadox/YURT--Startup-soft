@@ -63,6 +63,7 @@ extension ObservableType where E == (HTTPURLResponse, Data) {
                     do {
                         let decoder = JSONDecoder()
                         decoder.dateDecodingStrategy = .customISO8601
+                        print(String(data: data, encoding: String.Encoding.utf8))
                         let jsonObject = try decoder.decode(TResult.self, from: data)
                         observer.onNext(jsonObject)
                     }

@@ -23,7 +23,7 @@ class AccountService: IAccountService {
     
     var _apiService: IApiService!
     var _notificatonError: INotificationError!
-    var _unitOfWork: IUnitOfWork!
+    var _unitOfWork: StorageProviderType!
     
     init () {
         ServiceInjectorAssembly.instance().inject(into: self)

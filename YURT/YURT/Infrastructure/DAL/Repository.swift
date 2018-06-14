@@ -157,10 +157,10 @@ R: BaseRealm {
         return Observable<R>.create { (observer) -> Disposable in
             do {
                 let objects = try self.getObjects(filter: filter, observer: observer, tryGetAll: false)
-                if (objects.count != 1) {
+                if (objects.count > 1) {
                     observer.onError(BaseError.realmError(RealmError.doesNotExactlyQuery("method: getOne type: \(type(of: R.self)) with filter \(filter ?? "nil")")))
                 }
-                else {
+                else if objects.count != 0 {
                     observer.onNext(objects[0])
                 }
                 observer.onCompleted()

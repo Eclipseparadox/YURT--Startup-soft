@@ -27,10 +27,10 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
         }
     }
     
-    var allDocumentIsSynced: Bool { return !sinq(documents.0).any({ sinq($0).any({ $0.status != DocumentStatus.None }) }) }
+    var isSendToReview: Bool = false
     var _documentService: DocumentServiceType!
     var send: SttComand!
-    var canSend: Bool { return currentUploaded == totalDocument && !allDocumentIsSynced }
+    var canSend: Bool { return currentUploaded == totalDocument && !isSendToReview }
 
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
@@ -40,8 +40,9 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
         
         _ = _documentService.getDocuments(delegate: self, publisher: publisher)
             .subscribe(onNext: { [weak self] (documents) in
-                self?.documents = documents
-                self?.currentUploaded = documents.1[0].uploadedsCount + documents.1[1].uploadedsCount
+                self?.documents = documents.0
+                self?.isSendToReview = documents.1
+                self?.currentUploaded = documents.0.1[0].uploadedsCount + documents.0.1[1].uploadedsCount
                 self?.delegate!.reloadData()
                 self?.delegate?.progressCahnged()
             })
@@ -50,9 +51,12 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
             .subscribe(onNext: { [weak self] (arg) in
             if let _self = self {
                 if arg.0 && _self.currentUploaded < _self.totalDocument {
+                    if _self.currentUploaded == _self.totalDocument {
+                    }
                     _self.currentUploaded += 1
                 }
                 else if _self.currentUploaded > 0 {
+                    _self.isSendToReview = false
                     _self.currentUploaded -= 1
                 }
             }
@@ -85,13 +89,7 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
         _ = send.useWork(observable: _documentService.sendDocument())
             .subscribe(onNext: { [weak self] (res) in
                 if res {
-                    if self != nil {
-                        for hi in self!.documents!.0 {
-                            for item in hi {
-                                item.status = .None
-                            }
-                        }
-                    }
+                    self?.isSendToReview = true
                     self?.delegate?.progressCahnged()
                     self?.delegate?.sendMessage(title: "Success", message: "Your documents have been sent successfully")
                 }

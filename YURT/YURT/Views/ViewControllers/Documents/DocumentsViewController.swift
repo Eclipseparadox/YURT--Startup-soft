@@ -66,6 +66,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         btnSend.isEnabled = presenter.canSend
         btnSend.alpha = presenter.canSend ? 1.0 : 0.5
         lblAllDocuments.isHidden = presenter.canSend
+        lblAllDocuments.text = presenter.currentUploaded == presenter.totalDocument ? "All the documents have been uploaded" : "All documents should be uploaded"
         UIView.animate(withDuration: 0.25, animations: { [weak self] in self?.view.layoutIfNeeded() })
     }
     

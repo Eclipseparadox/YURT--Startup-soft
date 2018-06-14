@@ -38,7 +38,7 @@
 		8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */; };
 		842E1EAD20AC5412003D2CDA /* SttPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EAC20AC5412003D2CDA /* SttPresenters.swift */; };
 		842E1EAF20AC549A003D2CDA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EAE20AC549A003D2CDA /* Log.swift */; };
-		842E1EB120AC5584003D2CDA /* UnitOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB020AC5584003D2CDA /* UnitOfWork.swift */; };
+		842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */; };
 		842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB220AC55AC003D2CDA /* ServiceAssembly.swift */; };
 		842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB420AC55CD003D2CDA /* ServiceInjectorAssembly.swift */; };
 		842E1EB820AC56AC003D2CDA /* BaseRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB720AC56AC003D2CDA /* BaseRealm.swift */; };
@@ -157,7 +157,7 @@
 		8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		842E1EAC20AC5412003D2CDA /* SttPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttPresenters.swift; sourceTree = "<group>"; };
 		842E1EAE20AC549A003D2CDA /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		842E1EB020AC5584003D2CDA /* UnitOfWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOfWork.swift; sourceTree = "<group>"; };
+		842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageProvider.swift; sourceTree = "<group>"; };
 		842E1EB220AC55AC003D2CDA /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
 		842E1EB420AC55CD003D2CDA /* ServiceInjectorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInjectorAssembly.swift; sourceTree = "<group>"; };
 		842E1EB720AC56AC003D2CDA /* BaseRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRealm.swift; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				8457844320A5B307001F3509 /* Repository.swift */,
-				842E1EB020AC5584003D2CDA /* UnitOfWork.swift */,
+				842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -1015,7 +1015,7 @@
 				8437E01220D0057D0043445D /* ApprovedLendersViewController.swift in Sources */,
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
 				848EC028209B4F9C00A39156 /* DateDecodeStrategy.swift in Sources */,
-				842E1EB120AC5584003D2CDA /* UnitOfWork.swift in Sources */,
+				842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */,
 				840427F320B2E87800C94765 /* NotificationError.swift in Sources */,
 				8437E00D20CFEF760043445D /* UISegmentControlExt.swift in Sources */,
 				8437DFFA20CFD4B10043445D /* OffersViewController.swift in Sources */,

@@ -12,7 +12,7 @@ import RxSwift
 
 protocol DocumentServiceType {
     func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<(Bool, String?)>
-    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])>
+    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<(([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter]), Bool)>
     func deleteDocument(id: String) -> Observable<Bool>
     func sendDocument() -> Observable<Bool>
 }
@@ -21,7 +21,7 @@ class DocumentService: DocumentServiceType {
     
     var _apiService: IApiService!
     var _notificatonError: INotificationError!
-    var _unitOfWork: IUnitOfWork!
+    var _unitOfWork: StorageProviderType!
     
     init () {
         ServiceInjectorAssembly.instance().inject(into: self)
@@ -34,11 +34,14 @@ class DocumentService: DocumentServiceType {
             .flatMap( { self._apiService.addDocument(model: AddDocumentApiModel(id: nil, type: _type, docType: type, image: $0)) } ))
             .flatMap({ model -> Observable<Bool> in
                 id = model.id
-                return self._unitOfWork.borrowerDocument.saveOne(model: model).toObservable()
+                return self._unitOfWork.borrowerDocument.update(update: { (models) in
+                    models.documents.append(model.serialize())
+                    models.isSentToReview = false
+                }, filter: nil).toObservable()
             }).map({ ($0, id) })
     }
     
-    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])> {
+    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<(([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter]), Bool)> {
         
         var documents = ([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])([], [])
 
@@ -59,13 +62,14 @@ class DocumentService: DocumentServiceType {
         documents.1.append(DocumentsEntityHeaderPresenter(title: "Personal documents:", total: documents.0[0].count, observable: publisher.asObservable(), isFinanices: false))
         documents.1.append(DocumentsEntityHeaderPresenter(title: "Financial documents:", total: documents.0[1].count, observable: publisher.asObservable(), isFinanices: true))
         
-        return self._notificatonError.useError(observable: Observable<([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])>.create { (observer) -> Disposable in
+        return self._notificatonError.useError(observable: Observable<(([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter]), Bool)>.create { (observer) -> Disposable in
+            observer.onNext((documents, false))
             return self._apiService.getDocument()
                 .subscribe(onNext: { (models) in
                     documents.1[0].uploadedsCount = 0
                     documents.1[1].uploadedsCount = 0
 
-                    for item in models {
+                    for item in models.documents {
                         var nIndex = 0
                         if item.name.isFinancies() {
                             nIndex = 1
@@ -81,20 +85,24 @@ class DocumentService: DocumentServiceType {
                         }
                     }
                     
-                    observer.onNext(documents)
+                    observer.onNext((documents, models.isSentToReview))
                 }, onError: observer.onError(_:), onCompleted: observer.onCompleted)
         })
     }
     
     func deleteDocument(id: String) -> Observable<Bool> {
         return _notificatonError.useError(observable:
-            _unitOfWork.borrowerDocument.getOne(filter: "id = '\(id)'")
-            .flatMap({ self._apiService.deleteDocument(model: DeleteDocumentApiModel(documentId: id, image: $0.image!.deserialize())) })
-            .flatMap({ _ in self._unitOfWork.borrowerDocument.delete(filter: "id = '\(id)'").toObservable() })
+            _unitOfWork.borrowerDocument.getOne(filter: nil)
+                .flatMap({ self._apiService.deleteDocument(model: DeleteDocumentApiModel(documentId: id, image: $0.documents[$0.documents.index(where: { $0.id == id })!].image!.deserialize())) })
+                .flatMap({ _ in self._unitOfWork.borrowerDocument.update(update: {
+                    $0.documents.remove(at: $0.documents.index(where: { $0.id == id })!)
+                    $0.isSentToReview = false
+                }, filter: nil).toObservable() })
         )
     }
     
     func sendDocument() -> Observable<Bool> {
-        return _notificatonError.useError(observable: _apiService.sendDocuments())
+        return _notificatonError.useError(observable: _apiService.sendDocuments()
+            .flatMap({ _ in self._unitOfWork.borrowerDocument.update(update: { $0.isSentToReview = true }, filter: nil).toObservable() }))
     }
 }

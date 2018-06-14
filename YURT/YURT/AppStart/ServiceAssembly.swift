@@ -16,8 +16,8 @@ class ServiceAssembly: Assembly {
     var httpService: IHttpService {
         return define(scope: .lazySingleton, init: HttpService())
     }
-    var unitOfWork: IUnitOfWork {
-        return define(scope: .lazySingleton, init: UnitOfWork())
+    var unitOfWork: StorageProviderType {
+        return define(scope: .lazySingleton, init: RealmStorageProvider())
     }
     var notificationError: INotificationError {
         return define(scope: .lazySingleton, init: NotificationError())

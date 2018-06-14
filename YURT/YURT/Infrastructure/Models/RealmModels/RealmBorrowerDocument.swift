@@ -63,3 +63,15 @@ class RealmBorrowerDocument: BaseRealm, RealmDecodable {
         return BorrowerDocumentApiModel(id: id, type: type, documentStatus: documentStatus, name: name, image: image!.deserialize(), lastUpdate: lastUpdate)
     }
 }
+
+class RealmBorrowerDocumentModel: BaseRealm, RealmDecodable {
+    
+    typealias TTarget = BorrowerDocumentModelApiModel
+    
+    @objc dynamic var isSentToReview: Bool = false
+    let documents = List<RealmBorrowerDocument>()
+    
+    func deserialize() -> BorrowerDocumentModelApiModel {
+        return BorrowerDocumentModelApiModel(documents: documents.map({ $0.deserialize() }), isSentToReview: isSentToReview)
+    }
+}

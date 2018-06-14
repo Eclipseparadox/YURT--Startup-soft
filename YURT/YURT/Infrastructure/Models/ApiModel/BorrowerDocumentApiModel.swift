@@ -34,3 +34,18 @@ struct BorrowerDocumentApiModel: Decodable, RealmCodable {
             ])
     }
 }
+
+struct BorrowerDocumentModelApiModel: Decodable, RealmCodable {
+    
+    typealias TTarget = RealmBorrowerDocumentModel
+    
+    let documents: [BorrowerDocumentApiModel]
+    let isSentToReview: Bool
+    
+    func serialize() -> RealmBorrowerDocumentModel {
+        return RealmBorrowerDocumentModel(value: [
+            "documents": documents.map({ $0.serialize() }),
+            "isSentToReview": isSentToReview
+            ])
+    }
+}

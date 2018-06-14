@@ -19,12 +19,11 @@ class OffersViewController: UIViewController {
         viewPager.heightTabBar = 44
 
         let newVC = NewLendersViewController(nibName: "NewLendersViewController", bundle: nil)
-        let revieserVC = ReviserLendersViewController(nibName: "ReviserLendersViewController", bundle: nil)
+        //let revieserVC = ReviserLendersViewController(nibName: "ReviserLendersViewController", bundle: nil)
         let approvedVC = ApprovedLendersViewController(nibName: "ApprovedLendersViewController", bundle: nil)
         let rejectedVC = RejectedLendersViewController(nibName: "RejectedLendersViewController", bundle: nil)
         
         viewPager.addItem(view: newVC, title: "New")
-        viewPager.addItem(view: revieserVC, title: "Reviser")
         viewPager.addItem(view: approvedVC, title: "Approved")
         viewPager.addItem(view: rejectedVC, title: "Rejected")
     }
