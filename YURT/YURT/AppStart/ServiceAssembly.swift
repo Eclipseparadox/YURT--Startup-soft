@@ -28,4 +28,7 @@ class ServiceAssembly: Assembly {
     var documentService: DocumentServiceType {
         return define(scope: .lazySingleton, init: DocumentService())
     }
+    var offerInteractor: OfferInteractorType {
+        return define(scope: .lazySingleton, init: OfferInteractor())
+    }
 }

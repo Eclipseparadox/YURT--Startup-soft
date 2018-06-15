@@ -16,9 +16,17 @@ class LenderCell: SttTableViewCell<LenderPresenter>, LenderDelegate {
     @IBOutlet weak var lblRate: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var lblYears: UILabel!
-  
+    @IBOutlet weak var lblLocation: UILabel!
+    
     override func prepareBind() {
+        imgProfile.loadImage(image: Image(url: dataContext.data.lender.image.preview.path))
+        lblFullName.text = dataContext.data.lender.fullName
+        lblLocation.text = dataContext.data.lender.physicalAddress
+        imgProfile.createCircle()
         
+        lblRate.text = "\(dataContext.data.rate)%"
+        lblAmount.text = "$ \(dataContext.data.downPayment.formattedWithSeparator)"
+        lblYears.text = CountableConverter().convert(value: (dataContext.data.term, "year"))
     }
     
     override func awakeFromNib() {
@@ -29,12 +37,12 @@ class LenderCell: SttTableViewCell<LenderPresenter>, LenderDelegate {
         mainBorder.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.05).cgColor
         mainBorder.layer.shadowOpacity = 1
         mainBorder.layer.shadowRadius = 5
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickOnItem(_:))))
     }
     
+    @objc func onClickOnItem(_ sender: Any) {
+        dataContext.openOffers()
+    }
 }

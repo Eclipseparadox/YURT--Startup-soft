@@ -30,4 +30,11 @@ class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLende
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
     }
+    
+    // MARK: -- Implement Delegate NewLenders
+
+    func reloadLenders() {
+        lblNoData.isHidden = presenter.lenders.count != 0
+        source._collection = presenter.lenders
+    }
 }

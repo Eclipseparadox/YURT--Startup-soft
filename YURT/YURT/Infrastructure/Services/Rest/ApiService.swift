@@ -23,6 +23,8 @@ protocol IApiService {
     func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel>
     func sendDocuments() -> Observable<Bool>
     func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool>
+    
+    func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
 }
 
 class ApiService: IApiService {
@@ -86,5 +88,13 @@ class ApiService: IApiService {
     func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool> {
         return _httpService.post(controller: .mobileDocument("delete"), dataAny: model.getDictionary(), insertToken: true)
             .getResult()
+    }
+    
+    func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]> {
+        return _httpService.get(controller: .mobileOffers(""), data: [
+            "statuses": status.toString(),
+            "skip": "\(skip)"
+            ], insertToken: true)
+            .getResult(ofType: [OfferApiModel].self)
     }
 }

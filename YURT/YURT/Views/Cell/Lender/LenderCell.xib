@@ -73,7 +73,7 @@
                                 <rect key="frame" x="15" y="80" width="31" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWz-ME-C9s">
-                                        <rect key="frame" x="2" y="26" width="27" height="16"/>
+                                        <rect key="frame" x="2.5" y="26" width="27" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="P7g-BI-rmG"/>
                                             <constraint firstAttribute="height" constant="16" id="l4S-NG-f6x"/>
@@ -83,9 +83,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZH-zl-MZd">
-                                        <rect key="frame" x="5" y="8" width="20" height="14"/>
+                                        <rect key="frame" x="5" y="8" width="20" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="VDk-E0-TSy"/>
+                                            <constraint firstAttribute="height" constant="16" id="VDk-E0-TSy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -107,9 +107,9 @@
                                 <rect key="frame" x="220" y="80" width="54" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 years" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWy-jZ-xko">
-                                        <rect key="frame" x="2" y="8" width="50" height="14"/>
+                                        <rect key="frame" x="2" y="8" width="50" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="Qdq-8B-5Gh"/>
+                                            <constraint firstAttribute="height" constant="16" id="Qdq-8B-5Gh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -138,10 +138,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znn-s8-G2j">
-                                <rect key="frame" x="98" y="80" width="94" height="49"/>
+                                <rect key="frame" x="80" y="80" width="131" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loan Ammount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auJ-22-ugD">
-                                        <rect key="frame" x="2" y="26" width="90" height="16"/>
+                                        <rect key="frame" x="20" y="26" width="90" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="eYj-jW-SfN"/>
                                             <constraint firstAttribute="height" constant="16" id="xvk-ri-zHO"/>
@@ -150,10 +150,10 @@
                                         <color key="textColor" name="secondaryTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 300 000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8l-gM-9FQ">
-                                        <rect key="frame" x="2" y="8" width="90" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 300 000 000 000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8l-gM-9FQ">
+                                        <rect key="frame" x="2" y="8" width="127" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="dSR-2w-vL8"/>
+                                            <constraint firstAttribute="height" constant="16" id="dSR-2w-vL8"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -209,6 +209,7 @@
                 <outlet property="imgProfile" destination="1jd-ns-DmJ" id="b7m-Hq-vqc"/>
                 <outlet property="lblAmount" destination="U8l-gM-9FQ" id="y6e-bm-IVv"/>
                 <outlet property="lblFullName" destination="qTY-gB-MUz" id="FIM-Sz-YFU"/>
+                <outlet property="lblLocation" destination="jUE-Pa-z7D" id="mdR-Xz-Cdm"/>
                 <outlet property="lblRate" destination="1ZH-zl-MZd" id="JzU-2o-Iye"/>
                 <outlet property="lblYears" destination="JWy-jZ-xko" id="dK7-rA-uBq"/>
                 <outlet property="mainBorder" destination="HgH-XO-2UT" id="tmB-ae-pvX"/>

@@ -19,15 +19,6 @@ extension JSONDecoder.DateDecodingStrategy {
     }
 }
 
-extension Formatter {
-    static let iso8601: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return formatter
-    }()
-    static let iso8601noFS = ISO8601DateFormatter()
-}
-
 extension Date {
     func onlyDay() -> Date {
         guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
@@ -56,7 +47,6 @@ extension Date {
         let dayHourMinuteSecond: Set<Calendar.Component> = [.minute]
         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: Date(), to: self);
         
-        print(difference.minute)
         return difference.minute!
     }
 }

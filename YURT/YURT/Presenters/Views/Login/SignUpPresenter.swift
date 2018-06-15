@@ -167,7 +167,7 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
          _ = signUp.useWork(observable: _accountService.signUp(firstName: firstName!, lastName: lastName!, location: location, phone: phone, email: email!, password: password!, image: photoData))
             .subscribe(onNext: { (res) in
                 if res {
-                    self.delegate!.navigate(storyboardName: "Main", type: .modality, animated: true)
+                    self.delegate!.loadStoryboard(storyboard: .main)
                 }
             })
     }

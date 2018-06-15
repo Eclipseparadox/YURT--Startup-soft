@@ -28,6 +28,13 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject<T>(into service: BaseLendersPresenter<T>) {
+        let _:BaseLendersPresenter<T> = define(init: service) {
+            $0._offerInteractor = self.serviceAssembly.offerInteractor
+            return $0
+        }
+    }
+    
     func inject(into service: SignUpPresenter) {
         let _:SignUpPresenter = define(init: service) {
             $0._accountService = self.serviceAssembly.accountService
@@ -87,6 +94,14 @@ class ServiceInjectorAssembly: Assembly {
             $0._apiService = self.serviceAssembly.apiService
             $0._notificatonError = self.serviceAssembly.notificationError
             $0._unitOfWork = self.serviceAssembly.unitOfWork
+            return $0
+        }
+    }
+    
+    func inject(into service: OfferInteractor) {
+        let _:OfferInteractor = define(init: service) {
+            $0._apiService = self.serviceAssembly.apiService
+            $0._notificatonError = self.serviceAssembly.notificationError
             return $0
         }
     }

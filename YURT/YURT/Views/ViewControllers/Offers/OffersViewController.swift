@@ -2,22 +2,21 @@
 //  OffersViewController.swift
 //  YURT
 //
-//  Created by Standret on 12.06.18.
+//  Created by Standret on 15.06.18.
 //  Copyright © 2018 com.yurt.YURT. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class OffersViewController: UIViewController {
-    
+
     @IBOutlet weak var viewPager: SttViewPager!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         viewPager.parent = self
         viewPager.heightTabBar = 44
-
+        
         let newVC = NewLendersViewController(nibName: "NewLendersViewController", bundle: nil)
         //let revieserVC = ReviserLendersViewController(nibName: "ReviserLendersViewController", bundle: nil)
         let approvedVC = ApprovedLendersViewController(nibName: "ApprovedLendersViewController", bundle: nil)

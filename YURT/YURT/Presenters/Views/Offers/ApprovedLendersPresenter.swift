@@ -8,16 +8,15 @@
 
 import Foundation
 
-protocol ApprovedLendersDelegate {
+protocol ApprovedLendersDelegate: BaseLenderProtocol {
     
 }
 
-class ApprovedLendersPresenter: SttPresenter<ApprovedLendersDelegate> {
-    var lenders = [LenderPresenter]()
+class ApprovedLendersPresenter: BaseLendersPresenter<ApprovedLendersDelegate> {
 
     override func presenterCreating() {
+        type = OfferStatus.approved
         super.presenterCreating()
         
-        lenders.append(LenderPresenter())
     }
 }

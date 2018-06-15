@@ -25,4 +25,11 @@ class ApprovedLendersViewController: SttViewController<ApprovedLendersPresenter>
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
     }
+    
+    // MARK: -- Implement ApprovedLendersDelegate
+    
+    func reloadLenders() {
+        lblNoData.isHidden = presenter.lenders.count != 0
+        source._collection = presenter.lenders
+    }
 }

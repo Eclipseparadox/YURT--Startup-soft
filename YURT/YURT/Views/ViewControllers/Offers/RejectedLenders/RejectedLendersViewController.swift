@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RejectedLendersViewController: SttViewController<RejectedLendersPresenter>, RejectedLendersDelegate {
+class RejectedLendersViewController: SttViewController<RejectedLendersPresenter>, RejectedLendersDelegate {   
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNoData: UILabel!
@@ -24,5 +24,12 @@ class RejectedLendersViewController: SttViewController<RejectedLendersPresenter>
         tableView.reloadData()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
+    }
+    
+    // MARK: -- Implement RejectedLendersDelegate
+    
+    func reloadLenders() {
+        lblNoData.isHidden = presenter.lenders.count != 0
+        source._collection = presenter.lenders
     }
 }

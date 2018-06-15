@@ -44,7 +44,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
 
         presenter.send.useIndicator(button: btnSend)
 
-        btnSend.isEnabled = presenter.canSend
+        btnSend.isUserInteractionEnabled = presenter.canSend
         btnSend.alpha = presenter.canSend ? 1.0 : 0.5
         btnSend.layer.cornerRadius = 5
         collectionDocuments.sizeToFit()
@@ -63,10 +63,10 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         lblPercentBlack.text = strNewValue
         lblPercentWhite.text = strNewValue
         cnstrLeftAnch.constant = (progressBar.bounds.width - progressBar.bounds.width / CGFloat(presenter.totalDocument) * CGFloat(presenter.currentUploaded))
-        btnSend.isEnabled = presenter.canSend
+        btnSend.isUserInteractionEnabled = presenter.canSend
         btnSend.alpha = presenter.canSend ? 1.0 : 0.5
         lblAllDocuments.isHidden = presenter.canSend
-        lblAllDocuments.text = presenter.currentUploaded == presenter.totalDocument ? "All the documents have been uploaded" : "All documents should be uploaded"
+        lblAllDocuments.text = presenter.currentUploaded == presenter.totalDocument ? "Your documents are successfully sent" : "All documents should be uploaded"
         UIView.animate(withDuration: 0.25, animations: { [weak self] in self?.view.layoutIfNeeded() })
     }
     

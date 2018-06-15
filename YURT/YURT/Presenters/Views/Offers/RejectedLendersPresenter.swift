@@ -8,27 +8,15 @@
 
 import Foundation
 
-protocol RejectedLendersDelegate {
+protocol RejectedLendersDelegate: BaseLenderProtocol {
     
 }
 
-class RejectedLendersPresenter: SttPresenter<RejectedLendersDelegate> {
-    var lenders = [LenderPresenter]()
+class RejectedLendersPresenter: BaseLendersPresenter<RejectedLendersDelegate> {
     
     override func presenterCreating() {
-        super.presenterCreating()
+        type = OfferStatus.rejected
         
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
-        lenders.append(LenderPresenter())
+        super.presenterCreating()
     }
 }

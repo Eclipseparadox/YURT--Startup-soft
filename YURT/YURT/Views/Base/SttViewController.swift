@@ -8,80 +8,17 @@
 
 import UIKit
 
-class ErrorLabel: UIView {
-    private var errorLabel: UILabel!
-    private var topContraint: NSLayoutConstraint!
-    
-    weak var delegate: UIViewController! {
-        didSet {
-            injectConponnent()
-        }
-    }
-    
-    func showError(text: String) {
-        errorLabel.text = text
-        topContraint.constant = 0
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in self?.delegate.view?.layoutIfNeeded() })
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { [weak self] (timer) in
-            timer.invalidate()
-            self?.topContraint.constant = CGFloat(UIConstants.heightErrorLabel)
-            UIView.animate(withDuration: 0.5, animations: { [weak self] in self?.delegate.view?.layoutIfNeeded() })
-        }
-    }
-    
-    @objc func onClick(_ sender: Any) {
-        
-    }
-    
-    private func injectConponnent() {
-        backgroundColor = UIColor(named: "labelError")
-        translatesAutoresizingMaskIntoConstraints = false
-        delegate.view.addSubview(self)
-        topContraint = NSLayoutConstraint(item: delegate.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 40)
-        delegate.view.addConstraints([
-            topContraint,
-            NSLayoutConstraint(item: delegate.view, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: delegate.view, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 0)
-            ])
-        self.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(UIConstants.heightErrorLabel)))
-        
-        errorLabel = UILabel()
-        errorLabel.textColor = UIColor.white
-        errorLabel.font = UIFont(name: "Roboto-Regular", size: 14)!
-        errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        errorLabel.textAlignment = .center
-        
-        self.addSubview(errorLabel)
-        self.addConstraints([
-            NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: errorLabel, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: errorLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: errorLabel, attribute: NSLayoutAttribute.left, multiplier: 1, constant: -15),
-            NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: errorLabel, attribute: NSLayoutAttribute.right, multiplier: 1, constant: 15)
-            ])
-        
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick(_:))))
-    }
-}
-
-extension UIViewController {
-    var isModal: Bool {
-        if let index = navigationController?.viewControllers.index(of: self), index > 0 {
-            return false
-        } else if presentingViewController != nil {
-            return true
-        } else if navigationController?.presentingViewController?.presentedViewController == navigationController  {
-            return true
-        } else if tabBarController?.presentingViewController is UITabBarController {
-            return true
-        } else {
-            return false
-        }
-    }
-}
-
 enum TypeNavigation {
     case push
     case modality
+}
+
+enum Storyboard: String {
+    case main = "Main"
+    case photo = "Photo"
+    case offer = "Offer"
+    case login = "Login"
+    case none
 }
 
 protocol Viewable: class {
@@ -89,8 +26,18 @@ protocol Viewable: class {
     func sendError(error: BaseError)
     func close()
     func close(parametr: Any)
-    func navigate(to: String, withParametr: Any, callback: @escaping (Any) -> Void)
-    func navigate(storyboardName: String, type: TypeNavigation, animated: Bool)
+    func navigate(to: String, withParametr: Any?, callback: ((Any) -> Void)?)
+    func navigate<T>(storyboard: Storyboard, to _: T.Type, typeNavigation: TypeNavigation, withParametr: Any?, callback: ((Any) -> Void)?)
+    func loadStoryboard(storyboard: Storyboard)
+}
+
+extension Viewable {
+    func navigate(to: String, withParametr: Any? = nil, callback: ((Any) -> Void)? = nil) {
+        self.navigate(to: to, withParametr: withParametr, callback: callback)
+    }
+    func navigate<T>(storyboard: Storyboard, to _: T.Type, typeNavigation: TypeNavigation = .push, withParametr: Any? = nil, callback: ((Any) -> Void)? = nil) {
+        self.navigate(storyboard: storyboard, to: T.self, typeNavigation: typeNavigation, withParametr: nil, callback: nil)
+    }
 }
 
 protocol ViewInjector {
@@ -230,21 +177,34 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
         close(parametr: parametr, animate: true)
     }
     
-    
-    func navigate(storyboardName: String, type: TypeNavigation = .modality, animated: Bool = true) {
-        let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let viewContrl = stroyboard.instantiateViewController(withIdentifier: "start")
-        switch type {
+    func navigate<T>(storyboard: Storyboard, to _: T.Type, typeNavigation: TypeNavigation, withParametr: Any?, callback: ((Any) -> Void)?)  {
+        let bundle = Bundle(for: type(of: self))
+        let _nibName = "\(type(of: T.self))".components(separatedBy: ".").first!
+        let nibName = String(_nibName[..<(_nibName.index(_nibName.endIndex, offsetBy: -9))])
+        
+        var vc: UIViewController!
+        if storyboard == .none {
+            fatalError("unsupported operation")
+        }
+        else {
+            let stroyboard = UIStoryboard(name: storyboard.rawValue, bundle: bundle)
+            vc = stroyboard.instantiateViewController(withIdentifier: nibName)
+        }
+        switch typeNavigation {
         case .modality:
-            present(viewContrl, animated: animated, completion: nil)
+            present(vc, animated: true, completion: nil)
         case .push:
-            navigationController?.pushViewController(viewContrl, animated: animated)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
-
+    func loadStoryboard(storyboard: Storyboard) {
+        let stroyboard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
+        let vc = stroyboard.instantiateViewController(withIdentifier: "start")
+        present(vc, animated: true, completion: nil)
+    }
     
-    private var navigateData: (String, Any, (Any) -> Void)?
-    func navigate(to: String, withParametr: Any, callback: @escaping (Any) -> Void) {
+    private var navigateData: (String, Any?, ((Any) -> Void)?)?
+    func navigate(to: String, withParametr: Any?, callback: ((Any) -> Void)?) {
         navigateData = (to, withParametr, callback)
         performSegue(withIdentifier: to, sender: self)
     }

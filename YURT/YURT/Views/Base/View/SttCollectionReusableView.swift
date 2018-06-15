@@ -21,13 +21,15 @@ class SttTCollectionReusableView<T: ViewInjector>: UICollectionReusableView, Vie
     func close(parametr: Any) {
         fatalError(Constants.noImplementException)
     }
-    func navigate(storyboardName: String, type: TypeNavigation, animated: Bool) {
+    func navigate(to: String, withParametr: Any?, callback: ((Any) -> Void)?) {
         fatalError(Constants.noImplementException)
     }
-    func navigate<TParametr, TResult>(to: String, withParametr: TParametr, callback: @escaping (TResult) -> Void) {
+    func navigate<T>(storyboard: Storyboard, to _: T.Type, typeNavigation: TypeNavigation, withParametr: Any?, callback: ((Any) -> Void)?) {
         fatalError(Constants.noImplementException)
     }
-    
+    func loadStoryboard(storyboard: Storyboard) {
+        fatalError(Constants.noImplementException)
+    }
     func prepareBind() {
         dataContext.injectView(delegate: self)
     }

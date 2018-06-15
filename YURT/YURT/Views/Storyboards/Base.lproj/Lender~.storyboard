@@ -65,6 +65,37 @@
             </objects>
             <point key="canvasLocation" x="-82.400000000000006" y="-8.5457271364317844"/>
         </scene>
+        <!--Lenders offers-->
+        <scene sceneID="3ct-Dh-81L">
+            <objects>
+                <viewController id="i0U-nc-LmE" customClass="OffersViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DOW-ak-56B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcA-Ni-NcH" customClass="SttViewPager" customModule="YURT" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gcA-Ni-NcH" firstAttribute="trailing" secondItem="Uei-AF-ARp" secondAttribute="trailing" id="6jE-7v-YeM"/>
+                            <constraint firstItem="gcA-Ni-NcH" firstAttribute="bottom" secondItem="Uei-AF-ARp" secondAttribute="bottom" id="HW6-ZO-E1B"/>
+                            <constraint firstItem="gcA-Ni-NcH" firstAttribute="top" secondItem="Uei-AF-ARp" secondAttribute="top" id="cWF-b7-aB7"/>
+                            <constraint firstItem="gcA-Ni-NcH" firstAttribute="leading" secondItem="Uei-AF-ARp" secondAttribute="leading" id="po2-6X-j6L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Uei-AF-ARp"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Lenders offers" id="yxc-DK-8fi"/>
+                    <connections>
+                        <outlet property="viewPager" destination="gcA-Ni-NcH" id="jsI-2z-bem"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Mt-u2-MW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733.60000000000002" y="-1625.0374812593705"/>
+        </scene>
         <!--Show Photo View Controller-->
         <scene sceneID="CEC-VZ-rii">
             <objects>
@@ -586,43 +617,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6IG-XC-CVo" kind="relationship" relationship="rootViewController" id="yiK-SP-FgK"/>
+                        <segue destination="i0U-nc-LmE" kind="relationship" relationship="rootViewController" id="Eic-LK-LJi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTa-D3-XBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-159" y="-1625"/>
-        </scene>
-        <!--Lenders offers-->
-        <scene sceneID="AY5-ra-Mcv">
-            <objects>
-                <viewController id="6IG-XC-CVo" customClass="OffersViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jkS-9h-Alf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxM-li-PlP" customClass="SttViewPager" customModule="YURT" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="qWk-Ii-uj3" firstAttribute="trailing" secondItem="JxM-li-PlP" secondAttribute="trailing" id="FBi-cN-oR9"/>
-                            <constraint firstItem="JxM-li-PlP" firstAttribute="top" secondItem="qWk-Ii-uj3" secondAttribute="top" id="MW6-7y-I1F"/>
-                            <constraint firstItem="JxM-li-PlP" firstAttribute="leading" secondItem="qWk-Ii-uj3" secondAttribute="leading" id="YOp-ln-gzB"/>
-                            <constraint firstItem="qWk-Ii-uj3" firstAttribute="bottom" secondItem="JxM-li-PlP" secondAttribute="bottom" id="kJc-A8-1N4"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qWk-Ii-uj3"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Lenders offers" id="xZ0-V7-YPI"/>
-                    <connections>
-                        <outlet property="viewPager" destination="JxM-li-PlP" id="a9e-eV-MpJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Sk-dU-NPe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="705" y="-1625"/>
         </scene>
         <!--Documents-->
         <scene sceneID="GtR-Sw-Pxi">

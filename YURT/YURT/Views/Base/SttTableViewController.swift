@@ -10,38 +10,32 @@ import Foundation
 import UIKit
 
 class SttTableViewController<T: ViewInjector>: UITableViewController, Viewable, KeyboardNotificationDelegate {
-    
+
     func close() {
         fatalError(Constants.noImplementException)
     }
     func close(parametr: Any) {
         fatalError(Constants.noImplementException)
     }
-    func sendError(error: BaseError)
-    {
+    func sendError(error: BaseError) {
+        fatalError(Constants.noImplementException)
+    }
+    func navigate(to: String, withParametr: Any?, callback: ((Any) -> Void)?) {
+        fatalError(Constants.noImplementException)
+    }
+    func navigate<T>(storyboard: Storyboard, to _: T.Type, typeNavigation: TypeNavigation, withParametr: Any?, callback: ((Any) -> Void)?) {
+        fatalError(Constants.noImplementException)
+    }
+    func loadStoryboard(storyboard: Storyboard) {
         fatalError(Constants.noImplementException)
     }
     func sendMessage(title: String, message: String?) {
         
     }
-    func navigate<TParametr, TResult>(to: String, withParametr: TParametr, callback: @escaping (TResult) -> Void) {
-        fatalError(Constants.noImplementException)
-    }
     
     func navigate(storyboardName: String, type: TypeNavigation = .modality, animated: Bool = true) {
         let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)
         let viewContrl = stroyboard.instantiateViewController(withIdentifier: "start")
-        switch type {
-        case .modality:
-            present(viewContrl, animated: animated, completion: nil)
-        case .push:
-            navigationController?.pushViewController(viewContrl, animated: animated)
-        }
-    }
-    
-    func navigate(storyboardName: String, id: String, type: TypeNavigation, animated: Bool = true)  {
-        let stroyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let viewContrl = stroyboard.instantiateViewController(withIdentifier: id)
         switch type {
         case .modality:
             present(viewContrl, animated: animated, completion: nil)
