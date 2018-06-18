@@ -15,6 +15,8 @@ class UIConstants {
         static let noDicumentEntity = "NoDocumentEntityCell"
         static let headerDocumentEntity = "DocumentsHeaderSection"
         static let lenderCell = "LenderCell"
+        static let offerDetailCell = "OfferDetailTableViewCell"
+        static let documentLenderCell = "DocumentLenderCell"
     }
     
     static let heightErrorLabel = 40

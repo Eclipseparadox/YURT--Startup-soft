@@ -13,7 +13,7 @@ protocol LenderDelegate {
 }
 
 protocol OfferItemDelegate: class {
-    func openOffers(id: String)
+    func openOffers(data: OfferApiModel)
 }
 
 class LenderPresenter: SttPresenter<LenderDelegate> {
@@ -28,6 +28,6 @@ class LenderPresenter: SttPresenter<LenderDelegate> {
     }
     
     func openOffers() {
-        itemDelegate?.openOffers(id: id)
+        itemDelegate?.openOffers(data: data)
     }
 }

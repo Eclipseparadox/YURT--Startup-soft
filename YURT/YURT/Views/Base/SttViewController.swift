@@ -36,7 +36,7 @@ extension Viewable {
         self.navigate(to: to, withParametr: withParametr, callback: callback)
     }
     func navigate<T>(storyboard: Storyboard, to _: T.Type, typeNavigation: TypeNavigation = .push, withParametr: Any? = nil, callback: ((Any) -> Void)? = nil) {
-        self.navigate(storyboard: storyboard, to: T.self, typeNavigation: typeNavigation, withParametr: nil, callback: nil)
+        self.navigate(storyboard: storyboard, to: T.self, typeNavigation: typeNavigation, withParametr: withParametr, callback: callback)
     }
 }
 
@@ -182,13 +182,15 @@ class SttViewController<T: ViewInjector>: SttbViewController, Viewable {
         let _nibName = "\(type(of: T.self))".components(separatedBy: ".").first!
         let nibName = String(_nibName[..<(_nibName.index(_nibName.endIndex, offsetBy: -9))])
         
-        var vc: UIViewController!
+        var vc: SttbViewController!
         if storyboard == .none {
             fatalError("unsupported operation")
         }
         else {
             let stroyboard = UIStoryboard(name: storyboard.rawValue, bundle: bundle)
-            vc = stroyboard.instantiateViewController(withIdentifier: nibName)
+            vc = stroyboard.instantiateViewController(withIdentifier: nibName) as! SttbViewController
+            vc.parametr = withParametr
+            vc.callback = callback
         }
         switch typeNavigation {
         case .modality:

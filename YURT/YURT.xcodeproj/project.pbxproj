@@ -116,6 +116,14 @@
 		84996DEF20D3F9740006ADFA /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996DEE20D3F9740006ADFA /* ErrorLabel.swift */; };
 		84996DF120D3FCA40006ADFA /* ViewOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996DF020D3FCA40006ADFA /* ViewOfferViewController.swift */; };
 		84996DF320D3FD070006ADFA /* ViewOfferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996DF220D3FD070006ADFA /* ViewOfferPresenter.swift */; };
+		84996DF520D7A7D20006ADFA /* OfferDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996DF420D7A7D20006ADFA /* OfferDetailPresenter.swift */; };
+		84996DF920D7A9A00006ADFA /* OfferDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996DF720D7A9A00006ADFA /* OfferDetailTableViewCell.swift */; };
+		84996DFA20D7A9A00006ADFA /* OfferDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84996DF820D7A9A00006ADFA /* OfferDetailTableViewCell.xib */; };
+		84996DFC20D7B0110006ADFA /* ViewOfferDetailConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996DFB20D7B0110006ADFA /* ViewOfferDetailConverter.swift */; };
+		84996E0020D7CB780006ADFA /* DocumentLenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996DFE20D7CB770006ADFA /* DocumentLenderCell.swift */; };
+		84996E0120D7CB780006ADFA /* DocumentLenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84996DFF20D7CB780006ADFA /* DocumentLenderCell.xib */; };
+		84996E0320D7CCF40006ADFA /* DocumentLenderCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996E0220D7CCF40006ADFA /* DocumentLenderCellPresenter.swift */; };
+		84996E0520D7CE800006ADFA /* SttColllectionViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996E0420D7CE800006ADFA /* SttColllectionViewSource.swift */; };
 		849D3F1020C80223004BB086 /* DeleteDocumentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */; };
 		849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3F1120C81F01004BB086 /* UIImageView.swift */; };
 		849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */; };
@@ -245,6 +253,14 @@
 		84996DEE20D3F9740006ADFA /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
 		84996DF020D3FCA40006ADFA /* ViewOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOfferViewController.swift; sourceTree = "<group>"; };
 		84996DF220D3FD070006ADFA /* ViewOfferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOfferPresenter.swift; sourceTree = "<group>"; };
+		84996DF420D7A7D20006ADFA /* OfferDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailPresenter.swift; sourceTree = "<group>"; };
+		84996DF720D7A9A00006ADFA /* OfferDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailTableViewCell.swift; sourceTree = "<group>"; };
+		84996DF820D7A9A00006ADFA /* OfferDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferDetailTableViewCell.xib; sourceTree = "<group>"; };
+		84996DFB20D7B0110006ADFA /* ViewOfferDetailConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOfferDetailConverter.swift; sourceTree = "<group>"; };
+		84996DFE20D7CB770006ADFA /* DocumentLenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentLenderCell.swift; sourceTree = "<group>"; };
+		84996DFF20D7CB780006ADFA /* DocumentLenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentLenderCell.xib; sourceTree = "<group>"; };
+		84996E0220D7CCF40006ADFA /* DocumentLenderCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentLenderCellPresenter.swift; sourceTree = "<group>"; };
+		84996E0420D7CE800006ADFA /* SttColllectionViewSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttColllectionViewSource.swift; sourceTree = "<group>"; };
 		849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDocumentApiModel.swift; sourceTree = "<group>"; };
 		849D3F1120C81F01004BB086 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBorrowerDocument.swift; sourceTree = "<group>"; };
@@ -300,6 +316,7 @@
 				8462234420C02E690059A83A /* DateConverter.swift */,
 				8462234620C133D00059A83A /* CountProgressConverter.swift */,
 				848F4C3820D3BB36007ECC45 /* CountableConverter.swift */,
+				84996DFB20D7B0110006ADFA /* ViewOfferDetailConverter.swift */,
 			);
 			path = Converters;
 			sourceTree = "<group>";
@@ -309,6 +326,7 @@
 			children = (
 				842239F020BEE4900028FDAA /* NoDocumentsEntity */,
 				8466A6A720CFC97700A888A0 /* LenderPresenter.swift */,
+				84996E0220D7CCF40006ADFA /* DocumentLenderCellPresenter.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -338,6 +356,7 @@
 			children = (
 				846F994D209B097B00C61AE2 /* SttTableViewSource.swift */,
 				842239E620BE9E0E0028FDAA /* SttCollectionViewWithSectionSource.swift */,
+				84996E0420D7CE800006ADFA /* SttColllectionViewSource.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -407,6 +426,8 @@
 		842239F520BEE57D0028FDAA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				84996DFD20D7CAA40006ADFA /* DocumentLender */,
+				84996DF620D7A86D0006ADFA /* OfferDetail */,
 				8466A6A120CFBCE000A888A0 /* Lender */,
 				842239F620BEE5880028FDAA /* DocumentEntity */,
 			);
@@ -740,6 +761,7 @@
 				848F4C2A20D132A3007ECC45 /* ApprovedLendersPresenter.swift */,
 				848F4C3620D2AE2C007ECC45 /* BaseLendersPresenter.swift */,
 				84996DF220D3FD070006ADFA /* ViewOfferPresenter.swift */,
+				84996DF420D7A7D20006ADFA /* OfferDetailPresenter.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -770,6 +792,24 @@
 				8497872420ADB0DE004F4B06 /* Roboto-Regular.ttf */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		84996DF620D7A86D0006ADFA /* OfferDetail */ = {
+			isa = PBXGroup;
+			children = (
+				84996DF720D7A9A00006ADFA /* OfferDetailTableViewCell.swift */,
+				84996DF820D7A9A00006ADFA /* OfferDetailTableViewCell.xib */,
+			);
+			path = OfferDetail;
+			sourceTree = "<group>";
+		};
+		84996DFD20D7CAA40006ADFA /* DocumentLender */ = {
+			isa = PBXGroup;
+			children = (
+				84996DFE20D7CB770006ADFA /* DocumentLenderCell.swift */,
+				84996DFF20D7CB780006ADFA /* DocumentLenderCell.xib */,
+			);
+			path = DocumentLender;
 			sourceTree = "<group>";
 		};
 		849D3F0E20C80187004BB086 /* SendModel */ = {
@@ -887,6 +927,7 @@
 				84996DE720D3F21E0006ADFA /* Main.storyboard in Resources */,
 				8437E00420CFDC5F0043445D /* NewLendersViewController.xib in Resources */,
 				8497872A20ADB0E0004F4B06 /* Roboto-Light.ttf in Resources */,
+				84996DFA20D7A9A00006ADFA /* OfferDetailTableViewCell.xib in Resources */,
 				84484F5B209B05D6006BBD11 /* Assets.xcassets in Resources */,
 				842239FA20BEE5C90028FDAA /* NoDocumentEntityCell.xib in Resources */,
 				842E1EC220AD6EB2003D2CDA /* InputBox.xib in Resources */,
@@ -900,6 +941,7 @@
 				8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */,
 				84996DEB20D3F2CD0006ADFA /* Photo.storyboard in Resources */,
 				8497872820ADB0E0004F4B06 /* Roboto-Medium.ttf in Resources */,
+				84996E0120D7CB780006ADFA /* DocumentLenderCell.xib in Resources */,
 				8497872B20ADB0E0004F4B06 /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -969,6 +1011,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */,
+				84996DF920D7A9A00006ADFA /* OfferDetailTableViewCell.swift in Sources */,
 				842239F220BEE4AD0028FDAA /* DocumentsEntityHeaderPresenter.swift in Sources */,
 				84C7FBFD20B54F9A0053C93A /* SttComandExtensions.swift in Sources */,
 				846F995E209B0B3100C61AE2 /* UIView.swift in Sources */,
@@ -984,9 +1027,11 @@
 				842E1EAD20AC5412003D2CDA /* SttPresenters.swift in Sources */,
 				846F9950209B09B800C61AE2 /* SttTableViewCell.swift in Sources */,
 				842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */,
+				84996E0320D7CCF40006ADFA /* DocumentLenderCellPresenter.swift in Sources */,
 				842E1EC420AD6EBD003D2CDA /* SttTemplate.swift in Sources */,
 				8437E00320CFDC5F0043445D /* NewLendersViewController.swift in Sources */,
 				8437E01620D0059F0043445D /* RejectedLendersViewController.swift in Sources */,
+				84996E0520D7CE800006ADFA /* SttColllectionViewSource.swift in Sources */,
 				842E1EC120AD6EB2003D2CDA /* InputBox.swift in Sources */,
 				842239FE20BEEA440028FDAA /* DocumentEntityHeaderView.swift in Sources */,
 				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
@@ -1000,10 +1045,12 @@
 				842239EE20BEDA9B0028FDAA /* DocumentsPresenter.swift in Sources */,
 				84996DF320D3FD070006ADFA /* ViewOfferPresenter.swift in Sources */,
 				8479DFAC20D3DE60002CACA6 /* FormatterExt.swift in Sources */,
+				84996DFC20D7B0110006ADFA /* ViewOfferDetailConverter.swift in Sources */,
 				842239E720BE9E0E0028FDAA /* SttCollectionViewWithSectionSource.swift in Sources */,
 				84484F6F209B400C006BBD11 /* ConstructModel.swift in Sources */,
 				840427EF20B2E81100C94765 /* Defaultable.swift in Sources */,
 				84996DEF20D3F9740006ADFA /* ErrorLabel.swift in Sources */,
+				84996DF520D7A7D20006ADFA /* OfferDetailPresenter.swift in Sources */,
 				8468DCB320B2B6E100701C93 /* ApiModel.swift in Sources */,
 				8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */,
 				8407C0A120B8099A00045EFB /* TakePhotoPresenter.swift in Sources */,
@@ -1064,6 +1111,7 @@
 				842239E520BE93CF0028FDAA /* DocumentsViewController.swift in Sources */,
 				7DD62D4B20C51C0100F33794 /* RealmAuth.swift in Sources */,
 				8479DFAE20D3E133002CACA6 /* OffersViewController.swift in Sources */,
+				84996E0020D7CB780006ADFA /* DocumentLenderCell.swift in Sources */,
 				842239F920BEE5C90028FDAA /* NoDocumentEntityCell.swift in Sources */,
 				84996DF120D3FCA40006ADFA /* ViewOfferViewController.swift in Sources */,
 				848F4C2720D13288007ECC45 /* RejectedLendersPresenter.swift in Sources */,
