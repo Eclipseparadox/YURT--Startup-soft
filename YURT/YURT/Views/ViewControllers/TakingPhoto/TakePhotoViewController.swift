@@ -55,7 +55,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
         attribute.addAttributes([NSAttributedStringKey.foregroundColor: UIColor(named: "main")!], range: range)
         CameraTitle.attributedText = attribute
         
-        _ = GlobalObserver.observableStatusApplication.subscribe(onNext: { [weak self] (status) in
+        _ = SttGlobalObserver.observableStatusApplication.subscribe(onNext: { [weak self] (status) in
             if status == .EnterBackgound {
                 self?.close()
             }
@@ -114,7 +114,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
             captureSession.removeOutput(photoOutput!)
         }
         catch {
-            Log.error(message: "\(error)", key: "Remove capture error")
+            SttLog.error(message: "\(error)", key: "Remove capture error")
         }
         
         captureSession.stopRunning()
@@ -132,7 +132,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
             captureSession.addOutput(photoOutput!)
         }
         catch {
-            Log.error(message: "\(error)", key: "Capture error")
+            SttLog.error(message: "\(error)", key: "Capture error")
         }
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)

@@ -16,8 +16,8 @@ class OfferDetailTableViewCell: SttTableViewCell<OfferDetailPresenter>, OfferDet
     override func prepareBind() {
         super.prepareBind()
         
-        name.text = dataContext.name
-        value.text = ViewOfferDetailConverter().convert(value: (dataContext.value, dataContext.type))
+        name.text = presenter.name
+        value.text = ViewOfferDetailConverter().convert(value: (presenter.value, presenter.type))
     }
     
     override func awakeFromNib() {

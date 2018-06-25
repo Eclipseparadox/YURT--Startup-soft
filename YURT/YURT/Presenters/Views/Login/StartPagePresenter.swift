@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StartPageDelegate: Viewable {
+protocol StartPageDelegate: SttViewContolable {
     func addError()
 }
 
@@ -33,7 +33,7 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
         _ = signIn.useWork(observable: _accountService.signIn(email: email!, password: password!))
             .subscribe(onNext: { (res) in
                 if res.0 {
-                    self.delegate!.loadStoryboard(storyboard: .main)
+                    self.delegate!.loadStoryboard(storyboard: Storyboard.main)
                 }
                 else {
                     self.passwordError = res.1

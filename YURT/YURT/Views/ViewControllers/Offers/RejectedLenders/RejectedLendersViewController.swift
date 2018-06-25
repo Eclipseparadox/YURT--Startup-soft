@@ -30,6 +30,6 @@ class RejectedLendersViewController: SttViewController<RejectedLendersPresenter>
     
     func reloadLenders() {
         lblNoData.isHidden = presenter.lenders.count != 0
-        source._collection = presenter.lenders
+        source.updateSource(collection: presenter.lenders)//._collection = presenter.lenders
     }
 }

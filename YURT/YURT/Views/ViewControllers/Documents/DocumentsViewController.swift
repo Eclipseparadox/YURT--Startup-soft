@@ -31,7 +31,6 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         progressBackground.createCircle(dominateWidth: false, clipToBounds: true)
         
         collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
-        
         collectionDocuments.dataSource = collectionSource
                 
         let width = widthScreen / 2 - 22
@@ -72,7 +71,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
     
     func reloadData() {
         if collectionSource != nil {
-            collectionDocuments.reloadData()
+            collectionSource.updateSource(collection: presenter.documents)
         }
     }
 }

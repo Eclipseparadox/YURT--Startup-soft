@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 
-enum DocumentType: String, Decodable, DictionaryCodable {
+enum DocumentType: String, Codable {
     case selfie = "Your Selfie"
     case signature = "Your Signature"
     case dlicense = "Driver's License"
@@ -35,7 +35,7 @@ enum DocumentItemType {
     case noDocument, document
 }
 
-protocol DocumentEntityDelegate: Viewable {
+protocol DocumentEntityDelegate: SttViewable {
     func donwloadImageComplete(isSuccess: Bool)
     func changeProgress(label: String)
 }

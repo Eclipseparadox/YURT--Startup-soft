@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CountableConverter: ConverterType {
+class CountableConverter: SttConverterType {
     
     typealias TIn = (Int, String)
     typealias TOut = String

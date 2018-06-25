@@ -12,7 +12,7 @@ import RxSwift
 
 protocol DocumentServiceType {
     func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<(Bool, String?)>
-    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<(([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter]), Bool)>
+    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<(SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>, Bool)>
     func deleteDocument(id: String) -> Observable<Bool>
     func sendDocument() -> Observable<Bool>
 }
@@ -20,7 +20,7 @@ protocol DocumentServiceType {
 class DocumentService: DocumentServiceType {
     
     var _apiService: IApiService!
-    var _notificatonError: INotificationError!
+    var _notificatonError: NotificationErrorType!
     var _unitOfWork: StorageProviderType!
     
     init () {
@@ -41,47 +41,58 @@ class DocumentService: DocumentServiceType {
             }).map({ ($0, id) })
     }
     
-    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<(([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter]), Bool)> {
+    func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<(SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>, Bool)> {
         
-        var documents = ([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])([], [])
-
-        documents.0.append([
-            DocumentEntityPresenter(type: .selfie, delegate: delegate, observer: publisher),
-            DocumentEntityPresenter(type: .signature, delegate: delegate, observer: publisher),
-            DocumentEntityPresenter(type: .dlicense, delegate: delegate, observer: publisher),
-            DocumentEntityPresenter(type: .passport, delegate: delegate, observer: publisher),
-            DocumentEntityPresenter(type: .SIN, delegate: delegate, observer: publisher)
-            ])
-        documents.0.append([
-            DocumentEntityPresenter(type: .cheque, delegate: delegate, observer: publisher),
-            DocumentEntityPresenter(type: .tax, delegate: delegate, observer: publisher),
-            DocumentEntityPresenter(type: .CPS, delegate: delegate, observer: publisher),
-            DocumentEntityPresenter(type: .bank, delegate: delegate, observer: publisher)
-            //DocumentEntityPresenter(type: .uBill, delegate: self),
-            ])
-        documents.1.append(DocumentsEntityHeaderPresenter(title: "Personal documents:", total: documents.0[0].count, observable: publisher.asObservable(), isFinanices: false))
-        documents.1.append(DocumentsEntityHeaderPresenter(title: "Financial documents:", total: documents.0[1].count, observable: publisher.asObservable(), isFinanices: true))
+        let personalDocuments = SttObservableCollection<DocumentEntityPresenter>()
+        personalDocuments.append(contentsOf: [
+                        DocumentEntityPresenter(type: .selfie, delegate: delegate, observer: publisher),
+                        DocumentEntityPresenter(type: .signature, delegate: delegate, observer: publisher),
+                        DocumentEntityPresenter(type: .dlicense, delegate: delegate, observer: publisher),
+                        DocumentEntityPresenter(type: .passport, delegate: delegate, observer: publisher),
+                        DocumentEntityPresenter(type: .SIN, delegate: delegate, observer: publisher)
+        ])
+        let financiedDocuments = SttObservableCollection<DocumentEntityPresenter>()
+        financiedDocuments.append(contentsOf: [
+                        DocumentEntityPresenter(type: .cheque, delegate: delegate, observer: publisher),
+                        DocumentEntityPresenter(type: .tax, delegate: delegate, observer: publisher),
+                        DocumentEntityPresenter(type: .CPS, delegate: delegate, observer: publisher),
+                        DocumentEntityPresenter(type: .bank, delegate: delegate, observer: publisher)
+                        //DocumentEntityPresenter(type: .uBill, delegate: self),
+        ])
         
-        return self._notificatonError.useError(observable: Observable<(([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter]), Bool)>.create { (observer) -> Disposable in
+        let documents = SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>()
+        
+        documents.append((personalDocuments,
+                          DocumentsEntityHeaderPresenter(title: "Personal documents:",
+                                                         total: personalDocuments.count,
+                                                         observable: publisher.asObservable(),
+                                                         isFinanices: false)))
+        documents.append((financiedDocuments,
+                          DocumentsEntityHeaderPresenter(title: "Financial documents:",
+                                                         total: financiedDocuments.count,
+                                                         observable: publisher.asObservable(),
+                                                         isFinanices: true)))
+        
+        return self._notificatonError.useError(observable: Observable<(SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>, Bool)>.create { (observer) -> Disposable in
             observer.onNext((documents, false))
             return self._apiService.getDocument()
                 .subscribe(onNext: { (models) in
-                    documents.1[0].uploadedsCount = 0
-                    documents.1[1].uploadedsCount = 0
+                    documents[0].1.uploadedsCount = 0
+                    documents[1].1.uploadedsCount = 0
 
                     for item in models.documents {
                         var nIndex = 0
                         if item.name.isFinancies() {
                             nIndex = 1
                         }
-                        if let index = documents.0[nIndex].index(where: { $0.documentType == item.name }) {
-                            documents.0[nIndex][index].insertData(data: item)
-                            if documents.1[nIndex].uploadedsCount < documents.1[nIndex].totalCountDocument {
-                                documents.1[nIndex].uploadedsCount += 1
+                        if let index = documents[nIndex].0.index(where: { $0.documentType == item.name }) {
+                            documents[nIndex].0[index].insertData(data: item)
+                            if documents[nIndex].1.uploadedsCount < documents[nIndex].1.totalCountDocument {
+                                documents[nIndex].1.uploadedsCount += 1
                             }
                         }
                         else {
-                            fatalError("da fuck")
+                            fatalError("nani da fuck")
                         }
                     }
                     

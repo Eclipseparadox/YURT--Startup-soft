@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PercentConverter: ConverterType {
+class PercentConverter: SttConverterType {
     
     typealias TIn = Float
     typealias TOut = String

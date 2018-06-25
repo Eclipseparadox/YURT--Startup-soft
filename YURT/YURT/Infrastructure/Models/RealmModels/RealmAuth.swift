@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RealmAuth: BaseRealm, RealmDecodable {
+class RealmAuth: SttRealmObject, RealmDecodable {
     
     typealias TTarget = AuthApiModel
     

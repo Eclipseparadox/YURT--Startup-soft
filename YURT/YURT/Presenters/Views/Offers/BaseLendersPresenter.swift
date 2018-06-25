@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BaseLenderProtocol: Viewable {
+protocol BaseLenderProtocol: SttViewContolable {
     func reloadLenders()
 }
 
@@ -18,7 +18,7 @@ class BaseLendersPresenter<T>: SttPresenter<T>, OfferItemDelegate {
     var viewDelegate: BaseLenderProtocol? { return delegate as? BaseLenderProtocol }
     var type: OfferStatus!
     
-    var lenders = [LenderPresenter]() {
+    var lenders = SttObservableCollection<LenderPresenter>() {
         didSet {
             (delegate as! BaseLenderProtocol).reloadLenders()
         }
@@ -38,7 +38,8 @@ class BaseLendersPresenter<T>: SttPresenter<T>, OfferItemDelegate {
                 for item in lendersOffers {
                     item.itemDelegate = self
                 }
-                self?.lenders = lendersOffers
+                self?.lenders.removeAll()
+                self?.lenders.append(contentsOf: lendersOffers)
             })
     }
 }

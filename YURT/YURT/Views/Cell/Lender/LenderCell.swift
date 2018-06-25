@@ -19,14 +19,14 @@ class LenderCell: SttTableViewCell<LenderPresenter>, LenderDelegate {
     @IBOutlet weak var lblLocation: UILabel!
     
     override func prepareBind() {
-        imgProfile.loadImage(image: Image(url: dataContext.data.lender.image.preview.path))
-        lblFullName.text = dataContext.data.lender.fullName
-        lblLocation.text = dataContext.data.lender.physicalAddress
+        imgProfile.loadImage(image: Image(url: presenter.data.lender.image.preview.path))
+        lblFullName.text = presenter.data.lender.fullName
+        lblLocation.text = presenter.data.lender.physicalAddress
         imgProfile.createCircle()
         
-        lblRate.text = "\(dataContext.data.rate)%"
-        lblAmount.text = "$ \(dataContext.data.downPayment.formattedWithSeparator)"
-        lblYears.text = CountableConverter().convert(value: (dataContext.data.term, "year"))
+        lblRate.text = "\(presenter.data.rate)%"
+        lblAmount.text = "$ \(presenter.data.downPayment.formattedWithSeparator)"
+        lblYears.text = CountableConverter().convert(value: (presenter.data.term, "year"))
     }
     
     override func awakeFromNib() {
@@ -43,6 +43,6 @@ class LenderCell: SttTableViewCell<LenderPresenter>, LenderDelegate {
     }
     
     @objc func onClickOnItem(_ sender: Any) {
-        dataContext.openOffers()
+        presenter.openOffers()
     }
 }

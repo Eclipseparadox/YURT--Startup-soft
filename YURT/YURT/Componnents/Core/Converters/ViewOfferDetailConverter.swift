@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ViewOfferDetailConverter: ConverterType {
+class ViewOfferDetailConverter: SttConverterType {
     
     typealias TIn = (Double, OfferDetailType)
     typealias TOut = String

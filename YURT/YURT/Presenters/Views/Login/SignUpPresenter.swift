@@ -79,7 +79,7 @@ enum ValidateField {
     }
 }
 
-protocol SignUpDelegate: Viewable {
+protocol SignUpDelegate: SttViewContolable {
     func reloadError(field: ValidateField)
     func donwloadImageComplete(isSuccess: Bool)
     func changeProgress(label: String)
@@ -167,7 +167,7 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
          _ = signUp.useWork(observable: _accountService.signUp(firstName: firstName!, lastName: lastName!, location: location, phone: phone, email: email!, password: password!, image: photoData))
             .subscribe(onNext: { (res) in
                 if res {
-                    self.delegate!.loadStoryboard(storyboard: .main)
+                    self.delegate!.loadStoryboard(storyboard: Storyboard.main)
                 }
             })
     }

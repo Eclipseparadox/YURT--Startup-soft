@@ -35,7 +35,7 @@ class RealmUploadImage: Object, RealmDecodable {
     }
 }
 
-class RealmBorrowerDocument: BaseRealm, RealmDecodable {
+class RealmBorrowerDocument: SttRealmObject, RealmDecodable {
     
     typealias TTarget = BorrowerDocumentApiModel
     
@@ -64,7 +64,7 @@ class RealmBorrowerDocument: BaseRealm, RealmDecodable {
     }
 }
 
-class RealmBorrowerDocumentModel: BaseRealm, RealmDecodable {
+class RealmBorrowerDocumentModel: SttRealmObject, RealmDecodable {
     
     typealias TTarget = BorrowerDocumentModelApiModel
     

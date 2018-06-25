@@ -11,15 +11,15 @@ import RxRealm
 import RxSwift
 
 protocol StorageProviderType {
-    var auth: Repository<AuthApiModel, RealmAuth> { get }
-    var borrowerDocument: Repository<BorrowerDocumentModelApiModel, RealmBorrowerDocumentModel> { get }
+    var auth: SttRepository<AuthApiModel, RealmAuth> { get }
+    var borrowerDocument: SttRepository<BorrowerDocumentModelApiModel, RealmBorrowerDocumentModel> { get }
 }
 
 class RealmStorageProvider: StorageProviderType {
     
-    private lazy var _auth = Repository<AuthApiModel, RealmAuth>(singleton: true)
-    private lazy var _borrowerDocument = Repository<BorrowerDocumentModelApiModel, RealmBorrowerDocumentModel>(singleton: true)
+    private lazy var _auth = SttRepository<AuthApiModel, RealmAuth>(singleton: true)
+    private lazy var _borrowerDocument = SttRepository<BorrowerDocumentModelApiModel, RealmBorrowerDocumentModel>(singleton: true)
 
-    var auth: Repository<AuthApiModel, RealmAuth> { return _auth }
-    var borrowerDocument: Repository<BorrowerDocumentModelApiModel, RealmBorrowerDocumentModel> { return _borrowerDocument }
+    var auth: SttRepository<AuthApiModel, RealmAuth> { return _auth }
+    var borrowerDocument: SttRepository<BorrowerDocumentModelApiModel, RealmBorrowerDocumentModel> { return _borrowerDocument }
 }

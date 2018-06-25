@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 import UIKit
 
-protocol ShowPhotoDelegate: Viewable {
+protocol ShowPhotoDelegate: SttViewContolable {
     func reloadData(type: DocumentType, image: Image)
 }
 

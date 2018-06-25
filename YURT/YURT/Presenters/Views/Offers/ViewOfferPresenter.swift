@@ -15,8 +15,8 @@ protocol ViewOfferDelegate {
 class ViewOfferPresenter: SttPresenter<ViewOfferDelegate> {
     
     var data: OfferApiModel!
-    var collection = [OfferDetailPresenter]()
-    var documentCollection = [DocumentLenderCellPresenter]()
+    var collection = SttObservableCollection<OfferDetailPresenter>()
+    var documentCollection = SttObservableCollection<DocumentLenderCellPresenter>()
     
     override func prepare(parametr: Any?) {
         data = parametr as! OfferApiModel

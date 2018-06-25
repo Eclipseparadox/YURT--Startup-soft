@@ -73,7 +73,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     let handlerPhone = SttHandlerTextField()
     let handlerEmail = SttHandlerTextField()
     let handlerPassword = SttHandlerTextField()
-    var cameraPicker: Camera!
+    var cameraPicker: SttCamera!
     var indicatorImage: UIActivityIndicatorView!
     var indicatorSignUp: UIActivityIndicatorView!
     
@@ -85,7 +85,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         super.viewDidLoad()
         
         style = .lightContent
-        cameraPicker = Camera(parent: self, handler: { [weak self] (image) in
+        cameraPicker = SttCamera(parent: self, handler: { [weak self] (image) in
 
             self?.imgUser.isHidden = false
             self?.imgUser.image = image

@@ -22,7 +22,7 @@ protocol IAccountService: class {
 class AccountService: IAccountService {
     
     var _apiService: IApiService!
-    var _notificatonError: INotificationError!
+    var _notificatonError: NotificationErrorType!
     var _unitOfWork: StorageProviderType!
     
     init () {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CountProgressConverter: ConverterType {
+class CountProgressConverter: SttConverterType {
     
     typealias TIn = (Int, Int)
     typealias TOut = String

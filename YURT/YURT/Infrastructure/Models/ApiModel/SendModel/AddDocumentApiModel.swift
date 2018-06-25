@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum DocumentTypeApiModel: Int, DictionaryCodable, Decodable {
+enum DocumentTypeApiModel: Int, Codable {
     case personal, financial, property
 }
 
-class AddDocumentApiModel: DictionaryCodable {
+class AddDocumentApiModel: Codable {
     var id: String?
     var type: DocumentTypeApiModel!
     var image: ResultUploadImageApiModel!

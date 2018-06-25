@@ -18,7 +18,7 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
         try! realm.write {
             realm.deleteAll()
         }
-        loadStoryboard(storyboard: .login)
+        loadStoryboard(storyboard: Storyboard.login)
     }
     
     override func viewDidLoad() {

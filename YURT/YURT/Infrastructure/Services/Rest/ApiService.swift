@@ -29,7 +29,7 @@ protocol IApiService {
 
 class ApiService: IApiService {
   
-    var _httpService: IHttpService!
+    var _httpService: SttHttpServiceType!
     var _unitOfWork: StorageProviderType!
     
     init() {
@@ -76,7 +76,7 @@ class ApiService: IApiService {
                         .map({ $0.deserialize() })
         let apiData = _httpService.get(controller: .mobileDocument(""), insertToken: true)
                         .getResult(ofType: BorrowerDocumentModelApiModel.self)
-                        .saveInDB(saveCallback: _unitOfWork.borrowerDocument.saveOne(model:))
+                        //.saveInDB(saveCallback: _unitOfWork.borrowerDocument.saveOne(model:))
         
         
         return Observable.merge([localDoc, apiData])

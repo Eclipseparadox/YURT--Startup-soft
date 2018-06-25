@@ -13,13 +13,13 @@ class ServiceAssembly: Assembly {
     var apiService: IApiService {
         return define(scope: .lazySingleton, init: ApiService())
     }
-    var httpService: IHttpService {
-        return define(scope: .lazySingleton, init: HttpService())
+    var httpService: SttHttpServiceType {
+        return define(scope: .lazySingleton, init: SttHttpService())
     }
     var unitOfWork: StorageProviderType {
         return define(scope: .lazySingleton, init: RealmStorageProvider())
     }
-    var notificationError: INotificationError {
+    var notificationError: NotificationErrorType {
         return define(scope: .lazySingleton, init: NotificationError())
     }
     var accountService: IAccountService {

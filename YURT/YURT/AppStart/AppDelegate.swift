@@ -9,20 +9,6 @@
 import UIKit
 import RxSwift
 
-enum ApplicationStatus {
-    case EnterBackgound
-    case EnterForeground
-}
-
-class GlobalObserver {
-    private static let publisher = PublishSubject<ApplicationStatus>()
-    static var observableStatusApplication: Observable<ApplicationStatus> { return publisher }
-    
-    class func applicationStatusChanged(status: ApplicationStatus) {
-        publisher.onNext(status)
-    }
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -37,26 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configureCacheOptions()
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
-        GlobalObserver.applicationStatusChanged(status: .EnterBackgound)
+        SttGlobalObserver.applicationStatusChanged(status: .EnterBackgound)
     }
-
     func applicationWillEnterForeground(_ application: UIApplication) {
-        GlobalObserver.applicationStatusChanged(status: .EnterForeground)
+        SttGlobalObserver.applicationStatusChanged(status: .EnterForeground)
     }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
 

@@ -30,7 +30,7 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
     @IBOutlet weak var btnReject: UIButton!
     
     var offerDetailSource: SttTableViewSource<OfferDetailPresenter>!
-    var documentSource: SttCollectionSource<DocumentLenderCellPresenter>!
+    var documentSource: SttCollectionViewSource<DocumentLenderCellPresenter>!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         tvComment.textColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1)
         
         offerDetailSource = SttTableViewSource(tableView: offerDetailCollection, cellIdentifier: UIConstants.CellName.offerDetailCell, collection: presenter.collection)
-        documentSource = SttCollectionSource(collectionView: documentCollection, cellIdentifier: UIConstants.CellName.documentLenderCell, collection: presenter.documentCollection)
+        documentSource = SttCollectionViewSource(collectionView: documentCollection, cellIdentifiers: [SttIdentifiers(identifers: UIConstants.CellName.documentLenderCell, nibName: nil)], collection: presenter.documentCollection)
         offerDetailCollection.dataSource = offerDetailSource
         documentCollection.dataSource = documentSource
         

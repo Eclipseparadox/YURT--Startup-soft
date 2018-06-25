@@ -11,22 +11,26 @@ import UIKit
 
 class DocumentEntitySource: SttCollectionViewWithSectionSource<DocumentEntityPresenter, DocumentsEntityHeaderPresenter> {
     
-    convenience init (collectionView: UICollectionView, collection: ([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])!) {
-        self.init(collectionView: collectionView, cellIdentifiers: [UIConstants.CellName.documentEntity, UIConstants.CellName.noDicumentEntity], sectionIdentifier: UIConstants.CellName.headerDocumentEntity, collection: collection)
+    convenience init (collectionView: UICollectionView, collection: SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>) {
+        self.init(collectionView: collectionView,
+                  cellIdentifiers: [SttIdentifiers(identifers: UIConstants.CellName.documentEntity, nibName: nil),
+                                    SttIdentifiers(identifers: UIConstants.CellName.noDicumentEntity, nibName: nil)],
+                  sectionIdentifier: [UIConstants.CellName.headerDocumentEntity],
+            collection: collection)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let presenter = _collection?.0[indexPath.section][indexPath.row]
+        let presenter = collection![indexPath.section].0[indexPath.row]
         var nibName: String!
-        switch presenter?.type ?? .document {
+        switch presenter.type ?? .document {
         case .noDocument:
             nibName = UIConstants.CellName.noDicumentEntity
         case .document:
             nibName = UIConstants.CellName.documentEntity
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: nibName, for: indexPath) as! SttbCollectionViewCell
-        cell.dataContext = _collection?.0[indexPath.section][indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: nibName, for: indexPath) as! SttCollectionViewCell<DocumentEntityPresenter>
+        cell.presenter = collection![indexPath.section].0[indexPath.row]
         cell.prepareBind()
         return cell
     }

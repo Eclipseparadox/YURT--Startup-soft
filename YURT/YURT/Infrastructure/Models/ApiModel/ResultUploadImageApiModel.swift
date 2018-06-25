@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ResultUploadImageApiModel: Decodable, RealmCodable, DictionaryCodable {
+struct ResultUploadImageApiModel: Codable, RealmCodable {
     
     typealias TTarget = RealmUploadImage
     
@@ -23,7 +23,7 @@ struct ResultUploadImageApiModel: Decodable, RealmCodable, DictionaryCodable {
     }
 }
 
-struct ImageDataApiModel: Decodable, RealmCodable, DictionaryCodable {
+struct ImageDataApiModel: Codable, RealmCodable {
     
     typealias TTarget = RealmImageData
     

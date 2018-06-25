@@ -16,7 +16,7 @@ protocol OfferInteractorType {
 class OfferInteractor: OfferInteractorType {
     
     var _apiService: IApiService!
-    var _notificatonError: INotificationError!
+    var _notificatonError: NotificationErrorType!
     
     init () {
         ServiceInjectorAssembly.instance().inject(into: self)

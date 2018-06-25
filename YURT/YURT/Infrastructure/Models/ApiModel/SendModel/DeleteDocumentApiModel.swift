@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeleteDocumentApiModel: DictionaryCodable {
+class DeleteDocumentApiModel: Codable {
     var documentId: String!
     var image: ResultUploadImageApiModel!
     

@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import SINQ
 
-protocol DocumentsDelegate: Viewable {
+protocol DocumentsDelegate: SttViewContolable {
     func reloadItem(section: Int, row: Int)
     func progressCahnged()
     func reloadData()
@@ -19,7 +19,11 @@ protocol DocumentsDelegate: Viewable {
 
 class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDelegate {
     
-    var documents: ([[DocumentEntityPresenter]], [DocumentsEntityHeaderPresenter])!
+    var documents: SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>! {
+        didSet {
+            delegate?.reloadData()
+        }
+    }
     var totalDocument = 9
     var currentUploaded = 0 {
         didSet {
@@ -42,7 +46,7 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
             .subscribe(onNext: { [weak self] (documents) in
                 self?.documents = documents.0
                 self?.isSendToReview = documents.1
-                self?.currentUploaded = documents.0.1[0].uploadedsCount + documents.0.1[1].uploadedsCount
+                self?.currentUploaded = documents.0[0].1.uploadedsCount + documents.0[1].1.uploadedsCount
                 self?.delegate!.reloadData()
                 self?.delegate?.progressCahnged()
             })
@@ -67,20 +71,16 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
         delegate!.navigate(to: "takePhoto", withParametr: type) { [weak self] (data) in
             callback(data as! UIImage)
             if let _self = self {
-                let section = _self.documents.0.index(where: { $0.contains(where: { $0.documentType == type })})
-                let row = _self.documents.0[section!].index(where: { $0.documentType == type })
-                _self.delegate!.reloadItem(section: section!, row: row!)
+                _self.reloadItem(type: type)
             }
         }
     }
     
     func showPhoto(type: (DocumentType, Image, String), callback: @escaping (Bool) -> Void) {
-        delegate!.navigate(to: "showPhoto", withParametr: type) { (result) in
+        delegate!.navigate(to: "showPhoto", withParametr: type) { [weak self] (result) in
             callback(result as! Bool)
             if result as! Bool {
-                let section = self.documents.0.index(where: { $0.contains(where: { $0.documentType == type.0 })})
-                let row = self.documents.0[section!].index(where: { $0.documentType == type.0 })
-                self.delegate!.reloadItem(section: section!, row: row!)
+                self?.reloadItem(type: type.0)
             }
         }
     }
@@ -97,8 +97,8 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
     }
     
     func reloadItem(type: DocumentType) {
-        let section = self.documents.0.index(where: { $0.contains(where: { $0.documentType == type })})
-        let row = self.documents.0[section!].index(where: { $0.documentType == type })
+        let section = self.documents.index(where: { $0.0.contains(where: { $0.documentType == type })})
+        let row = self.documents[section!].0.index(where: { $0.documentType == type })
         self.delegate!.reloadItem(section: section!, row: row!)
     }
 }
