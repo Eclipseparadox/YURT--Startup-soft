@@ -21,7 +21,7 @@ protocol IAccountService: class {
 
 class AccountService: IAccountService {
     
-    var _apiService: IApiService!
+    var _dataProvider: DataProviderType!
     var _notificatonError: NotificationErrorType!
     var _unitOfWork: StorageProviderType!
     
@@ -41,35 +41,32 @@ class AccountService: IAccountService {
     }
     
     func existsEmail(email: String) -> Observable<Bool> {
-        return _notificatonError.useError(observable: _apiService.emailExists(email: email))
+        return _notificatonError.useError(observable: _dataProvider.emailExists(email: email))
+            .inBackground()
+            .observeInUI()
     }
     
     func uploadUserAvatar(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel> {
-        return _notificatonError.useError(observable: _apiService.uploadImage(image: image, progresHandler: progresHandler))
+        return _notificatonError.useError(observable: _dataProvider.uploadImage(image: image, progresHandler: progresHandler))
+            .inBackground()
+            .observeInUI()
     }
     
     func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool> {
-        let signUpObservable = _apiService.signUp(model: BorrowerSignUp(firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phone, location: location, image: image))
+        let signUpObservable = _dataProvider.signUp(model: BorrowerSignUp(firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phone, location: location, image: image))
         let signInObservable = signIn(email: email, password: password)
         return _notificatonError.useError(observable: signUpObservable
-                                                        .flatMap({ _ in signInObservable }))
-                                                        .map( { $0.0 } )
+            .flatMap({ _ in signInObservable }))
+            .map( { $0.0 } )
+            .inBackground()
+            .observeInUI()
     }
     func signIn(email: String, password: String)  -> Observable<(Bool, String)> {
         return self._notificatonError.useError(observable:
-            Observable<(Bool, String)>.create({ (observer) -> Disposable in
-                self._apiService.signIn(email: email, password: password)
-                .flatMap({ model -> Observable<Bool> in
-                    KeychainSwift().set(model.access_token, forKey: Constants.tokenKey)
-                    self._apiService.inserToken(token: model.access_token)
-                    return self._unitOfWork.auth.saveOne(model: model).toObservable()
-                })
-                .subscribe(onNext: { (authModel) in
-                    observer.onNext((true, ""))
-                }, onError: { (error) in
-                    observer.onNext((false, "Email or password is incorrect"))
-                    observer.onError(error)
-                })
-        }), ignoreBadRequest: true)
+                self._dataProvider.signIn(email: email, password: password)
+                    .map({ _ in (true, "") })
+                    .inBackground()
+                    .observeInUI(), ignoreBadRequest: true)
+            .catchError({ _ in Observable.from([(false, "Email or password is incorrect")])})
     }
 }

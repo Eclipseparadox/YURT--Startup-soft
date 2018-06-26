@@ -10,15 +10,23 @@ import Foundation
 import EasyDi
 
 class ServiceAssembly: Assembly {
-    var apiService: IApiService {
-        return define(scope: .lazySingleton, init: ApiService())
-    }
+    
     var httpService: SttHttpServiceType {
         return define(scope: .lazySingleton, init: SttHttpService())
     }
-    var unitOfWork: StorageProviderType {
+    
+    // data providers
+    var apiDataProvider: ApiDataProviderType {
+        return define(scope: .lazySingleton, init: ApiDataProvider())
+    }
+    var storageProvider: StorageProviderType {
         return define(scope: .lazySingleton, init: RealmStorageProvider())
     }
+    var dataProvider: DataProviderType {
+        return define(scope: .lazySingleton, init: DataProvider())
+    }
+    
+    // services, interactors
     var notificationError: NotificationErrorType {
         return define(scope: .lazySingleton, init: NotificationError())
     }

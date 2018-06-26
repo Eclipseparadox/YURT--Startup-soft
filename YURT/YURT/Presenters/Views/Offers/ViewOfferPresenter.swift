@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
-protocol ViewOfferDelegate {
+protocol ViewOfferDelegate: SttViewContolable {
     
 }
 
-class ViewOfferPresenter: SttPresenter<ViewOfferDelegate> {
+class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDelegate {
+    
     
     var data: OfferApiModel!
     var collection = SttObservableCollection<OfferDetailPresenter>()
@@ -32,7 +34,14 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate> {
         collection.append(OfferDetailPresenter(name: "Offer Hold:", value: Double(data.hold), type: .days))
         
         for item in data.files {
-            documentCollection.append(DocumentLenderCellPresenter(url: item))
+            documentCollection.append(DocumentLenderCellPresenter(url: item, delegate: self))
         }
+    }
+    
+    func onClick(image: UIImage) {
+        delegate?.navigate(storyboard: Storyboard.offer, to: DocumentPreviewPresenter.self, typeNavigation: .modality, withParametr: image, callback: nil)
+    }
+    func onError(error: SttBaseErrorType) {
+        self.delegate?.sendError(error: error)
     }
 }

@@ -15,7 +15,7 @@ protocol OfferInteractorType {
 
 class OfferInteractor: OfferInteractorType {
     
-    var _apiService: IApiService!
+    var _apiService: ApiDataProviderType!
     var _notificatonError: NotificationErrorType!
     
     init () {

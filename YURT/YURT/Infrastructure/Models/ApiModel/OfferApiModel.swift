@@ -37,7 +37,7 @@ struct OfferApiModel: Decodable {
     let lenderFees: Int
     let monthlyPayment: Double
     let hold: Int
-    let dscription: String?
+    let description: String?
     let files: [String]
     let dateCreated: Date
     let status: OfferStatus

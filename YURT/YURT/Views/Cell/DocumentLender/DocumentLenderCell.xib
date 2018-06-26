@@ -30,6 +30,9 @@
                 <constraint firstItem="08C-ib-upj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pbD-u2-m6U"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="imgDocuments" destination="08C-ib-upj" id="ypZ-Nv-UO9"/>
+            </connections>
         </collectionViewCell>
     </objects>
     <resources>

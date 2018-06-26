@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class RejectedLendersViewController: SttViewController<RejectedLendersPresenter>, RejectedLendersDelegate {   
 
@@ -24,12 +25,19 @@ class RejectedLendersViewController: SttViewController<RejectedLendersPresenter>
         tableView.reloadData()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
+        
+        reloadLenders()
     }
     
     // MARK: -- Implement RejectedLendersDelegate
     
+    var collectionDisaposable: Disposable?
     func reloadLenders() {
-        lblNoData.isHidden = presenter.lenders.count != 0
         source.updateSource(collection: presenter.lenders)//._collection = presenter.lenders
+        collectionDisaposable?.dispose()
+        collectionDisaposable = presenter.lenders.observableObject.subscribe(onNext: { [weak self] _ in
+            self?.lblNoData.isHidden = self!.presenter.lenders.count != 0
+        })
+        lblNoData.isHidden = presenter.lenders.count != 0
     }
 }

@@ -72,35 +72,43 @@ class ServiceInjectorAssembly: Assembly {
     
     //  Inject Service into service
     
-    func inject(into service: ApiService) {
-        let _:ApiService = define(init: service) {
+    // Inject into DataProviders
+    
+    func inject(into service: ApiDataProvider) {
+        let _:ApiDataProvider = define(init: service) {
             $0._httpService = self.serviceAssembly.httpService
-            $0._unitOfWork = self.serviceAssembly.unitOfWork
+            $0._unitOfWork = self.serviceAssembly.storageProvider
+            return $0
+        }
+    }
+    func inject(into service: DataProvider) {
+        let _:DataProvider = define(init: service) {
+            $0._apiDataProvider = self.serviceAssembly.apiDataProvider
+            $0._storageProvider = self.serviceAssembly.storageProvider
             return $0
         }
     }
     
+    
     func inject(into service: AccountService) {
         let _:AccountService = define(init: service) {
-            $0._apiService = self.serviceAssembly.apiService
+            $0._dataProvider = self.serviceAssembly.dataProvider
             $0._notificatonError = self.serviceAssembly.notificationError
-            $0._unitOfWork = self.serviceAssembly.unitOfWork
             return $0
         }
     }
     
     func inject(into service: DocumentService) {
         let _:DocumentService = define(init: service) {
-            $0._apiService = self.serviceAssembly.apiService
+            $0._dataProvider = self.serviceAssembly.dataProvider
             $0._notificatonError = self.serviceAssembly.notificationError
-            $0._unitOfWork = self.serviceAssembly.unitOfWork
             return $0
         }
     }
     
     func inject(into service: OfferInteractor) {
         let _:OfferInteractor = define(init: service) {
-            $0._apiService = self.serviceAssembly.apiService
+            $0._apiService = self.serviceAssembly.apiDataProvider
             $0._notificatonError = self.serviceAssembly.notificationError
             return $0
         }

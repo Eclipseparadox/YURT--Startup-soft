@@ -39,6 +39,8 @@ class SttHttpService: SttHttpServiceType {
         let url = "\(self.url!)\(controller.get())"
         var _insertToken = insertToken
         
+        print("get")
+        print(Thread.current)
         return Observable<(HTTPURLResponse, Data)>.create { (observer) -> Disposable in
             SttLog.trace(message: url, key: Constants.httpKeyLog)
             

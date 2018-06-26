@@ -11,10 +11,10 @@ import Alamofire
 import RxSwift
 import KeychainSwift
 
-protocol IApiService {
+protocol ApiDataProviderType {
     func inserToken(token: String)
     
-    func emailExists(email: String) -> Observable<Bool>
+    func emailExists(email: String) -> Observable<ExistModelString>
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
@@ -27,7 +27,7 @@ protocol IApiService {
     func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
 }
 
-class ApiService: IApiService {
+class ApiDataProvider: ApiDataProviderType {
   
     var _httpService: SttHttpServiceType!
     var _unitOfWork: StorageProviderType!
@@ -42,19 +42,23 @@ class ApiService: IApiService {
         _httpService.token = token
     }
     
-    func emailExists(email: String) -> Observable<Bool> {
-        return _httpService.get(controller: .account("emailexist"), data: ["email": email])
+    func emailExists(email: String) -> Observable<ExistModelString> {
+        return _httpService.get(controller: .account("emailexist"),
+                                data: ["email": email])
             .getResult(ofType: ExistModelString.self)
-            .map { $0.isExist }
     }
     
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel> {
-        return _httpService.upload(controller: .upload("image"), data: image.jpegRepresentation()!, parameter: ["saveToTemporary" : "true"], progresHandler: progresHandler)
+        return _httpService.upload(controller: .upload("image"),
+                                   data: image.jpegRepresentation()!,
+                                   parameter: ["saveToTemporary" : "true"],
+                                   progresHandler: progresHandler)
             .getResult(ofType: ResultUploadImageApiModel.self)
     }
     
     func signUp(model: BorrowerSignUp) -> Observable<Bool> {
-        return _httpService.post(controller: .mobileAccount("signup"), dataAny: model.getDictionary())
+        return _httpService.post(controller: .mobileAccount("signup"),
+                                 dataAny: model.getDictionary())
             .getResult()
     }
     func signIn(email: String, password: String) -> Observable<AuthApiModel> {
@@ -72,14 +76,8 @@ class ApiService: IApiService {
             .getResult(ofType: BorrowerDocumentApiModel.self)
     }
     func getDocument() -> Observable<BorrowerDocumentModelApiModel> {
-        let localDoc = _unitOfWork.borrowerDocument.getOne(filter: nil)
-                        .map({ $0.deserialize() })
-        let apiData = _httpService.get(controller: .mobileDocument(""), insertToken: true)
+        return _httpService.get(controller: .mobileDocument(""), insertToken: true)
                         .getResult(ofType: BorrowerDocumentModelApiModel.self)
-                        //.saveInDB(saveCallback: _unitOfWork.borrowerDocument.saveOne(model:))
-        
-        
-        return Observable.merge([localDoc, apiData])
     }
     func sendDocuments() -> Observable<Bool> {
         return _httpService.post(controller: .mobileDocument("send"), insertToken: true)

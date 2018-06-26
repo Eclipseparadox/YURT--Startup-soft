@@ -23,7 +23,7 @@ protocol SttViewableNavigation: SttViewable {
 
 protocol SttViewableListener: SttViewable {
     func sendMessage(title: String, message: String?)
-    func sendError(error: SttBaseError)
+    func sendError(error: SttBaseErrorType)
 }
 
 protocol SttViewInjector {

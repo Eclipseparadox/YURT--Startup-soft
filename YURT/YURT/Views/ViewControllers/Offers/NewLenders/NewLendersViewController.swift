@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLendersDelegate, UITableViewDelegate {
 
@@ -25,6 +26,8 @@ class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLende
         tableView.reloadData()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
+        
+        reloadLenders()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -33,8 +36,13 @@ class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLende
     
     // MARK: -- Implement Delegate NewLenders
 
+    var collectionDisaposable: Disposable?
     func reloadLenders() {
-        lblNoData.isHidden = presenter.lenders.count != 0
         source.updateSource(collection: presenter.lenders)//._collection = presenter.lenders
+        collectionDisaposable?.dispose()
+        collectionDisaposable = presenter.lenders.observableObject.subscribe(onNext: { [weak self] _ in
+            self?.lblNoData.isHidden = self!.presenter.lenders.count != 0
+        })
+        lblNoData.isHidden = presenter.lenders.count != 0
     }
 }

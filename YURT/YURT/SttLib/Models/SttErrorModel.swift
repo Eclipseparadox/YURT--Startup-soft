@@ -8,7 +8,11 @@
 
 import Foundation
 
-enum SttBaseError: Error {
+protocol SttBaseErrorType {
+    func getMessage() -> (String, String)
+}
+
+enum SttBaseError: Error, SttBaseErrorType {
     case realmError(SttRealmError)
     case apiError(SttApiError)
     case connectionError(SttConnectionError)
@@ -37,7 +41,7 @@ enum SttBaseError: Error {
     }
 }
 
-enum SttRealmError {
+enum SttRealmError: SttBaseErrorType {
     
     case objectIsSignleton(String)
     case notFoundObjects(String)
@@ -60,7 +64,7 @@ enum SttRealmError {
     }
 }
 
-enum SttApiError {
+enum SttApiError: SttBaseErrorType {
     
     case badRequest(ServerError)
     case internalServerError(String)
@@ -80,7 +84,7 @@ enum SttApiError {
     }
 }
 
-enum SttConnectionError {
+enum SttConnectionError: SttBaseErrorType {
     case timeout
     case noInternetConnection
     case other(String)

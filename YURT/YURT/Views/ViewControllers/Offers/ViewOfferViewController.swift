@@ -28,6 +28,7 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
     @IBOutlet weak var documentCollection: UICollectionView!
     @IBOutlet weak var btnApprove: UIButton!
     @IBOutlet weak var btnReject: UIButton!
+    @IBOutlet weak var underline: UIView!
     
     var offerDetailSource: SttTableViewSource<OfferDetailPresenter>!
     var documentSource: SttCollectionViewSource<DocumentLenderCellPresenter>!
@@ -39,7 +40,14 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         imgProfile.loadImage(image: Image(url: presenter.data.lender.image.preview.path))
         lblFullName.text = presenter.data.lender.fullName
         lblLocation.text = presenter.data.lender.physicalAddress
-        tvComment.text = "The Cold War was a state of geopolitical tension after World War II between powers in the Eastern Bloc (the Soviet Union and its satellite states) and powers in the Western Bloc (the United States, its NATO allies and others). Historians do not fully agree on the dates, but a common timeframe is the period between 1947, the year the Truman Doctrine, a U.S. foreign policy pledging to aid nations threatened by Soviet expansionism, was announced, and either 1989, when communism fell in Eastern Europe, or 1991, when the Soviet Union collapsed. The term cold is used because there was no large-scale fighting directly between the two sides, but they each supported major regional wars known as proxy wars."
+        
+        if let description = presenter.data.description {
+            tvComment.text = description
+        }
+        else {
+            tvComment.removeFromSuperview()
+            underline.removeFromSuperview()
+        }
         tvComment.textColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1)
         
         offerDetailSource = SttTableViewSource(tableView: offerDetailCollection, cellIdentifier: UIConstants.CellName.offerDetailCell, collection: presenter.collection)
@@ -57,7 +65,7 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         
         offerDetailCollection.sizeToFit()
         cnstrHeight.constant = CGFloat(41 * presenter.collection.count + 15)
-        tvComment.resize()
-        cnstrTvHeight.constant = tvComment.frame.height
+        tvComment?.resize()
+        cnstrTvHeight?.constant = tvComment.frame.height
     }
 }

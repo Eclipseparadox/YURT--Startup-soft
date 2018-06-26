@@ -37,6 +37,7 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
     var canSend: Bool { return currentUploaded == totalDocument && !isSendToReview }
 
     override func presenterCreating() {
+        super.presenterCreating()
         ServiceInjectorAssembly.instance().inject(into: self)
         send = SttComand(delegate: self, handler: { $0.onSend() }, handlerCanExecute: { $0.currentUploaded == $0.totalDocument })
 

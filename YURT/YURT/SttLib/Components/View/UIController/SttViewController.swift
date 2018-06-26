@@ -113,7 +113,7 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
         navigationController?.navigationController?.navigationBar.isHidden = false
     }
     
-    func sendError(error: SttBaseError) {
+    func sendError(error: SttBaseErrorType) {
         let serror = error.getMessage()
         if useErrorLabel {
             viewError.showError(text: serror.0, detailMessage: serror.1)

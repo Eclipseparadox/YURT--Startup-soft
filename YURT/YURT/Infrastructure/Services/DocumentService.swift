@@ -19,9 +19,8 @@ protocol DocumentServiceType {
 
 class DocumentService: DocumentServiceType {
     
-    var _apiService: IApiService!
+    var _dataProvider: DataProviderType!
     var _notificatonError: NotificationErrorType!
-    var _unitOfWork: StorageProviderType!
     
     init () {
         ServiceInjectorAssembly.instance().inject(into: self)
@@ -29,16 +28,11 @@ class DocumentService: DocumentServiceType {
     
     func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<(Bool, String?)> {
         let _type = type.isFinancies() ? DocumentTypeApiModel.financial : DocumentTypeApiModel.personal
-        var id: String?
-        return _notificatonError.useError(observable: _apiService.uploadImage(image: image, progresHandler: progresHandler)
-            .flatMap( { self._apiService.addDocument(model: AddDocumentApiModel(id: nil, type: _type, docType: type, image: $0)) } ))
-            .flatMap({ model -> Observable<Bool> in
-                id = model.id
-                return self._unitOfWork.borrowerDocument.update(update: { (models) in
-                    models.documents.append(model.serialize())
-                    models.isSentToReview = false
-                }, filter: nil).toObservable()
-            }).map({ ($0, id) })
+        return _notificatonError.useError(observable: _dataProvider.uploadImage(image: image, progresHandler: progresHandler)
+            .flatMap( { self._dataProvider.addDocument(model: AddDocumentApiModel(id: nil, type: _type, docType: type, image: $0)) } )
+            .map({ (true, $0.id) }))
+            .inBackground()
+            .observeInUI()
     }
     
     func getDocuments(delegate: DocumentContainerDelegate, publisher: PublishSubject<(Bool, DocumentType)>) -> Observable<(SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>, Bool)> {
@@ -75,7 +69,7 @@ class DocumentService: DocumentServiceType {
         
         return self._notificatonError.useError(observable: Observable<(SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>, Bool)>.create { (observer) -> Disposable in
             observer.onNext((documents, false))
-            return self._apiService.getDocument()
+            return self._dataProvider.getDocument()
                 .subscribe(onNext: { (models) in
                     documents[0].1.uploadedsCount = 0
                     documents[1].1.uploadedsCount = 0
@@ -102,18 +96,14 @@ class DocumentService: DocumentServiceType {
     }
     
     func deleteDocument(id: String) -> Observable<Bool> {
-        return _notificatonError.useError(observable:
-            _unitOfWork.borrowerDocument.getOne(filter: nil)
-                .flatMap({ self._apiService.deleteDocument(model: DeleteDocumentApiModel(documentId: id, image: $0.documents[$0.documents.index(where: { $0.id == id })!].image!.deserialize())) })
-                .flatMap({ _ in self._unitOfWork.borrowerDocument.update(update: {
-                    $0.documents.remove(at: $0.documents.index(where: { $0.id == id })!)
-                    $0.isSentToReview = false
-                }, filter: nil).toObservable() })
-        )
+        return _notificatonError.useError(observable: _dataProvider.deleteDocument(id: id))
+            .inBackground()
+            .observeInUI()
     }
     
     func sendDocument() -> Observable<Bool> {
-        return _notificatonError.useError(observable: _apiService.sendDocuments()
-            .flatMap({ _ in self._unitOfWork.borrowerDocument.update(update: { $0.isSentToReview = true }, filter: nil).toObservable() }))
+        return _notificatonError.useError(observable: _dataProvider.sendDocuments())
+            .inBackground()
+            .observeInUI()
     }
 }

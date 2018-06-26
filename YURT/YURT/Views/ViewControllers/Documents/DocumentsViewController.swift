@@ -30,6 +30,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
 
         progressBackground.createCircle(dominateWidth: false, clipToBounds: true)
         
+        print ("---> \(presenter.documents)")
         collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
         collectionDocuments.dataSource = collectionSource
                 
