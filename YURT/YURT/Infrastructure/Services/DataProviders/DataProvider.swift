@@ -25,7 +25,9 @@ protocol DataProviderType {
     func deleteDocument(id: String) -> Observable<Bool>
     
     // offersDataProvider
-    //func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
+    func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
+    func aproveOffer(id: String) -> Observable<Bool>
+    func rejectOffer(id: String, message: String) -> Observable<Bool>
 }
 
 class DataProvider: DataProviderType {
@@ -98,5 +100,17 @@ class DataProvider: DataProviderType {
                         $0.documents.remove(at: $0.documents.index(where: { $0.id == id })!)
                         $0.isSentToReview = false
                     }, filter: nil).toObservable() })
+    }
+    
+    // offers
+    
+    func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]> {
+        return _apiDataProvider.getOffer(status: status, skip: skip)
+    }
+    func aproveOffer(id: String) -> Observable<Bool> {
+        return _apiDataProvider.aproveOffer(id: id)
+    }
+    func rejectOffer(id: String, message: String) -> Observable<Bool> {
+        return _apiDataProvider.rejectOffer(model: RejectApiModel(offerId: id, rejectDescription: message))
     }
 }

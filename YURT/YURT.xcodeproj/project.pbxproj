@@ -141,6 +141,10 @@
 		849D3F1020C80223004BB086 /* DeleteDocumentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */; };
 		849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3F1120C81F01004BB086 /* UIImageView.swift */; };
 		849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */; };
+		84A2735B20E3B393000BCE27 /* RejectApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2735A20E3B393000BCE27 /* RejectApiModel.swift */; };
+		84A2735D20E3BE68000BCE27 /* RejectOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */; };
+		84A2735F20E3C040000BCE27 /* SttHandlerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2735E20E3C040000BCE27 /* SttHandlerTextView.swift */; };
+		84A2736120E3C7DB000BCE27 /* RejectOfferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2736020E3C7DB000BCE27 /* RejectOfferPresenter.swift */; };
 		84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */; };
 		84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40AD220AD7F570050CA65 /* StartPageViewController.swift */; };
 		84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBEF20B316EF0053C93A /* ExistModel.swift */; };
@@ -291,6 +295,10 @@
 		849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDocumentApiModel.swift; sourceTree = "<group>"; };
 		849D3F1120C81F01004BB086 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		849DBDB120C6D0E300A4CB80 /* RealmBorrowerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBorrowerDocument.swift; sourceTree = "<group>"; };
+		84A2735A20E3B393000BCE27 /* RejectApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectApiModel.swift; sourceTree = "<group>"; };
+		84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectOfferViewController.swift; sourceTree = "<group>"; };
+		84A2735E20E3C040000BCE27 /* SttHandlerTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttHandlerTextView.swift; sourceTree = "<group>"; };
+		84A2736020E3C7DB000BCE27 /* RejectOfferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectOfferPresenter.swift; sourceTree = "<group>"; };
 		84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPagePresenter.swift; sourceTree = "<group>"; };
 		84C40AD220AD7F570050CA65 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		84C7FBEF20B316EF0053C93A /* ExistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistModel.swift; sourceTree = "<group>"; };
@@ -410,6 +418,7 @@
 		842239E320BE93B60028FDAA /* Documents */ = {
 			isa = PBXGroup;
 			children = (
+				8453ADCB20E23A9600174765 /* DocumentsPreviewViewController.swift */,
 				842239E420BE93CF0028FDAA /* DocumentsViewController.swift */,
 			);
 			path = Documents;
@@ -480,7 +489,7 @@
 				8437E00020CFDC290043445D /* NewLenders */,
 				8479DFAD20D3E133002CACA6 /* OffersViewController.swift */,
 				84996DF020D3FCA40006ADFA /* ViewOfferViewController.swift */,
-				8453ADCB20E23A9600174765 /* DocumentsPreviewViewController.swift */,
+				84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -664,6 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				8453AD8620E0E1E700174765 /* SttHandlerTextField.swift */,
+				84A2735E20E3C040000BCE27 /* SttHandlerTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -889,6 +899,7 @@
 				84996DF220D3FD070006ADFA /* ViewOfferPresenter.swift */,
 				84996DF420D7A7D20006ADFA /* OfferDetailPresenter.swift */,
 				8453ADCD20E23CD600174765 /* DocumentPreviewPresenter.swift */,
+				84A2736020E3C7DB000BCE27 /* RejectOfferPresenter.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -944,6 +955,7 @@
 			children = (
 				844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */,
 				849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */,
+				84A2735A20E3B393000BCE27 /* RejectApiModel.swift */,
 			);
 			path = SendModel;
 			sourceTree = "<group>";
@@ -1145,6 +1157,7 @@
 				8453ADAF20E0E1E800174765 /* SttCollectionViewCell.swift in Sources */,
 				842239F220BEE4AD0028FDAA /* DocumentsEntityHeaderPresenter.swift in Sources */,
 				8453ADBF20E0E1E800174765 /* SttUIViewControllerExtensions.swift in Sources */,
+				84A2735D20E3BE68000BCE27 /* RejectOfferViewController.swift in Sources */,
 				84C7FBF420B444490053C93A /* SttUIImageExtensions.swift in Sources */,
 				8453ADBB20E0E1E800174765 /* SttDateExtensions.swift in Sources */,
 				8453ADB120E0E1E800174765 /* SttViewController.swift in Sources */,
@@ -1188,6 +1201,7 @@
 				842239E720BE9E0E0028FDAA /* SttCollectionViewWithSectionSource.swift in Sources */,
 				8453ADA920E0E1E800174765 /* SttGlobalObserver.swift in Sources */,
 				84996DF520D7A7D20006ADFA /* OfferDetailPresenter.swift in Sources */,
+				84A2735B20E3B393000BCE27 /* RejectApiModel.swift in Sources */,
 				8453ADAA20E0E1E800174765 /* SttNavigation.swift in Sources */,
 				8468DCB320B2B6E100701C93 /* ApiModel.swift in Sources */,
 				8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */,
@@ -1206,10 +1220,12 @@
 				8453ADBA20E0E1E800174765 /* SttCommandExtensions.swift in Sources */,
 				8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */,
 				844EC24A20C58A16006CF9EF /* AddDocumentApiModel.swift in Sources */,
+				84A2735F20E3C040000BCE27 /* SttHandlerTextView.swift in Sources */,
 				8453ADA820E0E1E800174765 /* SttRandom.swift in Sources */,
 				844EC24C20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift in Sources */,
 				8453ADA720E0E1E800174765 /* SttPresenter.swift in Sources */,
 				84C7FBF620B444760053C93A /* SttCamera.swift in Sources */,
+				84A2736120E3C7DB000BCE27 /* RejectOfferPresenter.swift in Sources */,
 				842239E920BEA1C50028FDAA /* DocumentEntityPresenter.swift in Sources */,
 				8453ADC520E0E1E800174765 /* SttRepository.swift in Sources */,
 				84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */,
@@ -1394,14 +1410,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D9L33B2S23;
+				DEVELOPMENT_TEAM = 6T2CR8Y629;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.standret.tesloop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.tesloop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1414,14 +1430,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D9L33B2S23;
+				DEVELOPMENT_TEAM = 6T2CR8Y629;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.standret.tesloop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.tesloop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

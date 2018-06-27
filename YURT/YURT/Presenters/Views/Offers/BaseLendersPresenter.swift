@@ -25,7 +25,7 @@ class BaseLendersPresenter<T>: SttPresenter<T>, OfferItemDelegate {
     }
     
     func openOffers(data: OfferApiModel) {
-        viewDelegate?.navigate(storyboard: .offer, to: ViewOfferPresenter.self, withParametr: data)
+        viewDelegate?.navigate(storyboard: Storyboard.offer, to: ViewOfferPresenter.self, withParametr: data)
     }
     
     override func presenterCreating() {

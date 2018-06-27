@@ -17,6 +17,32 @@ extension UITextView {
 }
 
 class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferDelegate {
+   
+    private func deleteButtons() {
+        self.btnApprove.removeFromSuperview()
+        self.btnReject.removeFromSuperview()
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
+        })
+    }
+    
+    func deleteButtons(status: Bool) {
+        if status {
+            self.createDecisionAlerDialog(title: "Offer has been aproved", message: "Do you want to return to list's offers?", handlerOk: {
+                self.close()
+            }, handlerFalse: { [weak self] in
+                self?.deleteButtons()
+            })
+        }
+        else {
+            self.createDecisionAlerDialog(title: "Offer has been rejected", message: "Do you want to return to list's offers?", handlerOk: {
+                self.close()
+            }, handlerFalse: { [weak self] in
+                self?.deleteButtons()
+            })
+        }
+    }
+    
 
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblFullName: UILabel!
@@ -29,6 +55,14 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
     @IBOutlet weak var btnApprove: UIButton!
     @IBOutlet weak var btnReject: UIButton!
     @IBOutlet weak var underline: UIView!
+    
+    @IBAction func aproveClick(_ sender: Any) {
+        presenter.aprove.execute()
+    }
+    @IBAction func rejectClick(_ sender: Any) {
+        presenter.rejectClick()
+    }
+    
     
     var offerDetailSource: SttTableViewSource<OfferDetailPresenter>!
     var documentSource: SttCollectionViewSource<DocumentLenderCellPresenter>!
@@ -58,6 +92,8 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         btnReject.setBorder(color: UIColor(named: "borderLight")!, size: 1)
         btnReject.layer.cornerRadius = 5
         btnApprove.layer.cornerRadius = 5
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,5 +103,11 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         cnstrHeight.constant = CGFloat(41 * presenter.collection.count + 15)
         tvComment?.resize()
         cnstrTvHeight?.constant = tvComment.frame.height
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+       presenter.aprove.useIndicator(button: btnApprove)
     }
 }

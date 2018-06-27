@@ -25,6 +25,8 @@ protocol ApiDataProviderType {
     func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool>
     
     func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
+    func aproveOffer(id: String) -> Observable<Bool>
+    func rejectOffer(model: RejectApiModel) -> Observable<Bool>
 }
 
 class ApiDataProvider: ApiDataProviderType {
@@ -94,5 +96,13 @@ class ApiDataProvider: ApiDataProviderType {
             "skip": "\(skip)"
             ], insertToken: true)
             .getResult(ofType: [OfferApiModel].self)
+    }
+    func aproveOffer(id: String) -> Observable<Bool> {
+        return _httpService.post(controller: .mobileOffers("approve"), data: ["id": id], insertToken: true)
+                .getResult()
+    }
+    func rejectOffer(model: RejectApiModel) -> Observable<Bool> {
+        return _httpService.post(controller: .mobileOffers("reject"), dataAny: model.getDictionary(), insertToken: true)
+                .getResult()
     }
 }

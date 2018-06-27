@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 extension SttComand {
-    func useIndicator(button: UIButton) {
+    func useIndicator(button: UIButton, style: UIActivityIndicatorViewStyle = .white) {
         let indicator = button.setIndicator()
         indicator.color = UIColor.white
+        indicator.activityIndicatorViewStyle = style
         
         let title = button.titleLabel?.text
         let image = button.imageView?.image

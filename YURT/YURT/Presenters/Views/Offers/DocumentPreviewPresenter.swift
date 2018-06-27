@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 
 protocol DocumentPreviewDelegate {
-    func insertImage(image: UIImage)
+    func insertData(fileUrl: String, name: String)
 }
 
 class DocumentPreviewPresenter: SttPresenter<DocumentPreviewDelegate> {
     override func prepare(parametr: Any?) {
-         delegate!.insertImage(image: parametr as! UIImage)
+        let param = parametr as! (String, String)
+        delegate?.insertData(fileUrl: param.0, name: param.1)
     }
 }

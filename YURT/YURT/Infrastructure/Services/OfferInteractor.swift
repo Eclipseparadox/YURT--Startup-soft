@@ -11,11 +11,13 @@ import RxSwift
 
 protocol OfferInteractorType {
     func getOffers(type: OfferStatus, skip: Int) -> Observable<[LenderPresenter]>
+    func aproveOffer(id: String) -> Observable<Bool>
+    func rejectOffer(id: String, message: String) -> Observable<Bool>
 }
 
 class OfferInteractor: OfferInteractorType {
     
-    var _apiService: ApiDataProviderType!
+    var _dataProvider: DataProviderType!
     var _notificatonError: NotificationErrorType!
     
     init () {
@@ -23,7 +25,13 @@ class OfferInteractor: OfferInteractorType {
     }
     
     func getOffers(type: OfferStatus, skip: Int) -> Observable<[LenderPresenter]> {
-        return _notificatonError.useError(observable: _apiService.getOffer(status: type, skip: skip)
+        return _notificatonError.useError(observable: _dataProvider.getOffer(status: type, skip: skip)
             .map({ $0.map({ LenderPresenter(data: $0 ) }) }))
+    }
+    func aproveOffer(id: String) -> Observable<Bool> {
+        return _notificatonError.useError(observable: _dataProvider.aproveOffer(id: id))
+    }
+    func rejectOffer(id: String, message: String) -> Observable<Bool> {
+        return _notificatonError.useError(observable: _dataProvider.rejectOffer(id: id, message: message))
     }
 }

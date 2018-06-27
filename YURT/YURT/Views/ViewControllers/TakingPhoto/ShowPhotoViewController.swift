@@ -24,6 +24,7 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        style = .lightContent
         btnDelete.createCircle()
         presenter.deleteCommand.useIndicator(button: btnDelete)
     }
@@ -36,9 +37,13 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
         // Dispose of any resources that can be recreated.
     }
     
-    func reloadData(type: DocumentType, image: Image) {
+    func reloadData(title: String, image: Image) {
         imgView.loadImage(image: image)
-        lblTitle.text = type.rawValue
+        lblTitle.text = title
+        
+        if presenter.id == nil {
+            btnDelete.isHidden = true
+        }
     }
 
     /*

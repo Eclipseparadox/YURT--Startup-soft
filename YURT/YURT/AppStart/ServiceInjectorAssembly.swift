@@ -70,6 +70,20 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: ViewOfferPresenter) {
+        let _:ViewOfferPresenter = define(init: service) {
+            $0._offerInteractor = self.serviceAssembly.offerInteractor
+            return $0
+        }
+    }
+    
+    func inject(into service: RejectOfferPresenter) {
+        let _:RejectOfferPresenter = define(init: service) {
+            $0._offerInteractor = self.serviceAssembly.offerInteractor
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     // Inject into DataProviders
@@ -108,7 +122,7 @@ class ServiceInjectorAssembly: Assembly {
     
     func inject(into service: OfferInteractor) {
         let _:OfferInteractor = define(init: service) {
-            $0._apiService = self.serviceAssembly.apiDataProvider
+            $0._dataProvider = self.serviceAssembly.dataProvider
             $0._notificatonError = self.serviceAssembly.notificationError
             return $0
         }

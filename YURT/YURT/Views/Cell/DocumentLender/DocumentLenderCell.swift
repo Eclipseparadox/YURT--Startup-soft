@@ -14,10 +14,16 @@ enum PdfLoaderError: Error, SttBaseErrorType {
     
     case documetIsNil
     case pageIsNil
+    case unsupportedDocument(String)
+    case urlIsNil
     
     func getMessage() -> (String, String) {
         var message: (String, String)!
         switch self {
+        case .urlIsNil:
+            message = ("urlIsNill", "")
+        case .unsupportedDocument(let mess):
+            message = ("unsupportedDocumentType", "of type: \(mess)")
         case .documetIsNil:
             message = ("documetIsNil", "")
         case .pageIsNil:
@@ -29,31 +35,41 @@ enum PdfLoaderError: Error, SttBaseErrorType {
 }
 
 class PdfLoader {
-    class func loadPreviewImage(sringURL: String) -> Observable<UIImage> {
+    class func loadPreviewImage(stringURL: String) -> Observable<UIImage> {
         return Observable<UIImage>.create({ (observer) -> Disposable in
-            if let documents = CGPDFDocument(URL(string: sringURL)! as CFURL) {
-                if let page = documents.page(at: 1) {
-                    let pageRect = page.getBoxRect(.mediaBox)
-                    let renderer = UIGraphicsImageRenderer(size: pageRect.size)
-                    let img = renderer.image { ctx in
-                        UIColor.white.set()
-                        ctx.fill(pageRect)
-                        
-                        ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
-                        ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
-                        
-                        ctx.cgContext.drawPDFPage(page)
+            if ["pdf"].contains(stringURL.components(separatedBy: ".").last!.lowercased()) {
+                if let url = URL(string: stringURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+                    if let documents = CGPDFDocument(url as CFURL) {
+                        if let page = documents.page(at: 1) {
+                            let pageRect = page.getBoxRect(.mediaBox)
+                            let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+                            let img = renderer.image { ctx in
+                                UIColor.white.set()
+                                ctx.fill(pageRect)
+                                
+                                ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+                                ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
+                                
+                                ctx.cgContext.drawPDFPage(page)
+                            }
+                            
+                            observer.onNext(img)
+                            observer.onCompleted()
+                        }
+                        else {
+                            observer.onError(PdfLoaderError.pageIsNil)
+                        }
                     }
-                    
-                    observer.onNext(img)
-                    observer.onCompleted()
+                    else {
+                        observer.onError(PdfLoaderError.documetIsNil)
+                    }
                 }
                 else {
-                    observer.onError(PdfLoaderError.pageIsNil)
+                    observer.onError(PdfLoaderError.urlIsNil)
                 }
             }
             else {
-                observer.onError(PdfLoaderError.documetIsNil)
+                observer.onError(PdfLoaderError.unsupportedDocument(stringURL.components(separatedBy: ".").last!))
             }
             
             return Disposables.create()
@@ -74,12 +90,10 @@ class DocumentLenderCell: SttCollectionViewCell<DocumentLenderCellPresenter>, Do
     }
     
     @objc private func onClick(_ sender: Any) {
-        if imgDocuments.image != nil && presenter.isFinishLoading {
-            presenter.onClick(image: imgDocuments.image!)
-        }
+        presenter.onClick(image: imgDocuments.image!)
     }
     
-    func insertImage(image: UIImage) {
+    func insertImage(image: UIImage?) {
         imgDocuments.image = image
     }
     

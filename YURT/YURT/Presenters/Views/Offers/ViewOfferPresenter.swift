@@ -10,15 +10,23 @@ import Foundation
 import UIKit
 
 protocol ViewOfferDelegate: SttViewContolable {
-    
+    func deleteButtons(status: Bool)
 }
 
 class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDelegate {
     
+    var _offerInteractor: OfferInteractorType!
     
     var data: OfferApiModel!
     var collection = SttObservableCollection<OfferDetailPresenter>()
     var documentCollection = SttObservableCollection<DocumentLenderCellPresenter>()
+    var aprove: SttComand!
+    
+    override func presenterCreating() {
+        super.presenterCreating()
+        
+        aprove = SttComand(delegate: self, handler: { $0.onAprove() })
+    }
     
     override func prepare(parametr: Any?) {
         data = parametr as! OfferApiModel
@@ -38,9 +46,22 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDel
         }
     }
     
-    func onClick(image: UIImage) {
-        delegate?.navigate(storyboard: Storyboard.offer, to: DocumentPreviewPresenter.self, typeNavigation: .modality, withParametr: image, callback: nil)
+    func onAprove() {
+        delegate?.deleteButtons(status: true)
     }
+    
+    func onClick(url: String, fileName: String) {
+        delegate?.navigate(storyboard: Storyboard.offer, to: DocumentPreviewPresenter.self, typeNavigation: .modality, withParametr: (url, fileName))
+    }
+    
+    func rejectClick() {
+        delegate?.navigate(storyboard: Storyboard.offer, to: RejectOfferPresenter.self, typeNavigation: .push, withParametr: data, callback: { [weak self] (result) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self?.delegate?.deleteButtons(status: false)
+            }
+        })
+    }
+    
     func onError(error: SttBaseErrorType) {
         self.delegate?.sendError(error: error)
     }

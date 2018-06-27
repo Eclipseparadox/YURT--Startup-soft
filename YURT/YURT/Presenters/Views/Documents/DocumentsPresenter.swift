@@ -78,12 +78,13 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
     }
     
     func showPhoto(type: (DocumentType, Image, String), callback: @escaping (Bool) -> Void) {
-        delegate!.navigate(to: "showPhoto", withParametr: type) { [weak self] (result) in
+        
+        delegate?.navigate(storyboard: Storyboard.photo, to: ShowPhotoPresenter.self, typeNavigation: .modality, withParametr: ShowPhotoNavigateModel(title: type.0.rawValue, image: type.1, id: type.2)) { [weak self] (result) in
             callback(result as! Bool)
-            if result as! Bool {
-                self?.reloadItem(type: type.0)
+                if result as! Bool {
+                    self?.reloadItem(type: type.0)
+                }
             }
-        }
     }
     
     func onSend() {
