@@ -30,4 +30,10 @@ extension SttComand {
             indicator.stopAnimating()
         }
     }
+    
+    func useRefresh(refreshControl: UIRefreshControl) {
+        self.addHandler(start: nil) {
+            refreshControl.endRefreshing()
+        }
+    }
 }

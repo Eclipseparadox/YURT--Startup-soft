@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLendersDelegate, UITableViewDelegate {
+class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLendersDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblNoData: UILabel!
@@ -19,30 +19,34 @@ class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLende
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        lblNoData.isHidden = presenter.lenders.count != 0
         source = SttTableViewSource(tableView: tableView, cellIdentifier: UIConstants.CellName.lenderCell, collection: presenter.lenders)
         tableView.dataSource = source
-        tableView.delegate = self
         tableView.reloadData()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))
         
         reloadLenders()
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
+        presenter.refresh.useRefresh(refreshControl: refreshControl)
+        presenter.refresh.addHandler(start: nil, end: { [weak self] in self?.lblNoData.isHidden = self?.presenter.lenders.count != 0 })
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
+        presenter.refresh.execute()
     }
     
-    // MARK: -- Implement Delegate NewLenders
+    // MARK: -- Implement NewLendersDelegate
 
     var collectionDisaposable: Disposable?
     func reloadLenders() {
-        source.updateSource(collection: presenter.lenders)//._collection = presenter.lenders
+        source.updateSource(collection: presenter.lenders)
         collectionDisaposable?.dispose()
         collectionDisaposable = presenter.lenders.observableObject.subscribe(onNext: { [weak self] _ in
             self?.lblNoData.isHidden = self!.presenter.lenders.count != 0
         })
-        lblNoData.isHidden = presenter.lenders.count != 0
     }
 }

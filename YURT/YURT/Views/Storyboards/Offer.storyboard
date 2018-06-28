@@ -21,10 +21,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Lenders offers-->
+        <!--Offers-->
         <scene sceneID="3ct-Dh-81L">
             <objects>
-                <viewController title="Lenders offers" id="i0U-nc-LmE" customClass="OffersViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Offers" id="i0U-nc-LmE" customClass="OffersViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DOW-ak-56B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uei-AF-ARp"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Lenders offers" id="yxc-DK-8fi">
+                    <navigationItem key="navigationItem" title="Offers" id="yxc-DK-8fi">
                         <barButtonItem key="backBarButtonItem" title=" " id="dSL-4m-ePE"/>
                     </navigationItem>
                     <connections>

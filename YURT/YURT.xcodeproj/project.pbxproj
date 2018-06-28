@@ -145,6 +145,7 @@
 		84A2735D20E3BE68000BCE27 /* RejectOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */; };
 		84A2735F20E3C040000BCE27 /* SttHandlerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2735E20E3C040000BCE27 /* SttHandlerTextView.swift */; };
 		84A2736120E3C7DB000BCE27 /* RejectOfferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2736020E3C7DB000BCE27 /* RejectOfferPresenter.swift */; };
+		84A2736420E51659000BCE27 /* OfferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2736320E51659000BCE27 /* OfferPresenter.swift */; };
 		84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */; };
 		84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C40AD220AD7F570050CA65 /* StartPageViewController.swift */; };
 		84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBEF20B316EF0053C93A /* ExistModel.swift */; };
@@ -299,6 +300,7 @@
 		84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectOfferViewController.swift; sourceTree = "<group>"; };
 		84A2735E20E3C040000BCE27 /* SttHandlerTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttHandlerTextView.swift; sourceTree = "<group>"; };
 		84A2736020E3C7DB000BCE27 /* RejectOfferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectOfferPresenter.swift; sourceTree = "<group>"; };
+		84A2736320E51659000BCE27 /* OfferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferPresenter.swift; sourceTree = "<group>"; };
 		84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPagePresenter.swift; sourceTree = "<group>"; };
 		84C40AD220AD7F570050CA65 /* StartPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 		84C7FBEF20B316EF0053C93A /* ExistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistModel.swift; sourceTree = "<group>"; };
@@ -892,14 +894,12 @@
 		848F4C2520D13270007ECC45 /* Offers */ = {
 			isa = PBXGroup;
 			children = (
-				848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */,
-				848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */,
-				848F4C2A20D132A3007ECC45 /* ApprovedLendersPresenter.swift */,
-				848F4C3620D2AE2C007ECC45 /* BaseLendersPresenter.swift */,
+				84A2736220E5163C000BCE27 /* Items */,
 				84996DF220D3FD070006ADFA /* ViewOfferPresenter.swift */,
 				84996DF420D7A7D20006ADFA /* OfferDetailPresenter.swift */,
 				8453ADCD20E23CD600174765 /* DocumentPreviewPresenter.swift */,
 				84A2736020E3C7DB000BCE27 /* RejectOfferPresenter.swift */,
+				84A2736320E51659000BCE27 /* OfferPresenter.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -958,6 +958,17 @@
 				84A2735A20E3B393000BCE27 /* RejectApiModel.swift */,
 			);
 			path = SendModel;
+			sourceTree = "<group>";
+		};
+		84A2736220E5163C000BCE27 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */,
+				848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */,
+				848F4C2A20D132A3007ECC45 /* ApprovedLendersPresenter.swift */,
+				848F4C3620D2AE2C007ECC45 /* BaseLendersPresenter.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 		84C40ACD20AD7ECD0050CA65 /* Login */ = {
@@ -1231,6 +1242,7 @@
 				84C40ACF20AD7EE50050CA65 /* StartPagePresenter.swift in Sources */,
 				84484F54209B05D4006BBD11 /* AppDelegate.swift in Sources */,
 				848F4C3520D2AB74007ECC45 /* OfferInteractor.swift in Sources */,
+				84A2736420E51659000BCE27 /* OfferPresenter.swift in Sources */,
 				849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */,
 				8453ADBC20E0E1E800174765 /* SttJsonDecoderExtensions.swift in Sources */,
 				8453ADB420E0E1E800174765 /* SttHandlerTextField.swift in Sources */,

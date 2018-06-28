@@ -14,9 +14,9 @@ class SttBaseViewController: UIViewController, SttKeyboardNotificationDelegate {
     fileprivate var parametr: Any?
     fileprivate var callback: ((Any) -> Void)?
     
-    var keyboardNotification: SttKeyboardNotification!
-    var scrollAmount: CGFloat = 0
-    var scrollAmountGeneral: CGFloat = 0
+    fileprivate var keyboardNotification: SttKeyboardNotification!
+    fileprivate var scrollAmount: CGFloat = 0
+    fileprivate var scrollAmountGeneral: CGFloat = 0
     var moveViewUp: Bool = false
     var style = UIStatusBarStyle.default
     
@@ -57,6 +57,10 @@ class SttBaseViewController: UIViewController, SttKeyboardNotificationDelegate {
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func insertParametr(parametr: Any?) {
+        self.parametr = parametr
     }
 }
 
@@ -101,10 +105,14 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        keyboardNotification.addObserver()
         UIApplication.shared.statusBarStyle = style
         navigationController?.setNavigationBarHidden(hideNavigationBar, animated: true)
         navigationController?.navigationController?.navigationBar.isHidden = hideNavigationBar
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        keyboardNotification.addObserver()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

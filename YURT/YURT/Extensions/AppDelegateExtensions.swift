@@ -27,6 +27,12 @@ extension AppDelegate {
                     if minutes < 60 && minutes > -60 {
                         storyboardName = "Main"
                     }
+                    else {
+                        KeychainSwift().clear()
+                        try! realm.write {
+                            realm.deleteAll()
+                        }
+                    }
                 }
             }
             catch {

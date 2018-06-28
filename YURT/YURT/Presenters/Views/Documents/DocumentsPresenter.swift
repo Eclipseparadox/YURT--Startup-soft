@@ -15,6 +15,7 @@ protocol DocumentsDelegate: SttViewContolable {
     func reloadItem(section: Int, row: Int)
     func progressCahnged()
     func reloadData()
+    func docUpdated()
 }
 
 class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDelegate {
@@ -50,7 +51,8 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
                 self?.currentUploaded = documents.0[0].1.uploadedsCount + documents.0[1].1.uploadedsCount
                 self?.delegate!.reloadData()
                 self?.delegate?.progressCahnged()
-            })
+                }, onError: { [weak self] _ in self?.delegate?.docUpdated() },
+                   onCompleted: { [weak self] in self?.delegate?.docUpdated() })
         
         _ = publisher
             .subscribe(onNext: { [weak self] (arg) in

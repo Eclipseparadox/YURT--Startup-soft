@@ -70,9 +70,7 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
     @IBAction func exit(_ sender: Any) {
         KeychainSwift().delete(Constants.tokenKey)
         let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
+        
         loadStoryboard(storyboard: Storyboard.login)
     }
     

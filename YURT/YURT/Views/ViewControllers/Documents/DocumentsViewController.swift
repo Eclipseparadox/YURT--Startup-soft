@@ -8,6 +8,19 @@
 
 import UIKit
 
+class SttDefaultComponnents {
+    class func createBarButtonLoader() -> (UIBarButtonItem, UIActivityIndicatorView) {
+        let statusUpdatedIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        statusUpdatedIndicator.startAnimating()
+        statusUpdatedIndicator.activityIndicatorViewStyle = .gray
+        statusUpdatedIndicator.hidesWhenStopped = true
+        let indicatorButton = UIBarButtonItem(customView: statusUpdatedIndicator)
+        indicatorButton.isEnabled = false
+        
+        return (indicatorButton, statusUpdatedIndicator)
+    }
+}
+
 class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsDelegate {
 
     @IBOutlet weak var progressBackground: UIView!
@@ -20,12 +33,19 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var lblAllDocuments: UILabel!
     
+    var statusUpdatedIndicator: UIActivityIndicatorView!
+    
     @IBAction func send(_ sender: Any) {
         presenter.send.execute()
     }
     var collectionSource: DocumentEntitySource!
     
     override func viewDidLoad() {
+        
+        let loaderData = SttDefaultComponnents.createBarButtonLoader()
+        self.navigationItem.setRightBarButton(loaderData.0, animated: true)
+        statusUpdatedIndicator = loaderData.1
+        
         super.viewDidLoad()
 
         progressBackground.createCircle(dominateWidth: false, clipToBounds: true)
@@ -37,6 +57,8 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         let width = widthScreen / 2 - 22
         let layout = collectionDocuments.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,5 +96,9 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         if collectionSource != nil {
             collectionSource.updateSource(collection: presenter.documents)
         }
+    }
+    
+    func docUpdated() {
+        statusUpdatedIndicator.stopAnimating()
     }
 }

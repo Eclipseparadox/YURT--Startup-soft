@@ -47,16 +47,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="8Ja-h9-uOa">
-                                <rect key="frame" x="70" y="37" width="13" height="13"/>
+                                <rect key="frame" x="70" y="39" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="13" id="AYe-36-gYf"/>
                                     <constraint firstAttribute="height" constant="13" id="rF2-CA-QwF"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Los Angeles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUE-Pa-z7D">
-                                <rect key="frame" x="88" y="37" width="194" height="13"/>
+                                <rect key="frame" x="88" y="37" width="194" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="13" id="342-bb-mEQ"/>
+                                    <constraint firstAttribute="height" constant="18" id="342-bb-mEQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                 <nil key="textColor"/>
@@ -184,7 +184,7 @@
                             <constraint firstItem="jUE-Pa-z7D" firstAttribute="top" secondItem="qTY-gB-MUz" secondAttribute="bottom" constant="4" id="MMD-7h-5cc"/>
                             <constraint firstItem="8Ja-h9-uOa" firstAttribute="leading" secondItem="1jd-ns-DmJ" secondAttribute="trailing" constant="10" id="Mji-35-2K9"/>
                             <constraint firstItem="1jd-ns-DmJ" firstAttribute="leading" secondItem="HgH-XO-2UT" secondAttribute="leading" constant="15" id="Ufu-f4-Ald"/>
-                            <constraint firstItem="8Ja-h9-uOa" firstAttribute="top" secondItem="qTY-gB-MUz" secondAttribute="bottom" constant="4" id="UsS-Q6-Lgf"/>
+                            <constraint firstItem="8Ja-h9-uOa" firstAttribute="top" secondItem="qTY-gB-MUz" secondAttribute="bottom" constant="6" id="UsS-Q6-Lgf"/>
                             <constraint firstItem="YsD-io-iPz" firstAttribute="leading" secondItem="HgH-XO-2UT" secondAttribute="leading" constant="16" id="WBI-Xl-qfe"/>
                             <constraint firstItem="1jd-ns-DmJ" firstAttribute="top" secondItem="HgH-XO-2UT" secondAttribute="top" constant="15" id="WTh-0j-Gkj"/>
                             <constraint firstAttribute="trailing" secondItem="e8I-sf-4hC" secondAttribute="trailing" constant="16" id="ZP3-ZJ-gbH"/>

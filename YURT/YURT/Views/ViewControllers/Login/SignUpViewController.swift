@@ -137,7 +137,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         presenter.signUp.useIndicator(button: btnSignUp)
     }
     
