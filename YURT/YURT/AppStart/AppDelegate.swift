@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        SttLog.trace(message: "OpenUrl", key: "\(url)")
+        return true
+    }
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         SttGlobalObserver.applicationStatusChanged(status: .EnterBackgound)
     }

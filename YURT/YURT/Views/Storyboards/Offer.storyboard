@@ -111,7 +111,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3a-VO-rvF">
                                                 <rect key="frame" x="10" y="258" width="355" height="180"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="um odioque civiuda." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-fH-gHx">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="um odioque civiuda." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-fH-gHx">
                                                         <rect key="frame" x="22" y="10" width="311" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -511,9 +511,6 @@
         </namedColor>
         <namedColor name="main">
             <color red="0.054901960780000002" green="0.54901960780000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="main">
-            <color red="0.054901960784313725" green="0.5490196078431373" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondaryTextColor">
             <color red="0.56999999284744263" green="0.56999999284744263" blue="0.56999999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -37,9 +37,9 @@ class BaseLendersPresenter<T>: SttPresenter<T>, OfferItemDelegate {
         loadNext = SttComand(delegate: self, handler: { $0.updateOffers(skip: $0.lenders.count) })
         
         refresh.singleCallEndCallback = false
-        //refresh.execute()
     }
     
+    // mainContainer doing refresh data
     override func prepare(parametr: Any?) {
         busPublisher = parametr as! PublishSubject<OfferStatus?>
         _ = busPublisher.subscribe(onNext: { [weak self] stat in
@@ -52,7 +52,9 @@ class BaseLendersPresenter<T>: SttPresenter<T>, OfferItemDelegate {
     // MARK: -- OfferItemDelegate
     
     func openOffers(data: OfferApiModel) {
-        viewDelegate?.navigate(storyboard: Storyboard.offer, to: ViewOfferPresenter.self, withParametr: data)
+        viewDelegate?.navigate(storyboard: Storyboard.offer, to: ViewOfferPresenter.self, typeNavigation: .push, withParametr: data, callback: { [weak self] _ in
+            //self?.lenders.remove(at: self!.lenders.index(where: { $0.id == data.id })!)
+        })
     }
     
     private func updateOffers(skip: Int = 0) {

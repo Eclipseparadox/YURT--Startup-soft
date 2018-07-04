@@ -61,10 +61,14 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         
     }
     
+    private var firstStart = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        presenter.send.useIndicator(button: btnSend)
+        if firstStart {
+            presenter.send.useIndicator(button: btnSend)
+            firstStart = false
+        }
 
         btnSend.isUserInteractionEnabled = presenter.canSend
         btnSend.alpha = presenter.canSend ? 1.0 : 0.5

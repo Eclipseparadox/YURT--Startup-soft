@@ -28,7 +28,7 @@ struct LenderInfo: Decodable {
 }
 
 struct OfferApiModel: Decodable {
-    //let id: String
+    let id: String
     let downPayment: Int
     let loan: Int
     let rate: Float

@@ -111,6 +111,7 @@
 		846F9959209B0AB900C61AE2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F9958209B0AB900C61AE2 /* Constants.swift */; };
 		8479DFAC20D3DE60002CACA6 /* SttFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479DFAB20D3DE60002CACA6 /* SttFormatterExtensions.swift */; };
 		8479DFAE20D3E133002CACA6 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479DFAD20D3E133002CACA6 /* OffersViewController.swift */; };
+		8480334720EB8D84001B7FDB /* SttStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480334620EB8D84001B7FDB /* SttStringExtensions.swift */; };
 		848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C85E020A0480700026A5E /* AppDelegateExtensions.swift */; };
 		848F4C2720D13288007ECC45 /* RejectedLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */; };
 		848F4C2920D13293007ECC45 /* NewLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */; };
@@ -266,6 +267,7 @@
 		846F9958209B0AB900C61AE2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8479DFAB20D3DE60002CACA6 /* SttFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttFormatterExtensions.swift; sourceTree = "<group>"; };
 		8479DFAD20D3E133002CACA6 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
+		8480334620EB8D84001B7FDB /* SttStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttStringExtensions.swift; sourceTree = "<group>"; };
 		848C85E020A0480700026A5E /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedLendersPresenter.swift; sourceTree = "<group>"; };
 		848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLendersPresenter.swift; sourceTree = "<group>"; };
@@ -697,6 +699,7 @@
 				84C7FBF320B444490053C93A /* SttUIImageExtensions.swift */,
 				8437E00C20CFEF760043445D /* SttUISegmentControlExtensions.swift */,
 				8479DFAB20D3DE60002CACA6 /* SttFormatterExtensions.swift */,
+				8480334620EB8D84001B7FDB /* SttStringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1276,6 +1279,7 @@
 				848F4C2B20D132A3007ECC45 /* ApprovedLendersPresenter.swift in Sources */,
 				842239E520BE93CF0028FDAA /* DocumentsViewController.swift in Sources */,
 				7DD62D4B20C51C0100F33794 /* RealmAuth.swift in Sources */,
+				8480334720EB8D84001B7FDB /* SttStringExtensions.swift in Sources */,
 				8479DFAE20D3E133002CACA6 /* OffersViewController.swift in Sources */,
 				84996E0020D7CB780006ADFA /* DocumentLenderCell.swift in Sources */,
 				8453ADA320E0E1E800174765 /* SttConnectivity.swift in Sources */,
@@ -1423,14 +1427,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T2CR8Y629;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YURT",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ss.tesloop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.yurt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1443,14 +1453,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T2CR8Y629;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YURT",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = YURT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ss.tesloop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ss.yurt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

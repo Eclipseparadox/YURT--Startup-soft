@@ -65,30 +65,23 @@ class DocumentsPreviewImageLoader: NSObject, UIWebViewDelegate {
 
 class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegate {
     
-    @IBOutlet weak var img: UIImageView!
-    var webView: UIWebView = UIWebView(frame: CGRect(x: 20, y: 20, width: 500, height: 666))
+    @IBOutlet weak var imgProfile: UIImageView!
     @IBAction func exit(_ sender: Any) {
         KeychainSwift().delete(Constants.tokenKey)
         let realm = try! Realm()
-        
+        try! realm.write {
+            realm.deleteAll()
+        }
         loadStoryboard(storyboard: Storyboard.login)
     }
     
-    var loader: DocumentsPreviewImageLoader!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loader = DocumentsPreviewImageLoader()
-        _ = loader.observable.subscribe(onNext: { (image) in
-            self.img.image = image
-        })
-        loader.load(fileURLString: "https://calibre-ebook.com/downloads/demos/demo.docx")
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        style = .lightContent
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.view.backgroundColor = UIColor.clear
     }
 }

@@ -36,6 +36,9 @@ class RejectOfferPresenter: SttPresenter<RejectOfferDelegate> {
     }
     
     private func onSend() {
-        delegate?.close(parametr: true)
+        _ = send.useWork(observable: _offerInteractor.rejectOffer(id: data.id, message: comment!))
+            .subscribe(onNext: { [weak self] _ in
+                self?.delegate?.close(parametr: true)
+            })
     }
 }

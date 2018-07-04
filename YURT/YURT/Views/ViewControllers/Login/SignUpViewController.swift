@@ -136,9 +136,13 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         inpPassword.hintText = Constants.passwordRequiered
     }
     
+    private var firstStart = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.signUp.useIndicator(button: btnSignUp)
+        if firstStart {
+            presenter.signUp.useIndicator(button: btnSignUp)
+            firstStart = false
+        }
     }
     
     @objc func clickOnPhoto(_ send: Any) {

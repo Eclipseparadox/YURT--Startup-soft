@@ -68,7 +68,7 @@
                                         <color key="backgroundColor" name="maskColor"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Yurt!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsM-AM-diP">
-                                        <rect key="frame" x="126.66666666666669" y="70" width="160" height="24"/>
+                                        <rect key="frame" x="126.66666666666669" y="4" width="160" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="3WS-zq-ubF"/>
                                             <constraint firstAttribute="height" constant="24" id="GAj-9m-B49"/>
@@ -78,7 +78,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ta3-AV-COc" customClass="InputBox" customModule="YURT" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="125" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="59" width="414" height="70"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -101,7 +101,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mba-u7-iJ0" customClass="InputBox" customModule="YURT" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="195" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="129" width="414" height="70"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -124,7 +124,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kju-Pg-0MC">
-                                        <rect key="frame" x="40" y="310" width="334" height="45"/>
+                                        <rect key="frame" x="40" y="244" width="334" height="45"/>
                                         <color key="backgroundColor" name="maskSignIn"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="o9N-UF-rNP"/>
@@ -138,7 +138,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0x-KI-tfC">
-                                        <rect key="frame" x="198" y="380" width="17" height="22"/>
+                                        <rect key="frame" x="198" y="314" width="17" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="7yP-DC-qhM"/>
                                             <constraint firstAttribute="width" constant="17" id="WXn-40-mbt"/>
@@ -148,7 +148,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Linkedin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4g-Xz-RvN">
-                                        <rect key="frame" x="138" y="427" width="137" height="19"/>
+                                        <rect key="frame" x="138" y="361" width="137" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="137" id="CRo-iI-XSf"/>
                                             <constraint firstAttribute="height" constant="19" id="gMz-le-SMu"/>
@@ -158,7 +158,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wO8-hX-Xdm">
-                                        <rect key="frame" x="184.66666666666666" y="466" width="45" height="45"/>
+                                        <rect key="frame" x="184.66666666666666" y="400" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="IIE-sS-Qpk"/>
                                             <constraint firstAttribute="height" constant="45" id="O61-8j-OYl"/>
@@ -189,7 +189,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="error"/>
+                                <color key="backgroundColor" name="navBarLoginBackground"/>
                                 <constraints>
                                     <constraint firstItem="mba-u7-iJ0" firstAttribute="top" secondItem="Ta3-AV-COc" secondAttribute="bottom" id="0Id-Z0-T8U"/>
                                     <constraint firstItem="mba-u7-iJ0" firstAttribute="leading" secondItem="P6O-sX-f5V" secondAttribute="leading" id="0qv-Ud-hiD"/>
@@ -224,7 +224,7 @@
                                     <constraint firstItem="YI2-LR-woX" firstAttribute="centerX" secondItem="P6O-sX-f5V" secondAttribute="centerX" id="oVe-36-uDy"/>
                                     <constraint firstItem="wO8-hX-Xdm" firstAttribute="centerX" secondItem="P6O-sX-f5V" secondAttribute="centerX" id="s38-gu-nTZ"/>
                                     <constraint firstItem="YI2-LR-woX" firstAttribute="top" secondItem="P6O-sX-f5V" secondAttribute="top" id="tE3-rm-6bC"/>
-                                    <constraint firstItem="DsM-AM-diP" firstAttribute="top" secondItem="P6O-sX-f5V" secondAttribute="top" constant="70" id="viR-Md-0iC"/>
+                                    <constraint firstItem="DsM-AM-diP" firstAttribute="top" secondItem="P6O-sX-f5V" secondAttribute="top" constant="4" id="viR-Md-0iC"/>
                                     <constraint firstAttribute="trailing" secondItem="YI2-LR-woX" secondAttribute="trailing" id="wOW-Gv-mnu"/>
                                     <constraint firstItem="Kju-Pg-0MC" firstAttribute="leading" secondItem="P6O-sX-f5V" secondAttribute="leading" constant="40" id="xKs-H9-eo6"/>
                                 </constraints>
@@ -549,7 +549,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="error"/>
+                                <color key="backgroundColor" name="navBarLoginBackground"/>
                                 <constraints>
                                     <constraint firstItem="mWb-fH-YiP" firstAttribute="centerX" secondItem="w1w-dx-ofL" secondAttribute="centerX" id="0gt-i2-LFS"/>
                                     <constraint firstAttribute="trailing" secondItem="iKZ-OW-7kE" secondAttribute="trailing" id="5bb-mg-TWh"/>
@@ -617,6 +617,9 @@
         </namedColor>
         <namedColor name="maskSignIn">
             <color red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="navBarLoginBackground">
+            <color red="0.29411764705882354" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="navBarLoginBackground">
             <color red="0.29411764705882354" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -23,8 +23,8 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDel
     var aprove: SttComand!
     
     override func presenterCreating() {
-        super.presenterCreating()
-        
+        ServiceInjectorAssembly.instance().inject(into: self)
+
         aprove = SttComand(delegate: self, handler: { $0.onAprove() })
     }
     
@@ -47,7 +47,10 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDel
     }
     
     func onAprove() {
-        delegate?.deleteButtons(status: true)
+        _ = aprove.useWork(observable: _offerInteractor.aproveOffer(id: data.id))
+            .subscribe(onNext: { [weak self] _ in
+                self?.delegate?.deleteButtons(status: true)
+            })
     }
     
     func onClick(url: String, fileName: String) {

@@ -60,7 +60,7 @@ class ApiDataProvider: ApiDataProviderType {
     
     func signUp(model: BorrowerSignUp) -> Observable<Bool> {
         return _httpService.post(controller: .mobileAccount("signup"),
-                                 dataAny: model.getDictionary())
+                                 data: model)
             .getResult()
     }
     func signIn(email: String, password: String) -> Observable<AuthApiModel> {
@@ -74,7 +74,7 @@ class ApiDataProvider: ApiDataProviderType {
     }
     
     func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel> {
-        return _httpService.post(controller: .mobileDocument("add"), dataAny: model.getDictionary(), insertToken: true)
+        return _httpService.post(controller: .mobileDocument("add"), data: model, insertToken: true)
             .getResult(ofType: BorrowerDocumentApiModel.self)
     }
     func getDocument() -> Observable<BorrowerDocumentModelApiModel> {
@@ -82,11 +82,11 @@ class ApiDataProvider: ApiDataProviderType {
                         .getResult(ofType: BorrowerDocumentModelApiModel.self)
     }
     func sendDocuments() -> Observable<Bool> {
-        return _httpService.post(controller: .mobileDocument("send"), insertToken: true)
+        return _httpService.post(controller: .mobileDocument("send"), data: nil, insertToken: true) //_httpService.post(controller: .mobileDocument("send"), insertToken: true)
             .getResult()
     }
     func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool> {
-        return _httpService.post(controller: .mobileDocument("delete"), dataAny: model.getDictionary(), insertToken: true)
+        return _httpService.post(controller: .mobileDocument("delete"), data: model, insertToken: true)
             .getResult()
     }
     
@@ -98,11 +98,11 @@ class ApiDataProvider: ApiDataProviderType {
             .getResult(ofType: [OfferApiModel].self)
     }
     func aproveOffer(id: String) -> Observable<Bool> {
-        return _httpService.post(controller: .mobileOffers("approve"), data: ["id": id], insertToken: true)
+        return _httpService.post(controller: .mobileOffers("approve"), data: id, insertToken: true)
                 .getResult()
     }
     func rejectOffer(model: RejectApiModel) -> Observable<Bool> {
-        return _httpService.post(controller: .mobileOffers("reject"), dataAny: model.getDictionary(), insertToken: true)
+        return _httpService.post(controller: .mobileOffers("reject"), data: model, insertToken: true)
                 .getResult()
     }
 }

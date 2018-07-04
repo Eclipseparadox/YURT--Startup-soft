@@ -29,14 +29,14 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
     func deleteButtons(status: Bool) {
         if status {
             self.createDecisionAlerDialog(title: "Offer has been aproved", message: "Do you want to return to list's offers?", handlerOk: {
-                self.close()
+                self.close(parametr: true)
             }, handlerFalse: { [weak self] in
                 self?.deleteButtons()
             })
         }
         else {
             self.createDecisionAlerDialog(title: "Offer has been rejected", message: "Do you want to return to list's offers?", handlerOk: {
-                self.close()
+                self.close(parametr: false)
             }, handlerFalse: { [weak self] in
                 self?.deleteButtons()
             })

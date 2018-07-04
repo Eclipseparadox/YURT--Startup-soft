@@ -26,8 +26,10 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         super.viewDidLoad()
         
         style = .lightContent
-        cnstrHeight.constant = heightScreen
-        hideNavigationBar = true
+        cnstrHeight.constant = heightScreen - 64
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         handlerEmail.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.email = $1.text }, textField: inpEmail.textField)
         handlerPassword.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
@@ -42,9 +44,13 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         presenter.password = inpPassword.textField.text
     }
     
+    private var firstStart = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.signIn.useIndicator(button: btnSignIn)
+        if firstStart {
+            presenter.signIn.useIndicator(button: btnSignIn)
+            firstStart = false
+        }
     }
     
     let speaker = AVSpeechSynthesizer()
