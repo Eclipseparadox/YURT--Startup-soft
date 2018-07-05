@@ -32,10 +32,10 @@ class SttCamera: NSObject, UIImagePickerControllerDelegate, UINavigationControll
     
     func showPopuForDecision() {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionController.addAction(UIAlertAction(title: "From galery", style: .default, handler: { (x) in
+        actionController.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { (x) in
             self.selectPhoto()
         }))
-        actionController.addAction(UIAlertAction(title: "From camera", style: .default, handler: { (x) in
+        actionController.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { (x) in
             self.takePhoto()
         }))
         actionController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

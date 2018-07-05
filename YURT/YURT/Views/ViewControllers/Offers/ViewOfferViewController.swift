@@ -84,7 +84,9 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         }
         tvComment.textColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1)
         
-        offerDetailSource = SttTableViewSource(tableView: offerDetailCollection, cellIdentifier: UIConstants.CellName.offerDetailCell, collection: presenter.collection)
+        offerDetailSource = SttTableViewSource(tableView: offerDetailCollection,
+                                               cellIdentifiers: [SttIdentifiers(identifers: UIConstants.CellName.offerDetailCell, nibName: nil)],
+                                               collection: presenter.collection)
         documentSource = SttCollectionViewSource(collectionView: documentCollection, cellIdentifiers: [SttIdentifiers(identifers: UIConstants.CellName.documentLenderCell, nibName: nil)], collection: presenter.documentCollection)
         offerDetailCollection.dataSource = offerDetailSource
         documentCollection.dataSource = documentSource
@@ -105,9 +107,13 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         cnstrTvHeight?.constant = tvComment.frame.height
     }
     
+    private var firstStart = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-       presenter.aprove.useIndicator(button: btnApprove)
+        if firstStart {
+            firstStart = false
+            presenter.aprove.useIndicator(button: btnApprove)
+        }
     }
 }

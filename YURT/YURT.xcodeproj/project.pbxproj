@@ -112,6 +112,11 @@
 		8479DFAC20D3DE60002CACA6 /* SttFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479DFAB20D3DE60002CACA6 /* SttFormatterExtensions.swift */; };
 		8479DFAE20D3E133002CACA6 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8479DFAD20D3E133002CACA6 /* OffersViewController.swift */; };
 		8480334720EB8D84001B7FDB /* SttStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480334620EB8D84001B7FDB /* SttStringExtensions.swift */; };
+		8480334B20ECDA5F001B7FDB /* ProfileItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480334920ECDA5F001B7FDB /* ProfileItemCell.swift */; };
+		8480334C20ECDA5F001B7FDB /* ProfileItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480334A20ECDA5F001B7FDB /* ProfileItemCell.xib */; };
+		8480334E20ECDC57001B7FDB /* ProfileItemCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480334D20ECDC57001B7FDB /* ProfileItemCellPresenter.swift */; };
+		8480335220ECE9EF001B7FDB /* ProfileEditItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480335020ECE9EF001B7FDB /* ProfileEditItemCell.swift */; };
+		8480335320ECE9EF001B7FDB /* ProfileEditItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480335120ECE9EF001B7FDB /* ProfileEditItemCell.xib */; };
 		848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C85E020A0480700026A5E /* AppDelegateExtensions.swift */; };
 		848F4C2720D13288007ECC45 /* RejectedLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */; };
 		848F4C2920D13293007ECC45 /* NewLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */; };
@@ -156,6 +161,11 @@
 		84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */; };
 		84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBFA20B45E2C0053C93A /* AccountModel.swift */; };
 		84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7FBFE20B55E570053C93A /* AuthApiModel.swift */; };
+		84EA05D920ECF29B00F75F55 /* ProfileEditItemCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA05D820ECF29B00F75F55 /* ProfileEditItemCellPresenter.swift */; };
+		84EA05DB20ECF5BD00F75F55 /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA05DA20ECF5BD00F75F55 /* EditProfilePresenter.swift */; };
+		84EA05DD20ECF6B700F75F55 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA05DC20ECF6B700F75F55 /* ProfileEditViewController.swift */; };
+		84EA05E120ED165100F75F55 /* SimpleInputBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EA05DF20ED165100F75F55 /* SimpleInputBox.xib */; };
+		84EA05E220ED165100F75F55 /* SimpleInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA05E020ED165100F75F55 /* SimpleInputBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -268,6 +278,11 @@
 		8479DFAB20D3DE60002CACA6 /* SttFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttFormatterExtensions.swift; sourceTree = "<group>"; };
 		8479DFAD20D3E133002CACA6 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		8480334620EB8D84001B7FDB /* SttStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttStringExtensions.swift; sourceTree = "<group>"; };
+		8480334920ECDA5F001B7FDB /* ProfileItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemCell.swift; sourceTree = "<group>"; };
+		8480334A20ECDA5F001B7FDB /* ProfileItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileItemCell.xib; sourceTree = "<group>"; };
+		8480334D20ECDC57001B7FDB /* ProfileItemCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemCellPresenter.swift; sourceTree = "<group>"; };
+		8480335020ECE9EF001B7FDB /* ProfileEditItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditItemCell.swift; sourceTree = "<group>"; };
+		8480335120ECE9EF001B7FDB /* ProfileEditItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditItemCell.xib; sourceTree = "<group>"; };
 		848C85E020A0480700026A5E /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedLendersPresenter.swift; sourceTree = "<group>"; };
 		848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLendersPresenter.swift; sourceTree = "<group>"; };
@@ -312,6 +327,11 @@
 		84C7FBF820B4592D0053C93A /* ResultUploadImageApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUploadImageApiModel.swift; sourceTree = "<group>"; };
 		84C7FBFA20B45E2C0053C93A /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		84C7FBFE20B55E570053C93A /* AuthApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApiModel.swift; sourceTree = "<group>"; };
+		84EA05D820ECF29B00F75F55 /* ProfileEditItemCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditItemCellPresenter.swift; sourceTree = "<group>"; };
+		84EA05DA20ECF5BD00F75F55 /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		84EA05DC20ECF6B700F75F55 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		84EA05DF20ED165100F75F55 /* SimpleInputBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleInputBox.xib; sourceTree = "<group>"; };
+		84EA05E020ED165100F75F55 /* SimpleInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleInputBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +358,7 @@
 		7DD62D4C20C5229900F33794 /* TemplateView */ = {
 			isa = PBXGroup;
 			children = (
+				84EA05DE20ED162400F75F55 /* SimpleInputBox */,
 				842E1EBF20AD6EB1003D2CDA /* InputBox.swift */,
 				842E1EC020AD6EB1003D2CDA /* InputBox.xib */,
 			);
@@ -363,6 +384,8 @@
 				842239F020BEE4900028FDAA /* NoDocumentsEntity */,
 				8466A6A720CFC97700A888A0 /* LenderPresenter.swift */,
 				84996E0220D7CCF40006ADFA /* DocumentLenderCellPresenter.swift */,
+				8480334D20ECDC57001B7FDB /* ProfileItemCellPresenter.swift */,
+				84EA05D820ECF29B00F75F55 /* ProfileEditItemCellPresenter.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -377,27 +400,6 @@
 				84C40ACD20AD7ECD0050CA65 /* Login */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		840427F920B2E9D700C94765 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		840427FE20B2EAA300C94765 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		840427FF20B2EB8900C94765 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		8407C09C20B8096600045EFB /* TakingPhoto */ = {
@@ -448,6 +450,8 @@
 		842239F520BEE57D0028FDAA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				8480334F20ECE9B1001B7FDB /* ProfileEditItem */,
+				8480334820ECDA40001B7FDB /* ProfileItem */,
 				84996DFD20D7CAA40006ADFA /* DocumentLender */,
 				84996DF620D7A86D0006ADFA /* OfferDetail */,
 				8466A6A120CFBCE000A888A0 /* Lender */,
@@ -467,13 +471,6 @@
 				8462233E20BFE3D50059A83A /* DocumentEntitySource.swift */,
 			);
 			path = DocumentEntity;
-			sourceTree = "<group>";
-		};
-		842239FF20BEEBF10028FDAA /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		842E1EB620AC5676003D2CDA /* RealmModels */ = {
@@ -861,10 +858,6 @@
 		846F994A209B08F200C61AE2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				842239FF20BEEBF10028FDAA /* View */,
-				840427FF20B2EB8900C94765 /* Cell */,
-				840427FE20B2EAA300C94765 /* Source */,
-				840427F920B2E9D700C94765 /* Delegate */,
 				846F994B209B093600C61AE2 /* Storyb.swift */,
 			);
 			path = Base;
@@ -883,6 +876,24 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8480334820ECDA40001B7FDB /* ProfileItem */ = {
+			isa = PBXGroup;
+			children = (
+				8480334920ECDA5F001B7FDB /* ProfileItemCell.swift */,
+				8480334A20ECDA5F001B7FDB /* ProfileItemCell.xib */,
+			);
+			path = ProfileItem;
+			sourceTree = "<group>";
+		};
+		8480334F20ECE9B1001B7FDB /* ProfileEditItem */ = {
+			isa = PBXGroup;
+			children = (
+				8480335020ECE9EF001B7FDB /* ProfileEditItemCell.swift */,
+				8480335120ECE9EF001B7FDB /* ProfileEditItemCell.xib */,
+			);
+			path = ProfileEditItem;
 			sourceTree = "<group>";
 		};
 		848C85DD20A0429300026A5E /* Extensions */ = {
@@ -911,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				8493542620C6C03800C7EFF3 /* ProfileViewController.swift */,
+				84EA05DC20ECF6B700F75F55 /* ProfileEditViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -918,6 +930,7 @@
 		8493542A20C6C69A00C7EFF3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				84EA05DA20ECF5BD00F75F55 /* EditProfilePresenter.swift */,
 				8493542B20C6C6AC00C7EFF3 /* ProfilePresenter.swift */,
 			);
 			path = Profile;
@@ -1006,6 +1019,15 @@
 			path = ApiModel;
 			sourceTree = "<group>";
 		};
+		84EA05DE20ED162400F75F55 /* SimpleInputBox */ = {
+			isa = PBXGroup;
+			children = (
+				84EA05E020ED165100F75F55 /* SimpleInputBox.swift */,
+				84EA05DF20ED165100F75F55 /* SimpleInputBox.xib */,
+			);
+			path = SimpleInputBox;
+			sourceTree = "<group>";
+		};
 		B54C9FC814F10AC2C070B0B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1080,6 +1102,8 @@
 				84996DE720D3F21E0006ADFA /* Main.storyboard in Resources */,
 				8437E00420CFDC5F0043445D /* NewLendersViewController.xib in Resources */,
 				8497872A20ADB0E0004F4B06 /* Roboto-Light.ttf in Resources */,
+				8480335320ECE9EF001B7FDB /* ProfileEditItemCell.xib in Resources */,
+				84EA05E120ED165100F75F55 /* SimpleInputBox.xib in Resources */,
 				84996DFA20D7A9A00006ADFA /* OfferDetailTableViewCell.xib in Resources */,
 				84484F5B209B05D6006BBD11 /* Assets.xcassets in Resources */,
 				842239FA20BEE5C90028FDAA /* NoDocumentEntityCell.xib in Resources */,
@@ -1089,6 +1113,7 @@
 				842E1EC920AD7138003D2CDA /* Login.storyboard in Resources */,
 				8466A6A520CFBDA200A888A0 /* LenderCell.xib in Resources */,
 				8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */,
+				8480334C20ECDA5F001B7FDB /* ProfileItemCell.xib in Resources */,
 				84996DE920D3F2840006ADFA /* Offer.storyboard in Resources */,
 				844F800420AD74940030DCC3 /* Colors.xcassets in Resources */,
 				8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */,
@@ -1164,11 +1189,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8453ADBD20E0E1E800174765 /* SttObservableExtensions.swift in Sources */,
+				84EA05DB20ECF5BD00F75F55 /* EditProfilePresenter.swift in Sources */,
 				84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */,
 				8453ADC320E0E1E800174765 /* SttRealmObject.swift in Sources */,
 				84996DF920D7A9A00006ADFA /* OfferDetailTableViewCell.swift in Sources */,
 				8453ADC020E0E1E800174765 /* SttUIViewExtensions.swift in Sources */,
 				8453ADAF20E0E1E800174765 /* SttCollectionViewCell.swift in Sources */,
+				84EA05E220ED165100F75F55 /* SimpleInputBox.swift in Sources */,
 				842239F220BEE4AD0028FDAA /* DocumentsEntityHeaderPresenter.swift in Sources */,
 				8453ADBF20E0E1E800174765 /* SttUIViewControllerExtensions.swift in Sources */,
 				84A2735D20E3BE68000BCE27 /* RejectOfferViewController.swift in Sources */,
@@ -1180,6 +1207,7 @@
 				8453ADA220E0E1E800174765 /* SttComand.swift in Sources */,
 				8453ADAC20E0E1E800174765 /* SttTableViewSource.swift in Sources */,
 				8453ADBE20E0E1E800174765 /* SttResultConverter.swift in Sources */,
+				8480334E20ECDC57001B7FDB /* ProfileItemCellPresenter.swift in Sources */,
 				842239E220BD6FB20028FDAA /* PreviewPhotoViewController.swift in Sources */,
 				8453ADB520E0E1E800174765 /* SttViewableExtensions.swift in Sources */,
 				8453ADCC20E23A9600174765 /* DocumentsPreviewViewController.swift in Sources */,
@@ -1237,6 +1265,7 @@
 				84A2735F20E3C040000BCE27 /* SttHandlerTextView.swift in Sources */,
 				8453ADA820E0E1E800174765 /* SttRandom.swift in Sources */,
 				844EC24C20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift in Sources */,
+				84EA05DD20ECF6B700F75F55 /* ProfileEditViewController.swift in Sources */,
 				8453ADA720E0E1E800174765 /* SttPresenter.swift in Sources */,
 				84C7FBF620B444760053C93A /* SttCamera.swift in Sources */,
 				84A2736120E3C7DB000BCE27 /* RejectOfferPresenter.swift in Sources */,
@@ -1251,6 +1280,7 @@
 				8453ADB420E0E1E800174765 /* SttHandlerTextField.swift in Sources */,
 				8437E01220D0057D0043445D /* ApprovedLendersViewController.swift in Sources */,
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
+				8480335220ECE9EF001B7FDB /* ProfileEditItemCell.swift in Sources */,
 				8453ADAB20E0E1E800174765 /* SttCollectionViewSource.swift in Sources */,
 				8453ADC420E0E1E800174765 /* SttRealmProtocols.swift in Sources */,
 				842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */,
@@ -1284,7 +1314,9 @@
 				84996E0020D7CB780006ADFA /* DocumentLenderCell.swift in Sources */,
 				8453ADA320E0E1E800174765 /* SttConnectivity.swift in Sources */,
 				842239F920BEE5C90028FDAA /* NoDocumentEntityCell.swift in Sources */,
+				84EA05D920ECF29B00F75F55 /* ProfileEditItemCellPresenter.swift in Sources */,
 				8453ADAD20E0E1E800174765 /* SttKeyboardNotification.swift in Sources */,
+				8480334B20ECDA5F001B7FDB /* ProfileItemCell.swift in Sources */,
 				8453ADC620E0E1E800174765 /* SttHttpService.swift in Sources */,
 				84996DF120D3FCA40006ADFA /* ViewOfferViewController.swift in Sources */,
 				848F4C2720D13288007ECC45 /* RejectedLendersPresenter.swift in Sources */,

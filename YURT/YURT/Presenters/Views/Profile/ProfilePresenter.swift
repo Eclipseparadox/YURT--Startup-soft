@@ -13,5 +13,9 @@ protocol ProfileDelegate {
 }
 
 class ProfilePresenter: SttPresenter<ProfileDelegate> {
+    var data = SttObservableCollection<ProfileItemPresenter>()
     
+    override func presenterCreating() {
+        data.append(ProfileItemPresenter(key: "Phone", value: "+380685144505"))
+    }
 }

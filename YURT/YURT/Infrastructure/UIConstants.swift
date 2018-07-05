@@ -17,6 +17,7 @@ class UIConstants {
         static let lenderCell = "LenderCell"
         static let offerDetailCell = "OfferDetailTableViewCell"
         static let documentLenderCell = "DocumentLenderCell"
+        static let profileItemCell = "ProfileItemCell"
     }
     
     static let heightErrorLabel = 40

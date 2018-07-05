@@ -66,6 +66,13 @@ class DocumentsPreviewImageLoader: NSObject, UIWebViewDelegate {
 class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegate {
     
     @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var lblFullName: UILabel!
+    @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblPosition: UILabel!
+    @IBOutlet weak var dataCollection: UITableView!
+    
+    var dataSource: SttTableViewSource<ProfileItemPresenter>!
+    
     @IBAction func exit(_ sender: Any) {
         KeychainSwift().delete(Constants.tokenKey)
         let realm = try! Realm()
@@ -75,13 +82,33 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
         loadStoryboard(storyboard: Storyboard.login)
     }
     
+    private var shadowImage: UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         style = .lightContent
         
+        imgProfile.createCircle()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        shadowImage = navigationController?.navigationBar.shadowImage
         navigationController?.view.backgroundColor = UIColor.clear
+        
+        dataSource = SttTableViewSource(tableView: dataCollection,
+                                        cellIdentifiers: [SttIdentifiers(identifers: UIConstants.CellName.profileItemCell, nibName: nil)],
+                                        collection: presenter.data)
+        dataCollection.dataSource = dataSource
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = UIColor.white
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        navigationController?.navigationBar.shadowImage = shadowImage
     }
 }

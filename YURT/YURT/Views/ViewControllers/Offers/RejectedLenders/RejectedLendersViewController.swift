@@ -19,7 +19,9 @@ class RejectedLendersViewController: SttViewController<RejectedLendersPresenter>
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        source = SttTableViewSource(tableView: tableView, cellIdentifier: UIConstants.CellName.lenderCell, collection: presenter.lenders)
+        source = SttTableViewSource(tableView: tableView,
+                                    cellIdentifiers: [SttIdentifiers(identifers: UIConstants.CellName.lenderCell, nibName: nil)],
+                                    collection: presenter.lenders)
         tableView.dataSource = source
         tableView.reloadData()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: widthScreen, height: 19))

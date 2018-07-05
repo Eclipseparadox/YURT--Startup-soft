@@ -48,12 +48,14 @@ class SttTableViewSource<T: SttViewInjector>: NSObject, UITableViewDataSource {
         })
     }
     
-    init(tableView: UITableView, cellIdentifier: String, collection: SttObservableCollection<T>, cellName: String? = nil) {
+    init(tableView: UITableView, cellIdentifiers: [SttIdentifiers], collection: SttObservableCollection<T>) {
         
-        tableView.register(UINib(nibName: cellName ?? cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        for item in cellIdentifiers {
+            tableView.register(UINib(nibName: item.nibName ?? item.identifers, bundle: nil), forCellReuseIdentifier: item.identifers)
+        }
 
         _tableView = tableView
-        _cellIdentifiers.append(cellIdentifier)
+        _cellIdentifiers.append(contentsOf: cellIdentifiers.map({ $0.identifers }))
         
         super.init()
         updateSource(collection: collection)

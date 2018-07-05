@@ -102,10 +102,13 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
     func handleClick(_ : UITapGestureRecognizer?) {
         view.endEditing(true)
     }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = style
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.setNeedsStatusBarAppearanceUpdate()
+        }
         navigationController?.setNavigationBarHidden(hideNavigationBar, animated: true)
         navigationController?.navigationController?.navigationBar.isHidden = hideNavigationBar
     }

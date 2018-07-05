@@ -23,7 +23,7 @@ enum OfferStatus: Int, Decodable {
 struct LenderInfo: Decodable {
     let lenderId: String
     let fullName: String
-    let physicalAddress: String
+    let physicalAddress: String?
     let image: ResultUploadImageApiModel
 }
 
