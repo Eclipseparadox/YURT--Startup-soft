@@ -14,19 +14,31 @@ import KeychainSwift
 protocol ApiDataProviderType {
     func inserToken(token: String)
     
+    // account
     func emailExists(email: String) -> Observable<ExistModelString>
+    
+    // upload
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
-    func signUp(model: BorrowerSignUp) -> Observable<Bool>
+
+    // token
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
     
+    // mobile/account
+    func signUp(model: BorrowerSignUp) -> Observable<Bool>
+    
+    // mobile/documents
     func getDocument() -> Observable<BorrowerDocumentModelApiModel>
     func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel>
     func sendDocuments() -> Observable<Bool>
     func deleteDocument(model: DeleteDocumentApiModel) -> Observable<Bool>
     
+    // mobile/offers
     func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
     func aproveOffer(id: String) -> Observable<Bool>
     func rejectOffer(model: RejectApiModel) -> Observable<Bool>
+    
+    // mobile/profile
+    func getProfile() -> Observable<ProfileApiModel>
 }
 
 class ApiDataProvider: ApiDataProviderType {
@@ -44,12 +56,14 @@ class ApiDataProvider: ApiDataProviderType {
         _httpService.token = token
     }
     
+    // account
     func emailExists(email: String) -> Observable<ExistModelString> {
         return _httpService.get(controller: .account("emailexist"),
                                 data: ["email": email])
             .getResult(ofType: ExistModelString.self)
     }
     
+    // upload
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel> {
         return _httpService.upload(controller: .upload("image"),
                                    data: image.jpegRepresentation()!,
@@ -58,11 +72,7 @@ class ApiDataProvider: ApiDataProviderType {
             .getResult(ofType: ResultUploadImageApiModel.self)
     }
     
-    func signUp(model: BorrowerSignUp) -> Observable<Bool> {
-        return _httpService.post(controller: .mobileAccount("signup"),
-                                 data: model)
-            .getResult()
-    }
+    // token
     func signIn(email: String, password: String) -> Observable<AuthApiModel> {
         let data = [
             "grant_type": "password",
@@ -73,6 +83,14 @@ class ApiDataProvider: ApiDataProviderType {
             .getResult(ofType: AuthApiModel.self)
     }
     
+    // mobile/account
+    func signUp(model: BorrowerSignUp) -> Observable<Bool> {
+        return _httpService.post(controller: .mobileAccount("signup"),
+                                 data: model)
+            .getResult()
+    }
+    
+    // mobile/documents
     func addDocument(model: AddDocumentApiModel) -> Observable<BorrowerDocumentApiModel> {
         return _httpService.post(controller: .mobileDocument("add"), data: model, insertToken: true)
             .getResult(ofType: BorrowerDocumentApiModel.self)
@@ -90,6 +108,7 @@ class ApiDataProvider: ApiDataProviderType {
             .getResult()
     }
     
+    // mobile/offers
     func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]> {
         return _httpService.get(controller: .mobileOffers(""), data: [
             "statuses": status.toString(),
@@ -104,5 +123,11 @@ class ApiDataProvider: ApiDataProviderType {
     func rejectOffer(model: RejectApiModel) -> Observable<Bool> {
         return _httpService.post(controller: .mobileOffers("reject"), data: model, insertToken: true)
                 .getResult()
+    }
+    
+    // mobile/profile
+    func getProfile() -> Observable<ProfileApiModel> {
+        return _httpService.get(controller: .mobileProfile(""), insertToken: true)
+            .getResult(ofType: ProfileApiModel.self)
     }
 }

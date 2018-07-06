@@ -28,6 +28,9 @@ protocol DataProviderType {
     func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
     func aproveOffer(id: String) -> Observable<Bool>
     func rejectOffer(id: String, message: String) -> Observable<Bool>
+    
+    // profileDataProvider
+    func getProfile() -> Observable<ProfileApiModel>
 }
 
 class DataProvider: DataProviderType {
@@ -112,5 +115,10 @@ class DataProvider: DataProviderType {
     }
     func rejectOffer(id: String, message: String) -> Observable<Bool> {
         return _apiDataProvider.rejectOffer(model: RejectApiModel(offerId: id, rejectDescription: message))
+    }
+    
+    // fucn getProfile
+    func getProfile() -> Observable<ProfileApiModel> {
+        return _apiDataProvider.getProfile()
     }
 }

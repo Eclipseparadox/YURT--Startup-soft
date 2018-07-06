@@ -84,6 +84,13 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: ProfilePresenter) {
+        let _:ProfilePresenter = define(init: service) {
+            $0._profileInteractor = self.serviceAssembly.profileInteractor
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     // Inject into DataProviders
@@ -122,6 +129,14 @@ class ServiceInjectorAssembly: Assembly {
     
     func inject(into service: OfferInteractor) {
         let _:OfferInteractor = define(init: service) {
+            $0._dataProvider = self.serviceAssembly.dataProvider
+            $0._notificatonError = self.serviceAssembly.notificationError
+            return $0
+        }
+    }
+    
+    func inject(into service: ProfileInteractor) {
+        let _:ProfileInteractor = define(init: service) {
             $0._dataProvider = self.serviceAssembly.dataProvider
             $0._notificatonError = self.serviceAssembly.notificationError
             return $0

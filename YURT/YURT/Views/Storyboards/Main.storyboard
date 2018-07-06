@@ -43,14 +43,14 @@
                                     <constraint firstAttribute="height" constant="100" id="z9s-eI-HR8"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Piter Obernati" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5w-NQ-auS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5w-NQ-auS">
                                 <rect key="frame" x="16" y="197" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1J-wj-Vsk">
-                                <rect key="frame" x="151" y="225" width="73" height="20"/>
+                                <rect key="frame" x="176.5" y="225" width="22" height="20"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="sDB-4X-fa4">
                                         <rect key="frame" x="0.0" y="4" width="13" height="13"/>
@@ -59,8 +59,8 @@
                                             <constraint firstAttribute="width" constant="13" id="weD-gp-7TC"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Karganda" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUu-Ac-Ga9">
-                                        <rect key="frame" x="17" y="3" width="56" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUu-Ac-Ga9">
+                                        <rect key="frame" x="17" y="3" width="5" height="16"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
                                     <constraint firstItem="sDB-4X-fa4" firstAttribute="top" secondItem="K1J-wj-Vsk" secondAttribute="top" constant="4" id="w8q-1n-uw5"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IOS developer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc2-Mu-wpp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc2-Mu-wpp">
                                 <rect key="frame" x="16" y="251" width="343" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="Jwh-Us-7lG"/>
@@ -128,17 +128,18 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="YKC-Y7-f3j"/>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="fdV-Sb-ZWz">
                             <connections>
-                                <action selector="exit:" destination="dH6-hc-T07" id="MpT-Cy-SYq"/>
-                                <segue destination="dHa-6t-3hg" kind="show" id="cB5-wf-AMG"/>
+                                <action selector="onEdit:" destination="dH6-hc-T07" id="wO7-vr-ttP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dataCollection" destination="GA0-fa-BWN" id="GkC-5d-Vxi"/>
+                        <outlet property="editButton" destination="fdV-Sb-ZWz" id="BRa-Ej-odG"/>
                         <outlet property="imgProfile" destination="1wN-Uc-xOn" id="A3S-Wo-ytg"/>
                         <outlet property="lblFullName" destination="D5w-NQ-auS" id="5zJ-oX-tzK"/>
                         <outlet property="lblLocation" destination="yUu-Ac-Ga9" id="4XW-XL-Ark"/>
                         <outlet property="lblPosition" destination="qc2-Mu-wpp" id="It0-Uc-pX1"/>
+                        <segue destination="dHa-6t-3hg" kind="show" identifier="ProfileEdit" id="moK-EZ-lkG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmi-XN-bjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,32 +163,32 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVH-lc-7gj">
                                                 <rect key="frame" x="137.5" y="25" width="100" height="100"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="i0Y-fy-0r2">
-                                                        <rect key="frame" x="33" y="32" width="34" height="34"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="34" id="EqJ-0M-RUf"/>
-                                                            <constraint firstAttribute="width" constant="34" id="aJY-uT-vrP"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="losAngeles" translatesAutoresizingMaskIntoConstraints="NO" id="Ujq-yR-1fe">
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ujq-yR-1fe">
                                                         <rect key="frame" x="-0.5" y="0.0" width="100" height="100"/>
                                                     </imageView>
-                                                    <view hidden="YES" alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGa-kI-G32">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGa-kI-G32">
+                                                        <rect key="frame" x="-0.5" y="0.0" width="100" height="100"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="XNx-kl-gAf">
+                                                        <rect key="frame" x="35" y="35.5" width="29" height="29"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="29" id="uYG-hp-gyb"/>
+                                                            <constraint firstAttribute="width" constant="29" id="wTw-Km-f5W"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" name="takePhotoBackround"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="0nw-J6-w16"/>
                                                     <constraint firstAttribute="height" constant="100" id="4TP-hZ-DfW"/>
-                                                    <constraint firstItem="i0Y-fy-0r2" firstAttribute="centerX" secondItem="cVH-lc-7gj" secondAttribute="centerX" id="6iO-NI-TvW"/>
-                                                    <constraint firstItem="i0Y-fy-0r2" firstAttribute="centerY" secondItem="cVH-lc-7gj" secondAttribute="centerY" constant="-1" id="GOC-qr-LOg"/>
                                                     <constraint firstItem="Ujq-yR-1fe" firstAttribute="top" secondItem="cVH-lc-7gj" secondAttribute="top" id="Ohs-3b-qhR"/>
+                                                    <constraint firstItem="XNx-kl-gAf" firstAttribute="centerY" secondItem="cVH-lc-7gj" secondAttribute="centerY" id="Pnl-Iu-wJR"/>
                                                     <constraint firstAttribute="bottom" secondItem="uGa-kI-G32" secondAttribute="bottom" id="SZH-Gi-0kk"/>
                                                     <constraint firstItem="uGa-kI-G32" firstAttribute="leading" secondItem="cVH-lc-7gj" secondAttribute="leading" id="YeI-PM-eVn"/>
+                                                    <constraint firstItem="XNx-kl-gAf" firstAttribute="centerX" secondItem="cVH-lc-7gj" secondAttribute="centerX" id="efb-z1-Vun"/>
                                                     <constraint firstAttribute="trailing" secondItem="uGa-kI-G32" secondAttribute="trailing" id="fs5-av-wNR"/>
                                                     <constraint firstItem="Ujq-yR-1fe" firstAttribute="leading" secondItem="cVH-lc-7gj" secondAttribute="leading" id="jWK-lW-zDO"/>
                                                     <constraint firstItem="uGa-kI-G32" firstAttribute="top" secondItem="cVH-lc-7gj" secondAttribute="top" id="qcx-A2-qBM"/>
@@ -253,7 +254,6 @@
                         <outlet property="camreView" destination="cVH-lc-7gj" id="ugj-ib-CCf"/>
                         <outlet property="cnstrTableView" destination="00i-Dg-n6Z" id="n0s-NW-Mxd"/>
                         <outlet property="dataCollection" destination="sx0-jJ-Uqk" id="DZ9-T1-Atp"/>
-                        <outlet property="iconCamare" destination="i0Y-fy-0r2" id="gXc-LQ-TJ8"/>
                         <outlet property="imgPhoto" destination="Ujq-yR-1fe" id="P9R-iI-VdY"/>
                         <outlet property="maskView" destination="uGa-kI-G32" id="3bZ-6x-6Oq"/>
                     </connections>
@@ -582,10 +582,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" width="36" height="30"/>
+        <image name="camera" width="29" height="29"/>
         <image name="documents" width="29" height="29"/>
         <image name="location" width="13" height="13"/>
-        <image name="losAngeles" width="421" height="322"/>
         <image name="placeholder" width="420" height="420"/>
         <image name="profile" width="29" height="29"/>
         <image name="viewSight" width="1300" height="479"/>

@@ -14,6 +14,7 @@ enum ApiConroller {
     case mobileAccount(String)
     case mobileDocument(String)
     case mobileOffers(String)
+    case mobileProfile(String)
     case upload(String)
     case users(String)
     
@@ -29,6 +30,8 @@ enum ApiConroller {
             return "\(Constants.versionApi)mobile/documents/\(method)"
         case .mobileOffers(let method):
             return "\(Constants.versionApi)mobile/offers/\(method)"
+        case .mobileProfile(let method):
+            return "\(Constants.versionApi)mobile/profile/\(method)"
         case .upload(let method):
             return "\(Constants.versionApi)upload/\(method)"
         case .users(let method):

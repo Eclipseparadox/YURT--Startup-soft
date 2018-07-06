@@ -164,6 +164,9 @@
                                             <constraint firstAttribute="height" constant="45" id="O61-8j-OYl"/>
                                         </constraints>
                                         <state key="normal" image="linkedin"/>
+                                        <connections>
+                                            <segue destination="RH1-yq-TXM" kind="show" id="eF6-VL-KGS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31n-4X-hpG">
                                         <rect key="frame" x="20" y="602" width="186.66666666666666" height="65"/>
@@ -255,6 +258,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoC-UE-s7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="494" y="135"/>
+        </scene>
+        <!--Linkedin-->
+        <scene sceneID="hQN-z2-LBL">
+            <objects>
+                <viewController title="Linkedin" id="RH1-yq-TXM" customClass="LinkedinLoginViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EzW-Z2-4Mx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sJh-C5-7DA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tNk-20-4Ng" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1385.5072463768117" y="891.84782608695662"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="aKx-d7-IsS">

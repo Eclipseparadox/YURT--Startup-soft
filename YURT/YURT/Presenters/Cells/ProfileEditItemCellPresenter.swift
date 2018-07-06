@@ -8,12 +8,36 @@
 
 import Foundation
 
-class ProfileEditItemPresenter: SttPresenter<SttViewable> {
-    var identifier: String!
+protocol ProfileEditDelegate: SttViewable {
+    func reloadError()
+}
+
+class ProfileEditItemPresenter: SttPresenter<ProfileEditDelegate> {
     
-    convenience init(identifier: String) {
+    var identifier: String!
+    var filed: ValidateField!
+    var callBack: (() -> Void)!
+    
+    var originalValue: String?
+    var value: String? {
+        didSet {
+            error = filed.validate(rawObject: value)
+            delegate?.reloadError()
+            callBack()
+        }
+    }
+    
+    var isChanged: Bool { return (originalValue ?? "") != (value ?? "") }
+    
+    var error = (ValidationResult.ok, "")
+    
+    convenience init(identifier: String, value: String, field: ValidateField, callBack: @escaping () -> Void) {
         self.init()
         
         self.identifier = identifier
+        self.value = value
+        self.originalValue = value
+        self.filed = field
+        self.callBack = callBack
     }
 }

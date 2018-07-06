@@ -163,6 +163,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
             inpPhone.errorText = presenter.phoneError.1
         case .password(_):
             inpPassword.errorText = presenter.passwordError.1
+        default: break;
         }
     }
     

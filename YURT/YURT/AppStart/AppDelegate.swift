@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SttLog.trace(message: "OpenUrl", key: "\(url)")
         return true
     }
-    
+        
     func applicationDidEnterBackground(_ application: UIApplication) {
         SttGlobalObserver.applicationStatusChanged(status: .EnterBackgound)
     }

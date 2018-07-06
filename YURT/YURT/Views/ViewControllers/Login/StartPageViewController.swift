@@ -10,14 +10,17 @@ import Foundation
 import UserNotifications
 import UIKit
 import AVFoundation
+import SafariServices
 
-class StartPageViewController: SttViewController<StartPagePresenter>, StartPageDelegate {
+class StartPageViewController: SttViewController<StartPagePresenter>, StartPageDelegate, SFSafariViewControllerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
     @IBOutlet weak var inpEmail: InputBox!
     @IBOutlet weak var inpPassword: InputBox!
     @IBOutlet weak var btnSignIn: UIButton!
+    
+    let kSafariViewControllerCloseNotification = "kSafariViewControllerCloseNotification"
     
     let handlerEmail = SttHandlerTextField()
     let handlerPassword = SttHandlerTextField()
@@ -42,6 +45,15 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
 
         presenter.email = inpEmail.textField.text
         presenter.password = inpPassword.textField.text
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(safariLogin(_:)), name: NSNotification.Name(rawValue: kSafariViewControllerCloseNotification), object: nil)
+    }
+    
+    func safariLogin(notification: NSNotification) {
+        // get the url from the auth callback
+        let url = notification.object as! NSURL
+        // Finally dismiss the Safari View Controller with:
+        //self.safariVC!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private var firstStart = true
@@ -53,6 +65,21 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         }
     }
     
+    func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
+        print("redirect to: \(URL)")
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+//        controller.dismissViewControllerAnimated(true) { () -> Void in
+//            print("You just dismissed the login view.")
+//        }
+    }
+    
+    func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
+        print("didLoadSuccessfully: \(didLoadSuccessfully)")
+        
+    }
+    
     let speaker = AVSpeechSynthesizer()
     let dialogue = AVSpeechUtterance(string: "Hello world")
     
@@ -61,6 +88,26 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         presenter.password = inpPassword.textField.text
         
         presenter.signIn.execute()
+    }
+    
+    @IBAction func onLinkedinClick(_ sender: Any) {
+        let ecodedDomain =  Constants.apiUrl.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        print(URL(string: "\(Constants.apiUrl)/api/v1/mobile/account/externallogin?provider=LinkedIn&response_type=token&client_id=self&redirect_uri=\(ecodedDomain)&state=HKZk-6OU85OSGfSmciskKvUHbawdaTz0A6TbvU2UWZc")!)
+        let linkedinPage = SFSafariViewController(url: URL(string: "\(Constants.apiUrl)/api/v1/mobile/account/externallogin?provider=LinkedIn&response_type=token&client_id=self&redirect_uri=\(ecodedDomain)&state=HKZk-6OU85OSGfSmciskKvUHbawdaTz0A6TbvU2UWZc")!)
+        linkedinPage.delegate = self
+        present(linkedinPage, animated: true, completion: nil)
+    }
+    
+    @objc func safariLogin(_ notification : Notification) {
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("CallbackNotification"), object: nil)
+        
+        guard let url = notification.object as? URL else {
+            return
+        }
+        
+        // Parse url ...
+        
     }
     
     func addError() {

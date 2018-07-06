@@ -70,17 +70,18 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var lblPosition: UILabel!
     @IBOutlet weak var dataCollection: UITableView!
+    @IBOutlet var editButton: UIBarButtonItem!
     
+    var statusUpdatedIndicator: UIActivityIndicatorView!
+
     var dataSource: SttTableViewSource<ProfileItemPresenter>!
     
-    @IBAction func exit(_ sender: Any) {
-        KeychainSwift().delete(Constants.tokenKey)
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-        loadStoryboard(storyboard: Storyboard.login)
+    @IBAction func onEdit(_ sender: Any) {
+        navigate(to: "ProfileEdit",
+                 withParametr: presenter.profileVM,
+                 callback: { [weak self] in self?.presenter.updateData(data: $0 as! ProfileViewModel) })
     }
+    
     
     private var shadowImage: UIImage!
     override func viewDidLoad() {
@@ -97,6 +98,12 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
                                         cellIdentifiers: [SttIdentifiers(identifers: UIConstants.CellName.profileItemCell, nibName: nil)],
                                         collection: presenter.data)
         dataCollection.dataSource = dataSource
+        
+        let data = SttDefaultComponnents.createBarButtonLoader()
+        statusUpdatedIndicator = data.1
+        statusUpdatedIndicator.color = UIColor.white
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.setRightBarButton(data.0, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,5 +117,19 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
         super.viewDidDisappear(animated)
         
         navigationController?.navigationBar.shadowImage = shadowImage
+    }
+    
+    func insertData() {
+        if let img = presenter.profileVM.profileImage {
+            imgProfile.loadImage(image: img)
+        }
+        lblFullName.text = "\(presenter.profileVM.profileData.firstName) \(presenter.profileVM.profileData.lastName)"
+        lblLocation.text = presenter.profileVM.profileData.location
+        lblPosition.text = presenter.profileVM.profileData.work ?? "Currently not Employed"
+    }
+    
+    func reloadState(state: Bool) {
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.setRightBarButton(editButton, animated: true)
     }
 }

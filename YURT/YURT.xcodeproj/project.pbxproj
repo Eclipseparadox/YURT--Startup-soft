@@ -53,6 +53,11 @@
 		844EC24A20C58A16006CF9EF /* AddDocumentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */; };
 		844EC24C20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */; };
 		844F800420AD74940030DCC3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844F800320AD74940030DCC3 /* Colors.xcassets */; };
+		8452F78420EE54710006A573 /* LinkedinLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452F78320EE54710006A573 /* LinkedinLoginViewController.swift */; };
+		8452F78620EE5E380006A573 /* ProfileApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452F78520EE5E380006A573 /* ProfileApiModel.swift */; };
+		8452F78820EF7DEA0006A573 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452F78720EF7DEA0006A573 /* ProfileInteractor.swift */; };
+		8452F78B20EF7FA80006A573 /* ProfileDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452F78A20EF7FA80006A573 /* ProfileDataModel.swift */; };
+		8452F78D20EFA8150006A573 /* IconTemplate.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8452F78C20EFA8150006A573 /* IconTemplate.xcassets */; };
 		8453ADA120E0E1E800174765 /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453AD6E20E0E1E700174765 /* CachingPlayerItem.swift */; };
 		8453ADA220E0E1E800174765 /* SttComand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453AD6F20E0E1E700174765 /* SttComand.swift */; };
 		8453ADA320E0E1E800174765 /* SttConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453AD7020E0E1E700174765 /* SttConnectivity.swift */; };
@@ -219,6 +224,11 @@
 		844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDocumentApiModel.swift; sourceTree = "<group>"; };
 		844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowerDocumentApiModel.swift; sourceTree = "<group>"; };
 		844F800320AD74940030DCC3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		8452F78320EE54710006A573 /* LinkedinLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedinLoginViewController.swift; sourceTree = "<group>"; };
+		8452F78520EE5E380006A573 /* ProfileApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApiModel.swift; sourceTree = "<group>"; };
+		8452F78720EF7DEA0006A573 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		8452F78A20EF7FA80006A573 /* ProfileDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataModel.swift; sourceTree = "<group>"; };
+		8452F78C20EFA8150006A573 /* IconTemplate.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = IconTemplate.xcassets; sourceTree = "<group>"; };
 		8453AD6E20E0E1E700174765 /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingPlayerItem.swift; sourceTree = "<group>"; };
 		8453AD6F20E0E1E700174765 /* SttComand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SttComand.swift; sourceTree = "<group>"; };
 		8453AD7020E0E1E700174765 /* SttConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SttConnectivity.swift; sourceTree = "<group>"; };
@@ -570,6 +580,7 @@
 		84484F68209B39C5006BBD11 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8452F78920EF7F8E0006A573 /* ViewModel */,
 				84C7FBF720B459160053C93A /* ApiModel */,
 				842E1EB620AC5676003D2CDA /* RealmModels */,
 				84484F69209B39D7006BBD11 /* SpecialModels */,
@@ -584,6 +595,14 @@
 				8462234220C02DE20059A83A /* Image.swift */,
 			);
 			path = SpecialModels;
+			sourceTree = "<group>";
+		};
+		8452F78920EF7F8E0006A573 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8452F78A20EF7FA80006A573 /* ProfileDataModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8453AD6B20E0E1E700174765 /* SttLib */ = {
@@ -787,6 +806,7 @@
 				84C7FBF120B42DD50053C93A /* AccountService.swift */,
 				844EC24720C58897006CF9EF /* DocumentService.swift */,
 				848F4C3420D2AB74007ECC45 /* OfferInteractor.swift */,
+				8452F78720EF7DEA0006A573 /* ProfileInteractor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -828,6 +848,7 @@
 				84484F5A209B05D6006BBD11 /* Assets.xcassets */,
 				842E1ECA20AD716F003D2CDA /* Icons.xcassets */,
 				844F800320AD74940030DCC3 /* Colors.xcassets */,
+				8452F78C20EFA8150006A573 /* IconTemplate.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1001,6 +1022,7 @@
 			children = (
 				84C40AD220AD7F570050CA65 /* StartPageViewController.swift */,
 				8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */,
+				8452F78320EE54710006A573 /* LinkedinLoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1015,6 +1037,7 @@
 				84C7FBFE20B55E570053C93A /* AuthApiModel.swift */,
 				844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */,
 				848F4C3220D2A4D6007ECC45 /* OfferApiModel.swift */,
+				8452F78520EE5E380006A573 /* ProfileApiModel.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -1114,6 +1137,7 @@
 				8466A6A520CFBDA200A888A0 /* LenderCell.xib in Resources */,
 				8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */,
 				8480334C20ECDA5F001B7FDB /* ProfileItemCell.xib in Resources */,
+				8452F78D20EFA8150006A573 /* IconTemplate.xcassets in Resources */,
 				84996DE920D3F2840006ADFA /* Offer.storyboard in Resources */,
 				844F800420AD74940030DCC3 /* Colors.xcassets in Resources */,
 				8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */,
@@ -1218,6 +1242,7 @@
 				842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */,
 				84996E0320D7CCF40006ADFA /* DocumentLenderCellPresenter.swift in Sources */,
 				842E1EC420AD6EBD003D2CDA /* SttTemplate.swift in Sources */,
+				8452F78420EE54710006A573 /* LinkedinLoginViewController.swift in Sources */,
 				8453ADA120E0E1E800174765 /* CachingPlayerItem.swift in Sources */,
 				8437E00320CFDC5F0043445D /* NewLendersViewController.swift in Sources */,
 				8453ADB620E0E1E800174765 /* SttHttpServiceTypeExtensions.swift in Sources */,
@@ -1257,7 +1282,9 @@
 				8466A6A820CFC97700A888A0 /* LenderPresenter.swift in Sources */,
 				84C7FBFF20B55E570053C93A /* AuthApiModel.swift in Sources */,
 				84223A0120BEEC0A0028FDAA /* SttCollectionReusableView.swift in Sources */,
+				8452F78820EF7DEA0006A573 /* ProfileInteractor.swift in Sources */,
 				848F4C3920D3BB36007ECC45 /* CountableConverter.swift in Sources */,
+				8452F78B20EF7FA80006A573 /* ProfileDataModel.swift in Sources */,
 				849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */,
 				8453ADBA20E0E1E800174765 /* SttCommandExtensions.swift in Sources */,
 				8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */,
@@ -1282,6 +1309,7 @@
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
 				8480335220ECE9EF001B7FDB /* ProfileEditItemCell.swift in Sources */,
 				8453ADAB20E0E1E800174765 /* SttCollectionViewSource.swift in Sources */,
+				8452F78620EE5E380006A573 /* ProfileApiModel.swift in Sources */,
 				8453ADC420E0E1E800174765 /* SttRealmProtocols.swift in Sources */,
 				842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */,
 				840427F320B2E87800C94765 /* NotificationError.swift in Sources */,

@@ -17,12 +17,17 @@ class SimpleInputBox: SttTemplate {
     @IBOutlet var underline: UIView!
     @IBOutlet weak var error: UILabel!
     
+    private var isEditing: Bool = false
+    
     var errorText: String? {
         didSet {
-            if (errorText != nil) {
+            error.text = errorText
+            error.textColor = tintErrorColor
+            if !(errorText ?? "").isEmpty {
                 underline.backgroundColor = tintErrorColor
-                error.text = errorText
-                error.textColor = tintErrorColor
+            }
+            else {
+                underline.backgroundColor = isEditing ? tintActiveColor : tintDisableColor
             }
         }
     }
@@ -66,6 +71,7 @@ class SimpleInputBox: SttTemplate {
     
     @objc
     func tfStartEditing(_ tf: UITextField) {
+        isEditing = true
         errorText = ""
         underline.backgroundColor = tintActiveColor
         fieldName.textColor = tintActiveColor
@@ -78,6 +84,7 @@ class SimpleInputBox: SttTemplate {
     
     @objc
     func tfEndEditing(_ tf: UITextField) {
+        isEditing = false
         underline.backgroundColor = tintDisableColor
         fieldName.textColor = tintDisableColor
         

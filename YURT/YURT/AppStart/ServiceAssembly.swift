@@ -39,4 +39,7 @@ class ServiceAssembly: Assembly {
     var offerInteractor: OfferInteractorType {
         return define(scope: .lazySingleton, init: OfferInteractor())
     }
+    var profileInteractor: ProfileInteractorType {
+        return define(scope: .lazySingleton, init: ProfileInteractor())
+    }
 }

@@ -40,6 +40,7 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
         loaderData.1.startAnimating()
         saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(onSave(_:)))
         saveButton.tintColor = UIColor(named: "main")
+        saveButton.isEnabled = false
         navigationItem.setRightBarButton(saveButton, animated: true)
         
         cameraPicker = SttCamera(parent: self, handler: { [weak self] (image) in
@@ -48,8 +49,8 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
             self?.imgPhoto.image = image
             self?.maskView.isHidden = false
             self?.indicatorImage.startAnimating()
-            //self?.btnSignUp.isEnabled = false
-            //self?.presenter.uploadImage(image: image)
+            self?.saveButton.isEnabled = false
+            self?.iconCamare.isHidden = true
         })
         
         camreView.createCircle()
@@ -57,22 +58,34 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
         
         style = .default
 
-        source = SttTableViewSource(tableView: dataCollection, cellIdentifiers: [SttIdentifiers(identifers: "ProfileEditItemCell", nibName: nil)], collection: presenter.data)
+        source = SttTableViewSource(tableView: dataCollection,
+                                    cellIdentifiers: [SttIdentifiers(identifers: "ProfileEditItemCell", nibName: nil)],
+                                    collection: presenter.data)
         dataCollection.dataSource = source
         cnstrTableView.constant = 70 * CGFloat(presenter.data.count)
+        
     }
     
     @objc func onClickOnPhoto(_ send: Any) {
         cameraPicker.showPopuForDecision()
     }
     @objc func onSave(_ send: Any) {
-        navigationItem.rightBarButtonItem = nil
         self.navigationItem.setRightBarButton(btnIndicator, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         navigationController?.navigationBar.tintColor = UIColor.black
     }
+    
+    // MARK: -- EditProfileDelegate
+    
+    func reloadPhoto(image: Image) {
+        imgPhoto.loadImage(image: image)
+    }
+    
+    func saveStateChanged() {
+        saveButton.isEnabled = presenter.canSave
+    }
+
 }

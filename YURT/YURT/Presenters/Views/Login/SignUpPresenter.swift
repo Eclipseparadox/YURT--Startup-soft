@@ -44,8 +44,6 @@ class Validate {
             return (.inCorrect, "\(field) is incorrect.")
         }
     }
-    
-    
 }
 
 enum ValidationResult {
@@ -61,20 +59,31 @@ enum ValidateField {
     case email(String?)
     case password(String?)
     
-    func validate() -> (ValidationResult, String) {
+    case roleAndOrganization
+    case linkedin
+    case education
+    
+    func validate(rawObject: String? = nil) -> (ValidationResult, String) {
+    
         switch self {
         case .email(let email):
-            return Validate.validate(object: email, field: "Email", pattern: Constants.emailPattern)
+            return Validate.validate(object: rawObject ?? email, field: "Email", pattern: Constants.emailPattern)
         case .firstName(let fullName):
-            return Validate.validate(object: fullName, field: "First Name", pattern: Constants.firstNamePattern, min: Constants.minFirstName, max: Constants.maxFirstName)
+            return Validate.validate(object: rawObject ?? fullName, field: "First Name", pattern: Constants.firstNamePattern, min: Constants.minFirstName, max: Constants.maxFirstName)
         case .lastName(let lastName):
-            return Validate.validate(object: lastName, field: "Last Name", pattern: Constants.lastNamePattern, min: Constants.minLastName, max: Constants.maxLastName)
+            return Validate.validate(object: rawObject ?? lastName, field: "Last Name", pattern: Constants.lastNamePattern, min: Constants.minLastName, max: Constants.maxLastName)
         case .location(let location):
-            return Validate.validate(object: location, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
+            return Validate.validate(object: rawObject ?? location, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
         case .password(let password):
-            return Validate.validate(object: password, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
+            return Validate.validate(object: rawObject ?? password, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
         case .phone(let phone):
-            return Validate.validate(object: phone, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
+            return Validate.validate(object: rawObject ?? phone, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
+        case .roleAndOrganization:
+            return Validate.validate(object: rawObject, field: "Role and organization", isReuired: false, min: 3)
+        case .linkedin:
+            return Validate.validate(object: rawObject, field: "Linkedin", isReuired: false, min: 3)
+        case .education:
+            return Validate.validate(object: rawObject, field: "Education", isReuired: false, min: 3)
         }
     }
 }
