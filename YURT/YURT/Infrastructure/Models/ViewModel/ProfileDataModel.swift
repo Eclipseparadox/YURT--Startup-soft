@@ -22,17 +22,19 @@ struct ProfileViewModel {
     
     func getListProfile() -> [ProfileItemPresenter] {
         var data = [ProfileItemPresenter]()
-        data.append(ProfileItemPresenter(key: "Phone", value: profileData.phoneNumber))
+        if !SttString.isWhiteSpace(string: profileData.phoneNumber) {
+            data.append(ProfileItemPresenter(key: "Phone", value: profileData.phoneNumber!))
+        }
         data.append(ProfileItemPresenter(key: "Email", value: profileData.email))
         
-        if let _data = profileData.education {
-            data.append(ProfileItemPresenter(key: "Education", value: _data))
+        if !SttString.isWhiteSpace(string: profileData.education) {
+            data.append(ProfileItemPresenter(key: "Education", value: profileData.education!))
         }
-        if let _data = profileData.linkedInUrl {
-            data.append(ProfileItemPresenter(key: "Linkedin", value: _data))
+        if !SttString.isWhiteSpace(string: profileData.linkedInUrl) {
+            data.append(ProfileItemPresenter(key: "Linkedin", value: profileData.linkedInUrl!))
         }
-        if let _data = profileData.skype {
-            data.append(ProfileItemPresenter(key: "Skype", value: _data))
+        if !SttString.isWhiteSpace(string: profileData.skype) {
+            data.append(ProfileItemPresenter(key: "Skype", value: profileData.skype!))
         }
         
         return data

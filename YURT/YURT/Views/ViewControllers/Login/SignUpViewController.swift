@@ -124,8 +124,8 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         inpPhone.textField.keyboardType = .numberPad
         inpPassword.textField.isSecureTextEntry = true
         
-        //vTakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickOnPhoto(_:))))
-        //imgUser.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickOnPhoto(_:))))
+        vTakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnPhoto(_:))))
+        imgUser.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnPhoto(_:))))
         
         indicatorImage = maskOnPhoto.setIndicator()
         indicatorImage.color = UIColor.white

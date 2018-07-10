@@ -58,6 +58,7 @@
 		8452F78820EF7DEA0006A573 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452F78720EF7DEA0006A573 /* ProfileInteractor.swift */; };
 		8452F78B20EF7FA80006A573 /* ProfileDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452F78A20EF7FA80006A573 /* ProfileDataModel.swift */; };
 		8452F78D20EFA8150006A573 /* IconTemplate.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8452F78C20EFA8150006A573 /* IconTemplate.xcassets */; };
+		8452F78F20F3564D0006A573 /* UpdateProfileApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452F78E20F3564D0006A573 /* UpdateProfileApiModel.swift */; };
 		8453ADA120E0E1E800174765 /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453AD6E20E0E1E700174765 /* CachingPlayerItem.swift */; };
 		8453ADA220E0E1E800174765 /* SttComand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453AD6F20E0E1E700174765 /* SttComand.swift */; };
 		8453ADA320E0E1E800174765 /* SttConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453AD7020E0E1E700174765 /* SttConnectivity.swift */; };
@@ -229,6 +230,7 @@
 		8452F78720EF7DEA0006A573 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		8452F78A20EF7FA80006A573 /* ProfileDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataModel.swift; sourceTree = "<group>"; };
 		8452F78C20EFA8150006A573 /* IconTemplate.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = IconTemplate.xcassets; sourceTree = "<group>"; };
+		8452F78E20F3564D0006A573 /* UpdateProfileApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileApiModel.swift; sourceTree = "<group>"; };
 		8453AD6E20E0E1E700174765 /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingPlayerItem.swift; sourceTree = "<group>"; };
 		8453AD6F20E0E1E700174765 /* SttComand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SttComand.swift; sourceTree = "<group>"; };
 		8453AD7020E0E1E700174765 /* SttConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SttConnectivity.swift; sourceTree = "<group>"; };
@@ -993,6 +995,7 @@
 				844EC24920C58A16006CF9EF /* AddDocumentApiModel.swift */,
 				849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */,
 				84A2735A20E3B393000BCE27 /* RejectApiModel.swift */,
+				8452F78E20F3564D0006A573 /* UpdateProfileApiModel.swift */,
 			);
 			path = SendModel;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				8453ADAE20E0E1E800174765 /* SttViewable.swift in Sources */,
 				8437E01620D0059F0043445D /* RejectedLendersViewController.swift in Sources */,
 				842E1EC120AD6EB2003D2CDA /* InputBox.swift in Sources */,
+				8452F78F20F3564D0006A573 /* UpdateProfileApiModel.swift in Sources */,
 				842239FE20BEEA440028FDAA /* DocumentEntityHeaderView.swift in Sources */,
 				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,

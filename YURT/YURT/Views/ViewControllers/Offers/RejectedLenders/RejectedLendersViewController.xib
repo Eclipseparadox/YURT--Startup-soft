@@ -32,7 +32,7 @@
                     <color key="backgroundColor" name="background"/>
                     <color key="sectionIndexBackgroundColor" name="background"/>
                 </tableView>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't any rejected lenders offers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULa-a9-XYX">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You do not have any rejected offers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULa-a9-XYX">
                     <rect key="frame" x="45" y="303.5" width="285" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="KFq-Di-tKh"/>

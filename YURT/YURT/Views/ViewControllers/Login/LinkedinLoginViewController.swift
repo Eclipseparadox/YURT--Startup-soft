@@ -10,12 +10,33 @@ import UIKit
 import WebKit
 import Alamofire
 import RxAlamofire
+import RxSwift
+
+class SttOauthProvider {
+    class func getLinkedinOauth(redirectUrl: String, clientId: String, clientSecret: String, successCallback: @escaping (SttLinkedinToken) -> Void) -> UIViewController {
+        let vc = LinkedinLoginViewController()
+        vc.clientId = clientId
+        vc.clientSecret = clientSecret
+        vc.redirectURL = redirectUrl
+        vc.completedCallback = successCallback
+        return vc
+    }
+}
+
+struct SttLinkedinToken: Decodable {
+    let access_token: String
+    let expires_in: Int
+}
 
 class LinkedinLoginViewController: UIViewController, WKNavigationDelegate {
 
     var webView: WKWebView!
     
     var actIndicator: UIActivityIndicatorView!
+    var redirectURL = Constants.apiUrl
+    var clientId = "86z14ughq9lnnv"
+    var clientSecret = "tT4Rc3poR9dCrtLo"
+    var completedCallback: ((SttLinkedinToken) -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +74,8 @@ class LinkedinLoginViewController: UIViewController, WKNavigationDelegate {
         
         if let url = navigationAction.request.url {
             let strUrl = "\(url)"
-            let prefix = "\(Constants.apiUrl)?code="
+            let prefix = "\(redirectURL)?code="
             if strUrl.hasPrefix(prefix) {
-                print("url: \(strUrl)")
                 let startIndex = strUrl.index(strUrl.startIndex, offsetBy: prefix.count)
                 let endIndex = strUrl.index(of: "&")
                 print("token: \(strUrl[startIndex..<endIndex!])")
@@ -64,16 +84,15 @@ class LinkedinLoginViewController: UIViewController, WKNavigationDelegate {
                                 "grant_type": "authorization_code",
                                 "code": strUrl[startIndex..<endIndex!],
                                 "redirect_uri": Constants.apiUrl,
-                                "client_id": "86z14ughq9lnnv",
-                                "client_secret": "tT4Rc3poR9dCrtLo"
+                                "client_id": clientId,
+                                "client_secret": clientSecret
                     ], encoding: URLEncoding.httpBody, headers: [:])
-                    .subscribe(onNext: { (arg0) in
-                        let (urlResponse, data) = arg0
-                        print("---\nCode: \(urlResponse.statusCode)")
-                        print(String(data: data, encoding: String.Encoding.utf8))
-                        print("---")
-                    }, onError: { print("error: \($0)") })
-                
+                    .getResult(ofType: SttLinkedinToken.self)
+                    .subscribe(onNext: { (token) in
+                        self.completedCallback(token)
+                        // pay attention to this method!!!!
+                        self.navigationController?.popViewController(animated: true)
+                    }, onError: { SttLog.error(message: "\($0)", key: "Linkedin Oauth") })
             }
         }
         
@@ -83,15 +102,4 @@ class LinkedinLoginViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         actIndicator.stopAnimating()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

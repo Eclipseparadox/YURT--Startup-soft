@@ -13,7 +13,7 @@ import RxSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var _accountService: IAccountService!
+    var _accountService: AccountServiceType!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         ServiceInjectorAssembly.instance().inject(into: self)

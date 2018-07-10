@@ -17,6 +17,7 @@ protocol DataProviderType {
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
+    func externalLogin(token: String) -> Observable<AuthApiModel>
     
     // documentsDataProvider
     func getDocument() -> Observable<BorrowerDocumentModelApiModel>
@@ -31,6 +32,7 @@ protocol DataProviderType {
     
     // profileDataProvider
     func getProfile() -> Observable<ProfileApiModel>
+    func updateProfile(data: UpdateProfileApiModel) -> Observable<Bool>
 }
 
 class DataProvider: DataProviderType {
@@ -55,15 +57,22 @@ class DataProvider: DataProviderType {
         return _apiDataProvider.signUp(model: model)
     }
     func signIn(email: String, password: String) -> Observable<AuthApiModel> {
-        return _apiDataProvider.signIn(email: email, password: password)
-            .flatMap({ model -> Observable<AuthApiModel> in
-                KeychainSwift().set(model.access_token, forKey: Constants.tokenKey)
-                self._apiDataProvider.inserToken(token: model.access_token)
-                return self._storageProvider.auth.saveOne(model: model)
-                    .toObservable()
-                    .map({ _ in model })
-            })
+        return saveToken(observable: _apiDataProvider.signIn(email: email, password: password))
     }
+    func externalLogin(token: String) -> Observable<AuthApiModel> {
+        return saveToken(observable: _apiDataProvider.externalLogin(token: token))
+    }
+    
+    private func saveToken(observable: Observable<AuthApiModel>) -> Observable<AuthApiModel> {
+        return observable.flatMap({ model -> Observable<AuthApiModel> in
+            KeychainSwift().set(model.access_token, forKey: Constants.tokenKey)
+            self._apiDataProvider.inserToken(token: model.access_token)
+            return self._storageProvider.auth.saveOne(model: model)
+                .toObservable()
+                .map({ _ in model })
+        })
+    }
+
     
     // documentsDataProvider
 
@@ -120,5 +129,8 @@ class DataProvider: DataProviderType {
     // fucn getProfile
     func getProfile() -> Observable<ProfileApiModel> {
         return _apiDataProvider.getProfile()
+    }
+    func updateProfile(data: UpdateProfileApiModel) -> Observable<Bool> {
+        return _apiDataProvider.updateProfile(data: data)
     }
 }

@@ -20,6 +20,9 @@ class SttBaseViewController: UIViewController, SttKeyboardNotificationDelegate {
     var moveViewUp: Bool = false
     var style = UIStatusBarStyle.default
     
+    fileprivate var _isKeyboardShow = false
+    var isKeyboardShow: Bool { return _isKeyboardShow }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardNotification = SttKeyboardNotification()
@@ -35,12 +38,14 @@ class SttBaseViewController: UIViewController, SttKeyboardNotificationDelegate {
             moveViewUp = true
             scrollTheView(move: moveViewUp)
         }
+        _isKeyboardShow = true
     }
     func keyboardWillHide(height: CGFloat) {
         if moveViewUp {
             scrollTheView(move: false)
         }
         view.endEditing(true)
+        _isKeyboardShow = false
     }
     
     func scrollTheView(move: Bool) {

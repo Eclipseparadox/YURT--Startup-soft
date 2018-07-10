@@ -30,7 +30,7 @@ class ServiceAssembly: Assembly {
     var notificationError: NotificationErrorType {
         return define(scope: .lazySingleton, init: NotificationError())
     }
-    var accountService: IAccountService {
+    var accountService: AccountServiceType {
         return define(scope: .lazySingleton, init: AccountService())
     }
     var documentService: DocumentServiceType {

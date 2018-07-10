@@ -25,6 +25,7 @@ protocol ApiDataProviderType {
     
     // mobile/account
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
+    func externalLogin(token: String) -> Observable<AuthApiModel>
     
     // mobile/documents
     func getDocument() -> Observable<BorrowerDocumentModelApiModel>
@@ -39,6 +40,7 @@ protocol ApiDataProviderType {
     
     // mobile/profile
     func getProfile() -> Observable<ProfileApiModel>
+    func updateProfile(data: UpdateProfileApiModel) -> Observable<Bool>
 }
 
 class ApiDataProvider: ApiDataProviderType {
@@ -61,6 +63,10 @@ class ApiDataProvider: ApiDataProviderType {
         return _httpService.get(controller: .account("emailexist"),
                                 data: ["email": email])
             .getResult(ofType: ExistModelString.self)
+    }
+    func externalLogin(token: String) -> Observable<AuthApiModel> {
+        return _httpService.get(controller: .mobileAccount("externallogin"), data: ["providerToken": token])
+            .getResult(ofType: AuthApiModel.self)
     }
     
     // upload
@@ -129,5 +135,9 @@ class ApiDataProvider: ApiDataProviderType {
     func getProfile() -> Observable<ProfileApiModel> {
         return _httpService.get(controller: .mobileProfile(""), insertToken: true)
             .getResult(ofType: ProfileApiModel.self)
+    }
+    func updateProfile(data: UpdateProfileApiModel) -> Observable<Bool> {
+        return _httpService.post(controller: .mobileProfile("update"), data: data, insertToken: true)
+            .getResult()
     }
 }

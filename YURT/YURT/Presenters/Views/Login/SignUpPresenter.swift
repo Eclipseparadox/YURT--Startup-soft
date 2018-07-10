@@ -62,6 +62,7 @@ enum ValidateField {
     case roleAndOrganization
     case linkedin
     case education
+    case skype
     
     func validate(rawObject: String? = nil) -> (ValidationResult, String) {
     
@@ -79,11 +80,13 @@ enum ValidateField {
         case .phone(let phone):
             return Validate.validate(object: rawObject ?? phone, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
         case .roleAndOrganization:
-            return Validate.validate(object: rawObject, field: "Role and organization", isReuired: false, min: 3)
+            return Validate.validate(object: rawObject, field: "Role and Organization", isReuired: false, min: 3, max: 300)
         case .linkedin:
-            return Validate.validate(object: rawObject, field: "Linkedin", isReuired: false, min: 3)
+            return Validate.validate(object: rawObject, field: "LinkedIn", isReuired: false, pattern: Constants.linkedInUrlPattern, min: 3, max: 300)
         case .education:
-            return Validate.validate(object: rawObject, field: "Education", isReuired: false, min: 3)
+            return Validate.validate(object: rawObject, field: "Education", isReuired: false, min: 3, max: 300)
+        case .skype:
+            return Validate.validate(object: rawObject, field: "Skype", isReuired: false, pattern: Constants.skypePattern, min: Constants.minSkype, max: Constants.maxSkype)
         }
     }
 }
@@ -96,7 +99,7 @@ protocol SignUpDelegate: SttViewContolable {
 
 class SignUpPresenter: SttPresenter<SignUpDelegate> {
     
-    var _accountService: IAccountService!
+    var _accountService: AccountServiceType!
     
     var photoData: ResultUploadImageApiModel?
     var signUp: SttComand!

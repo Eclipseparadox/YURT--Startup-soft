@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditProfileDelegate {
-
+    
     @IBOutlet weak var camreView: UIView!
     @IBOutlet weak var imgPhoto: UIImageView!
     @IBOutlet weak var maskView: UIView!
@@ -44,13 +44,14 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
         navigationItem.setRightBarButton(saveButton, animated: true)
         
         cameraPicker = SttCamera(parent: self, handler: { [weak self] (image) in
-            
+            self?.saveButton.isEnabled = false
             self?.imgPhoto.isHidden = false
             self?.imgPhoto.image = image
             self?.maskView.isHidden = false
             self?.indicatorImage.startAnimating()
             self?.saveButton.isEnabled = false
             self?.iconCamare.isHidden = true
+            self?.presenter.uploadImage(image: image)
         })
         
         camreView.createCircle()
@@ -71,11 +72,18 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
     }
     @objc func onSave(_ send: Any) {
         self.navigationItem.setRightBarButton(btnIndicator, animated: true)
+        self.presenter.save.execute()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.tintColor = UIColor.black
+    }
+    
+    override func keyboardWillShow(height: CGFloat) {
+        super.keyboardWillShow(height: height)
+        
+        saveButton.isEnabled = false
     }
     
     // MARK: -- EditProfileDelegate
@@ -85,7 +93,24 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
     }
     
     func saveStateChanged() {
-        saveButton.isEnabled = presenter.canSave
+        self.saveButton.isEnabled = !self.isKeyboardShow && self.presenter.canSave
+    }
+    
+    func donwloadImageComplete(isSuccess: Bool) {
+        indicatorImage.stopAnimating()
+        maskView.isHidden = true
+        if !isSuccess {
+            self.imgPhoto.image = UIImage(named: "placeholder")
+        }
     }
 
+    func saveCompleted(status: Bool) {
+        if status {
+            self.close(parametr: true)
+        }
+        else {
+            self.navigationItem.setRightBarButton(saveButton, animated: true)
+        }
+    }
+    
 }

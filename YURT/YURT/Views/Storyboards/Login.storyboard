@@ -165,7 +165,7 @@
                                         </constraints>
                                         <state key="normal" image="linkedin"/>
                                         <connections>
-                                            <segue destination="RH1-yq-TXM" kind="show" id="eF6-VL-KGS"/>
+                                            <action selector="onLinkedinClick:" destination="dnb-Uv-4M4" eventType="touchUpInside" id="Y77-gA-Rfv"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31n-4X-hpG">
@@ -248,6 +248,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="4j7-AP-ucE"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnLinkedin" destination="wO8-hX-Xdm" id="NKd-Pe-WYl"/>
                         <outlet property="btnSignIn" destination="Kju-Pg-0MC" id="WdW-dm-mg6"/>
                         <outlet property="cnstrHeight" destination="a0X-LY-l2s" id="sZV-F2-03M"/>
                         <outlet property="inpEmail" destination="Ta3-AV-COc" id="4Cs-Wu-PRZ"/>
@@ -264,7 +265,7 @@
             <objects>
                 <viewController title="Linkedin" id="RH1-yq-TXM" customClass="LinkedinLoginViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EzW-Z2-4Mx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sJh-C5-7DA"/>

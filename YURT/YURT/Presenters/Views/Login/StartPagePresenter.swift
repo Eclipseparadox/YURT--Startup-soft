@@ -15,11 +15,14 @@ protocol StartPageDelegate: SttViewContolable {
 class StartPagePresenter: SttPresenter<StartPageDelegate> {
     
     var signIn: SttComand!
+    var linkedinAuth: SttComand!
     
-    var _accountService: IAccountService!
+    var _accountService: AccountServiceType!
     
     var email: String? = ""
     var password: String? = ""
+    
+    var linkedinAccesToken: String!
     
     var passwordError: String?
     
@@ -27,6 +30,8 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
         ServiceInjectorAssembly.instance().inject(into: self)
         
         signIn = SttComand(delegate: self, handler: { $0.onSignIn() })
+        linkedinAuth = SttComand(delegate: self, handler: { $0.onLinkedinAuth() },
+                                       handlerCanExecute: { !SttString.isEmpty(string: $0.linkedinAccesToken) })
     }
     
     func onSignIn() {
@@ -40,5 +45,10 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
                     self.delegate!.addError()
                 }
             })
+    }
+    
+    func onLinkedinAuth() {
+        _ = linkedinAuth.useWork(observable: _accountService.externalLogin(token: linkedinAccesToken))
+            .subscribe(onNext: { _ in self.delegate!.loadStoryboard(storyboard: Storyboard.main) })
     }
 }

@@ -10,16 +10,17 @@ import Foundation
 import RxSwift
 import KeychainSwift
 
-protocol IAccountService: class {
+protocol AccountServiceType: class {
     func existsEmail(email: String) -> Observable<Bool>
     func uploadUserAvatar(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
     func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<(Bool, String)>
+    func externalLogin(token: String) -> Observable<Bool>
     
     var sesionIsExpired: Observable<Bool> { get }
 }
 
-class AccountService: IAccountService {
+class AccountService: AccountServiceType {
     
     var _dataProvider: DataProviderType!
     var _notificatonError: NotificationErrorType!
@@ -68,5 +69,8 @@ class AccountService: IAccountService {
                     .inBackground()
                     .observeInUI(), ignoreBadRequest: true)
             .catchError({ _ in Observable.from([(false, "Email or password is incorrect")])})
+    }
+    func externalLogin(token: String) -> Observable<Bool> {
+        return self._notificatonError.useError(observable: self._dataProvider.externalLogin(token: token).map({ _ in true }))
     }
 }

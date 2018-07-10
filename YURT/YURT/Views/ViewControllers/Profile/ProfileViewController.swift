@@ -79,7 +79,7 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
     @IBAction func onEdit(_ sender: Any) {
         navigate(to: "ProfileEdit",
                  withParametr: presenter.profileVM,
-                 callback: { [weak self] in self?.presenter.updateData(data: $0 as! ProfileViewModel) })
+                 callback: { [weak self] _ in self?.presenter.getProfile() })
     }
     
     
@@ -108,7 +108,6 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = UIColor.white
     }

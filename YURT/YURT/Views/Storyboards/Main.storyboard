@@ -254,6 +254,7 @@
                         <outlet property="camreView" destination="cVH-lc-7gj" id="ugj-ib-CCf"/>
                         <outlet property="cnstrTableView" destination="00i-Dg-n6Z" id="n0s-NW-Mxd"/>
                         <outlet property="dataCollection" destination="sx0-jJ-Uqk" id="DZ9-T1-Atp"/>
+                        <outlet property="iconCamare" destination="XNx-kl-gAf" id="01D-eM-5bn"/>
                         <outlet property="imgPhoto" destination="Ujq-yR-1fe" id="P9R-iI-VdY"/>
                         <outlet property="maskView" destination="uGa-kI-G32" id="3bZ-6x-6Oq"/>
                     </connections>

@@ -50,6 +50,10 @@ class Constants {
     static let tokenKey = "securityAccessToken"
     static let idKey = "securityUserId"
     
+    // linkedinData
+    static let cleintId = "86z14ughq9lnnv"
+    static let clientSecret = "tT4Rc3poR9dCrtLo"
+    
     // api config
     static let maxImageCacheSize = 1024 * 1024 * 200
     static let maxCacheAge = 60 * 60 * 24 * 7 * 4
@@ -80,6 +84,8 @@ class Constants {
     static let firstNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
     static let lastNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
     static let phoneNumber = "^(\\+?[0-9 ()-]){10,25}$"
+    static let skypePattern = "^[a-zA-Z]{1}[a-zA-Z0-9\\._-]{5,31}$"
+    static let linkedInUrlPattern = "[(https:\\/\\/www\\.linkedin.com)]{20}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&\\/=]*)+"
     
     static let passwordRequiered = "A digit, a lowercase, an uppercase are required"
     
@@ -93,4 +99,6 @@ class Constants {
     static let maxLocation = 150
     static let minPhone = 10
     static let maxPhone = 25
+    static let minSkype = 5
+    static let maxSkype = 31
 }

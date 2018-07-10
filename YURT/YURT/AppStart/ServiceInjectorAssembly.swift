@@ -91,6 +91,14 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: EditProfilePresenter) {
+        let _:EditProfilePresenter = define(init: service) {
+            $0._accountService = self.serviceAssembly.accountService
+            $0._profileInteractor = self.serviceAssembly.profileInteractor
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     // Inject into DataProviders
