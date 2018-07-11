@@ -27,7 +27,10 @@ class RejectOfferPresenter: SttPresenter<RejectOfferDelegate> {
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
         
-        send = SttComand(delegate: self, handler: { $0.onSend() }, handlerCanExecute: { ($0.comment?.trimmingCharacters(in: .whitespaces).count ?? 0) > 0 })
+        send = SttComand(delegate: self, handler: { $0.onSend() }, handlerCanExecute: {
+            let count = ($0.comment?.trimmingCharacters(in: .whitespaces).count ?? 0)
+            return count > 50 && count < 200
+        })
     }
     
     var data: OfferApiModel!

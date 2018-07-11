@@ -9,14 +9,18 @@
 import Foundation
 import RxSwift
 import KeychainSwift
+import RealmSwift
 
 protocol AccountServiceType: class {
     func existsEmail(email: String) -> Observable<Bool>
     func uploadUserAvatar(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
-    func signUp(firstName: String, lastName: String, location: String?, phone: String?, email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool>
+    func signUp(firstName: String, lastName: String, location: String?, phone: String?,
+                email: String, password: String, image: ResultUploadImageApiModel?) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<(Bool, String)>
     func externalLogin(token: String) -> Observable<Bool>
+    func forgotPassword(email: String) -> Observable<Bool>
     
+    func signOut()
     var sesionIsExpired: Observable<Bool> { get }
 }
 
@@ -28,6 +32,12 @@ class AccountService: AccountServiceType {
     
     init () {
         ServiceInjectorAssembly.instance().inject(into: self)
+    }
+    
+    func signOut() {
+        KeychainSwift().delete(Constants.tokenKey)
+        let realm = try? Realm()
+        realm?.invalidate()
     }
     
     var sesionIsExpired: Observable<Bool> { return _unitOfWork.auth.exists(filter: nil)
@@ -43,6 +53,12 @@ class AccountService: AccountServiceType {
     
     func existsEmail(email: String) -> Observable<Bool> {
         return _notificatonError.useError(observable: _dataProvider.emailExists(email: email))
+            .inBackground()
+            .observeInUI()
+    }
+    
+    func forgotPassword(email: String) -> Observable<Bool> {
+        return _notificatonError.useError(observable: _dataProvider.forgotPassword(data: ResetPasswordApiModel(email: email)))
             .inBackground()
             .observeInUI()
     }

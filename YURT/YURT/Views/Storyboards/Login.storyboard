@@ -888,7 +888,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="onResetPassword:" destination="GTl-qq-sKU" eventType="touchUpInside" id="FaJ-jU-6d0"/>
-                                                    <segue destination="H4w-o7-XCn" kind="presentation" identifier="forpasss2" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dHB-5w-Zcl"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMW-gL-pnK" userLabel="Email" customClass="InputBox" customModule="YURT" customModuleProvider="target">
@@ -915,13 +914,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We just need your registered email address to send you password reset" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ax-am-pyf">
-                                                <rect key="frame" x="40" y="256" width="334" height="33"/>
+                                                <rect key="frame" x="40" y="256.33333333333331" width="334" height="32.666666666666686"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRA-lV-6nC">
-                                                <rect key="frame" x="126.99999999999999" y="172.33333333333334" width="160.66666666666663" height="23.666666666666657"/>
+                                                <rect key="frame" x="125.99999999999999" y="172.66666666666666" width="162.66666666666663" height="23.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -974,7 +973,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Forgot Password" id="cpO-Nw-F95"/>
                     <connections>
+                        <outlet property="btnReset" destination="gZX-5O-Lpn" id="xko-LH-Ipc"/>
                         <outlet property="cnstrHeight" destination="xYK-Tc-n4e" id="paf-OQ-dgC"/>
+                        <outlet property="inpEmail" destination="MMW-gL-pnK" id="vXg-kg-Hbr"/>
+                        <segue destination="H4w-o7-XCn" kind="presentation" identifier="forpasss2" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="4NL-av-DlV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCo-lr-ymy" userLabel="First Responder" sceneMemberID="firstResponder"/>

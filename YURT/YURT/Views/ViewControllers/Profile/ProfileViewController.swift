@@ -70,16 +70,23 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var lblPosition: UILabel!
     @IBOutlet weak var dataCollection: UITableView!
-    @IBOutlet var editButton: UIBarButtonItem!
+    var editButton: UIBarButtonItem!
     
     var statusUpdatedIndicator: UIActivityIndicatorView!
 
     var dataSource: SttTableViewSource<ProfileItemPresenter>!
     
-    @IBAction func onEdit(_ sender: Any) {
-        navigate(to: "ProfileEdit",
-                 withParametr: presenter.profileVM,
-                 callback: { [weak self] _ in self?.presenter.getProfile() })
+    @objc func onEdit(_ sender: Any) {
+        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionController.addAction(UIAlertAction(title: "Edit your profile", style: .default, handler: { (x) in
+            self.presenter.navigateToProfile()
+        }))
+        actionController.addAction(UIAlertAction(title: "Log Out", style: .default, handler: { (x) in
+            self.presenter.signOut()
+        }))
+        actionController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionController, animated: true, completion: nil)
     }
     
     
@@ -104,12 +111,12 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
         statusUpdatedIndicator.color = UIColor.white
         navigationItem.rightBarButtonItem = nil
         navigationItem.setRightBarButton(data.0, animated: true)
+        editButton = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(onEdit(_:)))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     override func viewDidDisappear(_ animated: Bool) {

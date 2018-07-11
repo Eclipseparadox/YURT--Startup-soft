@@ -91,7 +91,7 @@ class InputBox: SttTemplate {
                 errorText = ""
             }
         }
-       // underline.backgroundColor = tintActiveColor
+        underline.backgroundColor = tintActiveColor
         fieldName.textColor = tintActiveColor
         
 //        UIView.animate(withDuration: 0.3, animations: {

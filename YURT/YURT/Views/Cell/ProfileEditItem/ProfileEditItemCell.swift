@@ -23,6 +23,16 @@ class ProfileEditItemCell: SttTableViewCell<ProfileEditItemPresenter>, ProfileEd
             inputBox.tfStartEditing(inputBox.textField)
         }
         reloadError()
+        
+        if presenter.filed == .phone {
+            inputBox.textField.keyboardType = .numberPad
+        }
+        else if presenter.filed == .email  {
+            inputBox.textField.keyboardType = .emailAddress
+        }
+        else {
+            inputBox.textField.keyboardType = .asciiCapable
+        }
     }
     
     override func awakeFromNib() {

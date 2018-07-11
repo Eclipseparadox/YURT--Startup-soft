@@ -18,6 +18,7 @@ protocol DataProviderType {
     func signUp(model: BorrowerSignUp) -> Observable<Bool>
     func signIn(email: String, password: String) -> Observable<AuthApiModel>
     func externalLogin(token: String) -> Observable<AuthApiModel>
+    func forgotPassword(data: ResetPasswordApiModel) -> Observable<Bool>
     
     // documentsDataProvider
     func getDocument() -> Observable<BorrowerDocumentModelApiModel>
@@ -61,6 +62,9 @@ class DataProvider: DataProviderType {
     }
     func externalLogin(token: String) -> Observable<AuthApiModel> {
         return saveToken(observable: _apiDataProvider.externalLogin(token: token))
+    }
+    func forgotPassword(data: ResetPasswordApiModel) -> Observable<Bool> {
+        return _apiDataProvider.forgotPassword(data: data)
     }
     
     private func saveToken(observable: Observable<AuthApiModel>) -> Observable<AuthApiModel> {

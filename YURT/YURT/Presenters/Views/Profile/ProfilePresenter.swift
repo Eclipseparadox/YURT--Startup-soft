@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol ProfileDelegate {
+protocol ProfileDelegate: SttViewContolable {
     func insertData()
     func reloadState(state: Bool)
 }
@@ -17,6 +17,7 @@ protocol ProfileDelegate {
 class ProfilePresenter: SttPresenter<ProfileDelegate> {
     
     var _profileInteractor: ProfileInteractorType!
+    var _accountService: AccountServiceType!
     var profileVM: ProfileViewModel!
     
     var data = SttObservableCollection<ProfileItemPresenter>()
@@ -42,5 +43,18 @@ class ProfilePresenter: SttPresenter<ProfileDelegate> {
                 self?.delegate?.insertData()
                 self?.delegate?.reloadState(state: true)
                 }, onError: { [weak self] _ in self?.delegate?.reloadState(state: false)})
+    }
+    
+    // MARK: -- API
+    
+    func navigateToProfile() {
+        self.delegate?.navigate(to: "ProfileEdit",
+                      withParametr: self.profileVM,
+                      callback: { [weak self] _ in self?.getProfile() })
+    }
+    
+    func signOut() {
+        _accountService.signOut()
+        delegate?.loadStoryboard(storyboard: Storyboard.login)
     }
 }

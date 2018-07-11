@@ -19,6 +19,23 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    // Inject into DataProviders
+    
+    func inject(into service: ApiDataProvider) {
+        let _:ApiDataProvider = define(init: service) {
+            $0._httpService = self.serviceAssembly.httpService
+            $0._unitOfWork = self.serviceAssembly.storageProvider
+            return $0
+        }
+    }
+    func inject(into service: DataProvider) {
+        let _:DataProvider = define(init: service) {
+            $0._apiDataProvider = self.serviceAssembly.apiDataProvider
+            $0._storageProvider = self.serviceAssembly.storageProvider
+            return $0
+        }
+    }
+    
     // Inject service into presenter
     
     func inject<T>(into service: SttPresenter<T>) {
@@ -87,6 +104,7 @@ class ServiceInjectorAssembly: Assembly {
     func inject(into service: ProfilePresenter) {
         let _:ProfilePresenter = define(init: service) {
             $0._profileInteractor = self.serviceAssembly.profileInteractor
+            $0._accountService = self.serviceAssembly.accountService
             return $0
         }
     }
@@ -99,24 +117,14 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: ForgotPasswordPresenter) {
+        let _:ForgotPasswordPresenter = define(init: service) {
+            $0._accountService = self.serviceAssembly.accountService
+            return $0
+        }
+    }
+    
     //  Inject Service into service
-    
-    // Inject into DataProviders
-    
-    func inject(into service: ApiDataProvider) {
-        let _:ApiDataProvider = define(init: service) {
-            $0._httpService = self.serviceAssembly.httpService
-            $0._unitOfWork = self.serviceAssembly.storageProvider
-            return $0
-        }
-    }
-    func inject(into service: DataProvider) {
-        let _:DataProvider = define(init: service) {
-            $0._apiDataProvider = self.serviceAssembly.apiDataProvider
-            $0._storageProvider = self.serviceAssembly.storageProvider
-            return $0
-        }
-    }
     
     
     func inject(into service: AccountService) {

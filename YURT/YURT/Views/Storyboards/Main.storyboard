@@ -126,15 +126,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="gsM-nf-fPV">
                         <barButtonItem key="backBarButtonItem" title=" " id="YKC-Y7-f3j"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="fdV-Sb-ZWz">
-                            <connections>
-                                <action selector="onEdit:" destination="dH6-hc-T07" id="wO7-vr-ttP"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dataCollection" destination="GA0-fa-BWN" id="GkC-5d-Vxi"/>
-                        <outlet property="editButton" destination="fdV-Sb-ZWz" id="BRa-Ej-odG"/>
                         <outlet property="imgProfile" destination="1wN-Uc-xOn" id="A3S-Wo-ytg"/>
                         <outlet property="lblFullName" destination="D5w-NQ-auS" id="5zJ-oX-tzK"/>
                         <outlet property="lblLocation" destination="yUu-Ac-Ga9" id="4XW-XL-Ark"/>

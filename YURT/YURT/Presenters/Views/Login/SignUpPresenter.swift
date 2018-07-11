@@ -141,7 +141,7 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     var email: String? {
         didSet {
             emailError = ValidateField.email.validate(rawObject: email)
-            
+            self.delegate!.reloadError(field: .email)
             if emailError.0 == .ok {
                 _ = _accountService.existsEmail(email: email!)
                     .subscribe(onNext: { (result) in

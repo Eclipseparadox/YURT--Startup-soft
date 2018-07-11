@@ -32,6 +32,7 @@
 		8424336D20F61971003CED2D /* ForgotPaswordStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */; };
 		8424336F20F61B62003CED2D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */; };
 		8424337120F61D56003CED2D /* ForgotPasswordStep2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */; };
+		8424337320F624C9003CED2D /* ResetPasswordApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */; };
 		8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */; };
 		8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */; };
 		842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */; };
@@ -210,6 +211,7 @@
 		8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPaswordStep2ViewController.swift; sourceTree = "<group>"; };
 		8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
 		8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordStep2Presenter.swift; sourceTree = "<group>"; };
+		8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordApiModel.swift; sourceTree = "<group>"; };
 		8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageProvider.swift; sourceTree = "<group>"; };
@@ -1012,6 +1014,7 @@
 				849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */,
 				84A2735A20E3B393000BCE27 /* RejectApiModel.swift */,
 				8452F78E20F3564D0006A573 /* UpdateProfileApiModel.swift */,
+				8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */,
 			);
 			path = SendModel;
 			sourceTree = "<group>";
@@ -1334,6 +1337,7 @@
 				848F4C3520D2AB74007ECC45 /* OfferInteractor.swift in Sources */,
 				84A2736420E51659000BCE27 /* OfferPresenter.swift in Sources */,
 				849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */,
+				8424337320F624C9003CED2D /* ResetPasswordApiModel.swift in Sources */,
 				8453ADBC20E0E1E800174765 /* SttJsonDecoderExtensions.swift in Sources */,
 				8453ADB420E0E1E800174765 /* SttHandlerTextField.swift in Sources */,
 				8424336F20F61B62003CED2D /* ForgotPasswordPresenter.swift in Sources */,

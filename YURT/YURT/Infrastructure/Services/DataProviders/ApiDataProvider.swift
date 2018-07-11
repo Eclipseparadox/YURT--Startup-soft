@@ -16,6 +16,7 @@ protocol ApiDataProviderType {
     
     // account
     func emailExists(email: String) -> Observable<ExistModelString>
+    func forgotPassword(data: ResetPasswordApiModel) -> Observable<Bool>
     
     // upload
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
@@ -64,9 +65,9 @@ class ApiDataProvider: ApiDataProviderType {
                                 data: ["email": email])
             .getResult(ofType: ExistModelString.self)
     }
-    func externalLogin(token: String) -> Observable<AuthApiModel> {
-        return _httpService.get(controller: .mobileAccount("externallogin"), data: ["providerToken": token])
-            .getResult(ofType: AuthApiModel.self)
+    func forgotPassword(data: ResetPasswordApiModel) -> Observable<Bool> {
+        return _httpService.post(controller: .account("forgotpassword"), data: data)
+            .getResult()
     }
     
     // upload
@@ -94,6 +95,10 @@ class ApiDataProvider: ApiDataProviderType {
         return _httpService.post(controller: .mobileAccount("signup"),
                                  data: model)
             .getResult()
+    }
+    func externalLogin(token: String) -> Observable<AuthApiModel> {
+        return _httpService.get(controller: .mobileAccount("externallogin"), data: ["providerToken": token])
+            .getResult(ofType: AuthApiModel.self)
     }
     
     // mobile/documents

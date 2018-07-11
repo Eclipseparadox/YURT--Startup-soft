@@ -111,7 +111,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3a-VO-rvF">
                                                 <rect key="frame" x="10" y="258" width="355" height="180"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="um odioque civiuda." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-fH-gHx">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="um odioque civiuda." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-fH-gHx">
                                                         <rect key="frame" x="22" y="10" width="311" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>

@@ -19,11 +19,8 @@ extension UITextView {
 class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferDelegate {
    
     private func deleteButtons() {
-        self.btnApprove.removeFromSuperview()
-        self.btnReject.removeFromSuperview()
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            self?.view.layoutIfNeeded()
-        })
+        self.btnApprove.setEnabled(isEnabled: false)
+        self.btnReject.setEnabled(isEnabled: false)
     }
     
     func deleteButtons(status: Bool) {
@@ -75,7 +72,7 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         lblFullName.text = presenter.data.lender.fullName
         lblLocation.text = presenter.data.lender.physicalAddress
         
-        if let description = presenter.data.description {
+        if !SttString.isWhiteSpace(string: presenter.data.description) {
             tvComment.text = description
         }
         else {
@@ -96,6 +93,10 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         btnApprove.layer.cornerRadius = 5
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        
+        if !presenter.showButtons {
+            deleteButtons()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

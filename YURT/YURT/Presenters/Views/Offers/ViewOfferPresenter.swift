@@ -22,6 +22,8 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDel
     var documentCollection = SttObservableCollection<DocumentLenderCellPresenter>()
     var aprove: SttComand!
     
+    var showButtons: Bool { return data.status == .pending }
+    
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)
 

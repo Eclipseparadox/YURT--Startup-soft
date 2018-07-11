@@ -51,6 +51,8 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         
         vbtnLinkedin.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onLinkedinClick(_:))))
         vbtnTouchId.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTouchId(_:))))
+        
+        prepareTouchId()
     }
     
     private var firstStart = true
@@ -118,6 +120,23 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func prepareTouchId() {
+        let email = KeychainSwift().get(Constants.idEmeail)
+        let password = KeychainSwift().get(Constants.idPassword)
+        
+        if email != nil && password != nil {
+            let authContext = LAContext()
+            var error: NSError?
+            
+            if !authContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+                self.vbtnTouchId.alpha = 0.6
+            }
+        }
+        else {
+            self.vbtnTouchId.alpha = 0.6
+        }
+    }
+    
     @objc func onTouchId(_ sender: Any) {
         let email = KeychainSwift().get(Constants.idEmeail)
         let password = KeychainSwift().get(Constants.idPassword)
@@ -134,16 +153,10 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
                         self.presenter.touchIdAuth.execute()
                     }
                 }
-                else if (error! as NSError).code == -5 {
-                    self.sendMessage(title: "Error", message: "Павле придумай сюди якийсь текст про те що в нього не включений пароль")
-                }
             }
         }
-        else {
-            self.sendMessage(title: "Error", message: "Павле придумай сюди якийсь текст про те що в нього нема законекченого акаунта")
-        }
     }
-    
+
     func addError() {
         inpPassword.errorText = presenter.passwordError
         inpEmail.errorText = "  "
