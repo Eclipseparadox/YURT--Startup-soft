@@ -49,6 +49,8 @@ class Constants {
     // keychain id
     static let tokenKey = "securityAccessToken"
     static let idKey = "securityUserId"
+    static let idEmeail = "securityEmail"
+    static let idPassword = "securityPassword"
     
     // linkedinData
     static let cleintId = "86z14ughq9lnnv"

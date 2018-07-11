@@ -151,17 +151,17 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     
     func reloadError(field: ValidateField) {
         switch field {
-        case .email(_):
+        case .email:
             inpEmail.errorText = presenter.emailError.1
-        case .firstName(_):
+        case .firstName:
             inpFirstName.errorText = presenter.firstNameError.1
-        case .lastName(_):
+        case .lastName:
             inpLastName.errorText = presenter.lastNameError.1
-        case .location(_):
+        case .location:
             inpLocation.errorText = presenter.locationError.1
-        case .phone(_):
+        case .phone:
             inpPhone.errorText = presenter.phoneError.1
-        case .password(_):
+        case .password:
             inpPassword.errorText = presenter.passwordError.1
         default: break;
         }

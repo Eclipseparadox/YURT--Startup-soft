@@ -13,7 +13,7 @@ class RealmImageData: Object, RealmDecodable {
     
     typealias TTarget = ImageDataApiModel
     
-    @objc dynamic var path: String = ""
+    @objc dynamic var path: String? = ""
     @objc dynamic var weight: Int = 0
     @objc dynamic var height: Int = 0
     

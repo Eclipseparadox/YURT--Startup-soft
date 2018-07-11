@@ -24,6 +24,14 @@
 		842239FA20BEE5C90028FDAA /* NoDocumentEntityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842239F820BEE5C90028FDAA /* NoDocumentEntityCell.xib */; };
 		842239FE20BEEA440028FDAA /* DocumentEntityHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842239FD20BEEA440028FDAA /* DocumentEntityHeaderView.swift */; };
 		84223A0120BEEC0A0028FDAA /* SttCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84223A0020BEEC0A0028FDAA /* SttCollectionReusableView.swift */; };
+		8424336120F4CE15003CED2D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336020F4CE15003CED2D /* WelcomeViewController.swift */; };
+		8424336320F4CE59003CED2D /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336220F4CE59003CED2D /* WelcomePresenter.swift */; };
+		8424336520F4D565003CED2D /* TouchIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336420F4D565003CED2D /* TouchIDViewController.swift */; };
+		8424336720F4D5DC003CED2D /* TouchIDPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336620F4D5DC003CED2D /* TouchIDPresenter.swift */; };
+		8424336B20F618F5003CED2D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336A20F618F5003CED2D /* ForgotPasswordViewController.swift */; };
+		8424336D20F61971003CED2D /* ForgotPaswordStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */; };
+		8424336F20F61B62003CED2D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */; };
+		8424337120F61D56003CED2D /* ForgotPasswordStep2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */; };
 		8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */; };
 		8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */; };
 		842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */; };
@@ -194,6 +202,14 @@
 		842239F820BEE5C90028FDAA /* NoDocumentEntityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDocumentEntityCell.xib; sourceTree = "<group>"; };
 		842239FD20BEEA440028FDAA /* DocumentEntityHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEntityHeaderView.swift; sourceTree = "<group>"; };
 		84223A0020BEEC0A0028FDAA /* SttCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttCollectionReusableView.swift; sourceTree = "<group>"; };
+		8424336020F4CE15003CED2D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		8424336220F4CE59003CED2D /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
+		8424336420F4D565003CED2D /* TouchIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDViewController.swift; sourceTree = "<group>"; };
+		8424336620F4D5DC003CED2D /* TouchIDPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDPresenter.swift; sourceTree = "<group>"; };
+		8424336A20F618F5003CED2D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPaswordStep2ViewController.swift; sourceTree = "<group>"; };
+		8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
+		8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordStep2Presenter.swift; sourceTree = "<group>"; };
 		8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageProvider.swift; sourceTree = "<group>"; };
@@ -1016,6 +1032,10 @@
 			children = (
 				84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */,
 				8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */,
+				8424336220F4CE59003CED2D /* WelcomePresenter.swift */,
+				8424336620F4D5DC003CED2D /* TouchIDPresenter.swift */,
+				8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */,
+				8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1026,6 +1046,10 @@
 				84C40AD220AD7F570050CA65 /* StartPageViewController.swift */,
 				8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */,
 				8452F78320EE54710006A573 /* LinkedinLoginViewController.swift */,
+				8424336020F4CE15003CED2D /* WelcomeViewController.swift */,
+				8424336420F4D565003CED2D /* TouchIDViewController.swift */,
+				8424336A20F618F5003CED2D /* ForgotPasswordViewController.swift */,
+				8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1223,6 +1247,7 @@
 				8453ADC020E0E1E800174765 /* SttUIViewExtensions.swift in Sources */,
 				8453ADAF20E0E1E800174765 /* SttCollectionViewCell.swift in Sources */,
 				84EA05E220ED165100F75F55 /* SimpleInputBox.swift in Sources */,
+				8424336120F4CE15003CED2D /* WelcomeViewController.swift in Sources */,
 				842239F220BEE4AD0028FDAA /* DocumentsEntityHeaderPresenter.swift in Sources */,
 				8453ADBF20E0E1E800174765 /* SttUIViewControllerExtensions.swift in Sources */,
 				84A2735D20E3BE68000BCE27 /* RejectOfferViewController.swift in Sources */,
@@ -1261,6 +1286,7 @@
 				8453ADC220E0E1E800174765 /* SttSpecialResult.swift in Sources */,
 				8453ADC820E0E1E800174765 /* SttApplicationDelegate.swift in Sources */,
 				8493542C20C6C6AC00C7EFF3 /* ProfilePresenter.swift in Sources */,
+				8424336D20F61971003CED2D /* ForgotPaswordStep2ViewController.swift in Sources */,
 				844EC24620C54A79006CF9EF /* ShowPhotoPresenter.swift in Sources */,
 				846F994C209B093600C61AE2 /* Storyb.swift in Sources */,
 				842239EE20BEDA9B0028FDAA /* DocumentsPresenter.swift in Sources */,
@@ -1290,6 +1316,7 @@
 				848F4C3920D3BB36007ECC45 /* CountableConverter.swift in Sources */,
 				8452F78B20EF7FA80006A573 /* ProfileDataModel.swift in Sources */,
 				849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */,
+				8424337120F61D56003CED2D /* ForgotPasswordStep2Presenter.swift in Sources */,
 				8453ADBA20E0E1E800174765 /* SttCommandExtensions.swift in Sources */,
 				8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */,
 				844EC24A20C58A16006CF9EF /* AddDocumentApiModel.swift in Sources */,
@@ -1309,16 +1336,19 @@
 				849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */,
 				8453ADBC20E0E1E800174765 /* SttJsonDecoderExtensions.swift in Sources */,
 				8453ADB420E0E1E800174765 /* SttHandlerTextField.swift in Sources */,
+				8424336F20F61B62003CED2D /* ForgotPasswordPresenter.swift in Sources */,
 				8437E01220D0057D0043445D /* ApprovedLendersViewController.swift in Sources */,
 				840427E420B2E73D00C94765 /* UIConstants.swift in Sources */,
 				8480335220ECE9EF001B7FDB /* ProfileEditItemCell.swift in Sources */,
 				8453ADAB20E0E1E800174765 /* SttCollectionViewSource.swift in Sources */,
 				8452F78620EE5E380006A573 /* ProfileApiModel.swift in Sources */,
 				8453ADC420E0E1E800174765 /* SttRealmProtocols.swift in Sources */,
+				8424336B20F618F5003CED2D /* ForgotPasswordViewController.swift in Sources */,
 				842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */,
 				840427F320B2E87800C94765 /* NotificationError.swift in Sources */,
 				8437E00D20CFEF760043445D /* SttUISegmentControlExtensions.swift in Sources */,
 				848F4C3720D2AE2C007ECC45 /* BaseLendersPresenter.swift in Sources */,
+				8424336720F4D5DC003CED2D /* TouchIDPresenter.swift in Sources */,
 				8453ADC120E0E1E800174765 /* SttErrorModel.swift in Sources */,
 				842239EB20BED6890028FDAA /* PercentConverter.swift in Sources */,
 				8453ADA620E0E1E800174765 /* SttObservableCollection.swift in Sources */,
@@ -1335,6 +1365,8 @@
 				8453ADB320E0E1E800174765 /* SttTextField.swift in Sources */,
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
+				8424336520F4D565003CED2D /* TouchIDViewController.swift in Sources */,
+				8424336320F4CE59003CED2D /* WelcomePresenter.swift in Sources */,
 				8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */,
 				844EC24820C58897006CF9EF /* DocumentService.swift in Sources */,
 				84C7FBF020B316EF0053C93A /* ExistModel.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import KeychainSwift
 
 protocol EditProfileDelegate {
     func donwloadImageComplete(isSuccess: Bool)
@@ -47,24 +48,35 @@ class EditProfilePresenter: SttPresenter<EditProfileDelegate> {
             delegate?.reloadPhoto(image: Image(url: img))
         }
         
+        let mediator = ProfileEditMediator()
+        
         data.append(ProfileEditItemPresenter(identifier: "First Name", value: param.profileData.firstName,
-                                             field: ValidateField.firstName(nil), callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.firstName, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "Last Name", value: param.profileData.lastName,
-                                             field: ValidateField.lastName(nil), callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.lastName, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "Location", value: param.profileData.location ?? "",
-                                             field: ValidateField.roleAndOrganization, callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.location, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "Phone", value: param.profileData.phoneNumber ?? "",
-                                             field: ValidateField.phone(nil), callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.phone, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "Skype", value: param.profileData.skype ?? "",
-                                             field: ValidateField.skype, callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.skype, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "Role and Organization", value: param.profileData.work ?? "",
-                                             field: ValidateField.roleAndOrganization, callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.roleAndOrganization, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "LinkedIn", value: param.profileData.linkedInUrl ?? "",
-                                             field: ValidateField.linkedin, callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.linkedin, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "Email", value: param.profileData.email,
-                                             field: ValidateField.email(nil), callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.email, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
         data.append(ProfileEditItemPresenter(identifier: "Education", value: param.profileData.education ?? "",
-                                             field: ValidateField.education, callBack: { [weak self] in self?.reCheckError() }))
+                                             field: ValidateField.education, callBack: { [weak self] in self?.reCheckError() },
+                                             mediator: mediator, last: data.lastOrNil()))
     }
     
     func reCheckError() {
@@ -89,7 +101,10 @@ class EditProfilePresenter: SttPresenter<EditProfileDelegate> {
                                                                       email: data[7].value!,
                                                                       education: data[8].value,
                                                                       image: photoData))
-            .subscribe(onNext: { self.delegate?.saveCompleted(status: $0) }, onError: { _ in self.delegate?.saveCompleted(status: false) })
+            .subscribe(onNext: {
+                KeychainSwift().set(self.data[7].value!, forKey: Constants.idEmeail)
+                self.delegate?.saveCompleted(status: $0)
+            }, onError: { _ in self.delegate?.saveCompleted(status: false) })
     }
     
     // MARK: -- view api

@@ -65,10 +65,10 @@ class AccountService: AccountServiceType {
     func signIn(email: String, password: String)  -> Observable<(Bool, String)> {
         return self._notificatonError.useError(observable:
                 self._dataProvider.signIn(email: email, password: password)
-                    .map({ _ in (true, "") })
-                    .inBackground()
-                    .observeInUI(), ignoreBadRequest: true)
+                    .map({ _ in (true, "") }), ignoreBadRequest: true)
             .catchError({ _ in Observable.from([(false, "Email or password is incorrect")])})
+            .inBackground()
+            .observeInUI()
     }
     func externalLogin(token: String) -> Observable<Bool> {
         return self._notificatonError.useError(observable: self._dataProvider.externalLogin(token: token).map({ _ in true }))

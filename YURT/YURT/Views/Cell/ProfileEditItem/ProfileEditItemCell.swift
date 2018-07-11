@@ -22,12 +22,14 @@ class ProfileEditItemCell: SttTableViewCell<ProfileEditItemPresenter>, ProfileEd
             inputBox.textField.text = presenter.value
             inputBox.tfStartEditing(inputBox.textField)
         }
+        reloadError()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        handler.addTarget(type: .didEndEditing, delegate: self, handler: { [weak self] (_, a1) in self?.presenter.value = a1.text }, textField: inputBox.textField)
+        handler.addTarget(type: .editing, delegate: self, handler: { [weak self] (_, t) in self?.presenter.value = t.text }, textField: inputBox.textField)
+        handler.addTarget(type: .shouldReturn, delegate: self, handler: { [weak self] (_, _) in self?.presenter.onShouldReturn() }, textField: inputBox.textField)
         inputBox.textField.delegate = handler
         inputBox.tintErrorColor = UIColor(named: "error")
         inputBox.tintActiveColor = UIColor(named: "main")
@@ -40,4 +42,7 @@ class ProfileEditItemCell: SttTableViewCell<ProfileEditItemPresenter>, ProfileEd
         inputBox.errorText = presenter.error.1
     }
     
+    func onShouldReturn() {
+        inputBox.textField.becomeFirstResponder()
+    }
 }

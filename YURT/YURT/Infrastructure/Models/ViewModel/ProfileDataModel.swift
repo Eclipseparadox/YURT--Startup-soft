@@ -31,7 +31,7 @@ struct ProfileViewModel {
             data.append(ProfileItemPresenter(key: "Education", value: profileData.education!))
         }
         if !SttString.isWhiteSpace(string: profileData.linkedInUrl) {
-            data.append(ProfileItemPresenter(key: "Linkedin", value: profileData.linkedInUrl!))
+            data.append(ProfileItemPresenter(key: "LinkedIn", value: profileData.linkedInUrl!))
         }
         if !SttString.isWhiteSpace(string: profileData.skype) {
             data.append(ProfileItemPresenter(key: "Skype", value: profileData.skype!))

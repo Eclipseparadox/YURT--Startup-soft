@@ -24,11 +24,11 @@ extension AppDelegate {
                 let realm = try Realm()
                 if let auth = realm.objects(RealmAuth.self).last {
                     let minutes = auth.dateCreated.differenceInMinutes()
-                    if minutes < 60 && minutes > -60 {
+                    if minutes < 1 && minutes > -1 {
                         storyboardName = "Main"
                     }
                     else {
-                        KeychainSwift().clear()
+                        KeychainSwift().delete(Constants.tokenKey)
                         try! realm.write {
                             realm.deleteAll()
                         }

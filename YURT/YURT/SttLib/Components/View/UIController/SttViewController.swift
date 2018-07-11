@@ -142,17 +142,17 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
         self.createAlerDialog(title: title, message: message!)
     }
     
-    func close() {
+    func close(animated: Bool) {
         if self.isModal {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: animated, completion: nil)
         }
         else {
-            navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: animated)
         }
     }
-    func close(parametr: Any) {
+    func close(parametr: Any, animated: Bool) {
         callback?(parametr)
-        close()
+        close(animated: animated)
     }
     
     func navigate<T>(storyboard: SttStoryboardType, to _: T.Type, typeNavigation: TypeNavigation, withParametr: Any?, callback: ((Any) -> Void)?)  {

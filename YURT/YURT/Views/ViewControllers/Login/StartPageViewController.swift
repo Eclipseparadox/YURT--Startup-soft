@@ -10,7 +10,8 @@ import Foundation
 import UserNotifications
 import UIKit
 import AVFoundation
-import SafariServices
+import LocalAuthentication
+import KeychainSwift
 
 class StartPageViewController: SttViewController<StartPagePresenter>, StartPageDelegate {
     
@@ -18,8 +19,9 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
     @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
     @IBOutlet weak var inpEmail: InputBox!
     @IBOutlet weak var inpPassword: InputBox!
+    @IBOutlet weak var vbtnLinkedin: UIView!
+    @IBOutlet weak var vbtnTouchId: UIView!
     @IBOutlet weak var btnSignIn: UIButton!
-    @IBOutlet weak var btnLinkedin: UIButton!
     
     let kSafariViewControllerCloseNotification = "kSafariViewControllerCloseNotification"
     
@@ -46,6 +48,9 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
 
         presenter.email = inpEmail.textField.text
         presenter.password = inpPassword.textField.text
+        
+        vbtnLinkedin.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onLinkedinClick(_:))))
+        vbtnTouchId.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTouchId(_:))))
     }
     
     private var firstStart = true
@@ -53,8 +58,45 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         super.viewDidAppear(animated)
         if firstStart {
             presenter.signIn.useIndicator(button: btnSignIn)
-            presenter.linkedinAuth.useIndicator(button: btnLinkedin)
-            presenter.linkedinAuth.addHandler(start: { self.btnSignIn.setEnabled(isEnabled: false) }, end: { self.btnSignIn.setEnabled(isEnabled: true) })
+            presenter.touchIdAuth.addHandler(start: {
+                self.btnSignIn.setEnabled(isEnabled: false)
+                self.vbtnTouchId.isUserInteractionEnabled = false
+                self.vbtnLinkedin.isUserInteractionEnabled = false
+                
+                self.vbtnTouchId.viewWithTag(1)?.isHidden = true
+                self.vbtnTouchId.viewWithTag(2)?.alpha = 0.8
+                self.vbtnTouchId.viewWithTag(3)?.alpha = 0.8
+                self.vbtnTouchId.viewWithTag(4)?.isHidden = false
+                
+            }) {
+                self.btnSignIn.setEnabled(isEnabled: true)
+                self.vbtnTouchId.isUserInteractionEnabled = true
+                self.vbtnLinkedin.isUserInteractionEnabled = true
+                
+                self.vbtnTouchId.viewWithTag(1)?.isHidden = false
+                self.vbtnTouchId.viewWithTag(2)?.alpha = 1
+                self.vbtnTouchId.viewWithTag(3)?.alpha = 1
+                self.vbtnTouchId.viewWithTag(4)?.isHidden = true
+            }
+            presenter.linkedinAuth.addHandler(start: {
+                self.btnSignIn.setEnabled(isEnabled: false)
+                self.vbtnTouchId.isUserInteractionEnabled = false
+                self.vbtnLinkedin.isUserInteractionEnabled = false
+                
+                self.vbtnLinkedin.viewWithTag(1)?.isHidden = true
+                self.vbtnLinkedin.viewWithTag(2)?.alpha = 0.8
+                self.vbtnLinkedin.viewWithTag(3)?.alpha = 0.8
+                self.vbtnLinkedin.viewWithTag(4)?.isHidden = false
+            }, end: {
+                self.btnSignIn.setEnabled(isEnabled: true)
+                self.vbtnTouchId.isUserInteractionEnabled = true
+                self.vbtnLinkedin.isUserInteractionEnabled = true
+                
+                self.vbtnLinkedin.viewWithTag(1)?.isHidden = false
+                self.vbtnLinkedin.viewWithTag(2)?.alpha = 1
+                self.vbtnLinkedin.viewWithTag(3)?.alpha = 1
+                self.vbtnLinkedin.viewWithTag(4)?.isHidden = true
+                })
             firstStart = false
         }
     }
@@ -66,7 +108,7 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         presenter.signIn.execute()
     }
     
-    @IBAction func onLinkedinClick(_ sender: Any) {
+    @objc func onLinkedinClick(_ sender: UITapGestureRecognizer) {
         let vc = SttOauthProvider.getLinkedinOauth(redirectUrl: Constants.apiUrl,
                                           clientId: Constants.cleintId,
                                           clientSecret: Constants.clientSecret) { (token) in
@@ -74,6 +116,32 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
                                             self.presenter.linkedinAuth.execute()
                                         }
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func onTouchId(_ sender: Any) {
+        let email = KeychainSwift().get(Constants.idEmeail)
+        let password = KeychainSwift().get(Constants.idPassword)
+        
+        if email != nil && password != nil {
+            let authContext = LAContext()
+            let authReason = "Use Touch ID to sign in YURT application"
+            
+            authContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: authReason) { (success, error) in
+                if success {
+                    DispatchQueue.main.async{
+                        self.presenter.email = email
+                        self.presenter.password = password
+                        self.presenter.touchIdAuth.execute()
+                    }
+                }
+                else if (error! as NSError).code == -5 {
+                    self.sendMessage(title: "Error", message: "Павле придумай сюди якийсь текст про те що в нього не включений пароль")
+                }
+            }
+        }
+        else {
+            self.sendMessage(title: "Error", message: "Павле придумай сюди якийсь текст про те що в нього нема законекченого акаунта")
+        }
     }
     
     func addError() {

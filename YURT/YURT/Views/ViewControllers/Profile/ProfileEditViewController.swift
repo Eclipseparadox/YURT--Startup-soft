@@ -80,12 +80,6 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
         navigationController?.navigationBar.tintColor = UIColor.black
     }
     
-    override func keyboardWillShow(height: CGFloat) {
-        super.keyboardWillShow(height: height)
-        
-        saveButton.isEnabled = false
-    }
-    
     // MARK: -- EditProfileDelegate
     
     func reloadPhoto(image: Image) {
@@ -93,7 +87,7 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
     }
     
     func saveStateChanged() {
-        self.saveButton.isEnabled = !self.isKeyboardShow && self.presenter.canSave
+        self.saveButton.isEnabled =  self.presenter.canSave
     }
     
     func donwloadImageComplete(isSuccess: Bool) {

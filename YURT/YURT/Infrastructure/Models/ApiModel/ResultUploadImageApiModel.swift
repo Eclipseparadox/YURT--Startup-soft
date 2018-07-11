@@ -27,7 +27,7 @@ struct ImageDataApiModel: Codable, RealmCodable {
     
     typealias TTarget = RealmImageData
     
-    let path: String
+    let path: String?
     let weight: Int
     let height: Int
     

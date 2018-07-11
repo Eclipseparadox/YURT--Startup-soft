@@ -16,6 +16,7 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
     
     var signIn: SttComand!
     var linkedinAuth: SttComand!
+    var touchIdAuth: SttComand!
     
     var _accountService: AccountServiceType!
     
@@ -30,12 +31,25 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
         ServiceInjectorAssembly.instance().inject(into: self)
         
         signIn = SttComand(delegate: self, handler: { $0.onSignIn() })
+        touchIdAuth = SttComand(delegate: self, handler: { $0.onTouchId() })
         linkedinAuth = SttComand(delegate: self, handler: { $0.onLinkedinAuth() },
                                        handlerCanExecute: { !SttString.isEmpty(string: $0.linkedinAccesToken) })
     }
     
     func onSignIn() {
         _ = signIn.useWork(observable: _accountService.signIn(email: email!, password: password!))
+            .subscribe(onNext: { (res) in
+                if res.0 {
+                    self.delegate!.loadStoryboard(storyboard: Storyboard.main)
+                }
+                else {
+                    self.passwordError = res.1
+                    self.delegate!.addError()
+                }
+            })
+    }
+    func onTouchId() {
+        _ = touchIdAuth.useWork(observable: _accountService.signIn(email: email!, password: password!))
             .subscribe(onNext: { (res) in
                 if res.0 {
                     self.delegate!.loadStoryboard(storyboard: Storyboard.main)

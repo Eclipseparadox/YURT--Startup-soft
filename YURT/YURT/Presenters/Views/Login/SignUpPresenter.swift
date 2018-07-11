@@ -52,33 +52,33 @@ enum ValidationResult {
 }
 
 enum ValidateField {
-    case firstName(String?)
-    case lastName(String?)
-    case location(String?)
-    case phone(String?)
-    case email(String?)
-    case password(String?)
+    case firstName
+    case lastName
+    case location
+    case phone
+    case email
+    case password
     
     case roleAndOrganization
     case linkedin
     case education
     case skype
     
-    func validate(rawObject: String? = nil) -> (ValidationResult, String) {
+    func validate(rawObject: String?) -> (ValidationResult, String) {
     
         switch self {
-        case .email(let email):
-            return Validate.validate(object: rawObject ?? email, field: "Email", pattern: Constants.emailPattern)
-        case .firstName(let fullName):
-            return Validate.validate(object: rawObject ?? fullName, field: "First Name", pattern: Constants.firstNamePattern, min: Constants.minFirstName, max: Constants.maxFirstName)
-        case .lastName(let lastName):
-            return Validate.validate(object: rawObject ?? lastName, field: "Last Name", pattern: Constants.lastNamePattern, min: Constants.minLastName, max: Constants.maxLastName)
-        case .location(let location):
-            return Validate.validate(object: rawObject ?? location, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
-        case .password(let password):
-            return Validate.validate(object: rawObject ?? password, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
-        case .phone(let phone):
-            return Validate.validate(object: rawObject ?? phone, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
+        case .email:
+            return Validate.validate(object: rawObject, field: "Email", pattern: Constants.emailPattern)
+        case .firstName:
+            return Validate.validate(object: rawObject, field: "First Name", pattern: Constants.firstNamePattern, min: Constants.minFirstName, max: Constants.maxFirstName)
+        case .lastName:
+            return Validate.validate(object: rawObject, field: "Last Name", pattern: Constants.lastNamePattern, min: Constants.minLastName, max: Constants.maxLastName)
+        case .location:
+            return Validate.validate(object: rawObject, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
+        case .password:
+            return Validate.validate(object: rawObject, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
+        case .phone:
+            return Validate.validate(object: rawObject, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
         case .roleAndOrganization:
             return Validate.validate(object: rawObject, field: "Role and Organization", isReuired: false, min: 3, max: 300)
         case .linkedin:
@@ -116,31 +116,31 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
     
     var firstName: String? {
         didSet {
-            firstNameError = ValidateField.firstName(firstName).validate()
-            delegate!.reloadError(field: .firstName(firstName))
+            firstNameError = ValidateField.firstName.validate(rawObject: firstName)
+            delegate!.reloadError(field: .firstName)
         }
     }
     var lastName: String? {
         didSet {
-            lastNameError = ValidateField.lastName(lastName).validate()
-            delegate!.reloadError(field: .lastName(lastName))
+            lastNameError = ValidateField.lastName.validate(rawObject: lastName)
+            delegate!.reloadError(field: .lastName)
         }
     }
     var location: String? {
         didSet {
-            locationError = ValidateField.location(location).validate()
-            delegate!.reloadError(field: .location(location))
+            locationError = ValidateField.location.validate(rawObject: location)
+            delegate!.reloadError(field: .location)
         }
     }
     var phone: String? {
         didSet {
-            phoneError = ValidateField.phone(phone).validate()
-            delegate!.reloadError(field: .phone(phone))
+            phoneError = ValidateField.phone.validate(rawObject: phone)
+            delegate!.reloadError(field: .phone)
         }
     }
     var email: String? {
         didSet {
-            emailError = ValidateField.email(email).validate()
+            emailError = ValidateField.email.validate(rawObject: email)
             
             if emailError.0 == .ok {
                 _ = _accountService.existsEmail(email: email!)
@@ -151,20 +151,20 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
                         else {
                             self.emailError = (.ok, "")
                         }
-                        self.delegate!.reloadError(field: .email(self.email!))
+                        self.delegate!.reloadError(field: .email)
                     }, onError: { err in
-                        self.delegate!.reloadError(field: .email(self.email!))
+                        self.delegate!.reloadError(field: .email)
                     })
             }
             else {
-                self.delegate!.reloadError(field: .email(self.email!))
+                self.delegate!.reloadError(field: .email)
             }
         }
     }
     var password: String? {
         didSet {
-            passwordError = ValidateField.password(password).validate()
-            delegate!.reloadError(field: .password(password))
+            passwordError = ValidateField.password.validate(rawObject: password)
+            delegate!.reloadError(field: .password)
         }
     }
     
@@ -179,7 +179,10 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
          _ = signUp.useWork(observable: _accountService.signUp(firstName: firstName!, lastName: lastName!, location: location, phone: phone, email: email!, password: password!, image: photoData))
             .subscribe(onNext: { (res) in
                 if res {
-                    self.delegate!.loadStoryboard(storyboard: Storyboard.main)
+                    self.delegate?.navigate(to: "welcome", withParametr: WelcomNavigateModel(firstName: self.firstName!,
+                                                                                             location: self.location!,
+                                                                                             email: self.email!,
+                                                                                             password: self.password!), callback: nil)
                 }
             })
     }

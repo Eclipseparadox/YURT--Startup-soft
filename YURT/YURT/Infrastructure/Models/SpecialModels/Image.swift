@@ -18,7 +18,7 @@ class Image {
         self.data = data
     }
     
-    init (url: String) {
+    init (url: String?) {
         self.url = url
     }
     
