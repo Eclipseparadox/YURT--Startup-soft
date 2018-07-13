@@ -208,6 +208,13 @@
                                     <action selector="close:" destination="zco-xw-mxv" eventType="touchUpInside" id="L65-hn-ejC"/>
                                 </connections>
                             </button>
+                            <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-kD-pXJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.69999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="Mdd-K2-PLm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="documentsBackground"/>
                         <constraints>
@@ -216,16 +223,20 @@
                             <constraint firstItem="G5n-9F-G7I" firstAttribute="top" secondItem="EHe-Tp-Cws" secondAttribute="top" constant="12" id="C5y-WX-oxT"/>
                             <constraint firstItem="EHe-Tp-Cws" firstAttribute="trailing" secondItem="TKn-Fd-THd" secondAttribute="trailing" constant="15" id="ENa-B5-0ug"/>
                             <constraint firstItem="TKn-Fd-THd" firstAttribute="top" secondItem="GjK-1t-shy" secondAttribute="bottom" constant="20" id="Inn-lI-eGr"/>
+                            <constraint firstItem="h9z-kD-pXJ" firstAttribute="top" secondItem="Bcj-EH-c2d" secondAttribute="top" constant="64" id="KfK-AR-2Re"/>
                             <constraint firstItem="GjK-1t-shy" firstAttribute="top" secondItem="EHe-Tp-Cws" secondAttribute="top" constant="5" id="KfM-KU-mir"/>
                             <constraint firstItem="SIk-vy-rM3" firstAttribute="top" secondItem="EHe-Tp-Cws" secondAttribute="top" constant="5" id="cdy-JP-RKE"/>
                             <constraint firstItem="EHe-Tp-Cws" firstAttribute="trailing" secondItem="GjK-1t-shy" secondAttribute="trailing" constant="16" id="gEH-S5-3oF"/>
                             <constraint firstItem="SIk-vy-rM3" firstAttribute="leading" secondItem="EHe-Tp-Cws" secondAttribute="leading" constant="16" id="gb0-22-2oT"/>
                             <constraint firstItem="G5n-9F-G7I" firstAttribute="leading" secondItem="SIk-vy-rM3" secondAttribute="trailing" constant="20" id="jSC-Pp-yh5"/>
+                            <constraint firstItem="EHe-Tp-Cws" firstAttribute="trailing" secondItem="h9z-kD-pXJ" secondAttribute="trailing" id="mU7-B1-pvJ"/>
+                            <constraint firstItem="h9z-kD-pXJ" firstAttribute="leading" secondItem="EHe-Tp-Cws" secondAttribute="leading" id="nik-Mv-P0m"/>
                             <constraint firstItem="TKn-Fd-THd" firstAttribute="leading" secondItem="EHe-Tp-Cws" secondAttribute="leading" constant="15" id="pdi-wr-ePR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EHe-Tp-Cws"/>
                     </view>
                     <connections>
+                        <outlet property="btnClose" destination="SIk-vy-rM3" id="1fD-wf-GLY"/>
                         <outlet property="btnDelete" destination="GjK-1t-shy" id="QLz-Lz-kjg"/>
                         <outlet property="cnstrBottomImage" destination="2cy-hp-wbE" id="ecZ-d6-mCk"/>
                         <outlet property="imgView" destination="TKn-Fd-THd" id="dAJ-6k-eEI"/>

@@ -44,7 +44,6 @@ class SttBaseViewController: UIViewController, SttKeyboardNotificationDelegate {
         if moveViewUp {
             scrollTheView(move: false)
         }
-        view.endEditing(true)
         _isKeyboardShow = false
     }
     
@@ -129,6 +128,10 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
         navigationController?.navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     func sendError(error: SttBaseErrorType) {
         let serror = error.getMessage()
         if useErrorLabel {
@@ -185,6 +188,7 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        view.endEditing(true)
         if let  navDatra = navigateData {
             if segue.identifier == navDatra.0 {
                 let previewC = segue.destination as! SttBaseViewController

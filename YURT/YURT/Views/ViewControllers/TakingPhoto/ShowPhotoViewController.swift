@@ -14,6 +14,8 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
     @IBOutlet weak var btnDelete: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var cnstrBottomImage: NSLayoutConstraint!
+    @IBOutlet weak var btnClose: UIButton!
+    
     @IBAction func close(_ sender: Any) {
         close(parametr: false)
     }
@@ -27,14 +29,11 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
         style = .lightContent
         btnDelete.createCircle()
         presenter.deleteCommand.useIndicator(button: btnDelete)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        presenter.deleteCommand.addHandler(start: {
+            self.btnClose.isEnabled = false
+        }) {
+            self.btnClose.isEnabled = true
+        }
     }
     
     func reloadData(title: String, image: Image) {
@@ -45,15 +44,4 @@ class ShowPhotoViewController: SttViewController<ShowPhotoPresenter>, ShowPhotoD
             btnDelete.isHidden = true
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

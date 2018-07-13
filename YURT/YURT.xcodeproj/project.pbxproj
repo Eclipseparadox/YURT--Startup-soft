@@ -33,6 +33,8 @@
 		8424336F20F61B62003CED2D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */; };
 		8424337120F61D56003CED2D /* ForgotPasswordStep2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */; };
 		8424337320F624C9003CED2D /* ResetPasswordApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */; };
+		8424B66820F8EAEF003D7378 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B66720F8EAEF003D7378 /* SuccessViewController.swift */; };
+		8424B66A20F8F411003D7378 /* ShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B66920F8F411003D7378 /* ShowPresenter.swift */; };
 		8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */; };
 		8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */; };
 		842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */; };
@@ -212,6 +214,8 @@
 		8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
 		8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordStep2Presenter.swift; sourceTree = "<group>"; };
 		8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordApiModel.swift; sourceTree = "<group>"; };
+		8424B66720F8EAEF003D7378 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		8424B66920F8F411003D7378 /* ShowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPresenter.swift; sourceTree = "<group>"; };
 		8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageProvider.swift; sourceTree = "<group>"; };
@@ -456,6 +460,7 @@
 			children = (
 				8453ADCB20E23A9600174765 /* DocumentsPreviewViewController.swift */,
 				842239E420BE93CF0028FDAA /* DocumentsViewController.swift */,
+				8424B66720F8EAEF003D7378 /* SuccessViewController.swift */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				842239ED20BEDA9B0028FDAA /* DocumentsPresenter.swift */,
+				8424B66920F8F411003D7378 /* ShowPresenter.swift */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -520,7 +526,6 @@
 				8437E00020CFDC290043445D /* NewLenders */,
 				8479DFAD20D3E133002CACA6 /* OffersViewController.swift */,
 				84996DF020D3FCA40006ADFA /* ViewOfferViewController.swift */,
-				84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -899,6 +904,7 @@
 		846F994A209B08F200C61AE2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */,
 				846F994B209B093600C61AE2 /* Storyb.swift */,
 			);
 			path = Base;
@@ -1274,6 +1280,7 @@
 				84996E0320D7CCF40006ADFA /* DocumentLenderCellPresenter.swift in Sources */,
 				842E1EC420AD6EBD003D2CDA /* SttTemplate.swift in Sources */,
 				8452F78420EE54710006A573 /* LinkedinLoginViewController.swift in Sources */,
+				8424B66A20F8F411003D7378 /* ShowPresenter.swift in Sources */,
 				8453ADA120E0E1E800174765 /* CachingPlayerItem.swift in Sources */,
 				8437E00320CFDC5F0043445D /* NewLendersViewController.swift in Sources */,
 				8453ADB620E0E1E800174765 /* SttHttpServiceTypeExtensions.swift in Sources */,
@@ -1328,6 +1335,7 @@
 				844EC24C20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift in Sources */,
 				84EA05DD20ECF6B700F75F55 /* ProfileEditViewController.swift in Sources */,
 				8453ADA720E0E1E800174765 /* SttPresenter.swift in Sources */,
+				8424B66820F8EAEF003D7378 /* SuccessViewController.swift in Sources */,
 				84C7FBF620B444760053C93A /* SttCamera.swift in Sources */,
 				84A2736120E3C7DB000BCE27 /* RejectOfferPresenter.swift in Sources */,
 				842239E920BEA1C50028FDAA /* DocumentEntityPresenter.swift in Sources */,

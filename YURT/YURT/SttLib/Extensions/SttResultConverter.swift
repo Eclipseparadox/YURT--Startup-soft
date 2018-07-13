@@ -40,7 +40,7 @@ extension ObservableType where E == (HTTPURLResponse, Data) {
                     observer.onError(er)
                 }
                 else {
-                    observer.onError(SttBaseError.unkown("\(error)"))
+                    observer.onError(SttBaseError.unkown("\((error as NSError).localizedDescription)"))
                 }
             }, onCompleted: observer.onCompleted)
         })

@@ -73,7 +73,7 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         lblLocation.text = presenter.data.lender.physicalAddress
         
         if !SttString.isWhiteSpace(string: presenter.data.description) {
-            tvComment.text = description
+            tvComment.text = presenter.data.description
         }
         else {
             tvComment.removeFromSuperview()

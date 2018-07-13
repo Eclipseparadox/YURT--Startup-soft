@@ -14,13 +14,12 @@ import Alamofire
 import RxSwift
 
 class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
-    func changeProgress(label: String) {
-        lblPercent.text = label
-    }
+    
+    func changeProgress(label: String) { }
     
     
-    @IBOutlet weak var lblPercent: UILabel!
-    @IBOutlet weak var vTakePhoto: UIView!
+    @IBOutlet weak var vtakePhoto: UIView!
+    @IBOutlet weak var imgCameraIcon: UIImageView!
     @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
     @IBOutlet weak var inpFirstName: InputBox!
     @IBOutlet weak var inpLastName: InputBox!
@@ -87,8 +86,8 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         style = .lightContent
         cameraPicker = SttCamera(parent: self, handler: { [weak self] (image) in
 
-            self?.imgUser.isHidden = false
             self?.imgUser.image = image
+            self?.imgCameraIcon.isHidden = true
             self?.maskOnPhoto.isHidden = false
             self?.indicatorImage.startAnimating()
             self?.btnSignUp.isEnabled = false
@@ -98,7 +97,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         cnstrHeight.constant = heightScreen
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        vTakePhoto.createCircle()
+        vtakePhoto.createCircle()
         
         handlerFirstName.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.firstName = $1.text }, textField: inpFirstName.textField)
         handlerFirstName.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpLastName.textField.becomeFirstResponder() }, textField: inpFirstName.textField)
@@ -112,7 +111,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         handlerEmail.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpPassword.textField.becomeFirstResponder() }, textField: inpEmail.textField)
         handlerPassword.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
         handlerPassword.addTarget(type: .shouldReturn, delegate: self, handler: { $0.SignUpClick($1) }, textField: inpPassword.textField)
-
+        
         inpFirstName.textField.delegate = handlerFirstName
         inpLastName.textField.delegate = handlerLastName
         inpLocation.textField.delegate = handlerLocation
@@ -124,8 +123,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         inpPhone.textField.keyboardType = .numberPad
         inpPassword.textField.isSecureTextEntry = true
         
-        vTakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnPhoto(_:))))
-        imgUser.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnPhoto(_:))))
+        vtakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnPhoto(_:))))
         
         indicatorImage = maskOnPhoto.setIndicator()
         indicatorImage.color = UIColor.white
@@ -168,12 +166,16 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
     }
     
     func donwloadImageComplete(isSuccess: Bool) {
-        lblPercent.text = "0%"
         indicatorImage.stopAnimating()
         self.btnSignUp.isEnabled = true
-        maskOnPhoto.isHidden = true
         if !isSuccess {
-            self.imgUser.isHidden = true
+            imgCameraIcon.isHidden = false
+            maskOnPhoto.isHidden = false
+            self.imgUser.image = UIImage(named: "placeholder")
+        }
+        else {
+            maskOnPhoto.isHidden = true
+            imgCameraIcon.isHidden = true
         }
     }
 }

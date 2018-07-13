@@ -32,12 +32,7 @@ class InputBox: SttTemplate {
             }
         }
     }
-    var hintText: String? {
-        didSet {
-            error.text = hintText
-            error.textColor = UIColor(named: "hintColor")
-        }
-    }
+    var hintText: String?
     
     @IBInspectable
     var fieldIdentifier: String? {
@@ -89,6 +84,10 @@ class InputBox: SttTemplate {
         if deleteErrorAfterStartEditing {
             if !(errorText ?? "").isEmpty {
                 errorText = ""
+            }
+            if let _hint = hintText {
+                errorText = _hint
+                error.textColor = UIColor(named: "hintColor")
             }
         }
         underline.backgroundColor = tintActiveColor

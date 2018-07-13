@@ -34,7 +34,7 @@ enum SttBaseError: Error, SttBaseErrorType {
         case .jsonConvert(let message):
             result = ("Json convert", message)
         case .unkown(let message):
-            result = ("Unkown", message)
+            result = (message, "Description is out")
         }
         
         return result

@@ -72,7 +72,7 @@ class SimpleInputBox: SttTemplate {
     @objc
     func tfStartEditing(_ tf: UITextField) {
         isEditing = true
-        errorText = ""
+        //errorText = ""
         underline.backgroundColor = tintActiveColor
         fieldName.textColor = tintActiveColor
         
@@ -85,7 +85,12 @@ class SimpleInputBox: SttTemplate {
     @objc
     func tfEndEditing(_ tf: UITextField) {
         isEditing = false
-        underline.backgroundColor = tintDisableColor
+        if !SttString.isWhiteSpace(string: errorText) {
+            underline.backgroundColor = tintErrorColor
+        }
+        else {
+            underline.backgroundColor = tintDisableColor
+        }
         fieldName.textColor = tintDisableColor
         
         if ((textField.text ?? "").isEmpty) {

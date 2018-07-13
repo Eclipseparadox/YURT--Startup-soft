@@ -95,7 +95,7 @@ class DocumentsPresenter: SttPresenter<DocumentsDelegate>, DocumentContainerDele
                 if res {
                     self?.isSendToReview = true
                     self?.delegate?.progressCahnged()
-                    self?.delegate?.sendMessage(title: "Success", message: "Your documents have been sent successfully")
+                    self?.delegate?.navigate(to: "successResult", withParametr: nil, callback: nil)
                 }
             })
     }
