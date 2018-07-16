@@ -96,7 +96,7 @@ enum SttConnectionError: SttBaseErrorType {
         case .noInternetConnection:
             result = ("No internet connection", "Check your settings or repeat later")
         case .timeout:
-            result = ("Timeout", "Connectiom timeout")
+            result = ("Timeout", "Connection timeout")
         case .other(let message):
             result = ("Other", "with message: \(message)")
         case .responseIsNil:

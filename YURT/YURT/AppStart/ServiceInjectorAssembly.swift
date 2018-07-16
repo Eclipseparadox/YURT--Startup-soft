@@ -124,6 +124,13 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: ResetPresenter) {
+        let _:ResetPresenter = define(init: service) {
+            $0._accountService = self.serviceAssembly.accountService
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     

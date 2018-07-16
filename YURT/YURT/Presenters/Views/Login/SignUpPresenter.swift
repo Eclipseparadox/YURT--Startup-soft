@@ -49,6 +49,7 @@ class Validate {
 enum ValidationResult {
     case ok, inCorrect, taken
     case toShort, toLong, empty
+    case isNotMatch
 }
 
 enum ValidateField {
@@ -58,6 +59,7 @@ enum ValidateField {
     case phone
     case email
     case password
+    case confirmPassword
     
     case roleAndOrganization
     case linkedin
@@ -77,6 +79,8 @@ enum ValidateField {
             return Validate.validate(object: rawObject, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
         case .password:
             return Validate.validate(object: rawObject, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
+        case .confirmPassword:
+            return Validate.validate(object: rawObject, field: "Confirm Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
         case .phone:
             return Validate.validate(object: rawObject, field: "Phone", pattern: Constants.phoneNumber, min: Constants.minPhone, max: Constants.maxPhone)
         case .roleAndOrganization:
@@ -138,18 +142,21 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
             delegate!.reloadError(field: .phone)
         }
     }
+    
+    var disposable: Disposable?
     var email: String? {
         didSet {
             emailError = ValidateField.email.validate(rawObject: email)
             self.delegate!.reloadError(field: .email)
             if emailError.0 == .ok {
-                _ = _accountService.existsEmail(email: email!)
+                disposable?.dispose()
+                disposable = _accountService.existsEmail(email: email!)
                     .subscribe(onNext: { (result) in
                         if result {
                             self.emailError = (.taken, "This email address is already registered.")
                         }
                         else {
-                            self.emailError = (.ok, "")
+                            self.emailError = self.emailError.0 != .ok ? self.emailError : (.ok, "")
                         }
                         self.delegate!.reloadError(field: .email)
                     }, onError: { err in

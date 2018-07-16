@@ -31,10 +31,15 @@
 		8424336B20F618F5003CED2D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336A20F618F5003CED2D /* ForgotPasswordViewController.swift */; };
 		8424336D20F61971003CED2D /* ForgotPaswordStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */; };
 		8424336F20F61B62003CED2D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */; };
-		8424337120F61D56003CED2D /* ForgotPasswordStep2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */; };
-		8424337320F624C9003CED2D /* ResetPasswordApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */; };
+		8424337320F624C9003CED2D /* ForgotPasswordApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337220F624C9003CED2D /* ForgotPasswordApiModel.swift */; };
 		8424B66820F8EAEF003D7378 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B66720F8EAEF003D7378 /* SuccessViewController.swift */; };
 		8424B66A20F8F411003D7378 /* ShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B66920F8F411003D7378 /* ShowPresenter.swift */; };
+		8424B66C20FC96E5003D7378 /* check.json in Resources */ = {isa = PBXBuildFile; fileRef = 8424B66B20FC96E4003D7378 /* check.json */; };
+		8424B67520FC9CCE003D7378 /* ResetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B67420FC9CCE003D7378 /* ResetPresenter.swift */; };
+		8424B67720FCA0E1003D7378 /* ResetPasswordApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B67620FCA0E1003D7378 /* ResetPasswordApiModel.swift */; };
+		8424B67D20FCA67B003D7378 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B67C20FCA67B003D7378 /* ResetViewController.swift */; };
+		8424B67F20FCA686003D7378 /* ResetConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B67E20FCA686003D7378 /* ResetConfirmViewController.swift */; };
+		8424B68120FCAAF5003D7378 /* SttEmptyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B68020FCAAF5003D7378 /* SttEmptyPresenter.swift */; };
 		8428FFE320AF036D00D7BF1B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */; };
 		8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */; };
 		842E1EB120AC5584003D2CDA /* RealmStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */; };
@@ -212,10 +217,15 @@
 		8424336A20F618F5003CED2D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPaswordStep2ViewController.swift; sourceTree = "<group>"; };
 		8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
-		8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordStep2Presenter.swift; sourceTree = "<group>"; };
-		8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordApiModel.swift; sourceTree = "<group>"; };
+		8424337220F624C9003CED2D /* ForgotPasswordApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordApiModel.swift; sourceTree = "<group>"; };
 		8424B66720F8EAEF003D7378 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		8424B66920F8F411003D7378 /* ShowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPresenter.swift; sourceTree = "<group>"; };
+		8424B66B20FC96E4003D7378 /* check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check.json; sourceTree = "<group>"; };
+		8424B67420FC9CCE003D7378 /* ResetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPresenter.swift; sourceTree = "<group>"; };
+		8424B67620FCA0E1003D7378 /* ResetPasswordApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordApiModel.swift; sourceTree = "<group>"; };
+		8424B67C20FCA67B003D7378 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
+		8424B67E20FCA686003D7378 /* ResetConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetConfirmViewController.swift; sourceTree = "<group>"; };
+		8424B68020FCAAF5003D7378 /* SttEmptyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SttEmptyPresenter.swift; sourceTree = "<group>"; };
 		8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		842E1EB020AC5584003D2CDA /* RealmStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageProvider.swift; sourceTree = "<group>"; };
@@ -509,6 +519,34 @@
 			path = DocumentEntity;
 			sourceTree = "<group>";
 		};
+		8424B66D20FC96F5003D7378 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				8424B66B20FC96E4003D7378 /* check.json */,
+			);
+			path = animation;
+			sourceTree = "<group>";
+		};
+		8424B66E20FC9BFC003D7378 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				8424336A20F618F5003CED2D /* ForgotPasswordViewController.swift */,
+				8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */,
+				8424B67C20FCA67B003D7378 /* ResetViewController.swift */,
+				8424B67E20FCA686003D7378 /* ResetConfirmViewController.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		8424B67320FC9CA1003D7378 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */,
+				8424B67420FC9CCE003D7378 /* ResetPresenter.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
 		842E1EB620AC5676003D2CDA /* RealmModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +702,7 @@
 				8453AD7320E0E1E700174765 /* SttObservableCollection.swift */,
 				8453AD7420E0E1E700174765 /* SttPresenter.swift */,
 				8453AD7520E0E1E700174765 /* SttRandom.swift */,
+				8424B68020FCAAF5003D7378 /* SttEmptyPresenter.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -869,6 +908,7 @@
 		846F9947209B088700C61AE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8424B66D20FC96F5003D7378 /* animation */,
 				8497871720ADB098004F4B06 /* Roboto */,
 				84484F5A209B05D6006BBD11 /* Assets.xcassets */,
 				842E1ECA20AD716F003D2CDA /* Icons.xcassets */,
@@ -1020,7 +1060,8 @@
 				849D3F0F20C80223004BB086 /* DeleteDocumentApiModel.swift */,
 				84A2735A20E3B393000BCE27 /* RejectApiModel.swift */,
 				8452F78E20F3564D0006A573 /* UpdateProfileApiModel.swift */,
-				8424337220F624C9003CED2D /* ResetPasswordApiModel.swift */,
+				8424337220F624C9003CED2D /* ForgotPasswordApiModel.swift */,
+				8424B67620FCA0E1003D7378 /* ResetPasswordApiModel.swift */,
 			);
 			path = SendModel;
 			sourceTree = "<group>";
@@ -1039,12 +1080,11 @@
 		84C40ACD20AD7ECD0050CA65 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8424B67320FC9CA1003D7378 /* ForgotPassword */,
 				84C40ACE20AD7EE50050CA65 /* StartPagePresenter.swift */,
 				8428FFE420AF03BD00D7BF1B /* SignUpPresenter.swift */,
 				8424336220F4CE59003CED2D /* WelcomePresenter.swift */,
 				8424336620F4D5DC003CED2D /* TouchIDPresenter.swift */,
-				8424336E20F61B62003CED2D /* ForgotPasswordPresenter.swift */,
-				8424337020F61D56003CED2D /* ForgotPasswordStep2Presenter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1052,13 +1092,12 @@
 		84C40AD020AD7F370050CA65 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8424B66E20FC9BFC003D7378 /* ForgotPassword */,
 				84C40AD220AD7F570050CA65 /* StartPageViewController.swift */,
 				8428FFE220AF036D00D7BF1B /* SignUpViewController.swift */,
 				8452F78320EE54710006A573 /* LinkedinLoginViewController.swift */,
 				8424336020F4CE15003CED2D /* WelcomeViewController.swift */,
 				8424336420F4D565003CED2D /* TouchIDViewController.swift */,
-				8424336A20F618F5003CED2D /* ForgotPasswordViewController.swift */,
-				8424336C20F61971003CED2D /* ForgotPaswordStep2ViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1174,6 +1213,7 @@
 				8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */,
 				8480334C20ECDA5F001B7FDB /* ProfileItemCell.xib in Resources */,
 				8452F78D20EFA8150006A573 /* IconTemplate.xcassets in Resources */,
+				8424B66C20FC96E5003D7378 /* check.json in Resources */,
 				84996DE920D3F2840006ADFA /* Offer.storyboard in Resources */,
 				844F800420AD74940030DCC3 /* Colors.xcassets in Resources */,
 				8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */,
@@ -1204,6 +1244,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SINQ/SINQ.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1217,6 +1258,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SINQ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1252,6 +1294,7 @@
 				84EA05DB20ECF5BD00F75F55 /* EditProfilePresenter.swift in Sources */,
 				84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */,
 				8453ADC320E0E1E800174765 /* SttRealmObject.swift in Sources */,
+				8424B68120FCAAF5003D7378 /* SttEmptyPresenter.swift in Sources */,
 				84996DF920D7A9A00006ADFA /* OfferDetailTableViewCell.swift in Sources */,
 				8453ADC020E0E1E800174765 /* SttUIViewExtensions.swift in Sources */,
 				8453ADAF20E0E1E800174765 /* SttCollectionViewCell.swift in Sources */,
@@ -1290,6 +1333,7 @@
 				8452F78F20F3564D0006A573 /* UpdateProfileApiModel.swift in Sources */,
 				842239FE20BEEA440028FDAA /* DocumentEntityHeaderView.swift in Sources */,
 				84C7FBF920B4592D0053C93A /* ResultUploadImageApiModel.swift in Sources */,
+				8424B67D20FCA67B003D7378 /* ResetViewController.swift in Sources */,
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,
 				842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */,
 				8453ADCE20E23CD600174765 /* DocumentPreviewPresenter.swift in Sources */,
@@ -1305,7 +1349,9 @@
 				8479DFAC20D3DE60002CACA6 /* SttFormatterExtensions.swift in Sources */,
 				84996DFC20D7B0110006ADFA /* ViewOfferDetailConverter.swift in Sources */,
 				8453ADB020E0E1E800174765 /* SttTableViewCell.swift in Sources */,
+				8424B67520FC9CCE003D7378 /* ResetPresenter.swift in Sources */,
 				842239E720BE9E0E0028FDAA /* SttCollectionViewWithSectionSource.swift in Sources */,
+				8424B67720FCA0E1003D7378 /* ResetPasswordApiModel.swift in Sources */,
 				8453ADA920E0E1E800174765 /* SttGlobalObserver.swift in Sources */,
 				84996DF520D7A7D20006ADFA /* OfferDetailPresenter.swift in Sources */,
 				84A2735B20E3B393000BCE27 /* RejectApiModel.swift in Sources */,
@@ -1326,7 +1372,6 @@
 				848F4C3920D3BB36007ECC45 /* CountableConverter.swift in Sources */,
 				8452F78B20EF7FA80006A573 /* ProfileDataModel.swift in Sources */,
 				849DBDB220C6D0E300A4CB80 /* RealmBorrowerDocument.swift in Sources */,
-				8424337120F61D56003CED2D /* ForgotPasswordStep2Presenter.swift in Sources */,
 				8453ADBA20E0E1E800174765 /* SttCommandExtensions.swift in Sources */,
 				8462233F20BFE3D50059A83A /* DocumentEntitySource.swift in Sources */,
 				844EC24A20C58A16006CF9EF /* AddDocumentApiModel.swift in Sources */,
@@ -1345,7 +1390,7 @@
 				848F4C3520D2AB74007ECC45 /* OfferInteractor.swift in Sources */,
 				84A2736420E51659000BCE27 /* OfferPresenter.swift in Sources */,
 				849D3F1220C81F01004BB086 /* UIImageView.swift in Sources */,
-				8424337320F624C9003CED2D /* ResetPasswordApiModel.swift in Sources */,
+				8424337320F624C9003CED2D /* ForgotPasswordApiModel.swift in Sources */,
 				8453ADBC20E0E1E800174765 /* SttJsonDecoderExtensions.swift in Sources */,
 				8453ADB420E0E1E800174765 /* SttHandlerTextField.swift in Sources */,
 				8424336F20F61B62003CED2D /* ForgotPasswordPresenter.swift in Sources */,
@@ -1378,6 +1423,7 @@
 				846F9959209B0AB900C61AE2 /* Constants.swift in Sources */,
 				8428FFE520AF03BD00D7BF1B /* SignUpPresenter.swift in Sources */,
 				8424336520F4D565003CED2D /* TouchIDViewController.swift in Sources */,
+				8424B67F20FCA686003D7378 /* ResetConfirmViewController.swift in Sources */,
 				8424336320F4CE59003CED2D /* WelcomePresenter.swift in Sources */,
 				8462234720C133D00059A83A /* CountProgressConverter.swift in Sources */,
 				844EC24820C58897006CF9EF /* DocumentService.swift in Sources */,

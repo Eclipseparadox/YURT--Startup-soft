@@ -16,7 +16,8 @@ protocol ApiDataProviderType {
     
     // account
     func emailExists(email: String) -> Observable<ExistModelString>
-    func forgotPassword(data: ResetPasswordApiModel) -> Observable<Bool>
+    func forgotPassword(data: ForgotPasswordApiModel) -> Observable<Bool>
+    func resetPassword(data: ResetPasswordApiModel) -> Observable<Bool>
     
     // upload
     func uploadImage(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
@@ -65,8 +66,12 @@ class ApiDataProvider: ApiDataProviderType {
                                 data: ["email": email])
             .getResult(ofType: ExistModelString.self)
     }
-    func forgotPassword(data: ResetPasswordApiModel) -> Observable<Bool> {
+    func forgotPassword(data: ForgotPasswordApiModel) -> Observable<Bool> {
         return _httpService.post(controller: .account("forgotpassword"), data: data)
+            .getResult()
+    }
+    func resetPassword(data: ResetPasswordApiModel) -> Observable<Bool> {
+        return _httpService.post(controller: .account("resetpassword"), data: data)
             .getResult()
     }
     

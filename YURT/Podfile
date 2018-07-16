@@ -13,5 +13,6 @@ target 'YURT' do
   pod "RxRealm" 
   pod 'RealmSwift'
   pod 'SINQ'
+  pod 'lottie-ios'
 end
 

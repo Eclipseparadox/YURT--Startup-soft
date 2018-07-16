@@ -9,6 +9,33 @@
 import UIKit
 import RxSwift
 
+extension URL {
+    
+    public var queryParameters: [String: String] {
+        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: true), let queryItems = components.queryItems else {
+            return [:]
+        }
+        
+        var parameters = [String: String]()
+        for item in queryItems {
+            parameters[item.name] = item.value
+        }
+        
+        return parameters
+    }
+}
+
+class SttOpenUrlHandler {
+    
+    private static var registeredScheme = Set<String>()
+    private static var publisher = PublishSubject<([String: String], String)>()
+    static var openUrlObservable: Observable<([String: String], String)> { return publisher }
+    
+    class func openingUrl(url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) {
+        publisher.onNext((url.queryParameters, "\(url)"))
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -26,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
+        SttOpenUrlHandler.openingUrl(url: url, options: options)
         SttLog.trace(message: "OpenUrl", key: "\(url)")
         return true
     }

@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct ResetPasswordApiModel: Codable {
+    let code: String
+    let email: String
+    let password: String
+    let confirmPassword: String
+}

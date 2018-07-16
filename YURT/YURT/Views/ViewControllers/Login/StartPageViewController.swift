@@ -23,13 +23,22 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
     @IBOutlet weak var vbtnTouchId: UIView!
     @IBOutlet weak var btnSignIn: UIButton!
     
-    let kSafariViewControllerCloseNotification = "kSafariViewControllerCloseNotification"
-    
     let handlerEmail = SttHandlerTextField()
     let handlerPassword = SttHandlerTextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        _ = SttOpenUrlHandler.openUrlObservable.subscribe(onNext: { (arg) in
+            
+            let (parametrs, url) = arg
+            
+            if "\(url)".hasPrefix("app://resetpassword") {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.navigate(to: "resetPassowrd", withParametr: parametrs, callback: nil)
+                }
+            }
+        })
         
         style = .lightContent
         cnstrHeight.constant = heightScreen - 64

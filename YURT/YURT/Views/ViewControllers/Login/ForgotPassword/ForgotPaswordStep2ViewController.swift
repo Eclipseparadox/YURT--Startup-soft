@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgotPaswordStep2ViewController: SttViewController<ForgotPasswordStep2Presenter> {
+class ForgotPaswordStep2ViewController: SttViewController<SttEmptyPresenter> {
 
     @IBOutlet weak var cntrHeight: NSLayoutConstraint!
     

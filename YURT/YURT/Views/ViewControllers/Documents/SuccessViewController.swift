@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import Lottie
 
 class SuccessViewController: SttViewController<ShowPresenter> {
 
+    @IBOutlet weak var vSuccess: UIView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var lblWithAtribute: UILabel!
+    
+    private var animationView = LOTAnimationView(name: "check")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mainView.layer.cornerRadius = 5
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap(_:))))
-        let timer = Timer(timeInterval: 1.5, repeats: false) { (timer) in
+        //self.dismiss(animated: true, completion: nil)
+        animationView.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
+        vSuccess.addSubview(animationView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animationView.play { _ in
             self.dismiss(animated: true, completion: nil)
         }
     }

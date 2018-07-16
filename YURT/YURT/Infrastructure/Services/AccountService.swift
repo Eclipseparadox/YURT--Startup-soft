@@ -19,6 +19,7 @@ protocol AccountServiceType: class {
     func signIn(email: String, password: String) -> Observable<(Bool, String)>
     func externalLogin(token: String) -> Observable<Bool>
     func forgotPassword(email: String) -> Observable<Bool>
+    func resetPassword(code: String, email: String, password: String, confirmPassword: String) -> Observable<Bool>
     
     func signOut()
     var sesionIsExpired: Observable<Bool> { get }
@@ -37,7 +38,9 @@ class AccountService: AccountServiceType {
     func signOut() {
         KeychainSwift().delete(Constants.tokenKey)
         let realm = try? Realm()
-        realm?.invalidate()
+        try! realm?.write {
+            realm?.deleteAll()
+        }
     }
     
     var sesionIsExpired: Observable<Bool> { return _unitOfWork.auth.exists(filter: nil)
@@ -58,7 +61,17 @@ class AccountService: AccountServiceType {
     }
     
     func forgotPassword(email: String) -> Observable<Bool> {
-        return _notificatonError.useError(observable: _dataProvider.forgotPassword(data: ResetPasswordApiModel(email: email)))
+        return _notificatonError.useError(observable: _dataProvider.forgotPassword(data: ForgotPasswordApiModel(email: email)))
+            .inBackground()
+            .observeInUI()
+    }
+    
+    func resetPassword(code: String, email: String, password: String, confirmPassword: String) -> Observable<Bool> {
+        return _notificatonError.useError(observable:
+            _dataProvider.resetPassword(data: ResetPasswordApiModel(code: code,
+                                                                    email: email,
+                                                                    password: password,
+                                                                    confirmPassword: confirmPassword)))
             .inBackground()
             .observeInUI()
     }
@@ -87,6 +100,7 @@ class AccountService: AccountServiceType {
             .observeInUI()
     }
     func externalLogin(token: String) -> Observable<Bool> {
-        return self._notificatonError.useError(observable: self._dataProvider.externalLogin(token: token).map({ _ in true }))
+        return self._notificatonError.useError(observable: self._dataProvider.externalLogin(token: token)
+            .map({ _ in true }))
     }
 }

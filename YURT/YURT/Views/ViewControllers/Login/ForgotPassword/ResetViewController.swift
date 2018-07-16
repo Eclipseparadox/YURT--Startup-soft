@@ -8,28 +8,42 @@
 
 import UIKit
 
-class ResepViewController: UIViewController {
+class ResetViewController: SttViewController<ResetPresenter>, ResetDelegate {
 
+    @IBOutlet weak var inpPassword: InputBox!
+    @IBOutlet weak var inpConfirmPassword: InputBox!
+    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
+    
+    private var passwordHandler = SttHandlerTextField()
+    private var passwordConfirmHandler = SttHandlerTextField()
+    
+    @IBAction func onSave(_ sender: Any) {
+        presenter.save.execute()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        style = .lightContent
+        
+        inpPassword.textField.isSecureTextEntry = true
+        inpConfirmPassword.textField.isSecureTextEntry = true
+        
+        inpPassword.textField.delegate = passwordHandler
+        inpConfirmPassword.textField.delegate = passwordConfirmHandler
+        
+        cnstrHeight.constant = heightScreen
+        
+        passwordHandler.addTarget(type: .editing, delegate: self, handler: { $0.presenter.password = $1.text ?? "" }, textField: inpPassword.textField)
+        passwordHandler.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpConfirmPassword.textField.becomeFirstResponder() }, textField: inpPassword.textField)
+        
+        passwordConfirmHandler.addTarget(type: .editing, delegate: self, handler: { $0.presenter.passwordConfirm = $1.text ?? "" }, textField: inpConfirmPassword.textField)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.save.useIndicator(button: btnSave)
     }
-    */
-
 }
