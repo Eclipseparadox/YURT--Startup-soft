@@ -564,6 +564,7 @@
 				8437E00020CFDC290043445D /* NewLenders */,
 				8479DFAD20D3E133002CACA6 /* OffersViewController.swift */,
 				84996DF020D3FCA40006ADFA /* ViewOfferViewController.swift */,
+				84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -944,7 +945,6 @@
 		846F994A209B08F200C61AE2 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				84A2735C20E3BE68000BCE27 /* RejectOfferViewController.swift */,
 				846F994B209B093600C61AE2 /* Storyb.swift */,
 			);
 			path = Base;

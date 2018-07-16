@@ -32,7 +32,9 @@ class SttOpenUrlHandler {
     static var openUrlObservable: Observable<([String: String], String)> { return publisher }
     
     class func openingUrl(url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) {
-        publisher.onNext((url.queryParameters, "\(url)"))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            publisher.onNext((url.queryParameters, "\(url)"))
+        }
     }
 }
 

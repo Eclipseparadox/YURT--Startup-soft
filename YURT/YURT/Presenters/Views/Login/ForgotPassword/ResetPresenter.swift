@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ResetDelegate: SttViewContolable {
-    
+    func reloadError()
 }
 
 class ResetPresenter: SttPresenter<ResetDelegate> {
@@ -24,7 +24,7 @@ class ResetPresenter: SttPresenter<ResetDelegate> {
     var password: String = "" {
         didSet {
             passwordError = ValidateField.password.validate(rawObject: password)
-            //delegate?.reloadError()
+            delegate?.reloadError()
         }
     }
     var passwordConfirm: String = "" {
@@ -35,13 +35,19 @@ class ResetPresenter: SttPresenter<ResetDelegate> {
                     confirmPassworError = (ValidationResult.isNotMatch, "The paswords do not match")
                 }
             }
-            //delegate?.reloadError()
+            delegate?.reloadError()
         }
     }
     
     
     var passwordError = (ValidationResult.ok, "")
     var confirmPassworError = (ValidationResult.ok, "")
+    
+    override func prepare(parametr: Any?) {
+        let param = parametr as! [String:String]
+        code = param["code"]
+        email = param["email"]
+    }
     
     override func presenterCreating() {
         ServiceInjectorAssembly.instance().inject(into: self)

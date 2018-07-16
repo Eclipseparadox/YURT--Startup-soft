@@ -393,7 +393,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4q-UZ-SXe">
-                                                <rect key="frame" x="150" y="376" width="210" height="50"/>
+                                                <rect key="frame" x="150" y="407" width="210" height="50"/>
                                                 <color key="backgroundColor" name="main"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="GOC-3Y-nDg"/>
@@ -434,7 +434,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="O8I-LU-Tcf" firstAttribute="top" secondItem="Phf-zd-GHG" secondAttribute="top" constant="8" id="Ie1-hk-z7X"/>
                                                     <constraint firstAttribute="height" constant="185" id="SNT-yF-EF4"/>
@@ -443,6 +443,15 @@
                                                     <constraint firstAttribute="bottom" secondItem="O8I-LU-Tcf" secondAttribute="bottom" constant="8" id="zNC-Vy-Qn2"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The reason must be not less than 50 characters and not more than 200 characters long." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKI-IE-uSB">
+                                                <rect key="frame" x="15" y="369" width="345" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="z4c-4g-99t"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                                <color key="textColor" name="hintColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -451,7 +460,6 @@
                                             <constraint firstAttribute="trailing" secondItem="Lyp-yf-b3b" secondAttribute="trailing" constant="15" id="65F-cE-3Vu"/>
                                             <constraint firstItem="yee-GZ-gw5" firstAttribute="top" secondItem="r3q-7a-Cd8" secondAttribute="bottom" constant="20" id="66a-vc-96w"/>
                                             <constraint firstItem="IEv-Ol-It6" firstAttribute="leading" secondItem="yb8-a1-xs7" secondAttribute="leading" constant="15" id="As5-SD-sTq"/>
-                                            <constraint firstItem="v4q-UZ-SXe" firstAttribute="top" secondItem="Phf-zd-GHG" secondAttribute="bottom" constant="15" id="ENd-wb-JDN"/>
                                             <constraint firstItem="Lyp-yf-b3b" firstAttribute="top" secondItem="0qI-Bx-8NY" secondAttribute="bottom" constant="8" id="MVG-kJ-NqL"/>
                                             <constraint firstItem="fDv-oo-mwz" firstAttribute="top" secondItem="0qI-Bx-8NY" secondAttribute="bottom" constant="10" id="We2-rE-NnK"/>
                                             <constraint firstItem="0qI-Bx-8NY" firstAttribute="leading" secondItem="r3q-7a-Cd8" secondAttribute="trailing" constant="15" id="Yap-uj-vxF"/>
@@ -460,12 +468,16 @@
                                             <constraint firstItem="yee-GZ-gw5" firstAttribute="leading" secondItem="yb8-a1-xs7" secondAttribute="leading" id="d0j-7Q-rX9"/>
                                             <constraint firstAttribute="trailing" secondItem="Phf-zd-GHG" secondAttribute="trailing" constant="15" id="dSY-IK-im3"/>
                                             <constraint firstItem="IEv-Ol-It6" firstAttribute="top" secondItem="yee-GZ-gw5" secondAttribute="bottom" constant="27" id="eIT-uZ-m3e"/>
+                                            <constraint firstAttribute="trailing" secondItem="IKI-IE-uSB" secondAttribute="trailing" constant="15" id="hNI-FG-3ZA"/>
+                                            <constraint firstItem="IKI-IE-uSB" firstAttribute="top" secondItem="Phf-zd-GHG" secondAttribute="bottom" constant="8" id="jGD-Bn-sGm"/>
                                             <constraint firstItem="Phf-zd-GHG" firstAttribute="leading" secondItem="yb8-a1-xs7" secondAttribute="leading" constant="15" id="jjL-Qp-Uds"/>
+                                            <constraint firstItem="IKI-IE-uSB" firstAttribute="leading" secondItem="yb8-a1-xs7" secondAttribute="leading" constant="15" id="jkP-L8-Yt8"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="v4q-UZ-SXe" secondAttribute="bottom" constant="25" id="ke8-vM-Fwg"/>
                                             <constraint firstItem="r3q-7a-Cd8" firstAttribute="top" secondItem="yb8-a1-xs7" secondAttribute="top" constant="25" id="qRF-ql-xvP"/>
                                             <constraint firstAttribute="trailing" secondItem="yee-GZ-gw5" secondAttribute="trailing" id="tOS-Lc-tTI"/>
                                             <constraint firstAttribute="trailing" secondItem="0qI-Bx-8NY" secondAttribute="trailing" constant="15" id="uw4-9v-fU2"/>
                                             <constraint firstItem="Phf-zd-GHG" firstAttribute="top" secondItem="IEv-Ol-It6" secondAttribute="bottom" constant="8" id="x0g-nR-3R1"/>
+                                            <constraint firstItem="v4q-UZ-SXe" firstAttribute="top" secondItem="IKI-IE-uSB" secondAttribute="bottom" constant="8" id="xvL-03-nMU"/>
                                             <constraint firstItem="Lyp-yf-b3b" firstAttribute="leading" secondItem="fDv-oo-mwz" secondAttribute="trailing" constant="8" id="yOE-DT-0In"/>
                                         </constraints>
                                     </view>
@@ -491,6 +503,7 @@
                     </view>
                     <connections>
                         <outlet property="btnSend" destination="v4q-UZ-SXe" id="PBB-dX-p2j"/>
+                        <outlet property="cnstrHintHeight" destination="z4c-4g-99t" id="MCT-1o-KfS"/>
                         <outlet property="imgProfile" destination="r3q-7a-Cd8" id="b6E-Ha-sDt"/>
                         <outlet property="lblFulname" destination="0qI-Bx-8NY" id="01d-v8-G1R"/>
                         <outlet property="lblLocation" destination="Lyp-yf-b3b" id="Nqv-un-2Hd"/>
@@ -518,6 +531,9 @@
         </namedColor>
         <namedColor name="documentsBackground">
             <color red="0.17254901959999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="hintColor">
+            <color red="0.25098039215686274" green="0.4823529411764706" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="main">
             <color red="0.054901960780000002" green="0.54901960780000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

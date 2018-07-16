@@ -23,6 +23,7 @@ class RejectOfferViewController: SttViewController<RejectOfferPresenter>, Reject
     @IBOutlet weak var tvComment: UITextView!
     @IBOutlet weak var viewTvBackground: UIView!
     @IBOutlet weak var btnSend: UIButton!
+    @IBOutlet weak var cnstrHintHeight: NSLayoutConstraint!
     
     var tvHandler = SttHandlerTextView()
     
@@ -37,9 +38,18 @@ class RejectOfferViewController: SttViewController<RejectOfferPresenter>, Reject
         lblLocation.text = presenter.data.lender.physicalAddress
         imgProfile.createCircle()
 
+        cnstrHintHeight.constant = 0
         tvComment.delegate = tvHandler
-        tvHandler.addTarget(type: .didBeginEditing, delegate: self, handler: { (vc, _) in vc.viewTvBackground.layer.borderColor = UIColor(named: "main")!.cgColor }, textField: tvComment)
-        tvHandler.addTarget(type: .didEndEditing, delegate: self, handler: { (vc, _) in vc.viewTvBackground.layer.borderColor = UIColor(named: "borderLight")!.cgColor }, textField: tvComment)
+        tvHandler.addTarget(type: .didBeginEditing, delegate: self, handler: { (vc, _) in
+            vc.viewTvBackground.layer.borderColor = UIColor(named: "main")!.cgColor
+            vc.cnstrHintHeight.constant = 30
+            UIView.animate(withDuration: 0.3, animations: { self.view.layoutIfNeeded() })
+        }, textField: tvComment)
+        tvHandler.addTarget(type: .didEndEditing, delegate: self, handler: {
+            (vc, _) in vc.viewTvBackground.layer.borderColor = UIColor(named: "borderLight")!.cgColor
+            vc.cnstrHintHeight.constant = 0
+            UIView.animate(withDuration: 0.3, animations: { self.view.layoutIfNeeded() })
+        }, textField: tvComment)
         tvHandler.addTarget(type: .editing, delegate: self, handler: { $0.presenter.comment = $1.text }, textField: tvComment)
         
         viewTvBackground.setBorder(color: UIColor(named: "borderLight")!, size: 1)

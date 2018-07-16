@@ -46,4 +46,11 @@ class ResetViewController: SttViewController<ResetPresenter>, ResetDelegate {
         
         presenter.save.useIndicator(button: btnSave)
     }
+    
+    // MARK: -- ResetDelegate
+    
+    func reloadError() {
+        inpPassword.errorText = presenter.passwordError.1
+        inpConfirmPassword.errorText = presenter.confirmPassworError.1
+    }
 }

@@ -33,10 +33,8 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
             
             let (parametrs, url) = arg
             
-            if "\(url)".hasPrefix("app://resetpassword") {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.navigate(to: "resetPassowrd", withParametr: parametrs, callback: nil)
-                }
+            if "\(url)".hasPrefix("appyurt://resetpassword") {
+                self.navigate(to: "resetPassowrd", withParametr: parametrs, callback: nil)
             }
         })
         

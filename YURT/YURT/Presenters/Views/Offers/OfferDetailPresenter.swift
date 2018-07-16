@@ -12,6 +12,7 @@ enum OfferDetailType {
     case currency
     case percent
     case years
+    case months
     case count
     case days
 }

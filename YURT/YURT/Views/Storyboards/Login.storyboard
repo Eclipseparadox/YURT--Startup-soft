@@ -1086,7 +1086,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="closeClick:" destination="EnA-C8-Jyw" eventType="touchUpInside" id="PyZ-L0-rLO"/>
+                                                    <action selector="onBack:" destination="EnA-C8-Jyw" eventType="touchUpInside" id="du3-02-Mhc"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Password successfully changed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kER-Pq-oUz">
@@ -1138,7 +1138,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Forgot Password" id="c4x-8h-bd1"/>
                     <connections>
-                        <outlet property="cntrHeight" destination="X6h-bh-9JW" id="gMN-hG-HP2"/>
+                        <outlet property="cnstrHeight" destination="X6h-bh-9JW" id="FSQ-lF-Jmd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZ5-Oo-7gu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1292,6 +1292,7 @@
                         <outlet property="cnstrHeight" destination="XtI-6j-OMq" id="Mey-Up-pE9"/>
                         <outlet property="inpConfirmPassword" destination="Ls3-Tb-U18" id="jdl-Nq-50q"/>
                         <outlet property="inpPassword" destination="g7m-l8-8Ui" id="Wp7-fw-O9K"/>
+                        <segue destination="EnA-C8-Jyw" kind="presentation" identifier="confirmReset" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="gn5-b7-DTK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6g-O7-TUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
