@@ -1,5 +1,5 @@
 //
-//  ForgotPasswordStep2Presenter.swift
+//  ResetPasswordApiModel.swift
 //  YURT
 //
 //  Created by Standret on 11.07.18.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class ForgotPasswordStep2Presenter: SttPresenter<SttViewContolable> {
-    
+struct ForgotPasswordApiModel: Codable {
+    let email: String
 }

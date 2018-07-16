@@ -1,5 +1,5 @@
 //
-//  ResetPasswordApiModel.swift
+//  SttEmptyPresenter.swift
 //  YURT
 //
 //  Created by Standret on 16.07.18.
