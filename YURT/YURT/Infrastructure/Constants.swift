@@ -87,7 +87,7 @@ class Constants {
     static let lastNamePattern = "^[A-Za-z0-9 _.,'()-]{1,60}$"
     static let phoneNumber = "^(\\+?[0-9 ()-]){10,25}$"
     static let skypePattern = "^[a-zA-Z]{1}[a-zA-Z0-9\\._-]{5,31}$"
-    static let linkedInUrlPattern = "[(https:\\/\\/www\\.linkedin.com)]{20}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&\\/=]*)+"
+    static let linkedInUrlPattern = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=-]{1,256}\\.[a-z]{1,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
     
     static let passwordRequiered = "A digit, a lowercase, an uppercase are required"
     

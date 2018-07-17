@@ -19,6 +19,8 @@ class ResetViewController: SttViewController<ResetPresenter>, ResetDelegate {
     private var passwordConfirmHandler = SttHandlerTextField()
     
     @IBAction func onSave(_ sender: Any) {
+        presenter.password = inpPassword.textField.text ?? ""
+        presenter.passwordConfirm = inpConfirmPassword.textField.text ?? ""
         presenter.save.execute()
     }
     
@@ -26,6 +28,9 @@ class ResetViewController: SttViewController<ResetPresenter>, ResetDelegate {
         super.viewDidLoad()
 
         style = .lightContent
+        
+        inpPassword.deleteErrorAfterStartEditing = false
+        inpConfirmPassword.deleteErrorAfterStartEditing = false
         
         inpPassword.textField.isSecureTextEntry = true
         inpConfirmPassword.textField.isSecureTextEntry = true
@@ -52,5 +57,8 @@ class ResetViewController: SttViewController<ResetPresenter>, ResetDelegate {
     func reloadError() {
         inpPassword.errorText = presenter.passwordError.1
         inpConfirmPassword.errorText = presenter.confirmPassworError.1
+        if presenter.passwordError.0 == .ok && presenter.confirmPassworError.0 != .ok {
+            inpPassword.errorText = " "
+        }
     }
 }

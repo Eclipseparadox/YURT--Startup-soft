@@ -51,7 +51,9 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         progressBackground.createCircle(dominateWidth: false, clipToBounds: true)
         
         print ("---> \(presenter.documents)")
-        collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
+        if presenter.documents != nil {
+            collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
+        }
         collectionDocuments.dataSource = collectionSource
                 
         let width = widthScreen / 2 - 22

@@ -76,7 +76,7 @@ enum ValidateField {
         case .lastName:
             return Validate.validate(object: rawObject, field: "Last Name", pattern: Constants.lastNamePattern, min: Constants.minLastName, max: Constants.maxLastName)
         case .location:
-            return Validate.validate(object: rawObject, field: "Location", isReuired: false, min: Constants.minLocation, max: Constants.maxLocation)
+            return Validate.validate(object: rawObject, field: "Location", min: Constants.minLocation, max: Constants.maxLocation)
         case .password:
             return Validate.validate(object: rawObject, field: "Password", pattern: Constants.passwordPattern, min: Constants.minPassword, max: Constants.maxPassword, customIncorrectError: Constants.passwordRequiered)
         case .confirmPassword:

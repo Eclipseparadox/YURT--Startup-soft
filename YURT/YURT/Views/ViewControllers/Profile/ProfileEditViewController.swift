@@ -63,7 +63,7 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
                                     cellIdentifiers: [SttIdentifiers(identifers: "ProfileEditItemCell", nibName: nil)],
                                     collection: presenter.data)
         dataCollection.dataSource = source
-        cnstrTableView.constant = 70 * CGFloat(presenter.data.count)
+        cnstrTableView.constant = 74 * CGFloat(presenter.data.count)
         
     }
     

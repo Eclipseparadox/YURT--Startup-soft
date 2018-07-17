@@ -29,6 +29,7 @@ class DocumentService: DocumentServiceType {
     func uploadDocument(type: DocumentType, image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<(Bool, String?)> {
         let _type = type.isFinancies() ? DocumentTypeApiModel.financial : DocumentTypeApiModel.personal
         return _notificatonError.useError(observable: _dataProvider.uploadImage(image: image, progresHandler: progresHandler)
+            .inBackground()
             .flatMap( { self._dataProvider.addDocument(model: AddDocumentApiModel(id: nil, type: _type, docType: type, image: $0)) } )
             .map({ (true, $0.id) }))
             .inBackground()
@@ -70,6 +71,7 @@ class DocumentService: DocumentServiceType {
         return self._notificatonError.useError(observable: Observable<(SttObservableCollection<(SttObservableCollection<DocumentEntityPresenter>, DocumentsEntityHeaderPresenter)>, Bool)>.create { (observer) -> Disposable in
             observer.onNext((documents, false))
             return self._dataProvider.getDocument()
+                .inBackground()
                 .subscribe(onNext: { (models) in
                     documents[0].1.uploadedsCount = 0
                     documents[1].1.uploadedsCount = 0
@@ -93,6 +95,7 @@ class DocumentService: DocumentServiceType {
                     observer.onNext((documents, models.isSentToReview))
                 }, onError: observer.onError(_:), onCompleted: observer.onCompleted)
         })
+        .observeInUI()
     }
     
     func deleteDocument(id: String) -> Observable<Bool> {

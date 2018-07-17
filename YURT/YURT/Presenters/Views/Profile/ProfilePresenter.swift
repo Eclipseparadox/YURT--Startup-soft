@@ -48,9 +48,11 @@ class ProfilePresenter: SttPresenter<ProfileDelegate> {
     // MARK: -- API
     
     func navigateToProfile() {
+        if profileVM != nil {
         self.delegate?.navigate(to: "ProfileEdit",
                       withParametr: self.profileVM,
                       callback: { [weak self] _ in self?.getProfile() })
+        }
     }
     
     func signOut() {

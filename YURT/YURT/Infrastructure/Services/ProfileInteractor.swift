@@ -26,9 +26,9 @@ class ProfileInteractor: ProfileInteractorType {
     
     func getProfile() -> Observable<ProfileViewModel> {
         return _notificatonError.useError(observable: _dataProvider.getProfile()
-            .map({ ProfileViewModel(raw: $0) })
+            .map({ ProfileViewModel(raw: $0) }))
             .inBackground()
-            .observeInUI())
+            .observeInUI()
     }
     
     func updateProfile(firstName: String, lastName: String, location: String, phone: String,
@@ -44,9 +44,9 @@ class ProfileInteractor: ProfileInteractorType {
                                      skype: skype,
                                      location: location,
                                      education: education,
-                                     work: role))
+                                     work: role)))
             .inBackground()
-            .observeInUI())
+            .observeInUI()
         
     }
 }

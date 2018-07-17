@@ -90,7 +90,12 @@ class InputBox: SttTemplate {
                 error.textColor = UIColor(named: "hintColor")
             }
         }
-        underline.backgroundColor = tintActiveColor
+        if !SttString.isWhiteSpace(string: errorText) && SttString.isWhiteSpace(string: hintText) {
+            underline.backgroundColor = tintErrorColor
+        }
+        else {
+            underline.backgroundColor = tintActiveColor
+        }
         fieldName.textColor = tintActiveColor
         
 //        UIView.animate(withDuration: 0.3, animations: {
@@ -102,7 +107,7 @@ class InputBox: SttTemplate {
     @objc
     func tfEndEditing(_ tf: UITextField) {
         isEditing = false
-        underline.backgroundColor = tintDisableColor
+        underline.backgroundColor = !(errorText ?? "").isEmpty ? tintErrorColor : tintDisableColor
         fieldName.textColor = tintDisableColor
         
 //        if ((textField.text ?? "").isEmpty) {

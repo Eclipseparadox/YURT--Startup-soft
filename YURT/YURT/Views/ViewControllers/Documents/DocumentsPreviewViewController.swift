@@ -17,16 +17,25 @@ class DocumentsPreviewViewController: SttViewController<DocumentPreviewPresenter
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var mainIndicator: UIActivityIndicatorView!
     @IBOutlet weak var webView: UIWebView!
+    
+    private var fileUrl: URL!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         webView.delegate = self
         style = .lightContent
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.shared.open(fileUrl, options: [:], completionHandler: nil)
+    }
         
     func insertData(fileUrl: String, name: String) {
         lblTitle.text = name
-        if ["pdf", "doc", "docx"].contains(fileUrl.components(separatedBy: ".").last!.lowercased()) {
+        self.fileUrl = URL(string: fileUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!
+        if ["pdf", "docx"].contains(fileUrl.components(separatedBy: ".").last!.lowercased()) {
             if let url = URL(string: fileUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 webView!.loadRequest(URLRequest(url: url))
                 mainIndicator.startAnimating()

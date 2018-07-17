@@ -27,11 +27,17 @@ class OfferInteractor: OfferInteractorType {
     func getOffers(type: OfferStatus, skip: Int) -> Observable<[LenderPresenter]> {
         return _notificatonError.useError(observable: _dataProvider.getOffer(status: type, skip: skip)
             .map({ $0.map({ LenderPresenter(data: $0 ) }) }))
+            .inBackground()
+            .observeInUI()
     }
     func aproveOffer(id: String) -> Observable<Bool> {
         return _notificatonError.useError(observable: _dataProvider.aproveOffer(id: id))
+            .inBackground()
+            .observeInUI()
     }
     func rejectOffer(id: String, message: String) -> Observable<Bool> {
         return _notificatonError.useError(observable: _dataProvider.rejectOffer(id: id, message: message))
+            .inBackground()
+            .observeInUI()
     }
 }

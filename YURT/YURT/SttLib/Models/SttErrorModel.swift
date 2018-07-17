@@ -27,7 +27,7 @@ enum SttBaseError: Error, SttBaseErrorType {
             result = ("Realm: \(tempRes.0)", tempRes.1)
         case .apiError(let concreate):
             let tempRes = concreate.getMessage()
-            result = ("Api: \(tempRes.0)", tempRes.1)
+            result = (tempRes.1, "Api: \(tempRes.0) \(tempRes.1)")
         case .connectionError(let concreate):
             let tempRes = concreate.getMessage()
             result = ("Connection: \(tempRes.0)", tempRes.1)
@@ -74,7 +74,7 @@ enum SttApiError: SttBaseErrorType {
         var result: (String, String)!
         switch self {
         case .badRequest(let error):
-            result = ("Bad request", "\(error.code): \(error.description)")
+            result = ("Bad request", "\(error.description)")
         case .internalServerError(let message):
             result = ("Internal Server Error", message)
         case .otherApiError(let code):

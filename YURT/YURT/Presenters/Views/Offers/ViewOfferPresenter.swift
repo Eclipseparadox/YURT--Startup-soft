@@ -56,7 +56,8 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDel
     }
     
     func onClick(url: String, fileName: String) {
-        delegate?.navigate(storyboard: Storyboard.offer, to: DocumentPreviewPresenter.self, typeNavigation: .modality, withParametr: (url, fileName))
+        UIApplication.shared.open(URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, options: [:], completionHandler: nil)
+       // delegate?.navigate(storyboard: Storyboard.offer, to: DocumentPreviewPresenter.self, typeNavigation: .modality, withParametr: (url, fileName))
     }
     
     func rejectClick() {

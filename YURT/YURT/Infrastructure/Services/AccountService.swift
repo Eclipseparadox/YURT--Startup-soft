@@ -95,7 +95,12 @@ class AccountService: AccountServiceType {
         return self._notificatonError.useError(observable:
                 self._dataProvider.signIn(email: email, password: password)
                     .map({ _ in (true, "") }), ignoreBadRequest: true)
-            .catchError({ _ in Observable.from([(false, "Email or password is incorrect")])})
+            .catchError({ er in
+                if (er as! SttBaseError).getMessage().1.hasPrefix("Api: Bad request") {
+                    return Observable.from([(false, "Email or password is incorrect")])
+                }
+                throw er
+                })
             .inBackground()
             .observeInUI()
     }

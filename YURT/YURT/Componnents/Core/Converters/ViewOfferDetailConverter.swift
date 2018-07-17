@@ -20,7 +20,7 @@ class ViewOfferDetailConverter: SttConverterType {
         case .days: return CountableConverter().convert(value: (Int(value.0), "day"))
         case .percent: return "\(value.0)%"
         case .years: return CountableConverter().convert(value: (Int(value.0), "year"))
-        case .months: return CountableConverter().convert(value: (Int(value.0 * 12), "month"))
+        case .months: return CountableConverter().convert(value: (Int(value.0), "month"))
         }
     }
 }

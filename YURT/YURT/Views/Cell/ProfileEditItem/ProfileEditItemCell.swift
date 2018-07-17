@@ -41,9 +41,9 @@ class ProfileEditItemCell: SttTableViewCell<ProfileEditItemPresenter>, ProfileEd
         handler.addTarget(type: .editing, delegate: self, handler: { [weak self] (_, t) in self?.presenter.value = t.text }, textField: inputBox.textField)
         handler.addTarget(type: .shouldReturn, delegate: self, handler: { [weak self] (_, _) in self?.presenter.onShouldReturn() }, textField: inputBox.textField)
         inputBox.textField.delegate = handler
-        inputBox.tintErrorColor = UIColor(named: "error")
-        inputBox.tintActiveColor = UIColor(named: "main")
-        inputBox.tintDisableColor = UIColor(named: "disableFeildLight")
+//        inputBox.tintErrorColor = UIColor(named: "error")
+//        inputBox.tintActiveColor = UIColor(named: "main")
+//        inputBox.tintDisableColor = UIColor(named: "disableFeildLight")
     }
     
     // MARK: -- ProfileEditDelegate
