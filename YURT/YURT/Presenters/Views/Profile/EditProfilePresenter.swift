@@ -15,6 +15,7 @@ protocol EditProfileDelegate {
     func reloadPhoto(image: Image)
     func saveStateChanged()
     func saveCompleted(status: Bool)
+    func hideKeyboard()
 }
 
 class EditProfilePresenter: SttPresenter<EditProfileDelegate> {
@@ -77,6 +78,12 @@ class EditProfilePresenter: SttPresenter<EditProfileDelegate> {
         data.append(ProfileEditItemPresenter(identifier: "Education", value: param.profileData.education ?? "",
                                              field: ValidateField.education, callBack: { [weak self] in self?.reCheckError() },
                                              mediator: mediator, last: data.lastOrNil()))
+        
+        _ = mediator.dataObservable.subscribe(onNext: { (field) in
+            if field == self.data.lastOrNil()?.filed {
+                self.delegate?.hideKeyboard()
+            }
+        })
     }
     
     func reCheckError() {

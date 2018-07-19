@@ -40,6 +40,7 @@ class StartPagePresenter: SttPresenter<StartPageDelegate> {
         _ = signIn.useWork(observable: _accountService.signIn(email: email!, password: password!))
             .subscribe(onNext: { (res) in
                 if res.0 {
+                    GlobalVariable.isRegistration = false
                     self.delegate!.loadStoryboard(storyboard: Storyboard.main)
                 }
                 else {

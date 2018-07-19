@@ -26,6 +26,7 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
     var cameraPicker: SttCamera!
     
     @IBAction func changePhotoClick(_ sender: Any) {
+        isClosed = false
         cameraPicker.showPopuForDecision()
     }
     
@@ -65,6 +66,20 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
         dataCollection.dataSource = source
         cnstrTableView.constant = 74 * CGFloat(presenter.data.count)
         
+        let newBackButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(onBackBarButton(_:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    
+    @objc func onBackBarButton(_ send: Any) {
+        if presenter.canSave {
+            let actionController = UIAlertController(title: nil, message: "Are you sure you want to continue?\nChanges will not be saved", preferredStyle: .actionSheet)
+            actionController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (x) in
+                self.close(animated: true)
+            }))
+            actionController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+            present(actionController, animated: true, completion: nil)
+        }
+        self.close(animated: true)
     }
     
     @objc func onClickOnPhoto(_ send: Any) {
@@ -75,8 +90,14 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
         self.presenter.save.execute()
     }
     
+    private var isClosed = true
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        isClosed = true
         navigationController?.navigationBar.tintColor = UIColor.black
     }
     
@@ -107,4 +128,7 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
         }
     }
     
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
 }

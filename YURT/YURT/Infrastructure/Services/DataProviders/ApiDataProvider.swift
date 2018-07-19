@@ -39,6 +39,7 @@ protocol ApiDataProviderType {
     func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
     func aproveOffer(id: String) -> Observable<Bool>
     func rejectOffer(model: RejectApiModel) -> Observable<Bool>
+    func getCount() -> Observable<OfferCountApiModel>
     
     // mobile/profile
     func getProfile() -> Observable<ProfileApiModel>
@@ -139,6 +140,10 @@ class ApiDataProvider: ApiDataProviderType {
     func rejectOffer(model: RejectApiModel) -> Observable<Bool> {
         return _httpService.post(controller: .mobileOffers("reject"), data: model, insertToken: true)
                 .getResult()
+    }
+    func getCount() -> Observable<OfferCountApiModel> {
+        return _httpService.get(controller: .mobileOffers("offersCounts"), insertToken: true)
+            .getResult(ofType: OfferCountApiModel.self)
     }
     
     // mobile/profile

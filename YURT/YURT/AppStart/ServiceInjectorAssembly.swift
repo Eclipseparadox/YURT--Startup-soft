@@ -131,6 +131,13 @@ class ServiceInjectorAssembly: Assembly {
         }
     }
     
+    func inject(into service: OfferPresenter) {
+        let _:OfferPresenter = define(init: service) {
+            $0._offerInteractor = self.serviceAssembly.offerInteractor
+            return $0
+        }
+    }
+    
     //  Inject Service into service
     
     

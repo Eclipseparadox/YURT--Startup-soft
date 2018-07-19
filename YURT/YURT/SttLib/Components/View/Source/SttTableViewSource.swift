@@ -18,7 +18,7 @@ class SttTableViewSource<T: SttViewInjector>: NSObject, UITableViewDataSource {
     var cellIdentifiers: [String] { return _cellIdentifiers }
     
     var useAnimation: Bool = false
-    var maxAnimationCount = 2
+    var maxAnimationCount = 1
     
     private var _collection: SttObservableCollection<T>!
     var collection: SttObservableCollection<T> { return _collection }

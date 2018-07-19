@@ -13,6 +13,7 @@ protocol OfferInteractorType {
     func getOffers(type: OfferStatus, skip: Int) -> Observable<[LenderPresenter]>
     func aproveOffer(id: String) -> Observable<Bool>
     func rejectOffer(id: String, message: String) -> Observable<Bool>
+    func getCount() -> Observable<OfferCountApiModel>
 }
 
 class OfferInteractor: OfferInteractorType {
@@ -37,6 +38,11 @@ class OfferInteractor: OfferInteractorType {
     }
     func rejectOffer(id: String, message: String) -> Observable<Bool> {
         return _notificatonError.useError(observable: _dataProvider.rejectOffer(id: id, message: message))
+            .inBackground()
+            .observeInUI()
+    }
+    func getCount() -> Observable<OfferCountApiModel> {
+        return _notificatonError.useError(observable: _dataProvider.getCount())
             .inBackground()
             .observeInUI()
     }

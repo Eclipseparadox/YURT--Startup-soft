@@ -12,6 +12,8 @@ import KeychainSwift
 import RealmSwift
 
 protocol AccountServiceType: class {
+    var isSignIn: Bool { get }
+    
     func existsEmail(email: String) -> Observable<Bool>
     func uploadUserAvatar(image: UIImage, progresHandler: ((Float) -> Void)?) -> Observable<ResultUploadImageApiModel>
     func signUp(firstName: String, lastName: String, location: String?, phone: String?,
@@ -26,6 +28,9 @@ protocol AccountServiceType: class {
 }
 
 class AccountService: AccountServiceType {
+    
+    private var _isSignIn: Bool = false
+    var isSignIn: Bool { return _isSignIn }
     
     var _dataProvider: DataProviderType!
     var _notificatonError: NotificationErrorType!
@@ -92,12 +97,13 @@ class AccountService: AccountServiceType {
             .observeInUI()
     }
     func signIn(email: String, password: String)  -> Observable<(Bool, String)> {
+        _isSignIn = true
         return self._notificatonError.useError(observable:
                 self._dataProvider.signIn(email: email, password: password)
                     .map({ _ in (true, "") }), ignoreBadRequest: true)
             .catchError({ er in
                 if (er as! SttBaseError).getMessage().1.hasPrefix("Api: Bad request") {
-                    return Observable.from([(false, "Email or password is incorrect")])
+                    return Observable.from([(false, "Email or password is incorrect.")])
                 }
                 throw er
                 })
@@ -105,6 +111,7 @@ class AccountService: AccountServiceType {
             .observeInUI()
     }
     func externalLogin(token: String) -> Observable<Bool> {
+        _isSignIn = true
         return self._notificatonError.useError(observable: self._dataProvider.externalLogin(token: token)
             .map({ _ in true }))
     }

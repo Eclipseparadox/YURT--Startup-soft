@@ -112,7 +112,7 @@
                                                 <rect key="frame" x="10" y="258" width="355" height="180"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="um odioque civiuda." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-fH-gHx">
-                                                        <rect key="frame" x="22" y="10" width="311" height="40"/>
+                                                        <rect key="frame" x="16" y="10" width="323" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Qiu-rA-r7H"/>
@@ -142,16 +142,16 @@
                                                         <cells/>
                                                     </collectionView>
                                                 </subviews>
-                                                <color key="backgroundColor" name="background"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="31h-Kt-7rB" secondAttribute="bottom" constant="11" id="4lP-KF-RoL"/>
                                                     <constraint firstAttribute="trailing" secondItem="lZA-Vz-7Gk" secondAttribute="trailing" constant="22" id="66l-Ba-MNI"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Qpy-cO-gXb"/>
                                                     <constraint firstAttribute="trailing" secondItem="31h-Kt-7rB" secondAttribute="trailing" constant="22" id="Tny-lZ-2zF"/>
                                                     <constraint firstItem="1Yg-fH-gHx" firstAttribute="top" secondItem="m3a-VO-rvF" secondAttribute="top" constant="10" id="UY9-6C-ygf"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1Yg-fH-gHx" secondAttribute="trailing" constant="22" id="bbW-Xt-i8K"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1Yg-fH-gHx" secondAttribute="trailing" constant="16" id="bbW-Xt-i8K"/>
                                                     <constraint firstItem="lZA-Vz-7Gk" firstAttribute="top" secondItem="1Yg-fH-gHx" secondAttribute="bottom" constant="10" id="cKR-WK-9x0"/>
-                                                    <constraint firstItem="1Yg-fH-gHx" firstAttribute="leading" secondItem="m3a-VO-rvF" secondAttribute="leading" constant="22" id="jUB-lG-s7A"/>
+                                                    <constraint firstItem="1Yg-fH-gHx" firstAttribute="leading" secondItem="m3a-VO-rvF" secondAttribute="leading" constant="16" id="jUB-lG-s7A"/>
                                                     <constraint firstItem="31h-Kt-7rB" firstAttribute="top" secondItem="lZA-Vz-7Gk" secondAttribute="bottom" constant="28" id="p9D-Uh-deH"/>
                                                     <constraint firstItem="lZA-Vz-7Gk" firstAttribute="leading" secondItem="m3a-VO-rvF" secondAttribute="leading" constant="22" id="vRp-aa-74L"/>
                                                     <constraint firstItem="31h-Kt-7rB" firstAttribute="top" secondItem="m3a-VO-rvF" secondAttribute="top" priority="250" constant="11" id="w7h-3Q-cTn"/>
@@ -507,6 +507,7 @@
                         <outlet property="imgProfile" destination="r3q-7a-Cd8" id="b6E-Ha-sDt"/>
                         <outlet property="lblFulname" destination="0qI-Bx-8NY" id="01d-v8-G1R"/>
                         <outlet property="lblLocation" destination="Lyp-yf-b3b" id="Nqv-un-2Hd"/>
+                        <outlet property="scrollView" destination="ATF-oM-mzx" id="mOo-GE-dgp"/>
                         <outlet property="tvComment" destination="O8I-LU-Tcf" id="dM2-kb-2lj"/>
                         <outlet property="viewTvBackground" destination="Phf-zd-GHG" id="pAy-HP-D9l"/>
                     </connections>
@@ -520,9 +521,6 @@
         <image name="close" width="29" height="29"/>
         <image name="location" width="13" height="13"/>
         <image name="offers" width="29" height="29"/>
-        <namedColor name="background">
-            <color red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="backgroundProgressBar">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

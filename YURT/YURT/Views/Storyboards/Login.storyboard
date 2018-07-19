@@ -370,7 +370,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPW-Vv-74Q">
-                                        <rect key="frame" x="173" y="689" width="69" height="27"/>
+                                        <rect key="frame" x="77.666666666666686" y="689" width="260" height="27"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationMark" translatesAutoresizingMaskIntoConstraints="NO" id="OsJ-HD-Xr9">
                                                 <rect key="frame" x="0.0" y="4" width="19" height="20"/>
@@ -380,8 +380,8 @@
                                                     <constraint firstAttribute="width" constant="19" id="YyK-II-5hl"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feg-6p-crK">
-                                                <rect key="frame" x="23" y="3.6666666666666288" width="46" height="21.333333333333332"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bka bkanpoewfjo;eisnm[pewc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feg-6p-crK">
+                                                <rect key="frame" x="23" y="2.6666666666666288" width="237" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -425,17 +425,16 @@
                     <connections>
                         <outlet property="lblLocation" destination="feg-6p-crK" id="mV0-rJ-cOE"/>
                         <outlet property="lblName" destination="PbM-hQ-Uet" id="5ZD-0G-JSf"/>
-                        <segue destination="JN5-M4-gw6" kind="presentation" identifier="touchId" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="eZZ-FF-4fY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQs-Ea-mAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293" y="135"/>
+            <point key="canvasLocation" x="3132" y="135"/>
         </scene>
         <!--TouchID View Controller-->
         <scene sceneID="KP5-kk-1D9">
             <objects>
-                <viewController id="JN5-M4-gw6" customClass="TouchIDViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="JN5-M4-gw6" customClass="TouchIDViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uz3-If-VzK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -509,15 +508,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BHB-ep-WTi"/>
                     </view>
+                    <connections>
+                        <segue destination="cXy-oJ-LMm" kind="presentation" identifier="welcome" id="TVM-vg-Du2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcp-ev-aFD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3160.8695652173915" y="134.5108695652174"/>
+            <point key="canvasLocation" x="2246" y="135"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="aKx-d7-IsS">
             <objects>
-                <viewController id="H6Z-CF-K0C" customClass="SignUpViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="H6Z-CF-K0C" customClass="SignUpViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GUH-5c-zoS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -823,14 +825,14 @@
                         <outlet property="inpPhone" destination="SUF-l2-GlR" id="VOJ-uw-GDE"/>
                         <outlet property="maskOnPhoto" destination="r80-fu-fdW" id="MuD-Jb-sAd"/>
                         <outlet property="vtakePhoto" destination="pku-1X-oNg" id="q6v-6Q-srZ"/>
-                        <segue destination="cXy-oJ-LMm" kind="presentation" identifier="welcome" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="GI1-PY-PvS"/>
+                        <segue destination="JN5-M4-gw6" kind="presentation" identifier="touchId" id="MVU-u8-pq4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Z8-To-DH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1386" y="135"/>
         </scene>
-        <!--Forgot Password-->
+        <!--Forgot Password View Controller-->
         <scene sceneID="BR9-M3-g23">
             <objects>
                 <viewController id="GTl-qq-sKU" customClass="ForgotPasswordViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
@@ -888,13 +890,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We just need your registered email address to send you password reset" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ax-am-pyf">
-                                                <rect key="frame" x="40" y="256" width="334" height="33"/>
+                                                <rect key="frame" x="40" y="256.33333333333331" width="334" height="33"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRA-lV-6nC">
-                                                <rect key="frame" x="126.99999999999999" y="172.33333333333334" width="160.66666666666663" height="23.666666666666657"/>
+                                                <rect key="frame" x="126.99999999999999" y="184.66666666666666" width="160.66666666666663" height="23.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -906,7 +908,7 @@
                                             <constraint firstItem="gZX-5O-Lpn" firstAttribute="top" secondItem="MMW-gL-pnK" secondAttribute="bottom" constant="15" id="9sd-Hd-1Ek"/>
                                             <constraint firstItem="2Ax-am-pyf" firstAttribute="leading" secondItem="Wu9-zk-Gwj" secondAttribute="leading" constant="40" id="Bdt-RW-Bob"/>
                                             <constraint firstItem="2Ax-am-pyf" firstAttribute="centerY" secondItem="Wu9-zk-Gwj" secondAttribute="centerY" constant="-61" id="HPv-uL-p3n"/>
-                                            <constraint firstItem="2Ax-am-pyf" firstAttribute="top" secondItem="rRA-lV-6nC" secondAttribute="bottom" constant="60" id="Hj5-9y-rpV"/>
+                                            <constraint firstItem="2Ax-am-pyf" firstAttribute="top" secondItem="rRA-lV-6nC" secondAttribute="bottom" constant="48" id="Hj5-9y-rpV"/>
                                             <constraint firstAttribute="trailing" secondItem="2Ax-am-pyf" secondAttribute="trailing" constant="40" id="Kmx-9k-MMn"/>
                                             <constraint firstItem="gZX-5O-Lpn" firstAttribute="leading" secondItem="Wu9-zk-Gwj" secondAttribute="leading" constant="40" id="S1O-aP-n0f"/>
                                             <constraint firstItem="rRA-lV-6nC" firstAttribute="centerX" secondItem="Wu9-zk-Gwj" secondAttribute="centerX" id="SKR-9I-hyd"/>
@@ -945,11 +947,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V4m-BT-eCw"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Forgot Password" id="cpO-Nw-F95"/>
+                    <navigationItem key="navigationItem" id="cpO-Nw-F95"/>
                     <connections>
                         <outlet property="btnReset" destination="gZX-5O-Lpn" id="xko-LH-Ipc"/>
                         <outlet property="cnstrHeight" destination="xYK-Tc-n4e" id="paf-OQ-dgC"/>
                         <outlet property="inpEmail" destination="MMW-gL-pnK" id="vXg-kg-Hbr"/>
+                        <outlet property="scrollView" destination="E0D-Pn-s4B" id="Wur-d0-dqN"/>
                         <segue destination="H4w-o7-XCn" kind="presentation" identifier="forpasss2" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="4NL-av-DlV"/>
                     </connections>
                 </viewController>
@@ -998,7 +1001,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We have sent you an email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dE-Rr-fxu">
-                                                <rect key="frame" x="88.000000000000014" y="223.33333333333334" width="238.33333333333337" height="23.666666666666657"/>
+                                                <rect key="frame" x="88.000000000000014" y="235.33333333333334" width="238.33333333333337" height="23.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1012,7 +1015,7 @@
                                             <constraint firstItem="Oaa-RM-xlN" firstAttribute="centerY" secondItem="JNH-cy-2Y9" secondAttribute="centerY" constant="-10" id="MXn-M8-b0w"/>
                                             <constraint firstItem="Oaa-RM-xlN" firstAttribute="leading" secondItem="JNH-cy-2Y9" secondAttribute="leading" constant="40" id="Ree-QN-ZYx"/>
                                             <constraint firstAttribute="trailing" secondItem="nR3-AJ-f5X" secondAttribute="trailing" constant="40" id="ScP-eC-2DO"/>
-                                            <constraint firstItem="Oaa-RM-xlN" firstAttribute="top" secondItem="1dE-Rr-fxu" secondAttribute="bottom" constant="60" id="VN0-1R-WMR"/>
+                                            <constraint firstItem="Oaa-RM-xlN" firstAttribute="top" secondItem="1dE-Rr-fxu" secondAttribute="bottom" constant="48" id="VN0-1R-WMR"/>
                                             <constraint firstItem="nR3-AJ-f5X" firstAttribute="leading" secondItem="JNH-cy-2Y9" secondAttribute="leading" constant="40" id="cyj-wb-PCX"/>
                                         </constraints>
                                     </view>
@@ -1203,13 +1206,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password must contain a number, lowercase and uppercase." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Lc-Zz-gZk">
-                                                <rect key="frame" x="40" y="217.66666666666666" width="334" height="33"/>
+                                                <rect key="frame" x="40" y="217" width="334" height="33"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RY8-fw-jP3">
-                                                <rect key="frame" x="126.33333333333331" y="134" width="162" height="23.666666666666657"/>
+                                                <rect key="frame" x="126.33333333333331" y="145.33333333333334" width="162" height="23.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1252,7 +1255,7 @@
                                             <constraint firstItem="RY8-fw-jP3" firstAttribute="centerX" secondItem="koi-pA-Y4q" secondAttribute="centerX" id="kDv-u8-ger"/>
                                             <constraint firstItem="Ls3-Tb-U18" firstAttribute="centerY" secondItem="koi-pA-Y4q" secondAttribute="centerY" constant="70" id="lP0-EM-CLO"/>
                                             <constraint firstAttribute="trailing" secondItem="g7m-l8-8Ui" secondAttribute="trailing" id="olo-h1-brn"/>
-                                            <constraint firstItem="6Lc-Zz-gZk" firstAttribute="top" secondItem="RY8-fw-jP3" secondAttribute="bottom" constant="60" id="qqp-hK-8TA"/>
+                                            <constraint firstItem="6Lc-Zz-gZk" firstAttribute="top" secondItem="RY8-fw-jP3" secondAttribute="bottom" constant="48" id="qqp-hK-8TA"/>
                                             <constraint firstItem="BjS-QL-L0p" firstAttribute="leading" secondItem="koi-pA-Y4q" secondAttribute="leading" constant="40" id="rpf-eo-XfL"/>
                                         </constraints>
                                     </view>
@@ -1311,18 +1314,6 @@
         <namedColor name="disableField">
             <color red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="disableField">
-            <color red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="disableField">
-            <color red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="error">
-            <color red="0.87450980389999999" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="error">
-            <color red="0.87450980389999999" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="error">
             <color red="0.87450980389999999" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1335,35 +1326,11 @@
         <namedColor name="main">
             <color red="0.054901960780000002" green="0.54901960780000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="main">
-            <color red="0.054901960780000002" green="0.54901960780000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="main">
-            <color red="0.054901960780000002" green="0.54901960780000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="maskColor">
-            <color red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="0.80000001190000003" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="maskColor">
-            <color red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="0.80000001190000003" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="maskColor">
             <color red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="0.80000001190000003" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="maskSignIn">
             <color red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="maskSignIn">
-            <color red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="maskSignIn">
-            <color red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="navBarLoginBackground">
-            <color red="0.29411764709999999" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="navBarLoginBackground">
-            <color red="0.29411764709999999" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="navBarLoginBackground">
             <color red="0.29411764709999999" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

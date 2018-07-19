@@ -85,7 +85,8 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
     override func viewDidLoad() {
         super.viewDidLoad()
         viewError = SttErrorLabel()
-        viewError.backgroundColor = UIColor(red:0.98, green:0.26, blue:0.26, alpha:1)
+        viewError.errorColor = UIColor(red:0.98, green:0.26, blue:0.26, alpha:1)
+        viewError.messageColor = UIColor(red: 0.251, green: 0.482, blue: 0.316, alpha:1)
         view.addSubview(viewError)
         viewError.delegate = self
         
@@ -135,14 +136,19 @@ class SttViewController<T: SttViewInjector>: SttBaseViewController, SttViewConto
     func sendError(error: SttBaseErrorType) {
         let serror = error.getMessage()
         if useErrorLabel {
-            viewError.showError(text: serror.0, detailMessage: serror.1)
+            viewError.showMessage(text: serror.0, detailMessage: serror.1)
         }
         else {
             self.createAlerDialog(title: serror.0, message: serror.1)
         }
     }
     func sendMessage(title: String, message: String?) {
-        self.createAlerDialog(title: title, message: message!)
+        if useErrorLabel {
+            viewError.showMessage(text: title, detailMessage: message, isError: false)
+        }
+        else {
+            self.createAlerDialog(title: title, message: message ?? "")
+        }
     }
     
     func close(animated: Bool) {

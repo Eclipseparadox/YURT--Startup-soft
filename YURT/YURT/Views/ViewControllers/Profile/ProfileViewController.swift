@@ -81,7 +81,7 @@ class ProfileViewController: SttViewController<ProfilePresenter>, ProfileDelegat
         actionController.addAction(UIAlertAction(title: "Edit your profile", style: .default, handler: { (x) in
             self.presenter.navigateToProfile()
         }))
-        actionController.addAction(UIAlertAction(title: "Log Out", style: .default, handler: { (x) in
+        actionController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (x) in
             self.presenter.signOut()
         }))
         actionController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

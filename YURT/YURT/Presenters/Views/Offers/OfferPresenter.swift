@@ -9,9 +9,21 @@
 import Foundation
 
 protocol OfferDelegate: SttViewContolable {
-    
+    func reloadCounter(data: OfferCountApiModel)
 }
 
 class OfferPresenter: SttPresenter<OfferDelegate> {
+    var _offerInteractor: OfferInteractorType!
     
+    override func presenterCreating() {
+        ServiceInjectorAssembly.instance().inject(into: self)
+        
+    }
+    
+    func reloadCount() {
+        _ = _offerInteractor.getCount()
+            .subscribe(onNext: { (count) in
+                self.delegate?.reloadCounter(data: count)
+            })
+    }
 }

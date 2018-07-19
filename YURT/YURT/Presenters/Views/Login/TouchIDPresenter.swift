@@ -13,25 +13,26 @@ class TouchIDPresenter: SttPresenter<SttViewContolable> {
     
     private var email: String!
     private var password: String!
+    private var navModel: WelcomNavigateModel!
     
     override func prepare(parametr: Any?) {
-        let param = parametr as! (String, String)
+        navModel = parametr as! WelcomNavigateModel
         
-        email = param.0
-        password = param.1
+        email = navModel.email
+        password = navModel.password
     }
     
     func clickYes() {
         KeychainSwift().set(email, forKey: Constants.idEmeail)
         KeychainSwift().set(password, forKey: Constants.idPassword)
-        loadStoryboard()
+        welcome()
     }
     
     func clickNo() {
-        loadStoryboard()
+        welcome()
     }
     
-    private func loadStoryboard() {
-        self.delegate?.loadStoryboard(storyboard: Storyboard.main)
+    private func welcome() {
+        self.delegate?.navigate(to: "welcome", withParametr: navModel, callback: nil)
     }
 }

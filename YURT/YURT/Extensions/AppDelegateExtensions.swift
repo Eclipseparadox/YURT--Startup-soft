@@ -24,7 +24,7 @@ extension AppDelegate {
                 let realm = try Realm()
                 if let auth = realm.objects(RealmAuth.self).last {
                     let minutes = auth.dateCreated.differenceInMinutes()
-                    if minutes < 1 && minutes > -1 {
+                    if minutes < 60 && minutes > -60 {
                         storyboardName = "Main"
                     }
                     else {

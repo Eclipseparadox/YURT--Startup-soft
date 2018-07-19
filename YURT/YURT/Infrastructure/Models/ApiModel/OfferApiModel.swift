@@ -11,11 +11,15 @@ import Foundation
 enum OfferStatus: Int, Decodable {
     case pending, approved, rejected
     
+    // this case for update counter (do not touch)
+    case updateConuter
+    
     func toString() -> String {
         switch self {
         case .approved: return "Approved"
         case .pending: return "Pending"
         case .rejected: return "Rejected"
+        case .updateConuter: return "nani"
         }
     }
 }
@@ -23,7 +27,7 @@ enum OfferStatus: Int, Decodable {
 struct LenderInfo: Decodable {
     let lenderId: String
     let fullName: String
-    let physicalAddress: String?
+    let mailingAddress: String?
     let image: ResultUploadImageApiModel
 }
 

@@ -203,7 +203,7 @@
                                     <constraint firstAttribute="width" constant="35" id="Iwv-af-FT5"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="close"/>
+                                <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="close:" destination="zco-xw-mxv" eventType="touchUpInside" id="L65-hn-ejC"/>
                                 </connections>
@@ -249,8 +249,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back" width="29" height="29"/>
         <image name="changeOrientation" width="29" height="29"/>
-        <image name="close" width="29" height="29"/>
         <image name="losAngeles" width="421" height="322"/>
         <image name="trash" width="15" height="20"/>
         <image name="verticalTest" width="153" height="266"/>

@@ -28,7 +28,9 @@ class DocumentsEntityHeaderPresenter: SttPresenter<DocumentsEntityHeaderDelegate
         self.init()
         self.title = title
         self.totalCountDocument = total
-        _ = observable.filter({ arg in (isFinanices && arg.1.isFinancies()) || (!isFinanices && !arg.1.isFinancies())}).subscribe(onNext: { [weak self] (arg) in
+        _ = observable.filter({ arg in (isFinanices && arg.1.isFinancies()) || (!isFinanices && !arg.1.isFinancies())})
+            .observeInUI()
+            .subscribe(onNext: { [weak self] (arg) in
             if let _self = self {
                 if arg.0 && _self.uploadedsCount < _self.totalCountDocument {
                     _self.uploadedsCount += 1

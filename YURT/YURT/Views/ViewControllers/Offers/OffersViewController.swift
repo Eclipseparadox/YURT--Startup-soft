@@ -9,19 +9,21 @@
 import UIKit
 import RxSwift
 
-class OffersViewController: UIViewController {
+class OffersViewController: SttViewController<OfferPresenter>, OfferDelegate {
     
     private var bus = PublishSubject<OfferStatus?>()
     
     private var statusUpdatedIndicator: UIActivityIndicatorView!
     private var calledChild = Set<OfferStatus>()
+    
+    var generalLoaderView = SttLoaderView()
 
     @IBOutlet weak var viewPager: SttViewPager!
     override func viewDidLoad() {
         
-        let loaderData = SttDefaultComponnents.createBarButtonLoader()
-        self.navigationItem.setRightBarButton(loaderData.0, animated: true)
-        statusUpdatedIndicator = loaderData.1
+//        let loaderData = SttDefaultComponnents.createBarButtonLoader()
+//        self.navigationItem.setRightBarButton(loaderData.0, animated: true)
+//        statusUpdatedIndicator = loaderData.1
         
         super.viewDidLoad()
 
@@ -44,10 +46,16 @@ class OffersViewController: UIViewController {
         
         _ = bus.subscribe(onNext: { [weak self] status in
             if let _stat = status {
-                self?.calledChild.insert(_stat)
-                if self?.calledChild.count == 3 {
-                    self?.statusUpdatedIndicator.stopAnimating()
-                    self?.calledChild.removeAll()
+                if _stat != OfferStatus.updateConuter {
+                    self?.calledChild.insert(_stat)
+                    if self?.calledChild.count == 3 {
+                        //self?.statusUpdatedIndicator.stopAnimating()
+                        self?.generalLoaderView.isLoading = false
+                        self?.calledChild.removeAll()
+                    }
+                }
+                else {
+                    self?.presenter.reloadCount()
                 }
             }
         })
@@ -57,12 +65,28 @@ class OffersViewController: UIViewController {
         viewPager.addItem(view: newVC, title: "New")
         viewPager.addItem(view: approvedVC, title: "Approved")
         viewPager.addItem(view: rejectedVC, title: "Rejected")
+        
+        generalLoaderView.delegate = self
     }
     
+    private var isFirstStart = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        statusUpdatedIndicator.startAnimating()
-        bus.onNext(nil)
+        presenter.reloadCount()
+        //generalLoaderView.isLoading = true
+        //statusUpdatedIndicator.startAnimating()
+        if isFirstStart {
+            isFirstStart = false
+            bus.onNext(nil)
+        }
+    }
+    
+    // MARK: -- OfferDelegate
+    
+    func reloadCounter(data: OfferCountApiModel) {
+        viewPager.segmentControl.setTitle("New (\(data.allNewOffersCount))", forSegmentAt: 0)
+        viewPager.segmentControl.setTitle("Approved (\(data.allApprovedOffersCount))", forSegmentAt: 1)
+        viewPager.segmentControl.setTitle("Rejected (\(data.allRejectedOffersCount))", forSegmentAt: 2)
     }
 }

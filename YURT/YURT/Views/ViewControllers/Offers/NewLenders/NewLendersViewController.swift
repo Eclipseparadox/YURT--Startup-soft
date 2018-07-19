@@ -38,7 +38,7 @@ class NewLendersViewController: SttViewController<NewLendersPresenter>, NewLende
     }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
-        presenter.refresh.execute()
+        presenter.refreshOffers()
     }
     
     // MARK: -- Implement NewLendersDelegate

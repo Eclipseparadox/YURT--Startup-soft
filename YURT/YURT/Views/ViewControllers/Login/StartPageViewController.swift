@@ -44,22 +44,22 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        handlerEmail.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.email = $1.text }, textField: inpEmail.textField)
-        handlerPassword.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
+        handlerEmail.addTarget(type: .editing, delegate: self, handler: { $0.presenter.email = $1.text }, textField: inpEmail.textField)
+        handlerPassword.addTarget(type: .editing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
+        
+        handlerEmail.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpPassword.textField.becomeFirstResponder() }, textField: inpEmail.textField)
+        handlerPassword.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.presenter.signIn.execute() }, textField: inpPassword.textField)
         
         inpEmail.textField.keyboardType = .emailAddress
-        inpPassword.textField.isSecureTextEntry = true
-        
-        inpEmail.textField.text = "qq123@uuu.uuu"
-        inpPassword.textField.text = "Qwerty1"
+        inpPassword.isSecure = true
 
-        presenter.email = inpEmail.textField.text
-        presenter.password = inpPassword.textField.text
+        inpEmail.textField.delegate = handlerEmail
+        inpPassword.textField.delegate = handlerPassword
         
         vbtnLinkedin.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onLinkedinClick(_:))))
         vbtnTouchId.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTouchId(_:))))
         
-        prepareTouchId()
+        //prepareTouchId()
     }
     
     private var firstStart = true
@@ -67,9 +67,17 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         super.viewDidAppear(animated)
         if firstStart {
             presenter.signIn.useIndicator(button: btnSignIn)
+            presenter.signIn.addHandler(start: {
+                self.vbtnLinkedin.alpha = 0.6
+                self.vbtnTouchId.alpha = 0.6
+            }) {
+                self.vbtnLinkedin.alpha = 1
+                self.vbtnTouchId.alpha = 1
+            }
             presenter.touchIdAuth.addHandler(start: {
                 self.btnSignIn.setEnabled(isEnabled: false)
                 self.vbtnTouchId.isUserInteractionEnabled = false
+                self.vbtnLinkedin.alpha = 0.6
                 self.vbtnLinkedin.isUserInteractionEnabled = false
                 
                 self.vbtnTouchId.viewWithTag(1)?.isHidden = true
@@ -80,6 +88,7 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
             }) {
                 self.btnSignIn.setEnabled(isEnabled: true)
                 self.vbtnTouchId.isUserInteractionEnabled = true
+                self.vbtnLinkedin.alpha = 1
                 self.vbtnLinkedin.isUserInteractionEnabled = true
                 
                 self.vbtnTouchId.viewWithTag(1)?.isHidden = false
@@ -90,6 +99,7 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
             presenter.linkedinAuth.addHandler(start: {
                 self.btnSignIn.setEnabled(isEnabled: false)
                 self.vbtnTouchId.isUserInteractionEnabled = false
+                self.vbtnTouchId.alpha = 0.6
                 self.vbtnLinkedin.isUserInteractionEnabled = false
                 
                 self.vbtnLinkedin.viewWithTag(1)?.isHidden = true
@@ -99,6 +109,7 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
             }, end: {
                 self.btnSignIn.setEnabled(isEnabled: true)
                 self.vbtnTouchId.isUserInteractionEnabled = true
+                self.vbtnTouchId.alpha = 1
                 self.vbtnLinkedin.isUserInteractionEnabled = true
                 
                 self.vbtnLinkedin.viewWithTag(1)?.isHidden = false
@@ -127,22 +138,22 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func prepareTouchId() {
-        let email = KeychainSwift().get(Constants.idEmeail)
-        let password = KeychainSwift().get(Constants.idPassword)
-        
-        if email != nil && password != nil {
-            let authContext = LAContext()
-            var error: NSError?
-            
-            if !authContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-                self.vbtnTouchId.alpha = 0.6
-            }
-        }
-        else {
-            self.vbtnTouchId.alpha = 0.6
-        }
-    }
+//    func prepareTouchId() {
+//        let email = KeychainSwift().get(Constants.idEmeail)
+//        let password = KeychainSwift().get(Constants.idPassword)
+//
+//        if email != nil && password != nil {
+//            let authContext = LAContext()
+//            var error: NSError?
+//
+//            if !authContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+//                self.vbtnTouchId.alpha = 0.6
+//            }
+//        }
+//        else {
+//            self.vbtnTouchId.alpha = 0.6
+//        }
+//    }
     
     @objc func onTouchId(_ sender: Any) {
         let email = KeychainSwift().get(Constants.idEmeail)
@@ -160,7 +171,13 @@ class StartPageViewController: SttViewController<StartPagePresenter>, StartPageD
                         self.presenter.touchIdAuth.execute()
                     }
                 }
+                else if (error! as NSError).code == LAError.notInteractive.rawValue {
+                    self.createAlerDialog(title: "Error", message: "You should turn the Passcode on to enable Touch ID")
+                }
             }
+        }
+        else {
+            self.createAlerDialog(title: "Error", message: "You do not have any accounts connected to Touch ID")
         }
     }
 

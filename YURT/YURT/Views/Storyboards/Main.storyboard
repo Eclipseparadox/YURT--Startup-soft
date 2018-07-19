@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="height" constant="140" id="CEz-yl-Tki"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1wN-Uc-xOn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1wN-Uc-xOn">
                                 <rect key="frame" x="137" y="89" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="bgL-hL-Lee"/>
@@ -351,7 +351,7 @@
                                                     <constraint firstItem="CMW-IH-7CF" firstAttribute="leading" secondItem="ZaY-O0-l8i" secondAttribute="leading" constant="30" id="oZK-6r-tx4"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZQT-r8-u5i">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZQT-r8-u5i">
                                                 <rect key="frame" x="0.0" y="90" width="375" height="332"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -488,6 +488,7 @@
                     <navigationItem key="navigationItem" title="My documents" id="8Wr-b0-Pid"/>
                     <connections>
                         <outlet property="btnSend" destination="Asc-nr-UGC" id="gG6-qz-zJB"/>
+                        <outlet property="cnstrBottom" destination="A77-dx-S9Z" id="zGs-iW-Wy9"/>
                         <outlet property="cnstrHeight" destination="tYa-hA-Mr4" id="Mcu-7o-UwG"/>
                         <outlet property="cnstrLeftAnch" destination="g3d-6d-FWe" id="Zhr-Q5-Cfh"/>
                         <outlet property="collectionDocuments" destination="ZQT-r8-u5i" id="cnh-QZ-nJI"/>
@@ -504,10 +505,10 @@
             </objects>
             <point key="canvasLocation" x="822" y="-779"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="OOc-n1-7iv">
             <objects>
-                <tabBarController storyboardIdentifier="start" id="Phf-ix-ICs" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="start" id="Phf-ix-ICs" customClass="MainTabBarViewController" customModule="YURT" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zug-2D-JUp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -571,8 +572,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your documents sent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGb-tI-BNA">
-                                        <rect key="frame" x="64" y="96" width="133" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your documents have been sent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGb-tI-BNA">
+                                        <rect key="frame" x="31" y="96" width="199.5" height="17"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

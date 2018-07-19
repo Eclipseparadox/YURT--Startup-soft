@@ -21,7 +21,7 @@ class LenderCell: SttTableViewCell<LenderPresenter>, LenderDelegate {
     override func prepareBind() {
         imgProfile.loadImage(image: Image(url: presenter.data.lender.image.preview.path))
         lblFullName.text = presenter.data.lender.fullName
-        lblLocation.text = presenter.data.lender.physicalAddress
+        lblLocation.text = presenter.data.lender.mailingAddress
         imgProfile.createCircle()
         
         lblRate.text = "\(presenter.data.rate)%"

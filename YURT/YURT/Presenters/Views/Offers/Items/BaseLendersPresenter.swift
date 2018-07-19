@@ -49,11 +49,24 @@ class BaseLendersPresenter<T>: SttPresenter<T>, OfferItemDelegate {
         })
     }
     
+    func refreshOffers() {
+        busPublisher.onNext(OfferStatus.updateConuter)
+        refresh.execute()
+    }
+    
     // MARK: -- OfferItemDelegate
     
     func openOffers(data: OfferApiModel) {
-        viewDelegate?.navigate(storyboard: Storyboard.offer, to: ViewOfferPresenter.self, typeNavigation: .push, withParametr: data, callback: { [weak self] _ in
-            //self?.lenders.remove(at: self!.lenders.index(where: { $0.id == data.id })!)
+        viewDelegate?.navigate(storyboard: Storyboard.offer, to: ViewOfferPresenter.self, typeNavigation: .push, withParametr: data, callback: { [weak self] res in
+            self?.busPublisher.onNext(nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                if (res as! Bool)  {
+                    self?.viewDelegate?.sendMessage(title: "Offer has been approved", message: nil)
+                }
+                else {
+                    self?.viewDelegate?.sendMessage(title: "Offer has been rejected", message: nil)
+                }
+            })
         })
     }
     

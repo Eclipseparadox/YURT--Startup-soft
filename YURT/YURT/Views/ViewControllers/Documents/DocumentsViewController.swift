@@ -21,6 +21,45 @@ class SttDefaultComponnents {
     }
 }
 
+class SttLoaderView: UIView {
+    
+    var isLoading: Bool = false {
+        didSet {
+            loaderView.isHidden = !isLoading
+        }
+    }
+    
+    weak var delegate: UIViewController! {
+        didSet {
+            injectComponnent()
+        }
+    }
+    
+    private var loaderView: UIView!
+    
+    private func injectComponnent() {
+        loaderView = UIView()
+        loaderView.backgroundColor = UIColor.white
+        loaderView.translatesAutoresizingMaskIntoConstraints = false
+        
+        delegate.view.addSubview(loaderView)
+        delegate.view.safeTopAnchor.constraint(equalTo: loaderView.topAnchor).isActive = true
+        delegate.view.safeLeftAnchor.constraint(equalTo: loaderView.leftAnchor).isActive = true
+        delegate.view.safeRightAnchor.constraint(equalTo: loaderView.rightAnchor).isActive = true
+        delegate.view.safeBottomAnchor.constraint(equalTo: loaderView.bottomAnchor).isActive = true
+        
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        loaderView.addSubview(activityIndicatorView)
+        activityIndicatorView.activityIndicatorViewStyle = .gray
+        activityIndicatorView.startAnimating()
+        loaderView.addConstraints([
+            NSLayoutConstraint(item: loaderView, attribute: .centerX, relatedBy: .equal, toItem: activityIndicatorView, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: loaderView, attribute: .centerY, relatedBy: .equal, toItem: activityIndicatorView, attribute: .centerY, multiplier: 1, constant: 0)
+            ])
+    }
+}
+
 class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsDelegate {
 
     @IBOutlet weak var progressBackground: UIView!
@@ -32,8 +71,10 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
     @IBOutlet weak var cnstrLeftAnch: NSLayoutConstraint!
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var lblAllDocuments: UILabel!
+    @IBOutlet weak var cnstrBottom: NSLayoutConstraint!
     
     var statusUpdatedIndicator: UIActivityIndicatorView!
+    var generalLoaderView = SttLoaderView()
     
     @IBAction func send(_ sender: Any) {
         presenter.send.execute()
@@ -42,25 +83,23 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
     
     override func viewDidLoad() {
         
-        let loaderData = SttDefaultComponnents.createBarButtonLoader()
-        self.navigationItem.setRightBarButton(loaderData.0, animated: true)
-        statusUpdatedIndicator = loaderData.1
+//        let loaderData = SttDefaultComponnents.createBarButtonLoader()
+//        self.navigationItem.setRightBarButton(loaderData.0, animated: true)
+//        statusUpdatedIndicator = loaderData.1
         
         super.viewDidLoad()
 
         progressBackground.createCircle(dominateWidth: false, clipToBounds: true)
         
         print ("---> \(presenter.documents)")
-        if presenter.documents != nil {
-            collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
-        }
+        collectionSource = DocumentEntitySource(collectionView: collectionDocuments, collection: presenter.documents)
         collectionDocuments.dataSource = collectionSource
                 
         let width = widthScreen / 2 - 22
         let layout = collectionDocuments.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
         
-        
+        generalLoaderView.delegate = self
     }
     
     private var firstStart = true
@@ -96,6 +135,13 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         lblAllDocuments.isHidden = presenter.canSend
         lblAllDocuments.text = presenter.currentUploaded == presenter.totalDocument ? "Your documents are successfully sent" : "All documents should be uploaded"
         UIView.animate(withDuration: 0.25, animations: { [weak self] in self?.view.layoutIfNeeded() })
+        
+        if presenter.currentUploaded == presenter.totalDocument && !presenter.canSend {
+            cnstrBottom.constant = -92
+        }
+        else {
+            cnstrBottom.constant = 42
+        }
     }
     
     func reloadData() {
@@ -105,6 +151,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
     }
     
     func docUpdated() {
-        statusUpdatedIndicator.stopAnimating()
+        generalLoaderView.isLoading = false
+        //statusUpdatedIndicator.stopAnimating()
     }
 }

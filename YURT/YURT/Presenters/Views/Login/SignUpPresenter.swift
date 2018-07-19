@@ -186,7 +186,8 @@ class SignUpPresenter: SttPresenter<SignUpDelegate> {
          _ = signUp.useWork(observable: _accountService.signUp(firstName: firstName!, lastName: lastName!, location: location, phone: phone, email: email!, password: password!, image: photoData))
             .subscribe(onNext: { (res) in
                 if res {
-                    self.delegate?.navigate(to: "welcome", withParametr: WelcomNavigateModel(firstName: self.firstName!,
+                    self.disposable?.dispose()
+                    self.delegate?.navigate(to: "touchId", withParametr: WelcomNavigateModel(firstName: self.firstName!,
                                                                                              location: self.location!,
                                                                                              email: self.email!,
                                                                                              password: self.password!), callback: nil)

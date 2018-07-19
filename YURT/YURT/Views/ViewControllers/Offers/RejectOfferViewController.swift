@@ -16,6 +16,13 @@ extension UIButton {
 }
 
 class RejectOfferViewController: SttViewController<RejectOfferPresenter>, RejectOfferDelegate {
+    
+    func removePreviewVC() {
+        var viewControllers = navigationController?.viewControllers
+        viewControllers?.removeLast(2) // views to pop
+        navigationController?.setViewControllers(viewControllers!, animated: true)
+    }
+    
 
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var lblFulname: UILabel!
@@ -24,6 +31,7 @@ class RejectOfferViewController: SttViewController<RejectOfferPresenter>, Reject
     @IBOutlet weak var viewTvBackground: UIView!
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var cnstrHintHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var tvHandler = SttHandlerTextView()
     
@@ -35,7 +43,7 @@ class RejectOfferViewController: SttViewController<RejectOfferPresenter>, Reject
         
         imgProfile.loadImage(image: Image(url: presenter.data.lender.image.preview.path))
         lblFulname.text = presenter.data.lender.fullName
-        lblLocation.text = presenter.data.lender.physicalAddress
+        lblLocation.text = presenter.data.lender.mailingAddress
         imgProfile.createCircle()
 
         cnstrHintHeight.constant = 0
@@ -56,6 +64,13 @@ class RejectOfferViewController: SttViewController<RejectOfferPresenter>, Reject
         btnSend.layer.cornerRadius = 5
         
         btnSend.setEnabled(isEnabled: false)
+    }
+    
+    override func keyboardWillShow(height: CGFloat) {
+        super.keyboardWillShow(height: height)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.btnSend.bounds.maxY + self.btnSend.bounds.height), animated: true)
+        }
     }
     
     func reloadSendState() {

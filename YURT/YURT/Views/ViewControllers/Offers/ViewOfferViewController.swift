@@ -19,27 +19,14 @@ extension UITextView {
 class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferDelegate {
    
     private func deleteButtons() {
-        self.btnApprove.setEnabled(isEnabled: false)
-        self.btnReject.setEnabled(isEnabled: false)
-    }
-    
-    func deleteButtons(status: Bool) {
-        if status {
-            self.createDecisionAlerDialog(title: "Offer has been aproved", message: "Do you want to return to list's offers?", handlerOk: {
-                self.close(parametr: true)
-            }, handlerFalse: { [weak self] in
-                self?.deleteButtons()
-            })
+        btnApprove.removeFromSuperview()
+        btnReject.removeFromSuperview()
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
-        else {
-            self.createDecisionAlerDialog(title: "Offer has been rejected", message: "Do you want to return to list's offers?", handlerOk: {
-                self.close(parametr: false)
-            }, handlerFalse: { [weak self] in
-                self?.deleteButtons()
-            })
-        }
+//        self.btnApprove.setEnabled(isEnabled: false)
+//        self.btnReject.setEnabled(isEnabled: false)
     }
-    
 
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblFullName: UILabel!
@@ -54,12 +41,13 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
     @IBOutlet weak var underline: UIView!
     
     @IBAction func aproveClick(_ sender: Any) {
-        presenter.aprove.execute()
+        self.createDecisionAlerDialog(title: "Do you want to approve this offer?", message: "", buttonTrueTitle: "Approve", buttonFalseTitle: "Cancel", handlerOk: {
+            self.presenter.aprove.execute()
+        })
     }
     @IBAction func rejectClick(_ sender: Any) {
         presenter.rejectClick()
     }
-    
     
     var offerDetailSource: SttTableViewSource<OfferDetailPresenter>!
     var documentSource: SttCollectionViewSource<DocumentLenderCellPresenter>!
@@ -70,7 +58,7 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         imgProfile.createCircle()
         imgProfile.loadImage(image: Image(url: presenter.data.lender.image.preview.path))
         lblFullName.text = presenter.data.lender.fullName
-        lblLocation.text = presenter.data.lender.physicalAddress
+        lblLocation.text = presenter.data.lender.mailingAddress
         
         if !SttString.isWhiteSpace(string: presenter.data.description) {
             tvComment.text = presenter.data.description
@@ -114,7 +102,9 @@ class ViewOfferViewController: SttViewController<ViewOfferPresenter>, ViewOfferD
         
         if firstStart {
             firstStart = false
-            presenter.aprove.useIndicator(button: btnApprove)
+            if btnApprove != nil {
+                presenter.aprove.useIndicator(button: btnApprove)
+            }
         }
     }
 }

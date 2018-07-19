@@ -23,15 +23,17 @@ class SuccessViewController: SttViewController<ShowPresenter> {
         mainView.layer.cornerRadius = 5
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap(_:))))
         //self.dismiss(animated: true, completion: nil)
-        animationView.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
+        animationView.frame = CGRect(x: -20, y: -20, width: 69, height: 69)
         vSuccess.addSubview(animationView)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animationView.play { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
+        animationView.play()
     }
     
     @objc private func onTap(_ sender: Any?) {

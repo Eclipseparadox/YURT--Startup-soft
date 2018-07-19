@@ -13,6 +13,7 @@ class ForgotPasswordViewController: SttViewController<ForgotPasswordPresenter>, 
     @IBOutlet weak var cnstrHeight: NSLayoutConstraint!
     @IBOutlet weak var inpEmail: InputBox!
     @IBOutlet weak var btnReset: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func onResetPassword(_ sender: Any) {
         presenter.email = inpEmail.textField.text ?? ""
@@ -40,6 +41,11 @@ class ForgotPasswordViewController: SttViewController<ForgotPasswordPresenter>, 
             presenter.reset.useIndicator(button: btnReset)
             firstStart = false
         }
+    }
+    
+    override func keyboardWillShow(height: CGFloat) {
+        super.keyboardWillShow(height: height)
+        scrollView.setContentOffset(CGPoint(x: 0, y: btnReset.bounds.midY + btnReset.bounds.height), animated: true)
     }
     
     // MARK: -- ForgotPasswordDelegate

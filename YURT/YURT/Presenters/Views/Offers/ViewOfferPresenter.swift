@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol ViewOfferDelegate: SttViewContolable {
-    func deleteButtons(status: Bool)
+    
 }
 
 class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDelegate {
@@ -51,7 +51,7 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDel
     func onAprove() {
         _ = aprove.useWork(observable: _offerInteractor.aproveOffer(id: data.id))
             .subscribe(onNext: { [weak self] _ in
-                self?.delegate?.deleteButtons(status: true)
+                self?.delegate?.close(parametr: true, animated: true)
             })
     }
     
@@ -62,9 +62,7 @@ class ViewOfferPresenter: SttPresenter<ViewOfferDelegate>, DocumentLenderItemDel
     
     func rejectClick() {
         delegate?.navigate(storyboard: Storyboard.offer, to: RejectOfferPresenter.self, typeNavigation: .push, withParametr: data, callback: { [weak self] (result) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self?.delegate?.deleteButtons(status: false)
-            }
+                self?.delegate?.close(parametr: false, animated: true)
         })
     }
     

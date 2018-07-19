@@ -24,6 +24,7 @@ class WelcomePresenter: SttPresenter<SttViewContolable> {
     }
     
     func loadNext() {
-        self.delegate?.navigate(to: "touchId", withParametr: (navigateModel.email, navigateModel.password), callback: nil)
+        GlobalVariable.isRegistration = true
+        self.delegate?.loadStoryboard(storyboard: Storyboard.main)
     }
 }

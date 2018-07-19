@@ -49,6 +49,8 @@ class SimpleInputBox: SttTemplate {
     var tintActiveColor: UIColor!
     @IBInspectable
     var tintDisableColor: UIColor!
+    @IBInspectable
+    var tintDisableColorField: UIColor!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,7 +68,7 @@ class SimpleInputBox: SttTemplate {
         textField.addTarget(self, action: #selector(tfStartEditing(_:)), for: .editingDidBegin)
         textField.addTarget(self, action: #selector(tfEndEditing(_:)), for: .editingDidEnd)
         underline.backgroundColor = tintDisableColor
-        fieldName.textColor = tintDisableColor
+        fieldName.textColor = tintDisableColorField
     }
     
     @objc
@@ -91,7 +93,7 @@ class SimpleInputBox: SttTemplate {
         else {
             underline.backgroundColor = tintDisableColor
         }
-        fieldName.textColor = tintDisableColor
+        fieldName.textColor = tintDisableColorField
         
         if ((textField.text ?? "").isEmpty) {
             UIView.animate(withDuration: 0.3, animations: {

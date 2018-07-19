@@ -38,6 +38,15 @@ class SttOpenUrlHandler {
     }
 }
 
+class AppDelegateEvent {
+    private static var publisher = PublishSubject<String>()
+    static var openUrlObservable: Observable<String> { return publisher }
+    
+    class func publish(key: String) {
+        publisher.onNext(key)
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -59,12 +68,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SttLog.trace(message: "OpenUrl", key: "\(url)")
         return true
     }
-        
+    
+    private var timer: Timer?
     func applicationDidEnterBackground(_ application: UIApplication) {
+        timer?.invalidate()
+        UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+        timer = Timer(fireAt: Date().addingTimeInterval(3600), interval: 10, target: self, selector: #selector(onFireTimer(_:)), userInfo: nil, repeats: false)
+        RunLoop.current.add(timer!, forMode: .commonModes)
         SttGlobalObserver.applicationStatusChanged(status: .EnterBackgound)
     }
     func applicationWillEnterForeground(_ application: UIApplication) {
         SttGlobalObserver.applicationStatusChanged(status: .EnterForeground)
+    }
+    
+    @objc private func onFireTimer(_ sender: Any) {
+        if _accountService.isSignIn {
+            print("sign out")
+            _accountService.signOut()
+            AppDelegateEvent.publish(key: "signOut")
+        }
     }
 }
 

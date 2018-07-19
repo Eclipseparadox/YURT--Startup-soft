@@ -111,7 +111,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         handlerEmail.addTarget(type: .shouldReturn, delegate: self, handler: { (view, _) in view.inpPassword.textField.becomeFirstResponder() }, textField: inpEmail.textField)
         handlerPassword.addTarget(type: .didEndEditing, delegate: self, handler: { $0.presenter.password = $1.text }, textField: inpPassword.textField)
         handlerPassword.addTarget(type: .shouldReturn, delegate: self, handler: { $0.SignUpClick($1) }, textField: inpPassword.textField)
-        
+                
         inpFirstName.textField.delegate = handlerFirstName
         inpLastName.textField.delegate = handlerLastName
         inpLocation.textField.delegate = handlerLocation
@@ -121,7 +121,7 @@ class SignUpViewController: SttViewController<SignUpPresenter>, SignUpDelegate {
         
         inpEmail.textField.keyboardType = .emailAddress
         inpPhone.textField.keyboardType = .numberPad
-        inpPassword.textField.isSecureTextEntry = true
+        inpPassword.isSecure = true
         
         vtakePhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnPhoto(_:))))
         

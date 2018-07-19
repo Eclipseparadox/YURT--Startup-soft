@@ -34,7 +34,6 @@
 		8424337320F624C9003CED2D /* ForgotPasswordApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424337220F624C9003CED2D /* ForgotPasswordApiModel.swift */; };
 		8424B66820F8EAEF003D7378 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B66720F8EAEF003D7378 /* SuccessViewController.swift */; };
 		8424B66A20F8F411003D7378 /* ShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B66920F8F411003D7378 /* ShowPresenter.swift */; };
-		8424B66C20FC96E5003D7378 /* check.json in Resources */ = {isa = PBXBuildFile; fileRef = 8424B66B20FC96E4003D7378 /* check.json */; };
 		8424B67520FC9CCE003D7378 /* ResetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B67420FC9CCE003D7378 /* ResetPresenter.swift */; };
 		8424B67720FCA0E1003D7378 /* ResetPasswordApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B67620FCA0E1003D7378 /* ResetPasswordApiModel.swift */; };
 		8424B67D20FCA67B003D7378 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424B67C20FCA67B003D7378 /* ResetViewController.swift */; };
@@ -139,6 +138,9 @@
 		8480334E20ECDC57001B7FDB /* ProfileItemCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480334D20ECDC57001B7FDB /* ProfileItemCellPresenter.swift */; };
 		8480335220ECE9EF001B7FDB /* ProfileEditItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480335020ECE9EF001B7FDB /* ProfileEditItemCell.swift */; };
 		8480335320ECE9EF001B7FDB /* ProfileEditItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480335120ECE9EF001B7FDB /* ProfileEditItemCell.xib */; };
+		8487881420FF3A9C006B9A0D /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487881320FF3A9C006B9A0D /* MainTabBarViewController.swift */; };
+		8487881620FF5BFE006B9A0D /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487881520FF5BFE006B9A0D /* GlobalVariable.swift */; };
+		8487881820FF5EE7006B9A0D /* check.json in Resources */ = {isa = PBXBuildFile; fileRef = 8487881720FF5EE7006B9A0D /* check.json */; };
 		848C85E120A0480700026A5E /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C85E020A0480700026A5E /* AppDelegateExtensions.swift */; };
 		848F4C2720D13288007ECC45 /* RejectedLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */; };
 		848F4C2920D13293007ECC45 /* NewLendersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */; };
@@ -188,6 +190,7 @@
 		84EA05DD20ECF6B700F75F55 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA05DC20ECF6B700F75F55 /* ProfileEditViewController.swift */; };
 		84EA05E120ED165100F75F55 /* SimpleInputBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EA05DF20ED165100F75F55 /* SimpleInputBox.xib */; };
 		84EA05E220ED165100F75F55 /* SimpleInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA05E020ED165100F75F55 /* SimpleInputBox.swift */; };
+		84FFE82E20FF8539004FF433 /* OfferCountApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFE82D20FF8539004FF433 /* OfferCountApiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,7 +223,6 @@
 		8424337220F624C9003CED2D /* ForgotPasswordApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordApiModel.swift; sourceTree = "<group>"; };
 		8424B66720F8EAEF003D7378 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		8424B66920F8F411003D7378 /* ShowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPresenter.swift; sourceTree = "<group>"; };
-		8424B66B20FC96E4003D7378 /* check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check.json; sourceTree = "<group>"; };
 		8424B67420FC9CCE003D7378 /* ResetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPresenter.swift; sourceTree = "<group>"; };
 		8424B67620FCA0E1003D7378 /* ResetPasswordApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordApiModel.swift; sourceTree = "<group>"; };
 		8424B67C20FCA67B003D7378 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +329,9 @@
 		8480334D20ECDC57001B7FDB /* ProfileItemCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemCellPresenter.swift; sourceTree = "<group>"; };
 		8480335020ECE9EF001B7FDB /* ProfileEditItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditItemCell.swift; sourceTree = "<group>"; };
 		8480335120ECE9EF001B7FDB /* ProfileEditItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditItemCell.xib; sourceTree = "<group>"; };
+		8487881320FF3A9C006B9A0D /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		8487881520FF5BFE006B9A0D /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
+		8487881720FF5EE7006B9A0D /* check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check.json; sourceTree = "<group>"; };
 		848C85E020A0480700026A5E /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		848F4C2620D13288007ECC45 /* RejectedLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedLendersPresenter.swift; sourceTree = "<group>"; };
 		848F4C2820D13293007ECC45 /* NewLendersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLendersPresenter.swift; sourceTree = "<group>"; };
@@ -376,6 +381,7 @@
 		84EA05DC20ECF6B700F75F55 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		84EA05DF20ED165100F75F55 /* SimpleInputBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleInputBox.xib; sourceTree = "<group>"; };
 		84EA05E020ED165100F75F55 /* SimpleInputBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleInputBox.swift; sourceTree = "<group>"; };
+		84FFE82D20FF8539004FF433 /* OfferCountApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCountApiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,7 +528,7 @@
 		8424B66D20FC96F5003D7378 /* animation */ = {
 			isa = PBXGroup;
 			children = (
-				8424B66B20FC96E4003D7378 /* check.json */,
+				8487881720FF5EE7006B9A0D /* check.json */,
 			);
 			path = animation;
 			sourceTree = "<group>";
@@ -859,6 +865,7 @@
 				846F9958209B0AB900C61AE2 /* Constants.swift */,
 				840427E320B2E73D00C94765 /* UIConstants.swift */,
 				84484F68209B39C5006BBD11 /* Models */,
+				8487881520FF5BFE006B9A0D /* GlobalVariable.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -938,6 +945,7 @@
 				842239E320BE93B60028FDAA /* Documents */,
 				8407C09C20B8096600045EFB /* TakingPhoto */,
 				84C40AD020AD7F370050CA65 /* Login */,
+				8487881320FF3A9C006B9A0D /* MainTabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1113,6 +1121,7 @@
 				844EC24B20C58B9C006CF9EF /* BorrowerDocumentApiModel.swift */,
 				848F4C3220D2A4D6007ECC45 /* OfferApiModel.swift */,
 				8452F78520EE5E380006A573 /* ProfileApiModel.swift */,
+				84FFE82D20FF8539004FF433 /* OfferCountApiModel.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -1213,7 +1222,6 @@
 				8497872720ADB0E0004F4B06 /* Roboto-Bold.ttf in Resources */,
 				8480334C20ECDA5F001B7FDB /* ProfileItemCell.xib in Resources */,
 				8452F78D20EFA8150006A573 /* IconTemplate.xcassets in Resources */,
-				8424B66C20FC96E5003D7378 /* check.json in Resources */,
 				84996DE920D3F2840006ADFA /* Offer.storyboard in Resources */,
 				844F800420AD74940030DCC3 /* Colors.xcassets in Resources */,
 				8437E01320D0057D0043445D /* ApprovedLendersViewController.xib in Resources */,
@@ -1221,6 +1229,7 @@
 				8497872820ADB0E0004F4B06 /* Roboto-Medium.ttf in Resources */,
 				84996E0120D7CB780006ADFA /* DocumentLenderCell.xib in Resources */,
 				8497872B20ADB0E0004F4B06 /* Roboto-Black.ttf in Resources */,
+				8487881820FF5EE7006B9A0D /* check.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1293,6 +1302,7 @@
 				8453ADBD20E0E1E800174765 /* SttObservableExtensions.swift in Sources */,
 				84EA05DB20ECF5BD00F75F55 /* EditProfilePresenter.swift in Sources */,
 				84C7FBFB20B45E2D0053C93A /* AccountModel.swift in Sources */,
+				8487881420FF3A9C006B9A0D /* MainTabBarViewController.swift in Sources */,
 				8453ADC320E0E1E800174765 /* SttRealmObject.swift in Sources */,
 				8424B68120FCAAF5003D7378 /* SttEmptyPresenter.swift in Sources */,
 				84996DF920D7A9A00006ADFA /* OfferDetailTableViewCell.swift in Sources */,
@@ -1320,6 +1330,7 @@
 				8462234520C02E690059A83A /* DateConverter.swift in Sources */,
 				8453ADA520E0E1E800174765 /* SttDictionaryCodable.swift in Sources */,
 				842E1EB320AC55AC003D2CDA /* ServiceAssembly.swift in Sources */,
+				8487881620FF5BFE006B9A0D /* GlobalVariable.swift in Sources */,
 				84996E0320D7CCF40006ADFA /* DocumentLenderCellPresenter.swift in Sources */,
 				842E1EC420AD6EBD003D2CDA /* SttTemplate.swift in Sources */,
 				8452F78420EE54710006A573 /* LinkedinLoginViewController.swift in Sources */,
@@ -1337,6 +1348,7 @@
 				84C40AD320AD7F570050CA65 /* StartPageViewController.swift in Sources */,
 				842E1EB520AC55CD003D2CDA /* ServiceInjectorAssembly.swift in Sources */,
 				8453ADCE20E23CD600174765 /* DocumentPreviewPresenter.swift in Sources */,
+				84FFE82E20FF8539004FF433 /* OfferCountApiModel.swift in Sources */,
 				8453ADC220E0E1E800174765 /* SttSpecialResult.swift in Sources */,
 				8453ADC820E0E1E800174765 /* SttApplicationDelegate.swift in Sources */,
 				8493542C20C6C6AC00C7EFF3 /* ProfilePresenter.swift in Sources */,

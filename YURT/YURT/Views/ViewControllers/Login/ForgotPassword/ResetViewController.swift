@@ -32,8 +32,8 @@ class ResetViewController: SttViewController<ResetPresenter>, ResetDelegate {
         inpPassword.deleteErrorAfterStartEditing = false
         inpConfirmPassword.deleteErrorAfterStartEditing = false
         
-        inpPassword.textField.isSecureTextEntry = true
-        inpConfirmPassword.textField.isSecureTextEntry = true
+        inpPassword.isSecure = true
+        inpConfirmPassword.isSecure = true
         
         inpPassword.textField.delegate = passwordHandler
         inpConfirmPassword.textField.delegate = passwordConfirmHandler

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,6 +21,7 @@
                 <outlet property="cnstrToFieldName" destination="t6K-ts-321" id="R3g-6G-IGY"/>
                 <outlet property="error" destination="ozg-tr-lkr" id="fHF-d0-Nb0"/>
                 <outlet property="fieldName" destination="BaM-26-yr5" id="88N-rO-E3o"/>
+                <outlet property="imagePassword" destination="Zv7-01-cWp" id="H1Y-zG-5dV"/>
                 <outlet property="textField" destination="ygO-oW-PYs" id="hO8-EE-LET"/>
                 <outlet property="underline" destination="zzy-du-E95" id="3Xn-eZ-6wa"/>
             </connections>
@@ -40,7 +41,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="ygO-oW-PYs">
-                    <rect key="frame" x="40" y="19" width="240" height="25"/>
+                    <rect key="frame" x="40" y="19" width="207" height="25"/>
                     <color key="tintColor" name="main"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
@@ -62,28 +63,40 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="Zv7-01-cWp">
+                    <rect key="frame" x="255" y="19" width="25" height="25"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="iSm-09-795"/>
+                        <constraint firstAttribute="height" constant="25" id="rkP-Yh-633"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="zzy-du-E95" firstAttribute="top" secondItem="ygO-oW-PYs" secondAttribute="bottom" constant="4" id="2rz-H0-haI"/>
-                <constraint firstItem="ygO-oW-PYs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="5Mg-Jj-7tj"/>
                 <constraint firstItem="BaM-26-yr5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="7j2-t9-lGQ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ygO-oW-PYs" secondAttribute="trailing" constant="40" id="G1D-Z4-xS8"/>
+                <constraint firstItem="ygO-oW-PYs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="C99-aq-8Ar"/>
+                <constraint firstItem="Zv7-01-cWp" firstAttribute="leading" secondItem="ygO-oW-PYs" secondAttribute="trailing" constant="8" id="GaM-jo-h10"/>
+                <constraint firstItem="Zv7-01-cWp" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="HOp-6g-mAO"/>
                 <constraint firstAttribute="trailing" secondItem="zzy-du-E95" secondAttribute="trailing" constant="40" id="LKN-c1-Io6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BaM-26-yr5" secondAttribute="trailing" constant="40" id="Qpk-vD-hjd"/>
                 <constraint firstItem="ozg-tr-lkr" firstAttribute="top" secondItem="zzy-du-E95" secondAttribute="bottom" constant="5" id="Stq-3Z-Ygo"/>
+                <constraint firstItem="zzy-du-E95" firstAttribute="top" secondItem="ygO-oW-PYs" secondAttribute="bottom" constant="4" id="VPW-SY-Nsm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ozg-tr-lkr" secondAttribute="bottom" constant="3" id="XS8-e6-R7B"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Zv7-01-cWp" secondAttribute="trailing" constant="40" id="XXj-wm-mzQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ozg-tr-lkr" secondAttribute="trailing" constant="40" id="aiT-dG-DaM"/>
+                <constraint firstAttribute="trailing" secondItem="ygO-oW-PYs" secondAttribute="trailing" priority="750" constant="40" id="eB8-kM-RLM"/>
                 <constraint firstItem="ozg-tr-lkr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="ryN-MM-J5b"/>
                 <constraint firstItem="zzy-du-E95" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="sqd-k0-SZj"/>
                 <constraint firstItem="BaM-26-yr5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="t6K-ts-321"/>
-                <constraint firstItem="ygO-oW-PYs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="y2X-uj-bdf"/>
+                <constraint firstItem="ygO-oW-PYs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="zml-ng-kHS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>
     <resources>
+        <image name="eye" width="29" height="29"/>
         <namedColor name="main">
             <color red="0.054901960784313725" green="0.5490196078431373" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

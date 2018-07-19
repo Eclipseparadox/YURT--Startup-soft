@@ -25,16 +25,21 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     var captureDeviceInput: AVCaptureDeviceInput!
     var image: UIImage!
     
+    private var isTaking = false
+    
     @IBOutlet weak var CameraTitle: UILabel!
     @IBOutlet weak var btnTakePhoto: UIButton!
     @IBAction func takePhotoClick(_ sender: Any) {
+        isTaking = true
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
         print ("capture")
     }
     
     @IBAction func cancelClick(_ sender: Any) {
-        close()
+        if !isTaking {
+            close()
+        }
     }
     @IBAction func changeOrientation(_ sender: Any) {
         endSession()
@@ -93,6 +98,7 @@ class TakePhotoViewController: SttViewController<TakePhotoPresenter>, TakePhotoD
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
             image = UIImage(data: imageData)?.fixOrientation()
+            isTaking = false
             performSegue(withIdentifier: "previewPhoto", sender: nil)
             print ("output")
         }

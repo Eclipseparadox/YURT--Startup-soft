@@ -17,8 +17,10 @@ class InputBox: SttTemplate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet var underline: UIView!
     @IBOutlet weak var error: UILabel!
+    @IBOutlet weak var imagePassword: UIImageView!
     
     var deleteErrorAfterStartEditing = true
+    var isSecure = false
     
     var errorText: String? {
         didSet {
@@ -74,7 +76,39 @@ class InputBox: SttTemplate {
         underline.backgroundColor = tintDisableColor
         fieldName.textColor = tintDisableColor
         fieldName.isHidden = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imagePassword.tintColor = nil
+        imagePassword.tintColor = UIColor(named: "disableField")
         
+        if !isSecure {
+            imagePassword.removeFromSuperview()
+        }
+        else {
+            textField.isSecureTextEntry = true
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imagePassword.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickPassword(_:))))
+    }
+    
+    private var onClick = false
+    @objc private func onClickPassword(_ sender: Any) {
+        if isSecure {
+            if onClick {
+                imagePassword.tintColor = UIColor(named: "disableField")
+                textField.isSecureTextEntry = true
+            }
+            else {
+                imagePassword.tintColor = UIColor(named: "main")
+                textField.isSecureTextEntry = false
+            }
+            onClick = !onClick
+        }
     }
     
     var isEditing = false

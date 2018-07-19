@@ -10,6 +10,7 @@ import Foundation
 
 protocol RejectOfferDelegate: SttViewContolable {
     func reloadSendState()
+    func removePreviewVC()
 }
 
 class RejectOfferPresenter: SttPresenter<RejectOfferDelegate> {
@@ -41,7 +42,8 @@ class RejectOfferPresenter: SttPresenter<RejectOfferDelegate> {
     private func onSend() {
         _ = send.useWork(observable: _offerInteractor.rejectOffer(id: data.id, message: comment!))
             .subscribe(onNext: { [weak self] _ in
-                self?.delegate?.close(parametr: true)
+                self?.delegate?.removePreviewVC()
+                self?.delegate?.close(parametr: true, animated: true)
             })
     }
 }

@@ -31,6 +31,7 @@ protocol DataProviderType {
     func getOffer(status: OfferStatus, skip: Int) -> Observable<[OfferApiModel]>
     func aproveOffer(id: String) -> Observable<Bool>
     func rejectOffer(id: String, message: String) -> Observable<Bool>
+    func getCount() -> Observable<OfferCountApiModel>
     
     // profileDataProvider
     func getProfile() -> Observable<ProfileApiModel>
@@ -132,6 +133,9 @@ class DataProvider: DataProviderType {
     }
     func rejectOffer(id: String, message: String) -> Observable<Bool> {
         return _apiDataProvider.rejectOffer(model: RejectApiModel(offerId: id, rejectDescription: message))
+    }
+    func getCount() -> Observable<OfferCountApiModel> {
+        return _apiDataProvider.getCount()
     }
     
     // fucn getProfile
