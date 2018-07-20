@@ -118,7 +118,7 @@ class EditProfilePresenter: SttPresenter<EditProfileDelegate> {
     var previusDispose: Disposable?
     func uploadImage(image: UIImage) {
         previusDispose?.dispose()
-        previusDispose = _accountService.uploadUserAvatar(image: image, progresHandler: nil).subscribe(onNext: { (result) in
+        previusDispose = _accountService.uploadUserAvatar(image: image, progresHandler: { _ in }).subscribe(onNext: { (result) in
             self.photoData = result
             self.isPhotoChanged = true
             self.delegate!.donwloadImageComplete(isSuccess: true)

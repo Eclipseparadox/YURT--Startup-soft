@@ -50,8 +50,8 @@ class BaseLendersPresenter<T>: SttPresenter<T>, OfferItemDelegate {
     }
     
     func refreshOffers() {
-        busPublisher.onNext(OfferStatus.updateConuter)
-        refresh.execute()
+        busPublisher.onNext(nil)
+        //refresh.execute()
     }
     
     // MARK: -- OfferItemDelegate

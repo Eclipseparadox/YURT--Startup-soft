@@ -17,6 +17,8 @@ class OffersViewController: SttViewController<OfferPresenter>, OfferDelegate {
     private var calledChild = Set<OfferStatus>()
     
     var generalLoaderView = SttLoaderView()
+    
+    override func sendError(error: SttBaseErrorType) { }
 
     @IBOutlet weak var viewPager: SttViewPager!
     override func viewDidLoad() {
@@ -58,6 +60,7 @@ class OffersViewController: SttViewController<OfferPresenter>, OfferDelegate {
                     self?.presenter.reloadCount()
                 }
             }
+            self?.presenter.reloadCount()
         })
         
         print("--> \(newVC.presenter)")

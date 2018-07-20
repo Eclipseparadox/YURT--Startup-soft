@@ -137,7 +137,7 @@ class DocumentsViewController: SttViewController<DocumentsPresenter>, DocumentsD
         UIView.animate(withDuration: 0.25, animations: { [weak self] in self?.view.layoutIfNeeded() })
         
         if presenter.currentUploaded == presenter.totalDocument && !presenter.canSend {
-            cnstrBottom.constant = -92
+            cnstrBottom.constant = -52
         }
         else {
             cnstrBottom.constant = 42
