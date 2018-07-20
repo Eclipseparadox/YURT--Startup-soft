@@ -18,7 +18,9 @@ class DocumentsEntityHeaderPresenter: SttPresenter<DocumentsEntityHeaderDelegate
     var title: String!
     var uploadedsCount: Int = 0 {
         didSet {
-            self.delegate?.reloadProgress()
+            DispatchQueue.main.async {
+                self.delegate?.reloadProgress()
+            }
         }
     }
     var isError: Bool { return uploadedsCount < totalCountDocument }

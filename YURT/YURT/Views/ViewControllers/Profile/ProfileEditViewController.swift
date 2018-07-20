@@ -71,6 +71,7 @@ class ProfileEditViewController: SttViewController<EditProfilePresenter>, EditPr
     }
     
     @objc func onBackBarButton(_ send: Any) {
+        view.endEditing(true)
         if presenter.canSave {
             let actionController = UIAlertController(title: nil, message: "Are you sure you want to continue?\nChanges will not be saved", preferredStyle: .actionSheet)
             actionController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (x) in

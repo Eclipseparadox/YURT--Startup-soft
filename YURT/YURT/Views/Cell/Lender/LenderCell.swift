@@ -26,7 +26,7 @@ class LenderCell: SttTableViewCell<LenderPresenter>, LenderDelegate {
         
         lblRate.text = "\(presenter.data.rate)%"
         lblAmount.text = "$ \(presenter.data.downPayment.formattedWithSeparator)"
-        lblYears.text = CountableConverter().convert(value: (presenter.data.term, "year"))
+        lblYears.text = CountableConverter().convert(value: (presenter.data.term, "month"))
     }
     
     override func awakeFromNib() {

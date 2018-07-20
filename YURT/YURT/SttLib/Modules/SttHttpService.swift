@@ -12,6 +12,16 @@ import RxAlamofire
 import RxSwift
 import KeychainSwift
 
+class Networking {
+    static let sharedInstance = Networking()
+    public var sessionManager: Alamofire.SessionManager // most of your web service clients will call through sessionManager
+    public var backgroundSessionManager: Alamofire.SessionManager // your web services you intend to keep running when the system backgrounds your app will use this
+    private init() {
+        self.sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+        self.backgroundSessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.background(withIdentifier: "com.lava.app.backgroundtransfer"))
+    }
+}
+
 protocol SttHttpServiceType {
     var url: String! { get set }
     var token: String { get set }
@@ -144,7 +154,7 @@ class SttHttpService: SttHttpServiceType {
                 return Disposables.create()
             }
             
-            Alamofire.upload(multipartFormData: { multipartFormData in
+            Networking.sharedInstance.backgroundSessionManager.upload(multipartFormData: { multipartFormData in
                 multipartFormData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
             }, to: url, method: .put, headers: parameter,
                encodingCompletion: { encodingResult in
@@ -169,7 +179,7 @@ class SttHttpService: SttHttpServiceType {
                 case .failure(let encodingError):
                     observer.onError(SttBaseError.unkown("\(encodingError)"))
                 }
-            })
+        })
             return Disposables.create();
         })
             .do(onDispose: {
